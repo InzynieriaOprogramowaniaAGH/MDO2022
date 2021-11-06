@@ -49,10 +49,24 @@
       - ![App Screenshot](.\img\screen-18.PNG)
       - ![App Screenshot](.\img\screen-19.PNG)
       - ![App Screenshot](.\img\screen-20.PNG)
-    - Ustal hook, który będzie sprawdzał, czy wiadomość z commitem zawiera nazwę przedmiotu
-    - W jaki sposób stworzyć hook, który będzie *ustawiał* prefiks wiadomości commitu tak, by miał nazwę przedmiotu?
-7. Wystaw Pull Request do gałęzi grupowej
-8. Zgłoś zadanie (Teams assignment)
+    - Ustal hook, który będzie sprawdzał, czy wiadomość z commitem zawiera nazwę przedmiotu, 
+   należy utworzyć plik commit-msg, oraz dołączyć go do katalogu .git w root projektu
+       - ![App Screenshot](.\img\screen-21.PNG)
 
-hook
-commint.msg
+
+```shell
+#!/bin/sh
+
+test -n "$(grep 'Metodyki DevOps' ${1})" || {
+echo >&2 "ERROR: Commit message should contain - Metodyki DevOps.
+exit 1
+}
+
+```
+
+- ![App Screenshot](.\img\screen-23.PNG)
+
+7. W jaki sposób stworzyć hook, który będzie *ustawiał* prefiks wiadomości commitu tak, by miał nazwę przedmiotu?
+   - wykorzystując ```prepare-commit-msg``` hook
+8. Wystaw Pull Request do gałęzi grupowej
+9. Zgłoś zadanie (Teams assignment)
