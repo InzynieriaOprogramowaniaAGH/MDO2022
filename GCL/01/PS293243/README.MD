@@ -88,7 +88,7 @@ Na stronie ustawień, należy przejść do zakładki **SSH and GPG keys** i wcis
 
 Na nowej stronie, podajemy w polu **Title** nazwę klucza, która pozwoli nam na jego prostą identyfikację, a w polu **Key** podajemy zawartość publicznego klucza i wciskamy przycisk **Add SSH key**.
 
-![Zrzut ekranu - Github SSH New](Github_settings_ssh_new.png)
+![Zrzut ekranu - Github SSH New](Github_settings_ssh_new.jpg)
 
 ## Klonowanie repozytorium za pomocą SSH
 
@@ -138,3 +138,32 @@ Komendą **cd** przechodzimy do katalogu **GCL**, następnie do katalogu **01** 
 
 ![Zrzut ekranu - branch mkdir](Git_branch_mkdir.jpg)
 
+Korzystając z narzędzia **WinSCP** przesyłam na serwer pliki sprawozdania.
+
+![Zrzut ekranu - WinSCP](Winscp.jpg)
+
+Dodane pliki musimy dodać teraz, aby były śledzone przez **git**. Robimy to za pomocą komendy:
+
+`git add *.*`
+
+Status wszystkich zmian od ostatniego commita, możemy sprawdzić komendą:
+
+`git status`
+
+![Zrzut ekranu - git add/status](Git_add_status.jpg)
+
+Po dodaniu nowych plików, możemy utworzyć nowego commita komendą:
+
+`git commit -m <komentarz>`
+
+![Zrzut ekranu - git commit](Git_commit.jpg)
+
+Po utworzeniu commita, możemy go teraz wypchnąć na zdalną gałąź komendą:
+
+`git push --set-upstream origin PS293243`
+
+![Zrzut ekranu - git push](Git_push.jpg)
+
+Nasze zmiany będą teraz widoczne w Githubie.
+
+![Zrzut ekranu - Github commit](Github_commit.jpg)
