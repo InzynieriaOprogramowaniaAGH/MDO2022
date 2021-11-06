@@ -36,12 +36,11 @@ Po sklonowaniu, pliki zapiszą się w folderze, który aktualnie był wybrany:
 
 W celu zaoszczędzenia kilku godzin, na wstępie warto wspomnieć, że w przypadku wybrania innej nazwy kluczy niż defaultowa, należy umieścić poniższe linijki w pliku **~/.ssh/config**:
 
-Host github.com
-    HostName github.com
-    IdentityFile ~/.ssh/id_rsa_github
+> Host github.com
+> HostName github.com
+> IdentityFile ~/.ssh/id_rsa_github
 
-
- W przypadku braku powyższego autentykacja się nie powiedzie.
+W przypadku braku powyższego autentykacja się nie powiedzie.
 
 Generowanie kluczy SSH odbywa się przy użyciu komendy **ssh-keygen**.
 
@@ -106,26 +105,26 @@ W ten sposób z gałęzi **GCL01** powstała kopia mojej gałęzi o nazwie **EJ2
 
 W celu wysłania zmian na **origin**, najpierw musimy dodać pliki do stage'a, przy użyciu komendy **git add .**:
 
-![Zdjecie git add](git-add.png)
+![Zdjecie git add](screenshots/git-add.png)
 
 Następnie robimy commit z plikami, które właśnie dodaliśmy do stage'a, przy użyciu komendy **git commit -m "komentarz"**:
 
-![Zdjecie git commit](git-commit.png)
+![Zdjecie git commit](screenshots/git-commit.png)
 
 Na samym końcu pozostaje nam wypchnąć zmiany lokalne do origina przy użyciu **git push**:
 
-![Zdjecie git push -u origin EJ296864](git-push-u-origin-EJ296864.png)
+![Zdjecie git push -u origin EJ296864](screenshots/git-push-u-origin-EJ296864.png)
 
 ## Próba wciągnięcia mojej gałęzi do gałęzi grupowej
 
 W tym celu przechodzę na gałąź, która ma mieć moje zmiany po merge'u, czyli **GCL01**, przy użyciu **git checkout GCL01**.
 Następnie używam polecenia **git merge <nazwa_galezi>**:
 
-![Zdjecie git merge EJ296864](git-merge-EJ296864.png)
+![Zdjecie git merge EJ296864](screenshots/git-merge-EJ296864.png)
 
 O ile lokalnie to się udaje bez problemu, o tyle zdalnie nie ma takiej, opcji, gdyż w ustawieniach repozytorium jest właśnie tak ustawione:
 
-![Zdjecie git push failed](git-push-failed.png)
+![Zdjecie git push failed](screenshots/git-push-failed.png)
 
 ## Oznaczenie tagiem i wypchnięcie taga na zdalną gałąź
 
@@ -136,6 +135,7 @@ W Gicie są 2 rodzaje tagów, zwykłe (lightweight) oraz annotated. W zadaniu u�
 Jeśli nie dodamy IDcommita, to domyślnie zostanie użyty ten, na którym jesteśmy.
 
 Tak więc też robię:
-![Zdjecie git tag push --tags](git-tag-push-tags.png)
+
+![Zdjecie git tag push --tags](screenshots/git-tag-push-tags.png)
 
 **git push --tags** - wysyłamy zmiany włączając w to również tagi. Wysyła wszystkie tagi, więc jeśli mamy jakieś tymczasowe, to średnio.
