@@ -1,4 +1,4 @@
-# Sprawozdanie
+# Sprawozdanie Krzysztof Kachniarz
 
 1. Zainstaluj klienta Git i obsługę kluczy SSH
     > git-installed.png
