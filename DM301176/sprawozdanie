@@ -1,0 +1,27 @@
+Został wygenerowany klucze ssh za pomocą komendy:
+ssh-keygen -t ecdsa
+
+W pliku:
+~/.ssh/id_ecdsa.pub
+
+Znajduje się nasz klucz SSH
+
+Klucz dodajemy do GitHub.
+
+za pomocą komendy:
+git clone git@github.com:InzynieriaOprogramowaniaAGH/MDO2022.git
+
+Klonujemy repozytorium na naszą maszynę.
+
+Następnie za pomocą:
+git checkout origin/GCL02
+
+Przechodzimy do interesującej nas gałęzi.
+
+Tworzę swoją gałąź:
+git checkout -b DM301176
+
+Tworzę nowy katalog o tym samej nazwie co gałąź.
+
+Piszę sprawozdanie ;)
+
