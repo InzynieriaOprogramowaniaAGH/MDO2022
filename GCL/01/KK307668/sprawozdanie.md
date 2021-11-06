@@ -28,6 +28,7 @@
         > git-add-&-git-commit.png <br>
         > wyslanie-zmian-do-zdalnego-zrodla.png
     * Spróbuj wciągnąć swoją gałąź do gałęzi grupowej
+        > wciagniecie-zmian-do-galezi-grupowej.png
     * Zaktualizuj sprawozdanie i zrzuty o ten krok i wyślij aktualizację do zdalnego źródła (na swojej gałęzi)
     * Oznacz tagiem ostatni commit i wypchnij go na zdalną gałąź
     * Ustal hook, który będzie sprawdzał, czy wiadomość z commitem zawiera nazwę przedmiotu
