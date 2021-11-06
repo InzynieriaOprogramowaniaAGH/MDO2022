@@ -34,3 +34,21 @@ Wpisujemy:
 Dodajemy katalog i plik:
     • mkdir <nazwa> (w moim przypadku nazwa to WK307669)
     • nano <nazwa_pliku>
+
+Najpierw konfigurujemy email i nazwę:
+- git config --global user.email "email"
+- git config --global user.name "name"
+
+Aby wrzucić zmiany wpisujemy:
+- git add <nazwa_pliku> - dodanie pliku
+- git commit -m "Komentarz"
+- git push origin <nazwa_brancha> (u mnie WK307669)
+(img9)
+(img10)
+(img11)
+
+Wciąganie gałęzi do grupowej:
+- git checkout GCL01
+- git merge WK307669
+Uwaga! Nie zadziała
+(img12)
