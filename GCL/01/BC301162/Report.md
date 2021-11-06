@@ -1,0 +1,1 @@
+#Metodyki DevOps, Zajecia 01, 6.11.2021, Bartlomiej Ciernia
