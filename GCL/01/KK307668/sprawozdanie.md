@@ -34,5 +34,6 @@
     * Oznacz tagiem ostatni commit i wypchnij go na zdalną gałąź
         > git-tag.png
     * Ustal hook, który będzie sprawdzał, czy wiadomość z commitem zawiera nazwę przedmiotu
+        > hook1.png
     * W jaki sposób stworzyć hook, który będzie ustawiał prefiks wiadomości commitu tak, by miał nazwę przedmiotu?
 7. Wystaw Pull Request do gałęzi grupowej
