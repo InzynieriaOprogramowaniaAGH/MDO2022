@@ -83,21 +83,38 @@ Tak samo jak poprzednio, udajemy się na stronę z repozytorium, a następnie wy
 Jeżeli do wygenerowanego klucza SSH było podane hasło, trzeba będzie je podać przy klonowaniu.
 
 Po sklonowaniu, pliki zapiszą się w folderze, który aktualnie był wybrany, tak samo jak w przypadku klonowania przez HTTPS:
+
 ![Zdjecie z terminala git clone](screenshots/git-clone-ssh-terminal.png)
 
-## Przełączam się na gałąź mojej grupy
+## Przełączanie się na gałąź mojej grupy
 
 Zmieniać gałęzie możemy dzięki poleceniu **git checkout**
 
 Przełączam się na gałąź mojej grupy:
+
 ![Zdjecie git checkout](screenshots/git-checkout-gcl01.png)
 
 ## Tworzenie nowej gałęzi
 
 Nową gałąź tworzymy przy pomocy polecenia **git branch <nazwa_galezi>**, ale wtedy nie zostaniemy przeniesieni na nią, co jest bez sensu, gdyż tworząc nową gałąź, w zwyczaju mamy od razu na niej pracować. W związku z tym stosujemy polecenie **git checkout -b <nazwa_galezi>**
 
-![Zdjecie git checkout GCL01](screenshots/git-checkout-gcl01.png)
+![Zdjecie git checkout EJ296864](screenshots/git-checkout-b-EJ296864.png)
 
-![Zdjecie git checkout EJ296864](screenshots/git-checkout-b-EJ296864)
+W ten sposób z gałęzi **GCL01** powstała kopia mojej gałęzi o nazwie **EJ296864**
 
+## Wysyłanie zmian do zdalnego źródła
+
+W celu wysłania zmian na **origin**, najpierw musimy dodać pliki do stage'a, przy użyciu komendy **git add .**:
+
+![Zdjecie git add](git-add.png)
+
+Następnie robimy commit z plikami, które właśnie dodaliśmy do stage'a, przy użyciu komendy **git commit -m "komentarz"**:
+
+![Zdjecie git commit](git-commit.png)
+
+Na samym końcu pozostaje nam wypchnąć zmiany lokalne do origina przy użyciu **git push**:
+
+![Zdjecie git push -u origin EJ296864](git-push-u-origin-EJ296864.png)
+
+## Próba wciągnięcia mojej gałęzi do gałęzi grupowej
 
