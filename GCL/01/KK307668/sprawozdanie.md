@@ -1,4 +1,4 @@
-# Sprawozdanie Krzysztof Kachniarz IS
+# Sprawozdanie Krzysztof Kachniarz IS WIMiIP
 
 1. Zainstaluj klienta Git i obsługę kluczy SSH
     > git-installed.png
