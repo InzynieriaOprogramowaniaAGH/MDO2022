@@ -37,4 +37,4 @@
         > hook1.png<br>
         > utworzony-hook.png
     * W jaki sposób stworzyć hook, który będzie ustawiał prefiks wiadomości commitu tak, by miał nazwę przedmiotu?
-7. Wystaw Pull Request do gałęzi grupowej
+        > hook2.png
