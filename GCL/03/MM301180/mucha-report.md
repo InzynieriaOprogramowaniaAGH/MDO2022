@@ -38,6 +38,9 @@
         - ![App Screenshot](.\img\screen-12.PNG)
       
     - Spróbuj wciągnąć swoją gałąź do gałęzi grupowej
+      - ![App Screenshot](.\img\screen-13.PNG)
+    - Branch jest chroniony zatem wystąpił błąd
+       - ![App Screenshot](.\img\screen-14.PNG)
     - Zaktualizuj sprawozdanie i zrzuty o ten krok i wyślij aktualizację do zdalnego źródła (na swojej gałęzi)
     - Oznacz tagiem ostatni commit i wypchnij go na zdalną gałąź
     - Ustal hook, który będzie sprawdzał, czy wiadomość z commitem zawiera nazwę przedmiotu
