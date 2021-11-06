@@ -139,3 +139,15 @@ Tak więc też robię:
 ![Zdjecie git tag push --tags](screenshots/git-tag-push-tags.png)
 
 **git push --tags** - wysyłamy zmiany włączając w to również tagi. Wysyła wszystkie tagi, więc jeśli mamy jakieś tymczasowe, to średnio.
+
+## Ustawianie hooków
+
+Na razie pomijam
+
+## Tworzenie pull requesta
+
+By stworzyć pull request, wchodzimy w nasze repoozytoorium i klikamy **Pull requests**. Robimy to po to, żeby ktoś sprawdził nasz kod.
+
+Następnie wpisujemy komentarz i klikamy **Create pull request**
+
+![Zdjecie pull request](screenshots/pull-request.png)
