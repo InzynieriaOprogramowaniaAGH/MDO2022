@@ -118,3 +118,14 @@ Na samym końcu pozostaje nam wypchnąć zmiany lokalne do origina przy użyciu 
 
 ## Próba wciągnięcia mojej gałęzi do gałęzi grupowej
 
+W tym celu przechodzę na gałąź, która ma mieć moje zmiany po merge'u, czyli **GCL01**, przy użyciu **git checkout GCL01**.
+Następnie używam polecenia **git merge <nazwa_galezi>**:
+
+![Zdjecie git merge EJ296864](git-merge-EJ296864.png)
+
+O ile lokalnie to się udaje bez problemu, o tyle zdalnie nie ma takiej, opcji, gdyż w ustawieniach repozytorium jest właśnie tak ustawione:
+
+![Zdjecie git push failed](git-push-failed.png)
+
+
+
