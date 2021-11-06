@@ -1,5 +1,6 @@
 # Sprawozdanie Krzysztof Kachniarz IS WIMiIP
 
+
 1. Zainstaluj klienta Git i obsługę kluczy SSH
     > git-installed.png
 2. Sklonuj repozytorium za pomocą HTTPS
