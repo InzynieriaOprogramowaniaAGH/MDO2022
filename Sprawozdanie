@@ -1,0 +1,36 @@
+Instalacja git na systemie ubuntu:
+    1. Odpalamy terminal 
+    2. Instalujemy git komendą: sudo apt-get install git
+
+Klonujemy repozytorium: 
+    • git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022.git
+(img1)
+(img2)
+
+Generujemy dwa klucze SHH ecdsa za pomocą: 
+    • ssh-keygen -t ecdsa (typ ecdsa) z hasłem (wpisujemy je, gdy pojawi się komunikat o wpisaniu passphrase)
+    • Podajemy, gdzie mają zostać zapisane klucze
+(img3)
+
+Przechodzimy do katalogu, w którym zapisane są klucze i otwieramy ten z końcówką .pub, w moim przypadku: cat id_ecdsa.pub
+
+Wyświetlony klucz kopiujemy i wklejamy do ustawień profilu na github oraz dodajemy tytuł:
+    • Ikonka profilu->settings->SSH and GPG keys
+I zapisujemy.
+(img4)
+(img5)
+
+Przechodzimy do repozytorium i klonujemy je z wykorzystaniem protokołu SSH:
+    • Git clone git@github.com:InzynieriaOprogramowaniaAGH/MDO2022.git
+(img6)
+(img7)
+
+Przechodzimy do folderu MDO2022.
+Wpisujemy:
+    • git checkout GCL01 (aby przełączyć się na branch grupy 1)
+    • Tworzymy swój branch za pomocą git checkout -b <nazwa_brancha>
+(img8)
+
+Dodajemy katalog i plik:
+    • mkdir <nazwa> (w moim przypadku nazwa to WK307669)
+    • nano <nazwa_pliku>
