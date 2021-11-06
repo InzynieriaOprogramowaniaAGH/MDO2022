@@ -1,8 +1,8 @@
-# Sprawozdanie Krzysztof Kachniarz
+# Sprawozdanie Krzysztof Kachniarz IS
 
 1. Zainstaluj klienta Git i obsługę kluczy SSH
     > git-installed.png
-2. Sklonuj repozytorium https://github.com/InzynieriaOprogramowaniaAGH/MDO2022 za pomocą HTTPS
+2. Sklonuj repozytorium za pomocą HTTPS
     > git-clone-https.png
 3. Upewnij się w kwestii dostępu do repozytorium jako uczestnik i sklonuj je za pomocą utworzonego klucza SSH
     > sprawdzenie-dostępu.png
