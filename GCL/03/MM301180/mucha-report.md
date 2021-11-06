@@ -42,7 +42,10 @@
     - Branch jest chroniony zatem wystąpił błąd
        - ![App Screenshot](.\img\screen-14.PNG)
     - Zaktualizuj sprawozdanie i zrzuty o ten krok i wyślij aktualizację do zdalnego źródła (na swojej gałęzi)
+       - ![App Screenshot](.\img\screen-15.PNG)
     - Oznacz tagiem ostatni commit i wypchnij go na zdalną gałąź
+       - ![App Screenshot](.\img\screen-16.PNG)
+       - ![App Screenshot](.\img\screen-17.PNG)
     - Ustal hook, który będzie sprawdzał, czy wiadomość z commitem zawiera nazwę przedmiotu
     - W jaki sposób stworzyć hook, który będzie *ustawiał* prefiks wiadomości commitu tak, by miał nazwę przedmiotu?
 7. Wystaw Pull Request do gałęzi grupowej
