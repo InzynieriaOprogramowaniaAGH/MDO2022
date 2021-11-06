@@ -167,3 +167,91 @@ Po utworzeniu commita, możemy go teraz wypchnąć na zdalną gałąź komendą:
 Nasze zmiany będą teraz widoczne w Githubie.
 
 ![Zrzut ekranu - Github commit](Github_commit.jpg)
+
+Po wprowadzeniu zmian do projektu, możemy sprawdzić czy jakieś pliki się zmieniły bądź doszły nowe. Ręcznie możemy też dodawać nowe pliki do nowego commita za pomocą komend opisanych wyżej.
+
+![Zrzut ekranu - Git status add push](Git_status_push_add.jpg)
+
+## Tagowanie commitów
+
+Po utworzeniu nowego commita, możemy go otagować np. wersją projektu. Odbywa się to za pomocą komendy:
+
+`git tag <tag>`
+
+W naszym przypadku oznaczę commita jako wersję **v2.0**.
+
+`git tag v2.0`
+
+Przy użyciu poniższej komendy, możemy sprawdzić aktualnie aktywny tag.
+
+`git tag`
+
+![Zrzut ekranu - tag](Git_tag.jpg)
+
+Przy wypchnięciu commita na serwer, należy pamiętać że domyślnie nie są wysyłane tagi. Tagi należy dodatkowo wysłać komendą:
+
+`git push origin --tags`
+
+![Zrzut ekranu - tag push](Git_tag_push.jpg)
+
+## Tworzenie hooków
+
+Hooki pozwalają nam między innymi na automatyzację pracy z gitem poprzez pisanie skryptów.
+
+W folderze z naszym repozytorium znajduje się ukryty katalog **.git**, a w nim katalog **hooks**. Znajdziemy tam przykładowe pliki o rozszerzeniu **.example** - pliki o takim rozszerzeniu będą ignorowane przez Gita.
+
+![Zruzt ekranu - hooks examples](Hooks_examples.jpg)
+
+Aby dodać sprawdzanie czy wiadomość do naszego commita posiada prefix **Metodyki DevOps**, musimy utworzyć plik **commit-msg**. Dostaje on jako parametr na wejściu plik zawierający wiadomość commita. Możemy się do niego dostać w skrypcie przez **$1**.
+
+Poniższy skrypt sprawdza, czy commit posiada ustalony prefix - jeżeli tak, commit zostanie zaakceptowany. W innym przypadku zostanie zwrócony błąd.
+
+
+    #!/bin/bash
+
+    PREFIX='Metodyki DevOps'
+
+    `MSG=`echo "$(cat $1)" | head -1`
+
+    if ! [[ $PREFIX == ${MSG:0:15} ]] ; then
+            echo "Commit message is missing prefix"
+            exit 1;
+    fi
+
+Po utworzeniu pliku **commit-msg**, musimy nadać mu uprawnienia do wykonywania komendą:
+
+`chmod +x commit-msg`
+
+Teraz przy próbie dodania commita, który nie posiada prefixu, zostanie zwrócony błąd.
+
+![Zrzut ekranu - hooks check](Hooks_check.jpg)
+
+Możemy zmodyfikować powyższy skrypt o automatyczne dodawanie prefixu, jeżeli takowego brakuje w wiadomości do naszego commita - wystarczy nadpisać plik przekazany jako parametr do **commit-msg**.
+
+    #!/bin/bash
+
+    PREFIX='Metodyki DevOps'
+
+    MSG=`echo "$(cat $1)" | head -1`
+
+    if ! [[ $PREFIX == ${MSG:0:15} ]] ; then
+            echo "Commit message is missing prefix, appending"
+            MSG="$PREFIX $MSG"
+            echo $MSG > $1
+    fi
+
+![Zrzut ekranu - hooks append](Hooks_append.jpg)
+
+## Mergowanie zmian i wystawianie pull requestów
+
+W przypadku próby wciągnięcia gałęzi **PS293243** do **GCL01** przez komendę:
+
+`git merge PS293243`
+
+zmiany zostaną zapisane lokalnie. Natomiast przy próbie wypchnięcia tych zmian na serwer, zostanie zwrócony błąd.
+
+![Zrzut ekranu - merge try](Git_merge_try.jpg)
+
+W tym przypadku, musimy wystawić pull requesta na Githubie, aby nasze zmiany zostały zatwierdzone przez zarządzającego repozytorium.
+
+![Zrzut ekranu - Pull request](Github_pull_request.jpg)
