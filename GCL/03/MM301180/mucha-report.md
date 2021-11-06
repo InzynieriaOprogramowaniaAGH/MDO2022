@@ -46,6 +46,9 @@
     - Oznacz tagiem ostatni commit i wypchnij go na zdalną gałąź
        - ![App Screenshot](.\img\screen-16.PNG)
        - ![App Screenshot](.\img\screen-17.PNG)
+      - ![App Screenshot](.\img\screen-18.PNG)
+      - ![App Screenshot](.\img\screen-19.PNG)
+      - ![App Screenshot](.\img\screen-20.PNG)
     - Ustal hook, który będzie sprawdzał, czy wiadomość z commitem zawiera nazwę przedmiotu
     - W jaki sposób stworzyć hook, który będzie *ustawiał* prefiks wiadomości commitu tak, by miał nazwę przedmiotu?
 7. Wystaw Pull Request do gałęzi grupowej
