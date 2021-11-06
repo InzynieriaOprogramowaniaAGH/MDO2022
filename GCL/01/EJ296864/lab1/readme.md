@@ -127,5 +127,15 @@ O ile lokalnie to się udaje bez problemu, o tyle zdalnie nie ma takiej, opcji, 
 
 ![Zdjecie git push failed](git-push-failed.png)
 
+## Oznaczenie tagiem i wypchnięcie taga na zdalną gałąź
 
+W Gicie są 2 rodzaje tagów, zwykłe (lightweight) oraz annotated. W zadaniu użyję annotated. Tworzy się je przy pomocy komendy:
 
+**git tag nazwa_taga <IDcommita> -a -m 'dodatkowa_uwaga'**
+
+Jeśli nie dodamy IDcommita, to domyślnie zostanie użyty ten, na którym jesteśmy.
+
+Tak więc też robię:
+![Zdjecie git tag push --tags](git-tag-push-tags.png)
+
+**git push --tags** - wysyłamy zmiany włączając w to również tagi. Wysyła wszystkie tagi, więc jeśli mamy jakieś tymczasowe, to średnio.
