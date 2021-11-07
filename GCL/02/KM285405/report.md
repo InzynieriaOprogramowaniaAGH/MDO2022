@@ -33,7 +33,9 @@ Zajęcia 01 - 2021-11-06
 
 ### Dodanie zrzutów ekranu i wysłanie zmian
 ![](img/6.%20git%20config.png)
+
 ![](img/6.%20git%20add.PNG)
 ![](img/6.%20commit%20%26%20push.PNG)
 
 ### Próba wyciągnięcia gałęzi do gałęzi grupowej
+![](img/6.failed.png)
