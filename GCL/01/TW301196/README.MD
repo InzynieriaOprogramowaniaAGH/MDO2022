@@ -135,11 +135,29 @@ Do otagowania commita wykorzystałem komendę `git tag v2.1`
 
 ## Hooks
 
-Aby utworzyć hook, który będzie sprawdzał czy wiadomość z commitem zawiera nazwę przedmiotu należy przejść w głownym folderze repozytorium do ukrytego katalogu **.git** a następnie do katalogu hooks.
-Należy utworzyć plik o nazie **commit-msg** i nadać mu uprawnienia do wykonywania.
+Aby utworzyć hook, który będzie sprawdzał czy wiadomość z commitem zawiera nazwę przedmiotu należy przejść w głownym folderze repozytorium do ukrytego katalogu **.git** a następnie do katalogu **hooks**.
+Należy utworzyć plik o nazwie **commit-msg** i nadać mu uprawnienia do wykonywania.
 
 ![Zrzut ekranu - 6_12](6_12.jpg)
 
 Następnie z użyciem edytora tekstu (w moim przypadku nano) należy napisać odpowiedni skrypt sprawdzający czy wiadomość zawiera odpowiedni ciąg znaków
 
 ![Zrzut ekranu - 6_13](6_13.jpg)
+
+Po próbie stworzenia commitu dostaję wiadomość **Commit message is missing prefix**
+
+![Zrzut ekranu - 6_14](6_14.jpg)
+
+Aby stworzyć hook ustawiający prefiks wiadomości commitu można odpowiednio zmodyfikować napisany wcześniej skrypt:
+
+![Zrzut ekranu - 6_15](6_15.jpg)
+
+## Pull request
+
+Aby stworzyć nowego pull request'a na stronie GitHub przechodzi się do zakładki **Pull request** a następnie klika się w button **Create pull request**.
+
+![Zrzut ekranu - 6_17](6_17.jpg)
+
+Kolejnym krokiem jest wybranie odpowiednich branchy i zatwierdzenie.
+
+![Zrzut ekranu - 6_18](6_18.jpg)
