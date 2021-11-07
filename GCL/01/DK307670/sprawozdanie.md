@@ -28,6 +28,7 @@
    - Zaktualizuj sprawozdanie i zrzuty o ten krok i wyślij aktualizację do zdalnego źródła (na swojej gałęzi)
      ![screen12](img/screen12.png)
    - Oznacz tagiem ostatni commit i wypchnij go na zdalną gałąź
+     ![screen17](img/screen17.png)
    - Ustal hook, który będzie sprawdzał, czy wiadomość z commitem zawiera nazwę przedmiotu
     ![screen13](img/screen13.png)
     ![screen14](img/screen14.png)
