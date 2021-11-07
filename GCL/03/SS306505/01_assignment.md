@@ -110,7 +110,8 @@ Powinna ona wychodzić z gałęzi GCL03 i posiadać nazwe inicjały & nr indeksu
     - Następnie stworzyć plik commit-msg i nadać odpowiednie prawa
         - touch prepare-commit-msg
         - chmod 755 prepare-commit-msg
-        
+    - Uzupełnij zawartość pliku (screenshot 13)
+        - nano prepare-commit-msg
     
 
     
