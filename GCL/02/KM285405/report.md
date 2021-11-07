@@ -45,7 +45,8 @@ Zajęcia 01 - 2021-11-06
 
 ### Oznaczenie tagiem ostatniego commitu
 
-Po utworzeniu commitu, dodanie 'git tag', a następnie push tagss
+Po utworzeniu commitu, dodanie 'git tag', a następnie push tags
+
 ![](img/6.git_tag.png)
 
 ### Hook sprawdzający czy wiadomość z commitem zawiera nazwę przedmiotu
@@ -59,6 +60,7 @@ Do sprawdzenia wiadomości z commitem należy wykorzystać commit-msg i zmodyfik
 Teraz podczas commitu sprawdzana jest wiadomość:
 ![](img/6.hooks_test.png)
 
+### Hook ustawiający prefiks wiadomości commitu
 
 
 ## 7. Pull request
