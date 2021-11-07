@@ -9,4 +9,7 @@ Sprawozdanie lab 1 MDO
 7. Przełączyłem się na gałąź grupy GCL02, następnie z tej gałęzi utworzyłem swoją gałąź o nazwie ML290631.
 8. Utorzyłem folder o nazwie tożsamej z nazwą mojej branchy.
 9. Dodałem plik tekstowy ze sprawozdaniem. Dodałem zrzuty ekranu. Utworzyłem commita i wypchąłem zmiany do zdalnego repozytorium.
-10. Zacząłem pisać sprawozdanie. Po napisaniu tego punktu zapisałem plik, dodałem do folderu zrzut ekranu pokazujący dodane klucze SSH na github'ie, utworzyłem commita i wypchnąłem zmiany na zdalne repozytorium. 
+10. Zacząłem pisać sprawozdanie. Po napisaniu tego punktu zapisałem plik, dodałem do folderu zrzut ekranu pokazujący dodane klucze SSH na github'ie, utworzyłem commita i wypchnąłem zmiany na zdalne repozytorium.
+11. Przełączyłem się na gałąź grupową (GCL02), wykonałem git merge mojej branchy - lokalnie wszystko się powiodło. Przy próbie wypchnięcia na zdalne repozytorium pojawił się błąd.
+12. Przywróciłem lokalną branch GCL02 do stanu zgodnego ze zdalną wersją.
+13. Wróciłem na moją branch ML290631. Zaktualizowałem sprawozdanie i dodałem zrzuty ekranu. Utworzyłem commita i wypchąłem go na zdalne repozytorium. 
