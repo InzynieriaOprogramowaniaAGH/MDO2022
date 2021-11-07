@@ -13,4 +13,6 @@ Sprawozdanie lab 1 MDO
 11. Przełączyłem się na gałąź grupową (GCL02), wykonałem git merge mojej branchy - lokalnie wszystko się powiodło. Przy próbie wypchnięcia na zdalne repozytorium pojawił się błąd.
 12. Przywróciłem lokalną branch GCL02 do stanu zgodnego ze zdalną wersją.
 13. Wróciłem na moją branch ML290631. Zaktualizowałem sprawozdanie i dodałem zrzuty ekranu. Utworzyłem commita i wypchąłem go na zdalne repozytorium.
-14. Zapomniałem dodać tag. Dodałem tag LAB1. Uaktualniłem sprawozdanie i dodałem zrzuty ekranu. 
+14. Zapomniałem dodać tag. Dodałem tag LAB1. Uaktualniłem sprawozdanie i dodałem zrzuty ekranu.
+15. Utworzyłem hooka sprawdzającego czy commit_msg zawiera nazwę przedmiotu (MDO).
+16. W jaki sposób stworzyć hook, który będzie ustawiał prefiks wiadomości commitu tak, by miał nazwę przedmiotu? - Utworzyć hooka prepare-commit-msg. 
