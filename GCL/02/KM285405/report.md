@@ -64,9 +64,12 @@ Teraz podczas commitu sprawdzana jest wiadomość:
 ### Hook ustawiający prefiks wiadomości commitu
 
 Żeby ustawić prefiks, można zmodyfikować commit-msg:
+
 ![](img/6.hook_prefix.png)
 
 ![](img/6.hook_prefix_test.png)
 
 ## 7. Pull request
+
+![](img/7.pull_request.png)
 
