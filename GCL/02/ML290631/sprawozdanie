@@ -1,1 +1,12 @@
 Sprawozdanie lab 1 MDO
+
+1. Skonfigurowałem środowisko na lokalnym komputerze tak aby korzystać z narzędzia kontroli wersji GIT.
+2. Sklonowałem repozytorium udostępnione przez prowadzącego wykorzystując protokół HTTPS.
+3. Wygenerowałem klucze SSH RSA: publiczny i prywatny, niezabezpieczony hasłem. Dodałem klucz do konta na github'ie.
+4. Wygenerowałem klucze SSH DSA: publiczny i prywatny, zabezpieczony hasłem. Przy próbie dodania klucza do konta na github'ie okazało się, że klucz DSA jest zbyt słaby i został wycofany z użytku.
+5. Wygenerowałem klucze SSH ECDSA: publiczny i prywatny, zabezpieczony hasłem. Dodałem klucz do konta na github'ie.
+6. Sklonowałem repozytorium używając protokołu SSH.
+7. Przełączyłem się na gałąź grupy GCL02, następnie z tej gałęzi utworzyłem swoją gałąź o nazwie ML290631.
+8. Utorzyłem folder o nazwie tożsamej z nazwą mojej branchy.
+9. Dodałem plik tekstowy ze sprawozdaniem. Dodałem zrzuty ekranu. Utworzyłem commita i wypchąłem zmiany do zdalnego repozytorium.
+10. Zacząłem pisać sprawozdanie. Po napisaniu tego punktu zapisałem plik, dodałem do folderu zrzut ekranu pokazujący dodane klucze SSH na github'ie, utworzyłem commita i wypchnąłem zmiany na zdalne repozytorium. 
