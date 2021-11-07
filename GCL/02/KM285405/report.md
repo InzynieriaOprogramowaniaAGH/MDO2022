@@ -39,3 +39,15 @@ Zajęcia 01 - 2021-11-06
 
 ### Próba wyciągnięcia gałęzi do gałęzi grupowej
 ![](img/6.failed.png)
+
+### Aktualizacja sprawozdania o krok z błędem
+![](img/6.after_fail_update.png)
+
+### Oznaczenie tagiem ostatniego commitu
+
+
+### Hook sprawdzający czy wiadomość z commitem zawiera nazwę przedmiotu
+
+
+## 7. Pull request
+
