@@ -2,6 +2,7 @@
 
 ## Kilka rad zanim zaczniesz
 - Postaraj się unikać polskich znaków przy nadawaniu nazw plikom oraz katalogom
+- Uważaj przy przepisywaniu skryptów, ponieważ nawet jedna brakująca spacja może sprawić że program nie zachowa sie prawidłowo
 
 ## Kroki
 
@@ -23,18 +24,18 @@
     - Polecenie ssh-keygen użyte z flagą -t pozwoli nam wybrać sposób szyfrowania (domyślny to rsa), a flaga -C dodać komentarz którym będzie np. adres email naszego konta GitHub (screenshot numer 1 i 2)
         - ssh-keygen -t ed25519 -C "github_account_email"
 4. Skonfiguruj klucz SSH jako metodę dostępu
-    - Pierwotnie sposób w jaki komunikujemy się z remote repo jest ustawiony po protokole HTTPS
+    - Pierwotnie sposób w jaki komunikujemy się z zdalnym repozytorium jest ustawiony po protokole HTTPS
     - Aby to zmienić musimy wyedytować plik konfiguracyjny który znajduje się w MDO2022/.git/config
-    - W efekcie sekcja [remote "origin"] powinna zawierać login i nazwe hosta oraz repo z jakim chcemy rozmawiać (screenshot numer 3)
+    - W efekcie sekcja [remote "origin"] powinna zawierać login i nazwe hosta oraz repozytorium z jakim chcemy rozmawiać (screenshot numer 3)
 5. Sklonuj repozytorium z wykorzystaniem protokołu SSH
     - Usuń katalog MDO2020 wraz z zawartością poleceniem
         - rm -rf MDO2020/
-    - Sklonuj repo używając polecenia git clone z użyciem SSH
+    - Sklonuj repozytorium używając polecenia git clone z użyciem SSH
         - git clone git@github.com:InzynieriaOprogramowaniaAGH/MDO2022.git
 6. Przełącz się na gałąź swojej grupy
     - Użyj polecenia checkout nazwa_gałęzi
         - git checkout GCL03
-    - Jeśli ta gałąź nie jest widoczna możesz użyć polecenia fetch, aby zaktualizować remote gałęzie w lokalnym repo
+    - Jeśli ta gałąź nie jest widoczna możesz użyć polecenia fetch, aby zaktualizować zdalne gałęzie w lokalnym repozytorium
         - git fetch
 7. Utwórz lokalną gałąź o nazwie "inicjały & nr indeksu" np. KD232144
     - Do tworzenia gałęzi użyj jednego z dwóch poleceń
@@ -59,7 +60,7 @@
         - code .
     
         Następnie przeciągnij i upuść na edytorze swoje zrzuty
-11. Dodaj pliki do repo lokalnego używając polecenia add i nazwy pliku 
+11. Dodaj pliki do repozytorium lokalnego używając polecenia add i nazwy pliku 
     - git add 01_assignment.md
     - git add nazwa_zrzutu.png
     
@@ -68,24 +69,24 @@
 12. Zakomituj zmiany poleceniem commit z flagą -m, która pozwoli dodać opis zmian jakich dokonaliśmy
     - git commit -m "Dodanie pliku sprawozdania i zrzutow"
 
-13. Z poziomy GitHub'a utwórz nową remote gałąź.
+13. Z poziomy GitHub'a utwórz nową zdalną gałąź.
 Powinna ona wychodzić z gałęzi GCL03 i posiadać nazwe inicjały & nr indeksu (w naszym wypadku SS306505).
 
 14. Wyślij zmiany do zdalnego źródła
-    - Aby wysłać nasze zmiany z lokalnego repo użyj polecenia push, nazwy źródła oraz gałęzi
+    - Aby wysłać nasze zmiany z lokalnego repozytorium użyj polecenia push, nazwy źródła oraz gałęzi
         - git push origin SS306505
-    - Jeśli jesteś ciekaw czym dokładnie jest źródło możesz sprawdzić to poleceniem
+    - Jeśli jesteś ciekaw czym dokładnie jest źródło ("origin") możesz sprawdzić to poleceniem
         - git remote -v
 
 15. Spróbuj wciągnąć swoją gałąź do gałęzi grupowej (screenshot 07)
     - W tym celu przełączymy się na gałąź grupową
         - git checkout GCL03
     - Następnie wciągniemy zmiany z naszej gałęzi do gałęzi grupowej
-        - git merge 
-    - Próba wypchnięcia tego do zdalnego repo 
+        - git merge SS306505
+    - Próba wypchnięcia tego do zdalnego repozytorium 
         - git push origin GCL03
     
-        Powinna zakończyć się błędem, ponieważ gałąź GCL03 jest chroniona, co oznacza że musi zostać stworzony i zatwierdzony pull request zanim zmergujemy się z naszym kodem do zdalnego repo (screenshot 08)
+        W efekcie kończy się błędem, ponieważ gałąź GCL03 jest chroniona, co oznacza że musi zostać stworzony i zatwierdzony pull request zanim zmergujemy się z naszym kodem do zdalnego repozytorium (screenshot 08)
 
 16. Oznacz tagiem ostatni commit i wypchij na zdalną gałąź
     - Użyj polecenia tag, nazwy oraz gałęzi do której ma się odnosić
@@ -96,7 +97,7 @@ Powinna ona wychodzić z gałęzi GCL03 i posiadać nazwe inicjały & nr indeksu
 17. Ustal hook, który będzie sprawdzał, czy wiadomość z commitem zawiera nazwę przedmiotu (screenshot 10-12)
     - Należy przejść do katalogu MDO2020/.git/hooks
         - cd MDO2020/.git/hooks
-    - Następnie stworzyć plik commit-msg i nadać odpowiednie para
+    - Następnie stworzyć plik commit-msg i nadać odpowiednie prawa
         - touch commit-msg
         - chmod 755 commit-msg
     - Uzupełnij zawartość pliku (screenshot 11)
