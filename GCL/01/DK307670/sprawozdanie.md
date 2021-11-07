@@ -1,6 +1,6 @@
 ## Zadania do wykonania
 1. Zainstaluj klienta Git i obsługę kluczy SSH
-    ![screen1](/img/screen1.png)
+    ![screen1](/img/screen1.png?raw=true)
 2. Sklonuj repozytorium https://github.com/InzynieriaOprogramowaniaAGH/MDO2022 za pomocą HTTPS
 3. Upewnij się w kwestii dostępu do repozytorium jako uczestnik i sklonuj je za pomocą utworzonego klucza SSH
    - Utwórz dwa klucze SSH, inne niż RSA, w tym co najmniej jeden zabezpieczony hasłem
