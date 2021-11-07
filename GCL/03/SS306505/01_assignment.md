@@ -101,17 +101,22 @@ Powinna ona wychodzić z gałęzi GCL03 i posiadać nazwe inicjały & nr indeksu
         - chmod 755 commit-msg
     - Uzupełnij zawartość pliku (screenshot 11)
         - nano commit-msg
-    - Używając polecenie commit sprawdź czy hook działa
+    - Używając polecenia commit sprawdź czy hook działa
         - git commit -m "bledna wiadomosc"
         - git commit -m "DevOps poprawna wiadomosc"
 18. W jaki sposób stworzyć hook, który będzie ustawiał prefiks wiadomości commitu tak, by miał nazwę przedmiotu?
     - Należy przejść do katalogu MDO2020/.git/hooks
         - cd MDO2020/.git/hooks
-    - Następnie stworzyć plik commit-msg i nadać odpowiednie prawa
+    - Następnie stworzyć plik prepare-commit-msg i nadać odpowiednie prawa (screenshot 13)
         - touch prepare-commit-msg
         - chmod 755 prepare-commit-msg
-    - Uzupełnij zawartość pliku (screenshot 13)
+    - Uzupełnij zawartość pliku (screenshot 14)
         - nano prepare-commit-msg
+    - Używając polecenia commit sprawdź czy hook działa
+        - git commit -m "Testowy commit"
+        
+        Po wykonaniu polecenia na wyjściu z konsoli zobaczysz "DevOps Testowy commit"
+
     
 
     
