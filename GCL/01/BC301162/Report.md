@@ -53,9 +53,9 @@ git clone <link_HTTPS>
 ![2)Cloner repo to folder](https://user-images.githubusercontent.com/61689132/140640412-39ca37b1-2d3f-4bb0-bc72-b72254282133.png)
 
 ### 3. Upewnij się w kwestii dostępu do repozytorium jako uczestnik i sklonuj je za pomocą utworzonego klucza SSH
-  ### - Utwórz dwa klucze SSH, inne niż RSA, w tym co najmniej jeden zabezpieczony hasłem
-  ### - Skonfiguruj klucz SSH jako metodę dostępu
-  ### - Sklonuj repozytorium z wykorzystaniem protokołu SSH
+  #### - Utwórz dwa klucze SSH, inne niż RSA, w tym co najmniej jeden zabezpieczony hasłem
+  #### - Skonfiguruj klucz SSH jako metodę dostępu
+  #### - Sklonuj repozytorium z wykorzystaniem protokołu SSH
 
 Dzięki zainstalowanemu oprogramowaniu SSH, możemy utworzyć klucze dostępu. Aby to zrobić, pierwszy z nich tworzymy komendą
 
@@ -78,5 +78,49 @@ Klikamy w nasz avatar w górnym prawym rogu -> Settings -> SSH and GPG keys -> N
 W oknie które nam się pojawi, musimy ustawić nazwę naszego klucza, a w oknie pod nim wprowadzić sam klucz. Po poprawnym wykonaniu tej czynności, w zakładce "SSH and GPG keys" powinniśmy mieć poniższy rezultat:
 
 ![3)Add ssh keys on github profile](https://user-images.githubusercontent.com/61689132/140640692-77d538b1-e85b-4b3b-8d5c-63893cecc05a.png)
+
+Po wykonaniu tych kroków, możemy przejść do klonowania repozytorium za pomocą SSH
+Aby to zrobić, przechodzimy ponownie w link który mieliśmy przy drugim zadaniu, a następnie znowu rozwijamy listę przyciskiem "Code", w której wybieramy metodę SSH
+
+![ssh](https://user-images.githubusercontent.com/61689132/140640744-39445407-d885-466f-9c92-b68e5757dec7.PNG)
+
+Powtarzamy klonowanie, wybierając folder do którego chcemy sklonować nasze repozytorium, a następnie kopiujemy. 
+
+cd <nazwa_folderu>
+
+git clone <link_SSH>
+
+Po poprawnym wykonaniu powyższych kroków, otrzymamy poniższy rezultat
+
+![3)Clone repo by ssh](https://user-images.githubusercontent.com/61689132/140640812-5d672ff5-3d91-4bc6-a3f9-49d20f848c73.png)
+
+### 4. Przełącz się na gałąź swojej grupy
+
+Aby przejść na gałąź grupy do której zostaliśmy przydzieleni przez administratora, przechodzimy do sklonowanego repozytorium, a następnie korzystamy z poniższej komendy
+
+git checkout <nazwa_branch'a>
+
+![4)Change branch](https://user-images.githubusercontent.com/61689132/140640882-8f013d9f-3773-4aeb-b669-86c5d1e63d94.png)
+
+### 5. Utwórz gałąź o nazwie "inicjały & nr indeksu" np. KD232144
+
+Aby stworzyć swoją gałąź, korzystamy z poniższej komendy
+
+git checkout -b <nazwa_stworzonego_przez_nas_branch'a>
+
+![5)Create branch BC301162](https://user-images.githubusercontent.com/61689132/140640912-f9afe636-1cbd-4d52-aa3d-08c176ec0501.png)
+
+### 6. Rozpocznij pracę na nowej gałęzi
+  #### - W katalogu właściwym dla grupy utwórz nowy katalog, także o nazwie "inicjały & nr indeksu" np. ```KD232144```
+  #### - W nowym katalogu dodaj plik ze sprawozdaniem
+  #### - Dodaj zrzuty ekranu
+  #### - Wyślij zmiany do zdalnego źródła
+  #### - Spróbuj wciągnąć swoją gałąź do gałęzi grupowej
+  #### - Zaktualizuj sprawozdanie i zrzuty o ten krok i wyślij aktualizację do zdalnego źródła (na swojej gałęzi)
+  #### - Oznacz tagiem ostatni commit i wypchnij go na zdalną gałąź
+  #### - Ustal hook, który będzie sprawdzał, czy wiadomość z commitem zawiera nazwę przedmiotu
+  #### - W jaki sposób stworzyć hook, który będzie *ustawiał* prefiks wiadomości commitu tak, by miał nazwę przedmiotu?
+
+
 
 
