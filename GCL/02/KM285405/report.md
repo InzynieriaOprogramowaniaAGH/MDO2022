@@ -44,7 +44,8 @@ Zajęcia 01 - 2021-11-06
 ![](img/6.after_fail_update.png)
 
 ### Oznaczenie tagiem ostatniego commitu
-
+Po utworzeniu commitu, dodanie 'git tag', a następnie push tagss
+![](img/6.git_tag.png)
 
 ### Hook sprawdzający czy wiadomość z commitem zawiera nazwę przedmiotu
 
