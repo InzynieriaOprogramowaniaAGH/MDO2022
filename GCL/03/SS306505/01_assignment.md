@@ -67,21 +67,24 @@
     - git add .
 12. Zakomituj zmiany poleceniem commit z flagą -m, która pozwoli dodać opis zmian jakich dokonaliśmy
     - git commit -m "Dodanie pliku sprawozdania i zrzutow"
+
 13. Z poziomy GitHub'a utwórz nową remote gałąź.
 Powinna ona wychodzić z gałąźy GCL03 i posiadać nazwe inicjały & nr indeksu (w naszym wypadku SS306505).
 
 14. Wyślij zmiany do zdalnego źródła
-    - Aby wysłać nasze zmiany z lokalnego repo musimy dodać remote repo poleceniem remote
-        - git remote add remotes/MDO2020/SS306505
-    - Następnie wysłać zakomitowane zmiany poleceniem push
+    - Aby wysłać nasze zmiany z lokalnego repo użyj polecenia push, nazwy źródła oraz gałęzi
         - git push origin SS306505
-        
-    
+    - Jeśli jesteś ciekaw czym dokładnie jest źródło możesz sprawdzić to poleceniem
+        - git remote -v
 
+15. Spróbuj wciągnąć swoją gałąź do gałęzi grupowej
+    - W tym celu przełączymy się na gałąź grupową
+        - git checkout GCL03
+    - Następnie wciągniemy zmiany z naszej gałęzi do gałęzi grupowej
+        - git merge 
+    - Próba wypchnięcia tego do zdalnego repo powinna zakończyć się błędem
+        - git push origin GCL03
 
-
-Z poziomy GitHub'a utwórz nową remote gałąź.
-Powinna ona wychodzić z gałąźy GCL03 i posiadać nazwe inicjały & nr indeksu (w naszym wypadku SS306505).
 
 
     
