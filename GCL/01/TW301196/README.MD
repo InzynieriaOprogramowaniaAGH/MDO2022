@@ -118,3 +118,28 @@ Podczas próby wciągania utworzonego przeze mnie brancha na branch grupowy kome
  
  ![Zrzut ekranu - 6_8](6_8.jpg)
 Jest to spowodowane tym, że wszystkie próby mergowania się z gałęzią grupową muszą być zatwierdzone, a więc w tym przypadku jedyną drogą mergowania jest wystawienie Pull Request'a.
+
+Po dokonaniu zmian sprawdzam wszystko komendą `git status`
+
+ ![Zrzut ekranu - 6_9](6_9.jpg)
+
+Następnie tworze nowego commita taką samą procedurą jak w przypadku pierwszego.
+
+Do otagowania commita wykorzystałem komendę `git tag v2.1`
+
+ ![Zrzut ekranu - 6_10](6_10.jpg)
+
+ Wysyłanie commita z tagiem na repozytorium zdalne odbywa się komendą `git push origin --tags`
+
+![Zrzut ekranu - 6_11](6_11.jpg)
+
+## Hooks
+
+Aby utworzyć hook, który będzie sprawdzał czy wiadomość z commitem zawiera nazwę przedmiotu należy przejść w głownym folderze repozytorium do ukrytego katalogu **.git** a następnie do katalogu hooks.
+Należy utworzyć plik o nazie **commit-msg** i nadać mu uprawnienia do wykonywania.
+
+![Zrzut ekranu - 6_12](6_12.jpg)
+
+Następnie z użyciem edytora tekstu (w moim przypadku nano) należy napisać odpowiedni skrypt sprawdzający czy wiadomość zawiera odpowiedni ciąg znaków
+
+![Zrzut ekranu - 6_13](6_13.jpg)
