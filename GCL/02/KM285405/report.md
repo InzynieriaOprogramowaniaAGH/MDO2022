@@ -58,6 +58,7 @@ Do sprawdzenia wiadomości z commitem należy wykorzystać commit-msg i zmodyfik
 ![](img/6.hook_check.png)
 
 Teraz podczas commitu sprawdzana jest wiadomość:
+
 ![](img/6.hooks_test.png)
 
 ### Hook ustawiający prefiks wiadomości commitu
