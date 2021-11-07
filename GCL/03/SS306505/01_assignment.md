@@ -105,6 +105,12 @@ Powinna ona wychodzić z gałęzi GCL03 i posiadać nazwe inicjały & nr indeksu
         - git commit -m "bledna wiadomosc"
         - git commit -m "DevOps poprawna wiadomosc"
 18. W jaki sposób stworzyć hook, który będzie ustawiał prefiks wiadomości commitu tak, by miał nazwę przedmiotu?
+    - Należy przejść do katalogu MDO2020/.git/hooks
+        - cd MDO2020/.git/hooks
+    - Następnie stworzyć plik commit-msg i nadać odpowiednie prawa
+        - touch prepare-commit-msg
+        - chmod 755 prepare-commit-msg
+        
     
 
     
