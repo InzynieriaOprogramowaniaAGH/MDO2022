@@ -1,5 +1,5 @@
 #!/bin/bash
-pattern='^(\Metodytki DeVops)'
+pattern='^(\bMetodytki DeVops)'
 msg="NIE PODALES NAZWY PRZEDMIOTU"
 
 if ! grep -iqE "$pattern" "$1"; then
