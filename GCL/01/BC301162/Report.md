@@ -57,3 +57,26 @@ git clone <link_HTTPS>
   ### - Skonfiguruj klucz SSH jako metodę dostępu
   ### - Sklonuj repozytorium z wykorzystaniem protokołu SSH
 
+Dzięki zainstalowanemu oprogramowaniu SSH, możemy utworzyć klucze dostępu. Aby to zrobić, pierwszy z nich tworzymy komendą
+
+ssh-keygen -t ecdsa -C "nasz_email_połączony_z_gitem"
+
+![3)SSH_key with password](https://user-images.githubusercontent.com/61689132/140640561-74d9e996-c31c-474a-9787-c7fbcb99a16c.png)
+
+Przy tworzeniu, jeśli chcemy aby był zabezpieczony hasłem, podajemy je, w innym przypadku zostawiamy pole "passphrase" puste
+
+Drugi klucz tworzymy komendą
+
+ssh-keygen -t ed25519 -C "nasz_email_połączony_z_gitem"
+
+![3)SSH_KEY_ED25519](https://user-images.githubusercontent.com/61689132/140640596-109863aa-4fb3-43dc-9a84-15b95d8c030c.png)
+
+Po stworzeniu kluczy, musimy je ustawić jako metody dostępu w naszym gicie. Aby to zrobić, musimy przejść do:
+
+Klikamy w nasz avatar w górnym prawym rogu -> Settings -> SSH and GPG keys -> New SSH key
+
+W oknie które nam się pojawi, musimy ustawić nazwę naszego klucza, a w oknie pod nim wprowadzić sam klucz. Po poprawnym wykonaniu tej czynności, w zakładce "SSH and GPG keys" powinniśmy mieć poniższy rezultat:
+
+![3)Add ssh keys on github profile](https://user-images.githubusercontent.com/61689132/140640692-77d538b1-e85b-4b3b-8d5c-63893cecc05a.png)
+
+
