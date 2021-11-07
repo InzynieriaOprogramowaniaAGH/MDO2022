@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pattern='^(\bRBMK)-[0-9]+'
+pattern='^(\bMetodyki DevOps)'
 msg="NIE PODALES NAZWY PRZEDMIOTU"
 
 if ! grep -iqE "$pattern" "$1"; then
