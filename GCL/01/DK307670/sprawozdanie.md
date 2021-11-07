@@ -36,3 +36,7 @@
     ![screen16](img/screen15.png)
 1. Wystaw Pull Request do gałęzi grupowej
 2. Zgłoś zadanie (Teams assignment)
+
+Uwagi:
+Godziny na screenach mogą się nie zgadzać - realizowalem zadanie o roznych porach + czasem w innej kolejnosci niz w instrukcji
+Przy dodaniu prefixu do kazdego commit message wystepuje u mnie znak nowej linii po prefixie, prawdopodbnie jest to zalezne od systemu operacyjnego. 
