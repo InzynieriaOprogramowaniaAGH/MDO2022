@@ -1,5 +1,5 @@
 #!/bin/bash
-#pattern='^(\bMetodytki DeVops)'
+
 pattern='^(\bRBMK)-[0-9]+'
 msg="NIE PODALES NAZWY PRZEDMIOTU"
 
