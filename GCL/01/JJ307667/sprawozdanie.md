@@ -56,7 +56,7 @@ Tworzymy nową gałąź **JJ307667** za pomocą komendy **git checkout -b** - dz
 
 ![Tworzenie gałęzi JJ307667](screenshots/10.PNG)
 
-### Wysyłanie zmian do zdalnego źródła 
+### Wysyłanie zmian do zdalnego źródła
 
 W tym celu wykorzystamy trzy komendy:
 **git add .** - Dodawanie wszystkich plików do staga
@@ -80,7 +80,7 @@ Lokalnie odbywa się to bez problemu:
 Niestety nie jesteśmy w stanie wysłać naszych zmian do zdalnego repozytorium ponieważ ma ono zablokowaną taką opcję:
 ![mergowanie gałęzi - FAILED](screenshots/14.PNG)
 
-### Oznaczanie tagiem ostatniego commita i wypchniecie go 
+### Oznaczanie tagiem ostatniego commita i wypchniecie go
 
 Po zrobieniu commita który chcemy otagować, wykonujemy następujące polecenie:
 **git tag V1.JJ -a -m 'Tag wersji V1 - Jędrzej Jagiełło'** - Tworzymy tag o nazwie V1.JJ, z dodanymi informacjami o użytwkoniku (flaga -a) i wiadomością (flaga -m)
@@ -88,3 +88,33 @@ Po zrobieniu commita który chcemy otagować, wykonujemy następujące polecenie
 ![Tagowanie commita](screenshots/15.PNG)
 
 Następnie pushujemy zmiany wraz z tagami za pomocą polecenia **git push --tags**
+
+### Ustalanie hooka, który będzie sprawdzał, czy wiadomość z commita zawiera frazę "Metodyki Devops"
+
+W tym celu należy wejść do głównego folderu naszego repozytorium, następnie do folderu .git -> hooks i stworzyć plik o nazwie **commit-msg** (bez żadnego rozszerzenia!). Następnie należy napisać odpowiedni skrypt:
+
+![Skrypt commit-msg](screenshots/16.PNG)
+
+Przy następnej próbie wgrania commita bez frazy "Metodyki Devops", otrzymujemy wiadomość:
+
+![Commit msg error](screenshots/17.PNG)
+
+### Ustawienie hooka tak, aby ustawiał prefiks wiadomości commitu w ten sposób, aby dodawał do niego nazwę przedmiotu
+
+Należy udać się do tej samej ścieżki co w poprzednim punkcie i stworzyć plik **prepare-commit-msg** (bez żadnego rozszerzenia!). Następnie należy wzbogacić go o ten skrypt:
+
+![Skrypt prepare-commit.msg](screenshots/18.PNG)
+
+Jak widać, działa poprawnie:
+
+![Commit msg prefix](screenshots/19.PNG)
+
+### Wystawienie pull request do gałęzi grupowej
+
+Aby to zrobić, należy wejść w nasze repozytorium, klikąć **pull request** i następnie nacisnąć **New pull request**
+
+![Tworzenie pull request](screenshots/20.PNG)
+
+Następnie kilkamy **Create pull request**, wpisujemy nasz komentarz i potwierdzamy klikając **Create pull request**
+
+![Tworzenie pull request2](screenshots/21.PNG)
