@@ -33,7 +33,7 @@ W następnym kroku musimy dodać stworzone klucze do naszego konta Github:
 
 W tym po wejściu na stronę Githuba **klikamy w prawym górnym rogu nasz awatar -> Settings -> SSH and GPG keys -> New SSH key** i dodajemy nasze klucze:
 
-![Dodawanie 1 klucza SSH do Githuba](screenshots/5.PNG)
+![Dodawanie 1 klucza SSH do Githuba](screenshots/5.PNG) 
 
 ![Dodawanie 2 klucza SSH do Githuba](screenshots/6.PNG)
 
