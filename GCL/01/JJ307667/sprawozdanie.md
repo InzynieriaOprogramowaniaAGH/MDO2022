@@ -33,7 +33,7 @@ W następnym kroku musimy dodać stworzone klucze do naszego konta Github:
 
 W tym po wejściu na stronę Githuba **klikamy w prawym górnym rogu nasz awatar -> Settings -> SSH and GPG keys -> New SSH key** i dodajemy nasze klucze:
 
-![Dodawanie 1 klucza SSH do Githuba](screenshots/5.PNG) 
+![Dodawanie 1 klucza SSH do Githuba](screenshots/5.PNG)
 
 ![Dodawanie 2 klucza SSH do Githuba](screenshots/6.PNG)
 
@@ -79,3 +79,12 @@ Lokalnie odbywa się to bez problemu:
 
 Niestety nie jesteśmy w stanie wysłać naszych zmian do zdalnego repozytorium ponieważ ma ono zablokowaną taką opcję:
 ![mergowanie gałęzi - FAILED](screenshots/14.PNG)
+
+### Oznaczanie tagiem ostatniego commita i wypchniecie go
+
+Po zrobieniu commita który chcemy otagować, wykonujemy następujące polecenie:
+**git tag V1.JJ -a -m 'Tag wersji V1 - Jędrzej Jagiełło'** - Tworzymy tag o nazwie V1.JJ, z dodanymi informacjami o użytwkoniku (flaga -a) i wiadomością (flaga -m)
+
+![Tagowanie commita](screenshots/15.PNG)
+
+Następnie pushujemy zmiany wraz z tagami za pomocą polecenia **git push --tags**
