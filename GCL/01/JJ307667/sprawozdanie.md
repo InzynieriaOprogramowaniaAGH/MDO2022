@@ -55,3 +55,27 @@ Wykorzystamy do tego polecenie **git checkout**
 Tworzymy nową gałąź **JJ307667** za pomocą komendy **git checkout -b** - dzięki fladze '-b' odrazu przerzucamy się na nowo stworzoną gałąź.
 
 ![Tworzenie gałęzi JJ307667](screenshots/10.PNG)
+
+### Wysyłanie zmian do zdalnego źródła
+
+W tym celu wykorzystamy trzy komendy:
+**git add .** - Dodawanie wszystkich plików do staga
+**git commit -m 'Wiadomość commita'** - Zrobienie commita z plików znajdujących się na stagu
+**git push --set-upstream origin *nazwa gałęzi* ** - Wysłanie zmian na wskazaną gałąź
+
+![git add + git commit](screenshots/11.PNG)
+
+![git push](screenshots/12.PNG)
+
+
+### Wciągnięcie naszej gałęzi (JJ307667) do gałęzi grupowej (GCL01)
+
+Aby móc wciągnąć naszą gałąź do gałęzi grupowej, najpierw musimy przenieść się na gałąź do której chcemy zmergować inną gałąź. W tym przypadku to GCL01 - robimy to poleceniem **git checkout GCL01**.
+
+Mergowanie naszej dotychczasowej gałęzi JJ307667 wykonujemy za pomocą polecenia **git merge JJ307667**.
+
+Lokalnie odbywa się to bez problemu:
+![mergowanie gałęzi JJ307667 do GCL01](screenshots/13.PNG)
+
+Niestety nie jesteśmy w stanie wysłać naszych zmian do zdalnego repozytorium ponieważ ma ono zablokowaną taką opcję:
+![mergowanie gałęzi - FAILED](screenshots/14.PNG)
