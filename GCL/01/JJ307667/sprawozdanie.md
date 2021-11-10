@@ -56,7 +56,7 @@ Tworzymy nową gałąź **JJ307667** za pomocą komendy **git checkout -b** - dz
 
 ![Tworzenie gałęzi JJ307667](screenshots/10.PNG)
 
-### Wysyłanie zmian do zdalnego źródła
+### Wysyłanie zmian do zdalnego źródła 
 
 W tym celu wykorzystamy trzy komendy:
 **git add .** - Dodawanie wszystkich plików do staga
@@ -80,7 +80,7 @@ Lokalnie odbywa się to bez problemu:
 Niestety nie jesteśmy w stanie wysłać naszych zmian do zdalnego repozytorium ponieważ ma ono zablokowaną taką opcję:
 ![mergowanie gałęzi - FAILED](screenshots/14.PNG)
 
-### Oznaczanie tagiem ostatniego commita i wypchniecie go
+### Oznaczanie tagiem ostatniego commita i wypchniecie go 
 
 Po zrobieniu commita który chcemy otagować, wykonujemy następujące polecenie:
 **git tag V1.JJ -a -m 'Tag wersji V1 - Jędrzej Jagiełło'** - Tworzymy tag o nazwie V1.JJ, z dodanymi informacjami o użytwkoniku (flaga -a) i wiadomością (flaga -m)
