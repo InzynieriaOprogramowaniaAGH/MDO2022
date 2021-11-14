@@ -20,15 +20,34 @@ Oba klucze znajdują się w katalogu .ssh.
 
 9.	Zaznaczenie wszystkich plików >git add .
 
-10.	Stworzenie nowego commita >git commit -m lab1.1
+10.	Stworzenie nowego commita > git commit -m lab1.1
 
 11.	Wysłanie zmian do zdalnego źródła, w którym jeszcze nie jest stworzona nowa gałąź
->git push --set-upstream origin EP307681
+> git push --set-upstream origin EP307681
 
 12.	Przejście z powrotem do brancha GCL02 > git checkout GCL02
 
-13.	Zmerogwanie gałęzi EP307681 do GCL02
+13.	Zmergowanie gałęzi EP307681 do GCL02
 
 14.	Zaznaczenie plików, stworzenie commita i próba wysłania zmian do zdalnego źródła, które zakończyło się niepowodzeniem, ponieważ wymagana jest przynajmniej jedna recenzja
 
-15.	
+15.	Oznaczenie tagiem „v1.0.0.1” ostatniego commita „b60dca4” 
+> git tag -a v1.0.0.1 b60dca4 -m wlasny-tag
+
+16.	Wysłanie zmian z tagami do zdalnego źródła
+> git push --tags
+
+17.	Stworzenie git hook’a, który sprawdza czy w wiadomości commita znajduje się skrót nazwy przedmiotu „MDO”. Hooki znajdują się w folderze repozytorium w .git/hooks.
+
+#!/bin/bash
+
+MSG="$1"
+
+if ! grep -qE "MDO" "$MSG";then
+    cat "$MSG"
+    echo "Ten commit nie zawiera nazwy przedmiotu MDO"
+    exit 1
+fi
+
+18. Aby stworzyć hooka, który automatycznie dopisuje nazwę przedmiotu należy w poprzednim programie dodać zmianę wartości zmiennej $MSG, czyli wiadomości commita.
+
