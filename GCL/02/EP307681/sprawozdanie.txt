@@ -17,3 +17,18 @@ Oba klucze znajdują się w katalogu .ssh.
 7.	Stworzenie własnego katalogu EP307681
 
 8.	Dodanie do katalogu pliku ze sprawozdaniem i zrzutów ekranu
+
+9.	Zaznaczenie wszystkich plików >git add .
+
+10.	Stworzenie nowego commita >git commit -m lab1.1
+
+11.	Wysłanie zmian do zdalnego źródła, w którym jeszcze nie jest stworzona nowa gałąź
+>git push --set-upstream origin EP307681
+
+12.	Przejście z powrotem do brancha GCL02 > git checkout GCL02
+
+13.	Zmerogwanie gałęzi EP307681 do GCL02
+
+14.	Zaznaczenie plików, stworzenie commita i próba wysłania zmian do zdalnego źródła, które zakończyło się niepowodzeniem, ponieważ wymagana jest przynajmniej jedna recenzja
+
+15.	
