@@ -1,0 +1,19 @@
+Sprawozdanie
+
+1.	Zainstalowannie gita na Ubuntu na WSL
+
+2.	Wygenerowanie dwóch kluczy ed25519 (jeden z hasłem, drugi bez) potrzebnych do połączenia się z GitHubem za pomocą SSH za pomocą komendy >ssh-keygen -t ed25519
+Oba klucze znajdują się w katalogu .ssh.
+
+3.	Przejście do odpowiedniego folderu i sklonowanie repozytorium MDO2022 za pomocą http, komendą >git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022.git
+
+4.	Przejście do innego pustego katalogu i sklonowanie repozytorium MDO2022 przez SSH, z użyciem wybranego klucza z hasłem za pomocą komendy
+>GIT_SSH_COMMAND="ssh -i ~/.ssh/id-ed25519" git clone git@github.com:InzynieriaOprogramowaniaAGH/MDO2022.git
+
+5.	Przełączenie na gałąź odpowiedniej grupy GCL02
+
+6.	Stworzenie własnej gałęzi EP307681
+
+7.	Stworzenie własnego katalogu EP307681
+
+8.	Dodanie do katalogu pliku ze sprawozdaniem i zrzutów ekranu
