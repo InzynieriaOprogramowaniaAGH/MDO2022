@@ -1,0 +1,45 @@
+Agnieszka Talik
+lab_01
+gr_03
+indeks: 285937
+
+1.	Klient git i klonowanie  repozytorium za pomocą HTTPS
+-Za pomocą git -version sprawdzamy czy git jest u nas poprawnie zainstalowany
+-Przez git clone kopiujemy repozytorium za pomocą HTTPS
+	*screen01
+
+2.	Tworzenie kluczy
+-Korzystamy z ssh-keygen podając również swój mail z github
+-Podajemy ścieżkę zapisu lub zostawiamy domyślną i podajemy nazwę pliku
+-W pierwszym przypadku zostawiłam puste hasło, w drugim stworzyłam klucz z hasłem
+	*screen02
+
+3.	Klonowanie repozytorium z wykorzystaniem protokołu SSH
+-Dodajemy na github utworzone wcześniej publiczne klucze SSH
+Klonujemy repozytorium korzystając z protokołu SSH
+	*screen03
+
+4. Tworzenie nowej gałęzi i przełączenie na nią
+-git-checkout - przełącza gałęzie
+-git-branch - tworzy gałąź
+	*screen04
+
+6.	Utworzenie katalogu, dodanie sprawozdania, wysłanie zmian do zdalnego źródła
+-tworzymy katalog, dodajemy sprawozdanie
+-git commit -m "dodanie_sprawozdania" - robimy commit lokalnie
+-git push origin AT285937 - wypychamy zdalnie
+	*screen05
+
+7.	Scalenie mojej gałęzi z gałęzią grupy oraz próba wciągnięcia scalonych zmian na zdalne źródło
+-git merge AT285937 - Lokalne scalanie przebiegło pomyślnie
+-git push - Przy próbie wypchnięcia na gałąź grupy zdalną otrzymujemy błąd, ponieważ gałąź jest chroniona
+	*screen06
+
+8.	Oznaczenie tagiem ostatniego commita i wypchnięcie go na zdalną gałąź
+-git tag v1.0_AT - stworzenie taga
+-git tag - sprawdzenie listy tagów
+-git push origin v1.0_AT - wypchnięcie taga na zdalną gałąź
+	*screen07
+9.	Wystawienie Pull Request do gałęzi grupowej
+-Wybranie gałęzi, dodanie opisu, stworzenie pull request na githubie
+	-screen08
