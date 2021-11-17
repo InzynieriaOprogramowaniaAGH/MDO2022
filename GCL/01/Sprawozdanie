@@ -52,3 +52,15 @@ Wciąganie gałęzi do grupowej:
 - git merge WK307669
 Uwaga! Nie zadziała
 (img12)
+
+Dodanie taga:
+- git tag <nazwa> -m <komentarz> (u mnie tag o nazwie vWK1000)
+(img13)
+- git push origin <nazwa_taga>
+
+Dodanie hooka:
+- przechodzimy do .git/hooks i znajdujemy plik commit-msg.sample
+- aby działał, usuwamy ".sample"
+- modyfikujemy plik
+(img 14)
+(img15)
