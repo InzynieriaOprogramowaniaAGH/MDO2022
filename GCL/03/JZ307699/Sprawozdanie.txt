@@ -65,8 +65,10 @@ Sprawozdanie
 		Zrzuty ekranu umieściłam.
 		Screeny 6_2, 6_2_1
 	• Wyślij zmiany do zdalnego źródła
-		Dodałam plik „Sprawko” poleceniem git add Sprawko.docx, następnie zrobiłam commita, git commit -m „Sprawozdanie”. Terminal poprosił mnie o podanie maila, który powie mu kim jestem. Następnie powtórzyłam wykonanie commita i wysłałam zmiany do zdalnego źródła poleceniem git push origin JZ307699.
-		Screeny 6_3
+		Dodałam plik „Sprawo” poleceniem git add Sprawko.docx, następnie zrobiłam commita, git commit -m „Sprawozdanie”. Terminal poprosił mnie o podanie maila, który powie mu kim jestem. Następnie powtórzyłam wykonanie commita i wysłałam zmiany do zdalnego źródła poleceniem git push origin JZ307699.
+		Screeny przed popawieniem 6_3
+		Dodałam plik „Sprawozdanie” poleceniem git add Sprawozdanie.txt, screeny dodałam poleceniem "git add .". Polecenie to pozwoliło mi dodać wszystkie pliki za jednym zamachem. Następnie zrobiłam commita, git commit -m „Sprawozdanie - poprawione” i wysłałam zmiany do zdalnego źródła poleceniem git push origin JZ307699. Napotkałam problemy ze względu, że robiłam to po czasie, musiałam uruchomić ssh-agenta oraz dodać klucz2 na którym ostatnio pobierałam repozytorium, żeby mieć do niego dostęp.
+		Screeny po poprawce 6_3_1, 6_3_2
 	• Spróbuj wciągnąć swoją gałąź do gałęzi grupowej
 		Poleceniem git merge JZ307699 scaliłam zmiany wykonane w gałęzi JZ307699 z gałęzią bieżącą GCL03 (poleceniem git checkout GCL03 ustawiłam się na tej gałęzi). Następnie probówałam wysłać zmiany do źródła, które wyświetliły błąd:
  		Screeny 6_4
