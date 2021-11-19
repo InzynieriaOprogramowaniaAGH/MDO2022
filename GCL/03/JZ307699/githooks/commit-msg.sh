@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 pattern='^(\bMetodyki DevOps)'
 msg="NIE PODALES NAZWY PRZEDMIOTU"
