@@ -7,6 +7,6 @@ if ! grep -iqE "$pattern" "$1"; then
         echo "$msg"
         exit 1;
 fi
-echo "Jest ok"
+echo "Jest okej"
 
 
