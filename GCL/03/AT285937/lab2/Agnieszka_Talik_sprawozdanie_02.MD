@@ -16,3 +16,36 @@
 
 ![image](https://user-images.githubusercontent.com/80592460/142733315-52960844-edcf-44a5-8ea3-4d1e77d1b7c8.png)
 
+![image](https://user-images.githubusercontent.com/80592460/142734521-de2f3bd5-57e0-4477-8a0b-ec62ca401127.png)
+
+5. Uruchom "system w kontenerze"
+    -Zaprezentuj PID1 w kontenerze i procesy dockera na hoście
+    -Zaktualizuj pakiety
+    -Wyjdź
+
+Uruchamiamy Ubuntu w kontenerze:
+
+![image](https://user-images.githubusercontent.com/80592460/142734304-519d00b1-53bf-435b-ad6c-5d4ded54b391.png)
+
+Uruchamiamy drzewko procesów: ps axf
+
+Widzimy procesy dockera
+
+![image](https://user-images.githubusercontent.com/80592460/142734877-73656a37-2ee0-4efc-be41-dfb7c230d265.png)
+
+Aktualizujemy kontener z Ubuntu
+
+![image](https://user-images.githubusercontent.com/80592460/142734968-d1b286e6-fe5b-4bb3-ad6a-36169911d03c.png)
+
+6. Pokaż uruchomione ( != "działające" ) kontenery, wyczyść je.
+
+![image](https://user-images.githubusercontent.com/80592460/142735010-ef71d14c-9121-425f-aeab-120f52b225e5.png)
+
+Zatrzymanie i czyszczenie
+
+![image](https://user-images.githubusercontent.com/80592460/142735177-76ed11a2-bd21-4ab5-a9f9-73f1e871c01a.png)
+
+
+
+
+
