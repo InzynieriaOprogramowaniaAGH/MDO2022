@@ -1,0 +1,338 @@
+root@DESKTOP-R7PI62R:~/.ssh# git -- version
+unknown option: --
+usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+root@DESKTOP-R7PI62R:~/.ssh# git --version
+git version 2.25.1
+root@DESKTOP-R7PI62R:~/.ssh# ssh-keygen -t ed25519
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/root/.ssh/id_ed25519): nopassword
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in nopassword
+Your public key has been saved in nopassword.pub
+The key fingerprint is:
+SHA256:FByNitjR1bT0pDFT0cRVAzsVlvjwnIJves+hiS1ZZ8A root@DESKTOP-R7PI62R
+The key's randomart image is:
++--[ED25519 256]--+
+|     . o+**.+*+**|
+|    . . oooO o*..|
+|   o o .. o +o= .|
+|  . o ..   . E.= |
+|        S   . o  |
+|             + o |
+|            = o. |
+|           +o.+ .|
+|           .o+.o |
++----[SHA256]-----+
+root@DESKTOP-R7PI62R:~/.ssh# ssh-keygen -t ed25519
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (/root/.ssh/id_ed25519):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /root/.ssh/id_ed25519
+Your public key has been saved in /root/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:iVSdK5vlKccQdlMb/6aswWC2LoV9JLe9NEAQzLUe7YE root@DESKTOP-R7PI62R
+The key's randomart image is:
++--[ED25519 256]--+
+|        .+o*+    |
+|       .o B .B   |
+|      .. o +E +  |
+|     . .o.+.+o o |
+|      . S@+=.+. o|
+
+|        =oB+o.+o |
+
+|         +..o.oo |
+
+|        ..   o.  |
+|         .. .    |
++----[SHA256]-----+
+root@DESKTOP-R7PI62R:~/.ssh# ls -a
+.  ..  id_ed25519  id_ed25519.pub  known_hosts  nopassword  nopassword.pub
+root@DESKTOP-R7PI62R:~/.ssh# cd
+root@DESKTOP-R7PI62R:~# ls -a
+.  ..  .bash_history  .bashrc  .config  .local  .motd_shown  .profile  .ssh  .viminfo  .vscode-server
+root@DESKTOP-R7PI62R:~# cd
+root@DESKTOP-R7PI62R:~# cd /
+root@DESKTOP-R7PI62R:/# cd mnt
+root@DESKTOP-R7PI62R:/mnt# cd c/users/emul/dektop
+-bash: cd: c/users/emul/dektop: No such file or directory
+root@DESKTOP-R7PI62R:/mnt# ls
+c  d  e  f  h  i  v
+root@DESKTOP-R7PI62R:/mnt# cd c/users/
+root@DESKTOP-R7PI62R:/mnt/c/users# cd
+root@DESKTOP-R7PI62R:~# cd mnt
+-bash: cd: mnt: No such file or directory
+root@DESKTOP-R7PI62R:~# cd /
+root@DESKTOP-R7PI62R:/# cd mnt/c/users
+root@DESKTOP-R7PI62R:/mnt/c/users# ls
+'All Users'   Default  'Default User'   Public   desktop.ini   emul
+root@DESKTOP-R7PI62R:/mnt/c/users# cd emul
+root@DESKTOP-R7PI62R:/mnt/c/users/emul# cd desktop
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop# cd DevOps
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/DevOps# ls
+HTTP  SSH
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/DevOps# cd HTTP
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/DevOps/HTTP# git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022.git
+Cloning into 'MDO2022'...
+remote: Enumerating objects: 1614, done.
+remote: Counting objects: 100% (1614/1614), done.
+remote: Compressing objects: 100% (1219/1219), done.
+remote: Total 1614 (delta 236), reused 1389 (delta 172), pack-reused 0
+Receiving objects: 100% (1614/1614), 64.42 MiB | 1.91 MiB/s, done.
+Resolving deltas: 100% (236/236), done.
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/DevOps/HTTP# cd
+root@DESKTOP-R7PI62R:~# ls -a
+.  ..  .bash_history  .bashrc  .config  .local  .motd_shown  .profile  .ssh  .viminfo  .vscode-server
+root@DESKTOP-R7PI62R:~# cd .ssh
+root@DESKTOP-R7PI62R:~/.ssh# ls -a
+.  ..  id_ed25519  id_ed25519.pub  known_hosts  nopassword  nopassword.pub
+root@DESKTOP-R7PI62R:~/.ssh# vim known_hosts
+root@DESKTOP-R7PI62R:~/.ssh# vim id_ed25519
+root@DESKTOP-R7PI62R:~/.ssh# vim id_ed25519.pub
+root@DESKTOP-R7PI62R:~/.ssh# cd ..
+root@DESKTOP-R7PI62R:~# cd .config/
+root@DESKTOP-R7PI62R:~/.config# ls -a
+.  ..  wslu
+root@DESKTOP-R7PI62R:~/.config# cd ..
+root@DESKTOP-R7PI62R:~#  cd
+root@DESKTOP-R7PI62R:~# ls -a
+.  ..  .bash_history  .bashrc  .config  .local  .motd_shown  .profile  .ssh  .viminfo  .vscode-server
+root@DESKTOP-R7PI62R:~# cd /
+root@DESKTOP-R7PI62R:/# ls -a
+.   bin   dev  home  lib    lib64   media  opt   root  sbin  srv  tmp  var
+..  boot  etc  init  lib32  libx32  mnt    proc  run   snap  sys  usr
+root@DESKTOP-R7PI62R:/# cd home/
+root@DESKTOP-R7PI62R:/home# ls -a
+.  ..
+root@DESKTOP-R7PI62R:/home# cd ..
+root@DESKTOP-R7PI62R:/# cd root
+root@DESKTOP-R7PI62R:~# ls -a
+.  ..  .bash_history  .bashrc  .config  .local  .motd_shown  .profile  .ssh  .viminfo  .vscode-server
+root@DESKTOP-R7PI62R:~# cd .ssh
+root@DESKTOP-R7PI62R:~/.ssh# ls -a
+.  ..  id_ed25519  id_ed25519.pub  known_hosts  nopassword  nopassword.pub
+root@DESKTOP-R7PI62R:~/.ssh# pwd
+/root/.ssh
+root@DESKTOP-R7PI62R:~/.ssh# cd /
+root@DESKTOP-R7PI62R:/# cd mnt/c/users/emul
+root@DESKTOP-R7PI62R:/mnt/c/users/emul# cd desktop/devops
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops# cd ssh
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh# GIT_SSH_COMMAND="ssh -i ~/.ssh/id-ed25519"
+git clone git@github.com:InzynieriaOprogramowaniaAGH/MDO2022.git
+Cloning into 'MDO2022'...
+Warning: Identity file /root/.ssh/id-ed25519 not accessible: No such file or directory.
+Enter passphrase for key '/root/.ssh/id_ed25519':
+remote: Enumerating objects: 1614, done.
+remote: Counting objects: 100% (1614/1614), done.
+remote: Compressing objects: 100% (1219/1219), done.
+remote: Total 1614 (delta 236), reused 1389 (delta 172), pack-reused 0
+Receiving objects: 100% (1614/1614), 64.42 MiB | 1.68 MiB/s, done.
+Resolving deltas: 100% (236/236), done.
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh# git checkout GCL02
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh# cd MDO2022/
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022# git checkout GCL02
+Branch 'GCL02' set up to track remote branch 'GCL02' from 'origin'.
+Switched to a new branch 'GCL02'
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022# git checkout -b EP307681
+Switched to a new branch 'EP307681'
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022# mkdir EP307681
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022# rmdir EP307681/
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022# cd GCL/
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL# ls -a
+.  ..  02
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL# cd 02/
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02# ls -a
+.  ..  .gitignore  DM301176  ML290631  PO307679
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02# mkdir EP307681
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02# cd EP307681/
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02/EP307681# ls -a
+.  ..
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02/EP307681# git add .
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02/EP307681# git commit -m lab1.1
+[EP307681 c4a8a8e] lab1.1
+ Committer: root <root@DESKTOP-R7PI62R.localdomain>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 6 files changed, 19 insertions(+)
+ create mode 100644 GCL/02/EP307681/WindowsTerminal_3W0ZmnRlb7.png
+ create mode 100644 GCL/02/EP307681/WindowsTerminal_ARD8kYruok.png
+ create mode 100644 GCL/02/EP307681/WindowsTerminal_ApDbEaYNBu.png
+ create mode 100644 GCL/02/EP307681/WindowsTerminal_qVBtsmLWGH.png
+ create mode 100644 GCL/02/EP307681/WindowsTerminal_xJrxJguLSk.png
+ create mode 100644 GCL/02/EP307681/sprawozdanie.txt
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02/EP307681# git push --set-upst
+ream origin EP307681
+Enter passphrase for key '/root/.ssh/id_ed25519':
+Enumerating objects: 14, done.
+Counting objects: 100% (14/14), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (10/10), done.
+Writing objects: 100% (11/11), 221.01 KiB | 13.81 MiB/s, done.
+Total 11 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote:
+remote: Create a pull request for 'EP307681' on GitHub by visiting:
+remote:      https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/pull/new/EP307681
+remote:
+To github.com:InzynieriaOprogramowaniaAGH/MDO2022.git
+ * [new branch]      EP307681 -> EP307681
+Branch 'EP307681' set up to track remote branch 'EP307681' from 'origin'.
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02/EP307681# git checkout GCL02
+Switched to branch 'GCL02'
+Your branch is up to date with 'origin/GCL02'.
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02/EP307681# cd ..
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02# git merge EP307681
+Updating 56da49f..c4a8a8e
+Fast-forward
+ GCL/02/EP307681/WindowsTerminal_3W0ZmnRlb7.png | Bin 0 -> 85821 bytes
+ GCL/02/EP307681/WindowsTerminal_ARD8kYruok.png | Bin 0 -> 72617 bytes
+ GCL/02/EP307681/WindowsTerminal_ApDbEaYNBu.png | Bin 0 -> 2311 bytes
+ GCL/02/EP307681/WindowsTerminal_qVBtsmLWGH.png | Bin 0 -> 52887 bytes
+ GCL/02/EP307681/WindowsTerminal_xJrxJguLSk.png | Bin 0 -> 42349 bytes
+ GCL/02/EP307681/sprawozdanie.txt               |  19 +++++++++++++++++++
+ 6 files changed, 19 insertions(+)
+ create mode 100644 GCL/02/EP307681/WindowsTerminal_3W0ZmnRlb7.png
+ create mode 100644 GCL/02/EP307681/WindowsTerminal_ARD8kYruok.png
+ create mode 100644 GCL/02/EP307681/WindowsTerminal_ApDbEaYNBu.png
+ create mode 100644 GCL/02/EP307681/WindowsTerminal_qVBtsmLWGH.png
+ create mode 100644 GCL/02/EP307681/WindowsTerminal_xJrxJguLSk.png
+ create mode 100644 GCL/02/EP307681/sprawozdanie.txt
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02# git add .
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02# git commit -m groupmerge
+On branch GCL02
+Your branch is ahead of 'origin/GCL02' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02# git push
+Enter passphrase for key '/root/.ssh/id_ed25519':
+Total 0 (delta 0), reused 0 (delta 0)
+remote: error: GH006: Protected branch update failed for refs/heads/GCL02.
+remote: error: At least 1 approving review is required by reviewers with write access.
+To github.com:InzynieriaOprogramowaniaAGH/MDO2022.git
+ ! [remote rejected] GCL02 -> GCL02 (protected branch hook declined)
+error: failed to push some refs to 'git@github.com:InzynieriaOprogramowaniaAGH/MDO2022.git'
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02# cd EP307681/
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02/EP307681# checkout EP307681
+checkout: command not found
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02/EP307681# git checkout EP3076
+81
+M       GCL/02/EP307681/sprawozdanie.txt
+Switched to branch 'EP307681'
+Your branch is up to date with 'origin/EP307681'.
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02/EP307681# git add .
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02/EP307681# git commit -m lab1.
+2
+[EP307681 b60dca4] lab1.2
+ Committer: root <root@DESKTOP-R7PI62R.localdomain>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 3 files changed, 15 insertions(+)
+ create mode 100644 GCL/02/EP307681/WindowsTerminal_v5qIqyLeQg.png
+ create mode 100644 GCL/02/EP307681/WindowsTerminal_wLNO1bvKRD.png
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02/EP307681# git push
+Enter passphrase for key '/root/.ssh/id_ed25519':
+Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (8/8), 125.70 KiB | 8.98 MiB/s, done.
+Total 8 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To github.com:InzynieriaOprogramowaniaAGH/MDO2022.git
+   c4a8a8e..b60dca4  EP307681 -> EP307681
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02/EP307681# git tag -a v1.0.0.0
+ b60dca4 -m wlasny-tag
+
+fatal: tag 'v1.0.0.0' already exists
+
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02/EP307681# git tag -a v1.0.0.1 b60dca4 -m wlasny-tag
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02/EP307681# git push --tags
+Enter passphrase for key '/root/.ssh/id_ed25519':
+Enumerating objects: 1, done.
+Counting objects: 100% (1/1), done.
+
+Writing objects: 100% (1/1), 175 bytes | 175.00 KiB/s, done.
+Total 1 (delta 0), reused 0 (delta 0)
+
+To github.com:InzynieriaOprogramowaniaAGH/MDO2022.git
+ * [new tag]         v1.0.0.1 -> v1.0.0.1
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02/EP307681# cd .
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02/EP307681# cd ..
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL/02# cd ..
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022/GCL# cd ..
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022# ls
+GCL  Labs  README.md
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh/MDO2022# cd ..
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh# ls
+MDO2022
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/ssh# cd ..
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops# ls
+HTTP  SSH
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops# cd SSH
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/SSH# ls -a
+.  ..  MDO2022
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/SSH# cd MDO2022/
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/SSH/MDO2022# ls -a
+.  ..  .git  GCL  Labs  README.md
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/SSH/MDO2022# cd .git/
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/SSH/MDO2022/.git# ls -a
+.   COMMIT_EDITMSG  ORIG_HEAD  config       hooks  info  objects      refs
+..  HEAD            branches   description  index  logs  packed-refs
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/SSH/MDO2022/.git# co hooks/
+
+Command 'co' not found, but can be installed with:
+
+apt install rcs
+
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/SSH/MDO2022/.git# cd hooks/
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/SSH/MDO2022/.git/hooks# touch mdo
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/SSH/MDO2022/.git/hooks# ls -a
+.                      fsmonitor-watchman.sample  pre-commit.sample        pre-receive.sample
+..                     mdo                        pre-merge-commit.sample  prepare-commit-msg.sample
+applypatch-msg.sample  post-update.sample         pre-push.sample          update.sample
+commit-msg.sample      pre-applypatch.sample      pre-rebase.sample
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/SSH/MDO2022/.git/hooks# vim pre-commit.sample
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/SSH/MDO2022/.git/hooks# vim mdo
+
+[No write since last change]
+/bin/bash: q: command not found
+
+shell returned 127
+
+Press ENTER or type command to continue
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/SSH/MDO2022/.git/hooks# vim mdo
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/SSH/MDO2022/.git/hooks# cd ..
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/SSH/MDO2022/.git# cd ..
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/SSH/MDO2022# cd GCL/
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/SSH/MDO2022/GCL# cd 02
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/SSH/MDO2022/GCL/02# cd EP307681/
+root@DESKTOP-R7PI62R:/mnt/c/users/emul/desktop/devops/SSH/MDO2022/GCL/02/EP307681# git add .
