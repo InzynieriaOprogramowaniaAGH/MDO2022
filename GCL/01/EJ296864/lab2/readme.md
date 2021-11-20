@@ -1,4 +1,4 @@
-# Metodyki DevOps - lab01
+# Metodyki DevOps - lab02
 
 ## Środowisko
 
