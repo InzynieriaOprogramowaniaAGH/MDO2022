@@ -1,0 +1,18 @@
+1. Instalacja dockera na systemie linuxowym Fedora (img1, img2)
+ $ sudo dnf config-manager \
+	--add-repo \
+	https://download.docker.com/linux/fedora/docker-ce.repo
+	
+ $ sudo dnf install docker-ce docker-ce-cli containerd.io
+ 
+2. Rejestracja w DockerHub (img3)
+https://hub.docker.com/
+
+3. Pobranie  hello-world, busybox, ubuntu lub fedorę (img4-7)
+ $ sudo docker pull hello-world
+ $ sudo docker pull busybox
+ $ sudo docker pull ubuntu
+ $ sudo docker pull fedorę 
+ 
+4. Uruchomienie interaktywne busybox (img8)
+$ sudo docker run -it busybox bash
