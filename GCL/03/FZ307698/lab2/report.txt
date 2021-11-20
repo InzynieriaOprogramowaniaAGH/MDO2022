@@ -1,0 +1,118 @@
+# Zajęcia 02
+### 2021-11-20
+---
+# Wprowadzenie do kontenerów
+- Wykonaj opisane niżej kroki i dokumentuj ich wykonanie
+- Na dokumentację składają się następujące elementy:
+  - plik tekstowy ze sprawozdaniem, zawierający opisy z każdego z punktów zadania
+  - zrzuty ekranu przedstawiające wykonane kroki
+  - listing historii poleceń
+- Sprawozdanie z zadania powinno umożliwiać odtworzenie wykonanych kroków w wykorzystaniem opisu, poleceń i zrzutów
+
+# 1. Instalacja Dockera
+Laboratoria są wykonywane z pomocą WSL2 z zainstalowanym Ubuntu.
+Dokumentacja Dockera: https://docs.docker.com/engine/install/ubuntu/
+
+Starsze wersje Dockera możesz znaleźć pod nazwą: docker, docker,io docker-engine. Jeśli są zainstalowane, odinstaluj je poniżym poleceniem.
+```sh
+$ sudo apt-get remove docker docker-engine docker.io containerd runc
+```
+[img1]
+
+Zaktualizuj indeks pakietów apt i zainstaluj pakiety, aby umożliwić apt korzystanie z repozytorium przez HTTPS:
+```sh
+ sudo apt-get update
+```
+
+[img2]
+
+```sh
+ sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
+```
+
+[img3]
+
+Dodaj oficjalny klucz GPG od Dockera 
+```sh
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+```
+
+Instalujemy Dockera poleceniem:
+```sh
+sudo apt-get install -y docker.io
+docker -v
+```
+[img4]
+[img5]
+
+# 2. Zarejestruj się w Docker Hub
+Należy przejść pod adres https://hub.docker.com/ i zarejestrować konto wykorzystując panel na stronie głównej.
+
+[img6]
+
+# 3. Pobierz hello-world
+Wyszukujemy interesujący nas obraz na Docker Hub. Po jego znalezieniu należy go pobrać z komendą
+```sh
+docker pull <nazwa obrazu>
+```
+
+W naszym przypadku będzie to:
+```sh
+docker pull hello-world
+```
+
+[img7]
+
+# 4. Uruchom hello-world
+Aby uruchomić pobrany obraz należy użyć polecenia:
+```sh
+docker run <nazwa obrazu>
+```
+
+W naszym przypadku będzie to:
+```sh
+docker run hello-world
+```
+Poniżej efekt uruchomienia kontenera
+
+[img8]
+
+   - Podłącz się do kontenera interaktywnie i wywołaj numer wersji
+   
+# 5. Uruchom "system w kontenerze"
+   - Zaprezentuj PID1 w kontenerze i procesy dockera na hoście
+   - Zaktualizuj pakiety
+   - Wyjdź
+   
+# 6. Pokaż uruchomione kontenery, wyczyść je.
+
+# 7. Wyczyść obrazy
+
+# Budowanie programu
+1. Znajdź projekt umożliwiający łatwe wywołanie testów jednostkowych
+2. Przeprowadź budowę/konfigurację środowiska
+3. Uruchom testy
+4. Ponów ten proces w kontenerze
+   - Wybierz i uruchom platformę
+   - Zaopatrz ją w odpowiednie oprogramowanie wstępne
+   - Sklonuj aplikację
+   - Skonfiguruj środowisko i uruchom build
+   - Uruchom testy
+5. Stwórz Dockerfile, który ma to osiągnąć
+   - Na bazie platformowego obrazu...
+   - ...doinstaluj wymagania wstępne...
+   - ...sklonuj repozytorium...
+   - ...zbuduj kod
+6. Zaprezentuj Dockerfile i jego zbudowanie
+7. Na bazie obrazu utworzonego poprzednim dockerfilem stwórz kolejny, który będzie uruchamiał testy
+
+# Runda bonusowa: kompozycja
+1. Zdefiniuj kompozycję, która stworzy dwie usługi
+   - Pierwszą na bazie dockerfile'a budującego
+   - Drugą na bazie pierwszej
+2. Wdróż :)
+   
