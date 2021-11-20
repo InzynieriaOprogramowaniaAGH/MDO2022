@@ -26,27 +26,29 @@ run hello-world docker:
 $ sudo docker run hello-world
 ```
 
+[screen_1 -  screen_4]
+
 2. Zarejestruj się w Docker Hub i zapoznaj z sugerowanymi obrazami
 
 założono konto Docker Hub; generalcube
-
+[screen_5]
 3. Pobierz hello-world, busybox, ubuntu lub fedorę, mysql
 
 ```shell
 $ docker pull busybox
 ```
 
-[img]
+[screen_6]
 
 ```shell
 $ docker pull ubuntu
 ```
 
+[screen_7]
+
 ```shell
 $ sudo docker pull mysql
 ```
-[img]
-
 
 4. Uruchom busybox
 
@@ -54,18 +56,18 @@ $ sudo docker pull mysql
 $ docker run busybox
 ```
 
- - Pokaż efekt uruchomienia kontenera
+[screen_8]
 
-[img 9]
-[img 10]
+- Pokaż efekt uruchomienia kontenera
+[screen_9]
+[screen_10]
 
- - Podłącz się do kontenera interaktywnie i wywołaj numer wersji
+- Podłącz się do kontenera interaktywnie i wywołaj numer wersji
 
 ```shell
 $ docker run -it busybox
 ```
-
-[img 11]
+[screen_11]
 
 6. Uruchom "system w kontenerze"
 
@@ -79,16 +81,16 @@ $ ps axuf
 ```
 
 host:
-[img 12]
+[screen_12]
 
 kontenerze:
-[img 13]
-
+[screen_13]
  - Zaktualizuj pakiety
 
 ```shell
 $ apt update
 ```
+[screen_14]
 
  - Wyjdź
 
@@ -97,9 +99,13 @@ $ exit
 ```
 
 9. Pokaż uruchomione ( != "działające" ) kontenery, wyczyść je.
+   [screen_15]
 
 10. Wyczyść obrazy
-    [img 16]
+```shell
+$ docker system prune
+```
+[screen_16]
 
 # Budowanie programu
 1. Znajdź projekt umożliwiający łatwe wywołanie testów jednostkowych
@@ -109,6 +115,7 @@ https://create-react-app.dev/
 ```shell
 $ npx create-react-app devops-app
 ```
+[screen_17 - 18]
 
 2. Przeprowadź budowę/konfigurację środowiska
 
@@ -117,22 +124,68 @@ $ npm i
 & npm run build
 ```
 
+[screen_19]
+
 3. Uruchom testy
 ```shell
-& npm run test
+$ npm run test
 ```
-[img 17]
+[screen_20]
 
 4. Ponów ten proces w kontenerze
-    - Wybierz i uruchom platformę
-    - Zaopatrz ją w odpowiednie oprogramowanie wstępne
-    - Sklonuj aplikację
-    - Skonfiguruj środowisko i uruchom build
-    - Uruchom testy
-5. Stwórz Dockerfile, który ma to osiągnąć
-    - Na bazie platformowego obrazu...
-    - ...doinstaluj wymagania wstępne...
-    - ...sklonuj repozytorium...
-    - ...zbuduj kod
-6. Zaprezentuj Dockerfile i jego zbudowanie
-7. Na bazie obrazu utworzonego poprzednim dockerfilem stwórz kolejny, który będzie uruchamiał testy
+ - Wybierz i uruchom platformę
+
+Apka będzie odpalona w kontenerze stworzonym na bazie obrazu ubuntu
+
+
+```shell
+$ docker run -it ubuntu
+```
+
+ - Zaopatrz ją w odpowiednie oprogramowanie wstępne
+
+```shell
+$ apt-get update
+$ apt-get upgrade
+$ apt install nodejs
+```
+
+[screen_21]
+
+ - Sklonuj aplikację
+
+```shell
+$ npx create-react-app devops-ubuntu-app
+```
+
+- Skonfiguruj środowisko i uruchom build
+```shell
+$ npm run build
+```
+[screen_22]
+[screen_23]
+- Uruchom testy
+
+```shell
+$ npm run test
+```
+[screen_24]
+[screen_25]
+
+7. Stwórz Dockerfile, który ma to osiągnąć
+[screen_26]
+     - Na bazie platformowego obrazu...
+     - ...doinstaluj wymagania wstępne...
+     - ...sklonuj repozytorium...
+     - ...zbuduj kod
+
+stworzono .dockerignorevi
+[screen_27]
+11. Zaprezentuj Dockerfile i jego zbudowanie
+[screen_28]
+
+```shell
+$ sudo docker build -t myapp .
+```
+
+12. Na bazie obrazu utworzonego poprzednim dockerfilem stwórz kolejny, który będzie uruchamiał testy
