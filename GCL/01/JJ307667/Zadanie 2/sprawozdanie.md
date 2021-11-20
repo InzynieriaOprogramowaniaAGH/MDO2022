@@ -77,7 +77,7 @@ https://github.com/lyhd/reactjs
 
 ### Przeprowadzić budowę/konfigurację środowiska
 
-W tym przypadku mamy bardzo mocno uproszczoną sprawę. Należy ściągnąć projekt za pomocą komendy **git clone**, wejść do ściągniętego repozytorium w terminalu i wpisać komendę **npm install** (po upczednim zainstalowaniu samego npm). Po ściągnięciu wszystkiego, wystarczy wpisać **npm start**, wejść w przeglądarkę i wyszukać **localhost:5000**.
+W tym przypadku mamy bardzo mocno uproszczoną sprawę. Należy ściągnąć projekt za pomocą komendy **git clone**, wejść do ściągniętego repozytorium w terminalu i wpisać komendę **npm install** (po uprzednim zainstalowaniu samego npm). Po ściągnięciu wszystkiego, wystarczy wpisać **npm start**, wejść w przeglądarkę i wyszukać **localhost:3000**.
 
 
 ![npm install](screenshots/9.PNG)
@@ -87,6 +87,7 @@ W tym przypadku mamy bardzo mocno uproszczoną sprawę. Należy ściągnąć pro
 ![strona po odpaleniu npm start](screenshots/11.PNG)
 
 ### Uruchomić testy
+Robimy to za pomocą komendy **npm test**
 
 ![npm test](screenshots/12.PNG)
 
@@ -105,6 +106,7 @@ Jak widzimy, działa bez zarzutu:
 ![docker files + docker build2](screenshots/14.PNG)
 
 **Test:**
+
 W CMD trzeba było na końcu dodać "a", ponieważ testy zaimplementowane w pobranym projekcie mają osobny interface do testów w którym należy wybrać tryb testu jaki chcemy.
 
 ![docker files + docker build3](screenshots/15.PNG)
