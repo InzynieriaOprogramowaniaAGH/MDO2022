@@ -63,6 +63,9 @@ docker pull <nazwa obrazu>
 W naszym przypadku będzie to:
 ```sh
 docker pull hello-world
+docker pull mysql
+docker pull busybox
+docker pull ubuntu
 ```
 
 [img7]
@@ -76,43 +79,91 @@ docker run <nazwa obrazu>
 W naszym przypadku będzie to:
 ```sh
 docker run hello-world
+docker run mysql
+docker run busybox
+docker run ubuntu
 ```
 Poniżej efekt uruchomienia kontenera
-
 [img8]
 
-   - Podłącz się do kontenera interaktywnie i wywołaj numer wersji
-   
-# 5. Uruchom "system w kontenerze"
-   - Zaprezentuj PID1 w kontenerze i procesy dockera na hoście
-   - Zaktualizuj pakiety
-   - Wyjdź
-   
-# 6. Pokaż uruchomione kontenery, wyczyść je.
+Wyświetlamy procesy dla wszystkich użytkowników
+```sh
+ps auxf
+```
 
+[img9]
+[img10]
+
+# 5. Uruchom "system w kontenerze"
+Do uruchomienia Ubuntu w kontenerze oraz uzyskanie dostępu do konsoli, używamy komendy:
+```sh
+docker run -it ubuntu
+```
+Następnie żeby sprawdzić uruchomione procesy w tym kontenerze, wykonujemy polecenie ps po którym uzyskamy **PID 1**. 
+```sh
+ps
+```
+Żeby sprawdzić listę procesów
+```sh
+docker ps -a
+```
+[img11]
+[img12]
+[img13]
+
+# 6. Pokaż uruchomione kontenery, wyczyść je.
+Żeby zobaczyć wszystkie działające kontenery, użyjemy polecenia:
+```sh
+docker ps -a
+```
+[img14]
 # 7. Wyczyść obrazy
+Do wyczyszczenia obrazów użyjemy polecenia:
+```sh
+docker system prune -a
+```
+[img15]
 
 # Budowanie programu
-1. Znajdź projekt umożliwiający łatwe wywołanie testów jednostkowych
-2. Przeprowadź budowę/konfigurację środowiska
-3. Uruchom testy
-4. Ponów ten proces w kontenerze
-   - Wybierz i uruchom platformę
-   - Zaopatrz ją w odpowiednie oprogramowanie wstępne
-   - Sklonuj aplikację
-   - Skonfiguruj środowisko i uruchom build
-   - Uruchom testy
-5. Stwórz Dockerfile, który ma to osiągnąć
-   - Na bazie platformowego obrazu...
-   - ...doinstaluj wymagania wstępne...
-   - ...sklonuj repozytorium...
-   - ...zbuduj kod
-6. Zaprezentuj Dockerfile i jego zbudowanie
-7. Na bazie obrazu utworzonego poprzednim dockerfilem stwórz kolejny, który będzie uruchamiał testy
+Żeby usprawnić proces budowania aplikacji, posłużymy się szkieletem aplikacji postawionym na reacie z pomocą komendy *(musi być zainstalowany pakiet nodejs oraz npm)* - https://create-react-app.dev/
+```sh
+npx create-react-app test-app
+npm run build
+npm run test
+```
+[img16]
+[img17]
+[img18]   
 
-# Runda bonusowa: kompozycja
-1. Zdefiniuj kompozycję, która stworzy dwie usługi
-   - Pierwszą na bazie dockerfile'a budującego
-   - Drugą na bazie pierwszej
-2. Wdróż :)
-   
+Następnym krokiem będzie uruchomienie tej samej aplikacji w kontenerze.
+Do tego celu zbudujemy sobie **Dockerfile** oraz dla testów **Dockerfile-test**
+
+DOCKERFILE
+```sh
+FROM ubuntu:latest
+
+RUN apt-get update && apt-get upgrade
+RUN apt-get install -y nodejs npm
+
+WORKDIR /test-app
+
+CMD ["npm","run","build"]
+```
+
+DOCKERFILE-TEST
+```sh
+FROM ubuntu-node:latest
+
+WORKDIR /test-app
+
+CMD ["npm","test"]
+```
+
+Dockerfile wywołujemy poleceniem
+```sh
+docker build -f Dockerfile
+docker build -f Dockerfile-test
+```
+[img19]
+[img20]
+
