@@ -260,6 +260,8 @@ A jeżeli chcemy utworzyć sam obraz podstawowy:
 
 `sudo docker build -t aria2:latest . -f ./aria2-dockerfile --target=base`
 
+![Zrzut ekranu - docker build](docker-build.jpg)
+
 ## docker-compose.yml
 
 Również możemy stworzyć plik **docker-compose.yml** i za jego pomocą tworzyć kontenery.
