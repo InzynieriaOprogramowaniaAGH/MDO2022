@@ -1,2 +1,22 @@
-1. Screen Zad 1 pokazuje juz zainstalowengo dockera w systemie
-2.
+Część 1:
+1. Screen Zad 1 pokazuje juz zainstalowengo dockera w systemie.
+2. Obrazy dockera mozemy sprawdzić na stronie hub.docker.com po wcześniejszym zalogowaniu.
+3. Aby pobrać dany obraz do naszego systemu uzywamy polecenia docker pull <nazwa_obrazu> (pokazano to naprzykład na Screenie Zad 3 - pull busybox).
+4. by uruchomić obraz oraz stworzyć kontnere słuzy polecenie docker run, Screeny Zad 4 busybox pokazuja działanie polecenia, natomiast by podłączyć sie do kontenera by zobaczyc jego werjse musimy uruchimić z polecenia docker run -it <nazwa_obrazu>.
+5. Do zobaczenia procesów zarówno w hoście jak i w naszym "systemie w kontenerze" możemy uzyc polecenia: ps ax,
+natomiast do aktualizacji pakietów apt-get update (Screeny Zad 5 ps ax host, ps ax docker oraz apt-get update docker).
+6. Aby sprawdzić urochumione kontenrey używamy polecenia docker ps -a (screen Zad 6 - docker ps -a).
+7. Aby wyczyścic obrazy mozemy użuć polecenia docker image prune -a, docker usunie wszystkie nieuzyuwane obrazy.
+Screeny z Zad 7 (docker prune,before prune, after prune) pokazuja działanie polecenia, jak widac został usunięty niewuzywany obraz mysql.
+
+Część 2:
+1. Wybranym projektem jest deltachat - https://github.com/deltachat/deltachat-core-rust, kopiujmey(screen CZ_2 - zad 1 got clone)
+2. Aby przeprowadzic konfiguracje i budowe środowsika, używamy polecenia "apt install cmake" (screen CZ_2 - zad 2 cmake) oraz "apt install cargo" (screen CZ_2 - zad 2 cargo). Nastepnie budujemy program zgodnie z instruckja podana w repozytorim(screen CZ_2 - zad 2 - build):
+$ cmake -B build . -DCMAKE_INSTALL_PREFIX=/usr
+$ cmake --build build
+$ sudo cmake --install build
+3. Uruchamiamy testy "cargo test --all", czekamy około 50 min na wykonanie ;) (screen CZ_2 - zad 3 - test).
+4. Instalujemy ponownie nasz projekt w naszym "systemie w kontenerze", najpierw uruchamiamy kontaner z ubunu, konfigurjemy środowisko (screen CZ_2 zad 4 -z docker apt). Poleceniem "git clone" kopiujemy aplikacje na nasz system (screen CZ_2 - zad 4 - z docker git clone). budujmey apliakcje (CZ_2 - zad 4 - z docer build) oraz wykonujemy testy (screen CZ_2 - zad 4 - z docker test).
+5.Nastepnym krokiem jest zbudowanie naszego pliku Dockerfile (screen CZ_2 zad 5 - dockerfile)
+6.Używamy polecenia docker build -t buapp . -f ./dockers/Dockerfile-buapp by stowrzyc nowy obraz z bazowego obrazu systemu za pomocą Dockerfila (screen CZ_2 - zad 6 - Dockerfile-build)
+7. W ostatnim kroku tworzymy nowy Dockerfile który wykona testy bazując na obrazie wytworzonym za pomoca naszego pierwszego Docerfila.
