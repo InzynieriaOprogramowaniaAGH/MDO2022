@@ -1,0 +1,18 @@
+Sprawozdanie laboratorium numer 1 MDO
+
+1. Skonfigurowałem środowisko na lokalnym komputerze tak aby korzystać z narzędzia kontroli wersji GIT.
+2. Sklonowałem repozytorium udostępnione przez prowadzącego wykorzystując protokół HTTPS.
+3. Wygenerowałem klucze SSH RSA: publiczny i prywatny, niezabezpieczony hasłem. Dodałem klucz do konta na github'ie.
+4. Wygenerowałem klucze SSH DSA: publiczny i prywatny, zabezpieczony hasłem. Przy próbie dodania klucza do konta na github'ie okazało się, że klucz DSA jest zbyt słaby i został wycofany z użytku.
+5. Wygenerowałem klucze SSH ECDSA: publiczny i prywatny, zabezpieczony hasłem. Dodałem klucz do konta na github'ie.
+6. Sklonowałem repozytorium używając protokołu SSH.
+7. Przełączyłem się na gałąź grupy GCL02, następnie z tej gałęzi utworzyłem swoją gałąź o nazwie ML290631.
+8. Utorzyłem folder o nazwie tożsamej z nazwą mojej branchy.
+9. Dodałem plik tekstowy ze sprawozdaniem. Dodałem zrzuty ekranu. Utworzyłem commita i wypchąłem zmiany do zdalnego repozytorium.
+10. Zacząłem pisać sprawozdanie. Po napisaniu tego punktu zapisałem plik, dodałem do folderu zrzut ekranu pokazujący dodane klucze SSH na github'ie, utworzyłem commita i wypchnąłem zmiany na zdalne repozytorium.
+11. Przełączyłem się na gałąź grupową (GCL02), wykonałem git merge mojej branchy - lokalnie wszystko się powiodło. Przy próbie wypchnięcia na zdalne repozytorium pojawił się błąd.
+12. Przywróciłem lokalną branch GCL02 do stanu zgodnego ze zdalną wersją.
+13. Wróciłem na moją branch ML290631. Zaktualizowałem sprawozdanie i dodałem zrzuty ekranu. Utworzyłem commita i wypchąłem go na zdalne repozytorium.
+14. Zapomniałem dodać tag. Dodałem tag LAB1. Uaktualniłem sprawozdanie i dodałem zrzuty ekranu.
+15. Utworzyłem hooka sprawdzającego czy commit_msg zawiera nazwę przedmiotu (MDO).
+16. W jaki sposób stworzyć hook, który będzie ustawiał prefiks wiadomości commitu tak, by miał nazwę przedmiotu? - Utworzyć hooka prepare-commit-msg. 
