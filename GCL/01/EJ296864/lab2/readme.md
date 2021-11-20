@@ -93,7 +93,26 @@ i **apt upgrade** aktualizujemy paczki (można było wykonać polecenia łączą
 
 #### Wyjście z kontenera
 
+Z kontenera wychodzimy tak jak z każdego shella, czyli komendą **exit**:
+
 ![Wyjście z kontenera z Ubuntu](screenshots/exit-ubuntu.png)
 
+### Pokazanie aktualnych kontenerów:
+
+Przy użyciu znanej już komendy **docker container list -a** otrzymujemy aktualnie uruchomione kontenery, z czegoo tylko jeden o imieniu "**pedantic_haibt"** działa:
+
+![Listowanie uruchomionych konteneórw](screenshots/listowanie-kontenerow.png)
+
+### Wyczyszczenie obrazów
+
+Przed wyczyszczeniem obrazów, najpierw je listuję przy użyciu **docker image ls**:
+
+![Listowanie obrazów](screenshots/listowanie-obrazow.png)
+
+Następnie je usuwam komendą **docker image rm <image_name>, <image_name2>**:
+
+![Czyszczenie obrazów](screenshots/czyszczenie-obrazow.png)
+
+## Budowanie programu
 
 
