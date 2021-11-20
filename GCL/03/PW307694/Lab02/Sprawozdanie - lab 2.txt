@@ -1,0 +1,2 @@
+1. Screen Zad 1 pokazuje juz zainstalowengo dockera w systemie
+2.
