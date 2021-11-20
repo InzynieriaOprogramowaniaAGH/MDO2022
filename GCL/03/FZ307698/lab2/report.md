@@ -1,6 +1,5 @@
 ﻿# Zajęcia 02
 ### 2021-11-20
-
 # Wprowadzenie do kontenerów
 - Wykonaj opisane niżej kroki i dokumentuj ich wykonanie
 - Na dokumentację składają się następujące elementy:
@@ -124,6 +123,8 @@ docker system prune -a
 ~~~
 
 [img15]
+[img16]
+[img17]
 # Budowanie programu
 Żeby usprawnić proces budowania aplikacji, posłużymy się szkieletem aplikacji postawionym na reacie z pomocą komendy *(musi być zainstalowany pakiet nodejs oraz npm)* - https://create-react-app.dev/
 ~~~ sh
@@ -132,9 +133,9 @@ npm run build
 npm run test
 ~~~
 
-[img16]
-[img17]
 [img18]
+[img19]
+[img20]
 
 Następnym krokiem będzie uruchomienie tej samej aplikacji w kontenerze.
 Do tego celu zbudujemy sobie **Dockerfile** oraz dla testów **Dockerfile-test**
@@ -166,5 +167,5 @@ docker build -f Dockerfile
 docker build -f Dockerfile-test
 ~~~
 
-[img19]
-[img20]
+[img21]
+[img22]
