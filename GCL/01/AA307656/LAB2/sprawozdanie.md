@@ -1,13 +1,6 @@
 # **Sprawozdanie z LAB2**
 
-Wprowadzenie do kontenerów
-
-    Wykonaj opisane niżej kroki i dokumentuj ich wykonanie
-    Na dokumentację składają się następujące elementy:
-        plik tekstowy ze sprawozdaniem, zawierający opisy z każdego z punktów zadania
-        zrzuty ekranu przedstawiające wykonane kroki
-        listing historii poleceń
-    Sprawozdanie z zadania powinno umożliwiać odtworzenie wykonanych kroków w wykorzystaniem opisu, poleceń i zrzutów
+	Wprowadzenie do kontenerów
 
 # Zestawienie środowiska
 
@@ -35,19 +28,25 @@ Wprowadzenie do kontenerów
         Zaprezentuj PID1 w kontenerze i procesy dockera na hoście
   	 # ps ax
   	 $ docker ps
-![screen: docker run](screenshots/4.png)
+![screen: docker ps](screenshots/4.png)
         Zaktualizuj pakiety
    	 # apt update
    	 # exit
         Wyjdź
- ![screen: docker run](screenshots/5.png) 
+ ![screen: # exit](screenshots/5.png) 
        
 ## 6. Pokaż uruchomione ( != "działające" ) kontenery, wyczyść je.
     Wyczyść obrazy
+    $ docker container ls
+    $ sudo docker images purge
+![screen: docker container](screenshots/6.png)
+
 
 # Budowanie programu
 
 ## 1. Znajdź projekt umożliwiający łatwe wywołanie testów jednostkowych
+	
+
 ## 2. Przeprowadź budowę/konfigurację środowiska
 ## 3. Uruchom testy
 ## 4. Ponów ten proces w kontenerze
