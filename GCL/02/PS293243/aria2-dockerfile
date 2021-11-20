@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu AS base
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Warsaw
@@ -10,3 +10,6 @@ WORKDIR aria2
 RUN autoreconf -i
 RUN ./configure
 RUN make
+
+FROM base AS test
+RUN make check
