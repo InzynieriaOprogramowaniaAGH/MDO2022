@@ -27,14 +27,21 @@ Wprowadzenie do kontenerów
 
 ## 4. Uruchom busybox
         Pokaż efekt uruchomienia kontenera
+        Podłącz się do kontenera interaktywnie i wywołaj numer wersji
     	 $ sudo docker run -it busybox
 ![screen: docker run](screenshots/3.png)
         
-        Podłącz się do kontenera interaktywnie i wywołaj numer wersji
 ## 5. Uruchom "system w kontenerze"
         Zaprezentuj PID1 w kontenerze i procesy dockera na hoście
+  	 # ps ax
+  	 $ docker ps
+![screen: docker run](screenshots/4.png)
         Zaktualizuj pakiety
+   	 # apt update
+   	 # exit
         Wyjdź
+ ![screen: docker run](screenshots/5.png) 
+       
 ## 6. Pokaż uruchomione ( != "działające" ) kontenery, wyczyść je.
     Wyczyść obrazy
 
