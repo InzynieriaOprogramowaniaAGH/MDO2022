@@ -1,0 +1,9 @@
+FROM ubuntu:lastest
+
+RUN yum -y install git gcc gcc-c++ make automake wget meson ca-c* libgcrypt* glib2* utff8proc* openssl-devel ncurses* libcrypt* glib2-devel uft*proc* openssl-devel ncurses* 
+
+RUN git clone https://github.com/irssi/irssi
+
+WORKDIR irssi
+
+RUN meson setup build
