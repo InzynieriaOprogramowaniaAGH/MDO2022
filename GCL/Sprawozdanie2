@@ -21,3 +21,43 @@ Pobranie hello-world, busysbox, ubuntu:
 
 Odpalenie Busybox:
 - sudo docker run -it --rm busybox
+Sprawdzenie wersji Busybox (nie wychodząc z busybox):
+- busybox | head -1
+
+Wyświetlenie listy procesów:
+- ps -aux
+
+Aktualizacja pakietów:
+- apt-get update
+
+Wyjście z busybox:
+- exit
+
+Pokazanie kontenerów, które nie są uruchomione, ale "exited", czyli zakończone, nie działające:
+- docker ps -f status=exited
+
+Wyczyszczenie wszystkich obrazów:
+- docker image prune -a
+
+Sklonowanie repo z przykładowym programem do wywołania testów jednostkowych:
+- repo: https://github.com/howtoprogram/junit5-examples.git
+- instalacja openjdk (wirtualna maszyna Javy): apt-get install openjdk-8-jdk
+- instalacja gradle (do budowania aplikacji Java):
+	- wget https://services.gradle.org/distributions/gradle-6.4.1-bin.zip -P /tmp
+	- sudo unzip -d /opt/gradle /tmp/gradle-*.zip
+
+Uruchomienie testów:
+- gradle tests (uruchomienie testów)
+- gradle build (buduje z testami)
+
+Stworzenie dockerfile (img18)
+
+Zbudowanie dockerfile:
+- docker build . -t project
+
+Stworzenie kolejnego obrazu, na podstawie poprzedniego:
+- zmiana projektu bazowego w dockerfile (FROM project)(img20)
+
+Zbudowanie drugiego dockerfile:
+- docker build . -f Dockerfile -t project2 (dodajemy -f, aby użyć drugiego Dockerfile, nie domyślnego)
+
