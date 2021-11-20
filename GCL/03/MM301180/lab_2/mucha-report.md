@@ -182,10 +182,62 @@ $ npm run test
 stworzono .dockerignorevi
 [screen_27]
 11. Zaprezentuj Dockerfile i jego zbudowanie
-[screen_28]
+
+```
+ pull official base image
+FROM ubuntu
+
+MAINTAINER Michal Mucha "michal.mucha.kr@gmail.com"
+
+# Update aptitude with new repo
+RUN apt-get update
+
+# Install software
+RUN apt-get install -y git
+
+# Make ssh dir
+RUN mkdir /root/.ssh/
+
+# Copy over private key, and set permissions, unsecure, not prod ready
+ADD id_rsa /root/.ssh/id_rsa
+
+# Create known_hosts
+RUN touch /root/.ssh/known_hosts
+
+# Add bitbuckets key
+RUN ssh-keyscan bitbucket.org >> /root/.ssh/known_hosts
+
+# Clone the conf files into the docker container
+RUN git clone git@github.com:michalmuchakr/preconfigurated-react.git
+
+# Go into directory
+RUN cd ./preconfigurated-react
+
+# set working directory
+WORKDIR /app
+
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
+# install app dependencies
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install --silent
+
+# add app
+COPY . ./
+
+# build app
+CMD ["npm", "build"]
+
+# start app
+CMD ["npm", "start"]
+
+```
 
 ```shell
 $ sudo docker build -t myapp .
 ```
-
+[screen_28]
+[screen_29]
 12. Na bazie obrazu utworzonego poprzednim dockerfilem stwórz kolejny, który będzie uruchamiał testy
