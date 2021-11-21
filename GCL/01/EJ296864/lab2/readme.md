@@ -115,4 +115,7 @@ Następnie je usuwam komendą **docker image rm <image_name>, <image_name2>**:
 
 ## Budowanie programu
 
+### Znalezienie odpowiedniego projektu
+
+Jako projekt wybrano Create React App (https://create-react-app.dev/). Poosługiwano się także guidem: https://create-react-app.dev/docs/getting-started/
 
