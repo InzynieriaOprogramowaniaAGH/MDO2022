@@ -15,4 +15,39 @@ https://hub.docker.com/
  $ sudo docker pull fedorę 
  
 4. Uruchomienie interaktywne busybox (img8)
-$ sudo docker run -it busybox bash
+na screenie poleceniem "$ docker ps" wypisujemy listę kontenerów - widzimy pustą
+w kolejnym kroku uruchamiamy interaktywnie busybox 
+$ sudo docker run -it --rm busybox
+możemy też sprawdzić wersję poleceniem
+$ cat --help 
+(img 9)
+
+5. Uruchamiamy system w kontenerze
+$ sudo docker -it fedora
+chcemy zobaczyć listę procesów poleceniem "$ ps aux" ale wyskakuje że nie znajduje komendy, wynika to z faktu 
+,że aby zminimalizować rozmiar obrazu dystrubucja nie zawiera wielu komend, instalujemy je następująco:
+$ dnf install procps -y
+(img 10)
+po instalacji pakietu szukamy PID1
+$ ps aux 
+(img 11)
+Aktualizujemy pakiety poleceniem:
+$ dnf check-update
+(img 12)
+Procesy na hoście pokazujemy wychodząc z kontenera poleceniem exit i wpisujemy listę procesów poleceniem ps aux
+$ exit
+$ ps aux
+(img 13)
+
+
+6. Pokaż uruchomione kontenery 
+$ docker ps -a
+(img 14)
+Zatrzymaj wszystkie działające kontenery (jeśli jakieś działają)
+$ docker kill $(docker ps -q)
+Wyczyść wszystkie kontenery
+$ docker rm $(docker ps -a -q)
+7. Wyczyść wszystkie obrazy
+$ docker rmi $(docker images -q)
+(img 15)
+
