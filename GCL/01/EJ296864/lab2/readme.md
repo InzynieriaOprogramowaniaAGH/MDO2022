@@ -117,5 +117,60 @@ Następnie je usuwam komendą **docker image rm <image_name>, <image_name2>**:
 
 ### Znalezienie odpowiedniego projektu
 
-Jako projekt wybrano Create React App (https://create-react-app.dev/). Poosługiwano się także guidem: https://create-react-app.dev/docs/getting-started/
+Jako projekt wybrano Create React App (https://create-react-app.dev/). Posługiwano się także guidem: https://create-react-app.dev/docs/getting-started/
+
+### Przeprowadzenie budowy i konfiguracji środowiska
+#### Konfiguracja środowiska
+
+Zanim ściągniemy aplikację, musimy posiadać zainstalowany pakiet NodeJS.
+Na systemie operacyjnym macOS, można to zrobić za pomocą komendy **brew install node**:
+
+![Instalacja node](screenshots/brew-install-node-1.png)
+![Koniec instalacji node](screenshots/brew-install-node-finish.png)
+
+Po instalacji sprawdzam wersję pakietu Node:
+
+![Wersja node](screenshots/node-version.png)
+
+#### Instalacja aplikacji
+
+Aplikację ściągamy przy użyciu komendy **npx create-react-app <nazwa_aplikacji>**:
+
+![Instalacja aplikacji](screenshots/npx-create-react-app.png)
+
+#### Budowanie aplikacji 
+
+Po instalacji przechodzę do folderu z aplikacją używając **cd my-app** i budujemy aplikację używając **npm run build**:
+
+![Budowanie aplikacji](screenshots/npm-run-build.png)
+
+#### Uruchomienie testów
+
+Zgodnie z instrukcją, testy uruchamiane są przy użyciu komendy **npm test**:
+
+![Uruchomienie testów](screenshots/npm-test.png)
+
+Poprowadzi nas to później do interaktywnego okna z testami:
+
+![Uruchomione interaktywnie testy](screenshots/npm-test-interactive.png)
+
+### Ponowienie procesu na kontenerze
+#### Wybranie i uruchomienie platformy
+
+Na początek odpalam nowy kontener z Ubuntu. Obraz nie jest znaleziony, został usunięty,
+więc jest zaciągany nowy z repozytorium Dockera:
+
+![Uruchomienie kontenera z Ubuntu](screenshots/kontener-ubuntu.png)
+
+Warto zwrócić uwage na flagę **-d** (**--detached**), która odpowiada za działanie kontenera w tle
+
+#### Zaopatrzenie platformy w odpowiednie oprogramowanie
+
+Gdy kontener już działa, wchodzę na niego, wykonując na nim komendę **bash**, przy użyciu **docker exec -ti <nazwa_kontenera>**
+
+![Wejście na kontener](screenshots/wejscie-na-kontener.png)
+
+Następnie zaopatruję go w odpowiednie oprogramowanie:
+
+![Instalacja niezbędnego oprogramowania na kontenerze](screenshots/zaopatrzenie-kontenera.png)
 
