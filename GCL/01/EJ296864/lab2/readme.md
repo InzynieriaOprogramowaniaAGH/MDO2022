@@ -158,7 +158,8 @@ Poprowadzi nas to później do interaktywnego okna z testami:
 #### Wybranie i uruchomienie platformy
 
 Na początek odpalam nowy kontener z Ubuntu. Obraz nie jest znaleziony, został usunięty,
-więc jest zaciągany nowy z repozytorium Dockera:
+więc jest zaciągany nowy z repozytorium Dockera (dobrą praktyką jest wyspecyfikowanie konkretnej wersji, ponieważ w innym 
+przypadku ściągana jest zawsze *latest*, co może prowadzić do różnych rezultatów):
 
 ![Uruchomienie kontenera z Ubuntu](screenshots/kontener-ubuntu.png)
 
@@ -208,7 +209,15 @@ Tak jak w poprzednim przypadku, po uruchomieniu testów, pojawia się menu z tes
 
 ![Test interaktywnie](screenshots/npm-test-interactive-kontener.png)
 
+### Prezentacja Dockerfile i jego zbudowanie
 
+Dockerfile wygląda jak poniżej:
+
+![Dockerfile](screenshots/Dockerfile.png)
+
+Podczas budowania obrazu następuje problem, którego nie mogę przeskoczyć; instalując npm trzeba podać region, wpisanie odpowiedniego numera ani naciśnięcie "q" nie pomaga...
+
+![Utnięcie](screenshots/stuck.png)
 
 
 
