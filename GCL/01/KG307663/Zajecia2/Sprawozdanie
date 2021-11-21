@@ -43,3 +43,56 @@ sudo apt-get install \
  sudo docker run -it busybox
  
  
+ 
+ Uruchomienie systemu w kontenerze
+ 
+ sudo docker run -it ubuntu /bin/bash
+
+ Pokazanie PID1 oraz procesy
+ ps auxwwwf
+ ps auxwwwf | grep bash
+ 
+ Aktualizacja pakietow
+ apt update
+ 
+ exit
+ 
+ 
+ 
+ Pokaz kontenery
+ sudo docker ps -a
+ usuwanie kontenera
+ sudo docker rm kontener (ID lub nazwa)
+ usuwanie obrazu
+ sudo docker rmi obraz (ID lub nazwa)
+ 
+ 
+ 
+ Budowanie programu
+ sudo docker run -P -it ubuntu
+ po uruchomieniu maszynki w kontenerze po kolei zainstalowalem git oraz npm
+ nastepnie sklonowalem repo komendą git clone https://github.com/johnpapa/node-hello
+ wszedłem w odpowiedni katalog
+ uruchomiłem komende npm install następnie npm start
+ po tym wszystkim wyszedłem z maszyny wirtualnej
+ 
+ sprawdziłem kontenery
+ sudo docker ps -a
+
+ następnie stworzyłem obraz za pomocą funkcji commit odpowiedniego kontenera
+ sudo docker commit 80cc03036b1f nodejshello
+
+
+ Stworzenie obrazu na podstawie DockerFile
+ Docker File zawartość (zrzut ekranu)
+ Stworzenie obrazu na jego podstawie
+ sudo docker build -t helloautorun . (Bedąc w katalogu z nim)
+ Uruchomienie z poleceniem 
+ sudo docker run helloautorun npm start
+ Po takim uruchomieniu wyświetla się Hello World na adresie maszyny.
+ 
+
+
+ 
+
+ 
