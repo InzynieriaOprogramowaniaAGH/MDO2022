@@ -41,14 +41,30 @@ hello-world już miałam domyślnie zainstalowane przy instalowaniu dockera, pol
 	Screeny: 7_1, 7_2, 7_3, 7_4, 7_5, 7_6, 7_7, 7_8
 Budowanie programu
 	1. Znajdź projekt umożliwiający łatwe wywołanie testów jednostkowych
+	Wybrałam projekt "easy-sauce" posiadający testy. Link: https://github.com/philipwalton/easy-sauce 
+	Screeny: 1_1b
 	2. Przeprowadź budowę/konfigurację środowiska
+	Na początku zainstalowałam npm, poleceniem "sudo apt install npm" (2_1b, 2_2b). Na koniec zainstalowałam zależności npm, poleceniem "sudo npm install" (2_4b).
+	Screeny: 2_1b, 2_2b, 2_4b
 	3. Uruchom testy
+	Poleceniem "sudo npm test" uruchomiłam testy jednostkowe. Zakończyły się bez żadnych błędów.
+	Screeny 3_1b, 3_2b
 	4. Ponów ten proces w kontenerze
 		- Wybierz i uruchom platformę
+		Zainstalowałam obraz ubuntu, poleceniem "sudo docker pull ubuntu" (4_1b). Następnie uruchomiłam kontener na tym obrazie, poleceniem "sudo docker run --name="c_ubuntu" -it ubuntu" (4_2b). 
+		Screeny: 4_1b, 4_2b
 		- Zaopatrz ją w odpowiednie oprogramowanie wstępne
+		Pierwsze zaktualizowałam poleceniem "apt update" (4_2b, 4_3b), następnie zainstalowałam npm "apt install npm" (4_4b, 4_5b). Zainstalowałam również git poleceniem "apt install git" (4_6b, 4_7b).
+		Screeny: 4_2b, 4_3b, 4_4b, 4_5b, 4_6b, 4_7b
 		- Sklonuj aplikację
+		Sklonowałam repozytorium "git clone i adres" (4_8b). 
+		Screeny: 4_8b
 		- Skonfiguruj środowisko i uruchom build
+		Na początek przemieściłam się do pobranego repozytorium - katalog easy-souce i uruchomiłam polecenie "npm install" (4_9b). Następnie uruchomiłam npm build. (4_9b). 
+		Screeny: 4_9b
 		- Uruchom testy
+		Uruchomiłam pomyślnie testy poleceniem npm test (4_9,4_10,4_11)
+		Screeny: 4_9, 4_10, 4_11
 	5. Stwórz Dockerfile, który ma to osiągnąć
 		- Na bazie platformowego obrazu...
 		- ...doinstaluj wymagania wstępne...
