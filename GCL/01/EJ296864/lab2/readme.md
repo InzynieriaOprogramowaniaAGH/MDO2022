@@ -174,3 +174,13 @@ Następnie zaopatruję go w odpowiednie oprogramowanie:
 
 ![Instalacja niezbędnego oprogramowania na kontenerze](screenshots/zaopatrzenie-kontenera.png)
 
+Doinstalowuję npm, gdyż okazało się, że nie ma go pakiecie nodejs:
+
+![Doinstlowanie npm na kontenerze](screenshots/doinstalowanie-npm.png)
+
+Wersja npm na kontenerze z Ubuntu:
+
+![Wersja npm na kontenerze](screenshots/npm-version-kontener.png)
+
+To jest ciekawe, że na Ubuntu jest inna wersja npm i node niż na lokalnym macOS. Paczki były zauktualizowane do najnowszych w obu przypadkach.
+
