@@ -1,3 +1,6 @@
+Wprowadzenie do kontenerów
+
+
 1. Zainstaluj Docker w systemie linuksowym
 
     W moim systemie Docker istnieje już niedawno zainstalowany Docker. Sprawdzenie statusu:
@@ -44,6 +47,46 @@ Aktualizujemy kontener z Ubuntu
 Zatrzymanie i czyszczenie
 
 ![image](https://user-images.githubusercontent.com/80592460/142735177-76ed11a2-bd21-4ab5-a9f9-73f1e871c01a.png)
+
+----------------------------------------------------------------------------------------
+Budowanie programu
+
+1. Znajdź projekt, który umożliwia ustawienie wywołanie testów jednostkowych
+
+        https://github.com/caolan/nodeunit
+        
+2. Przeprowadź budowę/konfigurację środowiska
+
+     -Klonowanie aplikacji
+     
+     ![image](https://user-images.githubusercontent.com/80592460/142771455-5dd4ec12-6da1-475f-ac39-a64c34a172cb.png)
+
+    - Instalowanie node.js i npm
+    
+   * Włącz repozytorium NodeSource, uruchamiając polecenie jako użytkownik z uprawnieniami sudo:
+
+![image](https://user-images.githubusercontent.com/80592460/142771790-d1b28269-fd51-4f3f-9482-7885a3beba19.png)
+
+   * Po włączeniu repozytorium NodeSource instalowanie Node.js i npm
+
+![image](https://user-images.githubusercontent.com/80592460/142771964-c8247cd3-7439-42f7-bc03-66f35fe2529e.png)
+
+   * Instalowanie zależności do projektu
+
+![image](https://user-images.githubusercontent.com/80592460/142772073-5267d121-153a-48d0-a575-f90935ec66a0.png)
+
+3. Uruchom testy
+   
+![image](https://user-images.githubusercontent.com/80592460/142772258-1d3acd47-38c5-4a00-bddd-01217e8c9429.png)
+
+4. Ponów ten proces w kontenerze
+
+
+
+
+
+
+
 
 
 
