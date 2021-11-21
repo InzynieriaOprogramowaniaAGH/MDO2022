@@ -184,3 +184,31 @@ Wersja npm na kontenerze z Ubuntu:
 
 To jest ciekawe, że na Ubuntu jest inna wersja npm i node niż na lokalnym macOS. Paczki były zauktualizowane do najnowszych w obu przypadkach.
 
+#### Klonowanie aplikacji
+
+Do sklonowania aplikacji użyto komendy **docker cp <source> <container>:<path>** 
+
+![Klonowanie aplikacji](screenshots/klonowanie-aplikacji.png)
+
+Następnie na kontenerze patrzę, czy faktycznie aplikacja została sklonowana:
+
+![Sprawdzenie sklonowania](screenshots/sprawdzenie-sklonowania.png)
+
+#### Konfiguracja środowiska i uruchomienie testów
+
+Środowisko zostało już wyposażone w odpowiednie oprogramowanie, teraz czas uruchomić build, przy pomocy już nam znanej komendy **npm run build**:
+
+![Odpalenie builda na kontenerze](screenshots/npm-run-build-container.png)
+
+Następnie uruchamiono testy przy pomocy **npm test** 
+
+![Odpalenie testów na kontenerze](screenshots/npm-test-kontener.png)
+
+Tak jak w poprzednim przypadku, po uruchomieniu testów, pojawia się menu z testem interaktywnym: 
+
+![Test interaktywnie](screenshots/npm-test-interactive-kontener.png)
+
+
+
+
+
