@@ -111,6 +111,37 @@ Budowanie programu
    
 ![image](https://user-images.githubusercontent.com/80592460/142773645-fe77376e-3feb-4793-ad13-dd6efef6241e.png)
 
+5. Stwórz Dockerfile, który ma to osiągnąć
+
+...Na bazie platformowego obrazu...
+
+...doinstaluj wymagania wstępne...
+
+...sklonuj repozytorium...
+
+![image](https://user-images.githubusercontent.com/80592460/142775625-a8adb065-8a8c-42fb-96b0-79044d1b88c9.png)
+
+...zbuduj kod
+
+![image](https://user-images.githubusercontent.com/80592460/142774444-6224fbaa-899c-42cd-a637-67a7a8b68faf.png)
+
+![image](https://user-images.githubusercontent.com/80592460/142774511-209c2b8c-3f63-4c31-b697-49ff34ad0147.png)
+
+7. Na bazie obrazu utworzonego poprzednim dockerfilem stwórz kolejny, który będzie uruchamiał testy
+
+![image](https://user-images.githubusercontent.com/80592460/142775823-7ae22fd1-ee6f-4001-aabe-d504c6ba17dc.png)
+
+    -Budujemy obraz z testem:
+
+![image](https://user-images.githubusercontent.com/80592460/142775741-805ad150-1ed5-4abc-a628-4ef6fc9e23ba.png)
+
+   -Odpalamy testy
+   
+   ![image](https://user-images.githubusercontent.com/80592460/142775776-f7b76120-ba7d-403b-8e6c-c8ca78174da7.png)
+   
+   ![image](https://user-images.githubusercontent.com/80592460/142775786-af10f615-6275-41f8-934b-edf8483ce193.png)
+
+
 
 
 
