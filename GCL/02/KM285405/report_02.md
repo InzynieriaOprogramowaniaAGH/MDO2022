@@ -21,11 +21,13 @@ https://docs.docker.com/engine/install/debian/
 ## 3. Pobierz hello-world, busybox, ubuntu
 
 Do pobrania wykorzystuje się komendę: docker image pull, natomiast przy próbie uruchomienia nieistniejącego obrazu, Docke pobierze obraz automatycznie:
+
 ![](img_02/03_helloworld.png)
 
 ## 4. Busybox
 
-Uruchomienie busybox 
+Uruchomienie busybox:
+
 ![](img_02/03_busybox.png)
 
 Uruchomienie busybox interaktywnie i wywołanie numeru wersji
@@ -37,6 +39,7 @@ Uruchoemienie ubuntu
 ![](img_02/05_system.png)
 
 PID1 w kontenerze:
+
 ![](img_02/05_pid1.png)
 
 Procesy dockera na hoście:
