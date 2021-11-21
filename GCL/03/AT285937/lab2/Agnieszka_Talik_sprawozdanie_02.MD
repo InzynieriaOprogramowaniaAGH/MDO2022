@@ -81,6 +81,36 @@ Budowanie programu
 
 4. Ponów ten proces w kontenerze
 
+    -Wybierz i uruchom platformę
+    
+     * Platforma Ubuntu, wcześniej pobrana
+
+     * Run:
+
+![image](https://user-images.githubusercontent.com/80592460/142772482-c49f8c4b-2108-4fdb-bd3e-a98756ce9c9b.png)
+
+   -Zaopatrz ją w odpowiednie oprogramowanie użytkowe
+    
+   * apt update, apt install (po kolei: git, curl, nodejs, npm).
+
+![image](https://user-images.githubusercontent.com/80592460/142772549-356b0555-d5f0-4a60-bb0e-56f0a17fbea0.png)
+
+   * Odpuszczę screeny z instalacji, pokażę, że są zainstalowane poprawnie:
+
+![image](https://user-images.githubusercontent.com/80592460/142772998-6117e64b-b125-4fc9-bd54-3b96ca47da5c.png)
+
+   -Sklonuj aplikację
+
+![image](https://user-images.githubusercontent.com/80592460/142773089-ff9cc7ed-cfd6-4469-a9d6-412c9c74aaf2.png)
+
+   -Skonfiguruj środowisko i uruchom build
+   
+   ![image](https://user-images.githubusercontent.com/80592460/142773506-e6433d9f-5e9c-40a9-8522-dd7b49929fd5.png)
+   
+   -Uruchom testy
+   
+![image](https://user-images.githubusercontent.com/80592460/142773645-fe77376e-3feb-4793-ad13-dd6efef6241e.png)
+
 
 
 
