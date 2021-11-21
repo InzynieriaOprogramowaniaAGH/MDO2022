@@ -213,11 +213,16 @@ Tak jak w poprzednim przypadku, po uruchomieniu testów, pojawia się menu z tes
 
 Dockerfile wygląda jak poniżej:
 
-![Dockerfile](screenshots/Dockerfile.png)
+![Dockerfile](screenshots/Dockerfile-new.png)
 
-Podczas budowania obrazu następuje problem, którego nie mogę przeskoczyć; instalując npm trzeba podać region, wpisanie odpowiedniego numera ani naciśnięcie "q" nie pomaga...
+Warto zaznaczyć, że ARG DEBIAN_FRONTEND został ustawiony na *noninteractive*, ponieważ podczas
+instalacji pakietu *npm*, potrzebna była interakcja w sprawie wyboru regionu użytkownika.
 
-![Utnięcie](screenshots/stuck.png)
+Zbudowanie obrazu oraz dostępne obrazy zostały pokazane na poniższym zdjęciu:
+
+![Zbudowanie obrazu i obrazy](screenshots/zbudowanie-obrazu-i-obrazy.png)
+
+Jak widać, cały proces przebiegł pomyślnie.
 
 
 
