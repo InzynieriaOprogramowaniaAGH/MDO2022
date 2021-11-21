@@ -9,11 +9,20 @@ Sprawozdanie
 
 Zestawienie środowiska
 	1. Zainstaluj Docker w systemie linuksowym
+	Zainstalowałam dockera w ubuntu poleceniem: "sudo apt install docker.io". (1_1, 1_2) Poleceniem "docker --version" sprawdziłam wersje dockera (1_3), a następnie przetestowałam czy działa odpalając hello-world poleceniem "sudo docker run hello-world" (1_3). Na koniec zainstalowałam docker-compose poleceniem "sudo apt install docker-compose" (1_4), oraz sprawdziłam wersje "docker-compose version" (1_5).
+	Screeny: 1_1, 1_2, 1_3, 1_4, 1_5
 	2. Zarejestruj się w Docker Hub i zapoznaj z sugerowanymi obrazami
+	Zarejestrowałam się na hub.docker.com (2_1) i zapoznałam się z obrazami dostępnymi na tej stronie (2_2).
+	Screeny: 2_1, 2_2
 	3. Pobierz hello-world, busybox, ubuntu lub fedorę, mysql
+hello-world już miałam domyślnie zainstalowane przy instalowaniu dockera, poleceniem "sudo docker images" wyświetlamy wszystkie obrazy jakie mamy zainstalowanie (3_1). Zainstalowałam busybox, ubuntu oraz mysql poleceniami: "sudo docker pull busybox" (3_2), "sudo docker pull ubuntu" (3_3), "sudo docker pull mysql" (3_4). Poleceniem "sudo docker images" wyświetlamy obrazy zainstalowane (3_4).
+	Screeny: 3_1, 3_2, 3_3, 3_4, 3_5
 	4. Uruchom busybox
 		- Pokaż efekt uruchomienia kontenera
+		Po uruchomieniu poleceniem "sudo docker run -it busybox" nic się nie działo. Terminal czekał na dalsze polecenia (4_1).
 		- Podłącz się do kontenera interaktywnie i wywołaj numer wersji
+		Po wpisaniu "busybox", w miesju oczekiwania po wyżej wymienionym poleceniu, wyświetlilo m.in. numer wersji busybox'a (4_2,4_3). Wersja: BusyBox v1.34.1
+		Screeny: 4_1, 4_2, 4_3
 	5. Uruchom "system w kontenerze"
 		- Zaprezentuj PID1 w kontenerze i procesy dockera na hoście
 		- Zaktualizuj pakiety
