@@ -251,3 +251,55 @@ Uruchomienie kontenera, który uruchamia testy:
 Sprawdzenie logów dla tego kontenera:
 
 ![Sprawdzenie logów z testami](screenshots/sprawdzenie-logow-z-testami.png)
+
+Na koniec z własnej woli sprawdzam uruchomione kontenery. Interesują nas obrazy o nazwie zaczynającej się od *ubuntu-init*.
+Widać wyraźnie, że po zakończonej pracy, kontener odpowiedzialny za buildowanie aplikacji *ubuntu-init-react-react-app*
+zostaje wyłączony. Kontener odpowiedzialny za testowanie aplikacji *ubuntu-init-react-react-app-test* działa w tle i wydaje mi się,
+że jest to spowodowane tym, że podczas uruchamiania testów osobiście, wchodziliśmy w interaktywne okno, z którego później trzeba było wyjść:
+
+![Sprawdzenie aktualnych kontenerów](screenshots/sprawdzenie-aktualnych-kontenerow.png)
+
+## Runda bonusowa: kompozycja
+
+Tworzę plik o nazwie *docker-compose.yml* przy użyciu *touch*:
+
+![Utworzenie docker-compose.yml](screenshots/tworzenie-docker-compose.yml.png)
+
+Jeżeli plik się nie nazywa "docker-compose.yml", to musimy wskazać jego nazwę przez *-f*.
+
+### Niepoprawne wykonanie zadania, po skończeniu tej części zorientowałem się, że nie o to chodziło 
+
+Do stworzenia pliku docker-compose'a używam narzędzia *composerize* - https://github.com/magicmark/composerize
+Dzięki temu narzędziu zostanie wygenerowany kod, który przekleimy do *docker-compose.yml*
+Można je prosto zainstalować używając npm'a:
+
+![Instalacja composerize](screenshots/instalacja-composerize.png)
+
+Tworzę kompozycję najpierw dla obrazu do budowania aplikacji:
+
+![Docker compose - budowanie aplikacji](screenshots/docker-compose-budowanie-aplikacji.png)
+
+Następnie dla obrazu z uruchamianiem testowania aplikacji:
+
+![Docker compose - testowanie aplikacji](screenshots/docker-compose-testowanie-aplikacji.png)
+
+Na sam koniec sklejam wygenerowane kody w jedną całość do pliku *docker-compose.yml*:
+
+![docker-compose.yml](screenshots/docker-compose.yml.png)
+
+Jedyne co nam teraz pozostaje to wywołanie komendy **docker-compose up**.
+
+![docker-compose up](screenshots/docker-compose-up.png)
+
+Kontenery będą zachowywać się tak samo jak uruchamialiśmy je osobno, ten odpowiedzialny za build aplikacji, po zrobieniu tego zostanie wyłączony,
+a drugi, odpowiedzialny za testowanie, prze to, że jest to interaktywne testowanie, cały czas trzyma sesję w terminalu.
+
+### Poprawne wykonanie zadania
+
+Niestety dopiero teraz zorientowałem się, że trzeba było użyć kompozycję na bazie Dockerfile.
+Poprawna kompozycja została przedstawiona poniżej:
+![docker-compose.yml poprawny](screenshots/docker-compose.yml-poprawny.png)
+
+Po uruchomieniu **docker-compose up** otrzymujemy nas porządany widok:
+
+![docker-compose up poprawny](screenshots/docker-compose-up-poprawny.png)
