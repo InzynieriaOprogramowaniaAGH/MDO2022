@@ -83,11 +83,31 @@ Na moje nieszczęście maszyna wirtualna mi się wysypała z powodu zbyt malego
 ![screen: run test](screenshots/9.png)
 ## 4. Ponów ten proces w kontenerze
         Wybierz i uruchom platformę
-     	 # 
+     	 $ sudo docker run -it ubuntu
         Zaopatrz ją w odpowiednie oprogramowanie wstępne
+     	 # apt update
+     	 # apt install git
         Sklonuj aplikację
+      	 # git clone https://github.com/deltachat/deltachat-desktop.git
         Skonfiguruj środowisko i uruchom build
+     	 # apt install nodejs
+     	 - > Geaographic area: 8
+     	 -> Time zone: 60
+     	 Aplikacja wymaga od nas nowszego nodejs niż mamy dostępny więc:
+     	 # apt install curl
+     	 # apt install sudo
+     	 # curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+     	 # sudo apt-get install -y nodejs
+     	 # sudo apt install npm
+     	 # npm intstall
+     	 # npm audit fix
+     	 # npm run build
+![screen: run buld in docker](screenshots/10.png)
+  	 
         Uruchom testy
+    	 # npm run test
+![screen: run test in docker](screenshots/11.png)
+
 ## 5. Stwórz Dockerfile, który ma to osiągnąć
         Na bazie platformowego obrazu...
         ...doinstaluj wymagania wstępne...
