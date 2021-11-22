@@ -99,7 +99,7 @@ Na moje nieszczęście maszyna wirtualna mi się wysypała z powodu zbyt malego
      	 # curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
      	 # sudo apt-get install -y nodejs
      	 # sudo apt install npm
-     	 # npm intstall
+     	 # npm install
      	 # npm audit fix
      	 # npm run build
 ![screen: run buld in docker](screenshots/10.png)
