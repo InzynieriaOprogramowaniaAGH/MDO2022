@@ -16,7 +16,7 @@ Zestawienie środowiska
 	Screeny: 2_1, 2_2
 	3. Pobierz hello-world, busybox, ubuntu lub fedorę, mysql
 hello-world już miałam domyślnie zainstalowane przy instalowaniu dockera, poleceniem "sudo docker images" wyświetlamy wszystkie obrazy jakie mamy zainstalowanie (3_1). Zainstalowałam busybox, ubuntu oraz mysql poleceniami: "sudo docker pull busybox" (3_2), "sudo docker pull ubuntu" (3_3), "sudo docker pull mysql" (3_4). Poleceniem "sudo docker images" wyświetlamy obrazy zainstalowane (3_4).
-	Screeny: 3_1, 3_2, 3_3, 3_4, 3_5
+	Screeny: 3_1, 3_2, 3_3, 3_4
 	4. Uruchom busybox
 		- Pokaż efekt uruchomienia kontenera
 		Po uruchomieniu poleceniem "sudo docker run -it busybox" nic się nie działo. Terminal czekał na dalsze polecenia (4_1).
@@ -48,7 +48,7 @@ Budowanie programu
 	Screeny: 2_1b, 2_2b, 2_4b
 	3. Uruchom testy
 	Poleceniem "sudo npm test" uruchomiłam testy jednostkowe. Zakończyły się bez żadnych błędów.
-	Screeny 3_1b, 3_2b
+	Screeny 3_1b, 4_1b
 	4. Ponów ten proces w kontenerze
 		- Wybierz i uruchom platformę
 		Zainstalowałam obraz ubuntu, poleceniem "sudo docker pull ubuntu" (4_1b). Następnie uruchomiłam kontener na tym obrazie, poleceniem "sudo docker run --name="c_ubuntu" -it ubuntu" (4_2b). 
@@ -63,17 +63,29 @@ Budowanie programu
 		Na początek przemieściłam się do pobranego repozytorium - katalog easy-souce i uruchomiłam polecenie "npm install" (4_9b). Następnie uruchomiłam npm build. (4_9b). 
 		Screeny: 4_9b
 		- Uruchom testy
-		Uruchomiłam pomyślnie testy poleceniem npm test (4_9,4_10,4_11)
-		Screeny: 4_9, 4_10, 4_11
+		Uruchomiłam pomyślnie testy poleceniem npm test (4_9b, 4_10b, 4_11b)
+		Screeny: 4_9b, 4_10b, 4_11b
 	5. Stwórz Dockerfile, który ma to osiągnąć
+	Poleceniem vim Dockerfile, tworzymy nasz Dockerfile. 
 		- Na bazie platformowego obrazu...
+		Aplikacja jest w środowisku node.js, dlatego obrazem bazowym będzie node. Za pomocą FROM ustalamy obraz w Dockerfile. Polecenie: FROM node.
 		- ...doinstaluj wymagania wstępne...
+		Na początku ustawiłam katalog roboczy za pomocą "WORKDIR /appES". instalacja npm bez WORKDIR wyrzucała mi błędy przy późniejszym "npm install", ze względów, że instalacja wykonywała się w katalogu głownym kontenera. Jest to potrzebne od pewnej wersji nodejs. Następnie musiałam się zająć aktualizacją pakietów poleceniem "RUN apt-get update". RUN w Dockerfile odpowiada działaniu. Używając również RUN zainstalowałam gita "RUN apt-get install git". 
 		- ...sklonuj repozytorium...
+		Sklonowałam repozytorium używając polecenia "RUN git clone https://github.com/philipwalton/easy-sauce.git"
 		- ...zbuduj kod
+		Poleceniem "WORKDIR /appES/easy-sauce" przeniosłam się do repozytorium. Wykonałam "RUN npm install", a na koniec "CMD ["npm","test"].
+Te dwa polecenia wykonywane są na plikach znajdujących się wewnątrz obrazu Node. Na koniec zapisałam Dockerfile i wywołałam polecenie "sudo docker build -t easy/sauce:latest ." (5_2b). -t easy/sauce:latest służy do określenia nazwy obrazu za pomocą taga. 
+	Screeny 5_1b, 5_2b
 	6. Zaprezentuj Dockerfile i jego zbudowanie
+	Screeny 5_1b, 5_2b
 	7. Na bazie obrazu utworzonego poprzednim dockerfilem stwórz kolejny, który będzie uruchamiał testy
+	Na bazie obrazu easy/sauce stworzyłam Dockerfile, który jedynie co robi to uruchamia testy, poleceniem "CMD ["npm", "start"]" (7_1b). Zbudowałam tak jak wcześniej obraz tym razem o nazwie easy/sauce2 (7_2b) i uruchomiłam poleceniem "sudo docker run easy/sauce2:latest" (7_3b, 7_4b). 
+	Screeny: 7_1b, 7_2b, 7_3b, 7_4b
 Runda bonusowa: kompozycja
 	1. Zdefiniuj kompozycję, która stworzy dwie usługi
 		- Pierwszą na bazie dockerfile'a budującego
+		---------------------------------
 		- Drugą na bazie pierwszej
+		---------------------------------
 	2. Wdróż :)
