@@ -216,13 +216,38 @@ Dockerfile wygląda jak poniżej:
 ![Dockerfile](screenshots/Dockerfile-new.png)
 
 Warto zaznaczyć, że ARG DEBIAN_FRONTEND został ustawiony na *noninteractive*, ponieważ podczas
-instalacji pakietu *npm*, potrzebna była interakcja w sprawie wyboru regionu użytkownika.
+instalacji pakietu *npm*, potrzebna była interakcja w sprawie wyboru regionu użytkownika, która blokowała instalację.
 
-Zbudowanie obrazu oraz dostępne obrazy zostały pokazane na poniższym zdjęciu:
+Zbudowanie obrazu następuje dzięki komendzie **docker build -t <nazwa_obrazu> \<path>** oraz dostępne obrazy zostały pokazane na poniższym zdjęciu:
 
 ![Zbudowanie obrazu i obrazy](screenshots/zbudowanie-obrazu-i-obrazy.png)
 
-Jak widać, cały proces przebiegł pomyślnie.
+Jak widać, proces budowania przebiegł pomyślnie.
 
+Po odpaleniu kontenera i sprawdzeniu logów, przy użyciu **docker logs <container_name>**, można zobaczyć, że aplikacja została zbudowana:
 
+![Uruchomienie kontenera z aplikacją](screenshots/uruchomienie-kontenera-z-aplikacja.png)
 
+Sprawdzenie jego logów:
+
+![Sprawdzenie logów kontenera gdzie była budowana aplikacja](screenshots/sprawdzenie-logow-z-.png)
+
+### Tworzenie obrazu, który uruchamia testy, na bazie poprzedniego obrazu
+
+Dockerfile dla obrazu, który uruchamia testy:
+
+![Dockerfile-test](screenshots/Dockerfile-test.png)
+
+Budowanie obrazu odbywa się za pomocą tej samej komendy, co poprzednio, z małym wyjątkiem,
+że z przełącznikiem **-f** dodajemy ścieżkę do Dockerfile, przy pomocy którego obraz ma zostać zbudowany.
+Domyślnie nie trzeba jej podawać, gdyż ten plik nazywa się Dockerfile.
+
+![Budowanie obrazu z testami](screenshots/budowanie-obrazu-z-testami.png)
+
+Uruchomienie kontenera, który uruchamia testy:
+
+![Uruchomienie kontenera z testami](screenshots/uruchomienie-kontenera-z-testami.png)
+
+Sprawdzenie logów dla tego kontenera:
+
+![Sprawdzenie logów z testami](screenshots/sprawdzenie-logow-z-testami.png)
