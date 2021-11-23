@@ -300,6 +300,6 @@ Niestety dopiero teraz zorientowałem się, że trzeba było użyć kompozycję 
 Poprawna kompozycja została przedstawiona poniżej:
 ![docker-compose.yml poprawny](screenshots/docker-compose.yml-poprawny.png)
 
-Po uruchomieniu **docker-compose up** otrzymujemy nas porządany widok:
+Po uruchomieniu **docker-compose up** otrzymujemy nasz porządany widok:
 
 ![docker-compose up poprawny](screenshots/docker-compose-up-poprawny.png)
