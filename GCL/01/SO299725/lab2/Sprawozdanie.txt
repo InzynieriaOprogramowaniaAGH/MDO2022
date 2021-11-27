@@ -12,7 +12,7 @@ https://hub.docker.com/
  $ sudo docker pull hello-world
  $ sudo docker pull busybox
  $ sudo docker pull ubuntu
- $ sudo docker pull fedorę 
+ $ sudo docker pull fedora 
  
 4. Uruchomienie interaktywne busybox (img8)
 na screenie poleceniem "$ docker ps" wypisujemy listę kontenerów - widzimy pustą
@@ -40,6 +40,7 @@ $ ps aux
 (img 13)
 
 
+
 6. Pokaż uruchomione kontenery 
 $ docker ps -a
 (img 14)
@@ -51,3 +52,40 @@ $ docker rm $(docker ps -a -q)
 $ docker rmi $(docker images -q)
 (img 15)
 
+
+
+Budowanie programu
+1. Znajdź projekt umożliwiający łatwe wywołanie testów jednostkowych
+https://github.com/deltachat/deltachat-node
+2. Przeprowadź budowę/konfigurację środowiska
+(img 17, 21)
+3. Uruchom testy
+(img 22)
+4. Ponów ten proces w kontenerze
+-Wybierz i uruchom platformę
+-Zaopatrz ją w odpowiednie oprogramowanie wstępne
+(img 24,25)
+-Sklonuj aplikację
+(img26)
+-Skonfiguruj środowisko i uruchom build
+-Uruchom testy
+(img 27,28)
+5.Stwórz Dockerfile, który ma to osiągnąć
+-Na bazie platformowego obrazu...
+...doinstaluj wymagania wstępne...
+...sklonuj repozytorium...
+...zbuduj kod
+6. Zaprezentuj Dockerfile i jego zbudowanie
+(img 30,31)
+7. Na bazie obrazu utworzonego poprzednim dockerfilem stwórz kolejny, który będzie uruchamiał testy
+(img 32,33)
+
+
+Runda dodatkowa 
+1. Instalacja docker composer
+(img 40)
+Stowrzenie pliku
+$ nano docker-compose.yml
+(img 41)
+2. Zbudowanie projektu w katalogu
+$ sudo docker-compose up -d
