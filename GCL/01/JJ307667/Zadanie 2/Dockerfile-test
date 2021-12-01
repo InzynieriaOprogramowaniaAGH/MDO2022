@@ -1,0 +1,5 @@
+FROM ubuntu_react
+
+WORKDIR /reactjs
+
+CMD ["npm","test", "a"]
