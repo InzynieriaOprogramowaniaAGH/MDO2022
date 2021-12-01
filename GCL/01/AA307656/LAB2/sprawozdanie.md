@@ -163,10 +163,22 @@ Na moje nieszczęście maszyna wirtualna mi się wysypała z powodu zbyt malego
 # Runda bonusowa: kompozycja
 
     Zdefiniuj kompozycję, która stworzy dwie usługi
+    
+    $ sudo apt install docker-compose
+    $ docker-compose --version
+    
         Pierwszą na bazie dockerfile'a budującego
-        
-        
-        
         Drugą na bazie pierwszej
-    Wdróż :)
+        
+    	version: "2.2"
+	   services:
+ 	 	tester:
+   		 image: "test:latest"
+
+  		builder:
+  		 image: "builder:latest"
+  		 
+![screen: simple docker compose](screenshots/14.png) 
+ 
+
 
