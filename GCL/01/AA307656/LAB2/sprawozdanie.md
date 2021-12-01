@@ -37,6 +37,7 @@
         
 ## 5. Uruchom "system w kontenerze"
         Zaprezentuj PID1 w kontenerze i procesy dockera na hoście
+     	 $ sudo docker run -it ubuntu
   	 # ps ax
   	 $ docker ps
 ![screen: docker ps](screenshots/4.png)
@@ -89,6 +90,7 @@ Na moje nieszczęście maszyna wirtualna mi się wysypała z powodu zbyt malego
      	 # apt install git
         Sklonuj aplikację
       	 # git clone https://github.com/deltachat/deltachat-desktop.git
+      	 # cd deltachat-desktop
         Skonfiguruj środowisko i uruchom build
      	 # apt install nodejs
      	 - > Geaographic area: 8
@@ -114,12 +116,57 @@ Na moje nieszczęście maszyna wirtualna mi się wysypała z powodu zbyt malego
         ...sklonuj repozytorium...
         ...zbuduj kod
 ## 6. Zaprezentuj Dockerfile i jego zbudowanie
+
+	FROM ubuntu:latest
+
+	ENV DEBIAN_FRONTEND noninteractive
+
+	RUN apt update
+	RUN apt install git -y 
+
+	RUN git clone https://github.com/deltachat/deltachat-desktop.git
+
+
+	WORKDIR deltachat-desktop
+	   
+	RUN apt install nodejs -y
+	# Geaographic area: 8
+	# Time zone: 60
+	   
+	RUN apt install curl -y
+	RUN apt install sudo -y
+	RUN curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+	RUN sudo apt install nodejs -y
+	RUN apt update
+
+	RUN npm install
+	RUN npm audit fix
+	RUN npm run build	
+	
+	$ sudo docker build -t builder:latest . -f Dockerfile-build
+![screen: build using dockerfile](screenshots/12.png)	
+
+	
 ## 7. Na bazie obrazu utworzonego poprzednim dockerfilem stwórz kolejny, który będzie uruchamiał testy
 
+
+	FROM builder:latest
+
+	WORKDIR deltachat-desktop
+
+	RUN npm run test
+	
+	$ sudo docker build -t test:latest .  -f Dockerfile-test 
+	
+![screen: test using dockerfile](screenshots/13.png)
+	
 # Runda bonusowa: kompozycja
 
     Zdefiniuj kompozycję, która stworzy dwie usługi
         Pierwszą na bazie dockerfile'a budującego
+        
+        
+        
         Drugą na bazie pierwszej
     Wdróż :)
 
