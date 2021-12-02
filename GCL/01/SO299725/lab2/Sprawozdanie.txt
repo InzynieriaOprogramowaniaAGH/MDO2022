@@ -1,0 +1,91 @@
+1. Instalacja dockera na systemie linuxowym Fedora (img1, img2)
+ $ sudo dnf config-manager \
+	--add-repo \
+	https://download.docker.com/linux/fedora/docker-ce.repo
+	
+ $ sudo dnf install docker-ce docker-ce-cli containerd.io
+ 
+2. Rejestracja w DockerHub (img3)
+https://hub.docker.com/
+
+3. Pobranie  hello-world, busybox, ubuntu lub fedorę (img4-7)
+ $ sudo docker pull hello-world
+ $ sudo docker pull busybox
+ $ sudo docker pull ubuntu
+ $ sudo docker pull fedora 
+ 
+4. Uruchomienie interaktywne busybox (img8)
+na screenie poleceniem "$ docker ps" wypisujemy listę kontenerów - widzimy pustą
+w kolejnym kroku uruchamiamy interaktywnie busybox 
+$ sudo docker run -it --rm busybox
+możemy też sprawdzić wersję poleceniem
+$ cat --help 
+(img 9)
+
+5. Uruchamiamy system w kontenerze
+$ sudo docker -it fedora
+chcemy zobaczyć listę procesów poleceniem "$ ps aux" ale wyskakuje że nie znajduje komendy, wynika to z faktu 
+,że aby zminimalizować rozmiar obrazu dystrubucja nie zawiera wielu komend, instalujemy je następująco:
+$ dnf install procps -y
+(img 10)
+po instalacji pakietu szukamy PID1
+$ ps aux 
+(img 11)
+Aktualizujemy pakiety poleceniem:
+$ dnf check-update
+(img 12)
+Procesy na hoście pokazujemy wychodząc z kontenera poleceniem exit i wpisujemy listę procesów poleceniem ps aux
+$ exit
+$ ps aux
+(img 13)
+
+
+
+6. Pokaż uruchomione kontenery 
+$ docker ps -a
+(img 14)
+Zatrzymaj wszystkie działające kontenery (jeśli jakieś działają)
+$ docker kill $(docker ps -q)
+Wyczyść wszystkie kontenery
+$ docker rm $(docker ps -a -q)
+7. Wyczyść wszystkie obrazy
+$ docker rmi $(docker images -q)
+(img 15)
+
+
+
+Budowanie programu
+1. Znajdź projekt umożliwiający łatwe wywołanie testów jednostkowych
+https://github.com/deltachat/deltachat-node
+2. Przeprowadź budowę/konfigurację środowiska
+(img 17, 21)
+3. Uruchom testy
+(img 22)
+4. Ponów ten proces w kontenerze
+-Wybierz i uruchom platformę
+-Zaopatrz ją w odpowiednie oprogramowanie wstępne
+(img 24,25)
+-Sklonuj aplikację
+(img26)
+-Skonfiguruj środowisko i uruchom build
+-Uruchom testy
+(img 27,28)
+5.Stwórz Dockerfile, który ma to osiągnąć
+-Na bazie platformowego obrazu...
+...doinstaluj wymagania wstępne...
+...sklonuj repozytorium...
+...zbuduj kod
+6. Zaprezentuj Dockerfile i jego zbudowanie
+(img 30,31)
+7. Na bazie obrazu utworzonego poprzednim dockerfilem stwórz kolejny, który będzie uruchamiał testy
+(img 32,33)
+
+
+Runda dodatkowa 
+1. Instalacja docker composer
+(img 40)
+Stowrzenie pliku
+$ nano docker-compose.yml
+(img 41)
+2. Zbudowanie projektu w katalogu
+$ sudo docker-compose up -d
