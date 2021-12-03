@@ -28,18 +28,19 @@
  - "git checkout GCL01" [Zdjecie 8]
 
  5. Utwórz gałąź o nazwie "inicjały & nr indeksu"
- - "git checkout -b MK284011" [Zdjecie 8]
+ - "git checkout -b MK284011" [Zdjecie 9]
 
- 6. Rozpocznij pracę na nowej gałęzi
+ 6. Rozpocznij pracę na nowej gałęzi 
  - W katalogu właściwym dla grupy utwórz nowy katalog, także o nazwie "inicjały & nr indeksu"
- "mkdir MK248011" 
+ "mkdir MK248011" [Zdjecie 10]
  - W nowym katalogu dodaj plik ze sprawozdaniem
  "New-Item -Path 'C:\Repos\MDO2022\GCL\01\MK284011\sprawozdanie.md' -ItemType File"
  - Dodaj zrzuty ekranu
  - Wyślij zmiany do zdalnego źródła
  "git add ."
  "git status"
- "git commit -m 'sprawzodanie v3'"
+ "git commit -m 'sprawzodanie v3'" [Zdjecie 11]
+ "git push" [Zdjecie 12] - W tym przypadku najpierw nalezalo uzyc "git push --set-upstream origin MK284011", aby stworzyc brancha, jednakze zrobilem to wczesniej
  - Spróbuj wciągnąć swoją gałąź do gałęzi grupowej
  "git checkout GCL01"
  "git branch -l"
