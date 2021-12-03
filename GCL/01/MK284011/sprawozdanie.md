@@ -52,6 +52,6 @@
  - W jaki sposób stworzyć hook, który będzie ustawiał prefiks wiadomości commitu tak, by miał nazwę przedmiotu?
   nalezy przejsc do katologu \MDO2022\.git\hooks, a nastepnie sworzyc plik z opowiednim skryptem, źródło: https://support.gitkraken.com/working-with-repositories/githooksexample/ [Zdjecie 15]
 
- 7. Wystaw Pull Request do gałęzi grupoweja
+ 7. Wystaw Pull Request do gałęzi grupowej
 
  8. Zgłoś zadanie (Teams assignment)
