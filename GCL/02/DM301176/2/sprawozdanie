@@ -1,0 +1,62 @@
+I. Zestawienie środowiska
+1.a. Zakualizuj apt-get
+    sudo apt-get update
+1.b. Zainstaluj docker
+    sudo apt-get install docker-ce docker-ce-cli containerd.io
+3. Pobieranie kontenerów
+    sudo docker pull busybox
+    sudo docker pull ubuntu
+    sudo docker pull hello-world
+    sudo docker pull mysql
+4.a Uruchomienie busybox
+    sudo docker run -it busybox
+4.b Uruchomione kontenery
+    sudo docker ps -a
+4.c Wersja busybox
+    sudo docker exec ba6545dfbd24 busybox // sudo docker exec [id-container] busybox
+5.a Uruchomienie sytemu w kontenerze
+    sudo docker run ba6acccedd29 // sudo docker run -it [image-id]
+    sudo docker start 906c0180b729 // sudo docker start [id-container]
+    sudo docker attach 906c0180b729
+5.b1 Kontener PID1
+    top
+5.b2 Proces na hostcie
+    sudo docker top 906c0180b729
+5.c Aktualizacja pakietów na kontenerze
+    sudo docker attach 906c0180b729
+    apt-get update
+5.d Wyjście z kontenera
+    Ctrl+P, Ctrl+Q
+6.a Wyświetlenie uruchomionych kontenerów (nie mam pojęcia o co chodzi z ( != "działające" ), że miało być z parametrem -a --filter "status=exited"?)
+    sudo docker ps
+6.b Czyszczenie kontenerów (niby po restarcie on nic nie pamięta??? chodziło o usunięcie??)
+    sudo docker restart $(sudo docker ps -q)
+7. Czyszczenie obrazów
+    sudo docker image prune -a
+
+II. Budowanie programu
+2.a.Update pakietów i instalacja git + npm
+    apt-get update
+    apt-get install git
+    apt-get install nmp
+2.b. Sklonowanie repozytorium express
+    git clone https://github.com/expressjs/express.git
+2.c. Przejście do katalogu express
+    cd express
+2.d Zainstalowanie zależności
+    npm install
+3. Uruchomienie testów
+    npm test
+4.a Uruchomienie obrazu z Ubuntu
+    sudo docker run -it ba6acccedd29 // sudo docker run -it [image-id]
+4.b Update pakietów i instalacja git + npm w kontenerze
+    apt-get update
+    apt-get install git
+    apt-get install nmp
+4.c. Kopiowanie repozytorium 
+    sudo docker cp express/ b4572715ebe6:/
+4.d Przejście do kadalogu express w kontenerze
+    cd express
+    npm install
+6. Uruchomienie testów
+    npm test
