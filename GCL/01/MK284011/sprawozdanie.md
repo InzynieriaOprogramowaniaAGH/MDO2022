@@ -50,8 +50,13 @@
  "git tag v.1.0.0MK" [Zdjecie 14]
  - Ustal hook, który będzie sprawdzał, czy wiadomość z commitem zawiera nazwę przedmiotu
  - W jaki sposób stworzyć hook, który będzie ustawiał prefiks wiadomości commitu tak, by miał nazwę przedmiotu?
-  nalezy przejsc do katologu \MDO2022\.git\hooks, a nastepnie sworzyc plik z opowiednim skryptem, źródło: https://support.gitkraken.com/working-with-repositories/githooksexample/ [Zdjecie 15]
+  nalezy przejsc do katologu \MDO2022\.git\hooks, a nastepnie sworzyc plik z opowiednim skryptem, źródło: https://www.tygertec.com/git-hooks-practical-uses-windows/ w przypadku windowsa samo #/bin/bash albo #/bin/ssh nie zadziała trzeba podac cala sciezke czyli na przyklad #!C:\Git\usr\bin\bash.exe tak przynajmniej wyglada to w teori, niestety u mnie to nie dziala 
+  Zrodlo: https://www.visualstudiogeeks.com/DevOps/UsingPowerShellForGitHooksWithVstsGitOnWindows
+  Na zdjeciu skrypt, ktory powinien dzialac, ale nie dziala 
+  Jako, ze probowalem sprawic, aby to zadzialalo to koniec koncow sie poddalem :( 
+  [Zdjecie 15]
 
- 7. Wystaw Pull Request do gałęzi grupowej1123123
+ 7. Wystaw Pull Request do gałęzi grupowej
+  [Zdjecie 16]
 
  8. Zgłoś zadanie (Teams assignment)
