@@ -44,7 +44,7 @@
  - Spróbuj wciągnąć swoją gałąź do gałęzi grupowej
  "git checkout GCL01"
  "git branch -l"
- "git merge MK284011"
+ "git merge MK284011" [Zdjecie 13]
  - Zaktualizuj sprawozdanie i zrzuty o ten krok i wyślij aktualizację do zdalnego źródła (na swojej gałęzi)
  - Oznacz tagiem ostatni commit i wypchnij go na zdalną gałąź
  - Ustal hook, który będzie sprawdzał, czy wiadomość z commitem zawiera nazwę przedmiotu
