@@ -47,8 +47,10 @@
  "git merge MK284011" [Zdjecie 13]
  - Zaktualizuj sprawozdanie i zrzuty o ten krok i wyślij aktualizację do zdalnego źródła (na swojej gałęzi)
  - Oznacz tagiem ostatni commit i wypchnij go na zdalną gałąź
+ "git tag v.1.0.0MK" [Zdjecie 14]
  - Ustal hook, który będzie sprawdzał, czy wiadomość z commitem zawiera nazwę przedmiotu
  - W jaki sposób stworzyć hook, który będzie ustawiał prefiks wiadomości commitu tak, by miał nazwę przedmiotu?
+  nalezy przejsc do katologu \MDO2022\.git\hooks, a nastepnie sworzyc plik z opowiednim skryptem, źródło: https://support.gitkraken.com/working-with-repositories/githooksexample/ [Zdjecie 15]
 
  7. Wystaw Pull Request do gałęzi grupowej
 
