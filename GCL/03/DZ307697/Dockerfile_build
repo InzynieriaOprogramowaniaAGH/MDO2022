@@ -1,6 +1,10 @@
 FROM node:14
 
-WORKDIR /usr/jest-test
+WORKDIR /usr/mdo
+
+RUN ["git", "clone", "git@github.com:dzborowski/jest-test.git"]
+
+RUN ["cd", "jest-test"]
 
 RUN ["npm", "ci"]
 
