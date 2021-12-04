@@ -4,13 +4,13 @@
 
 * Pobierz obraz Ubuntu
 
-![screen1](screen1.png)
+![screen1](screen1.PNG)
 
 * Podłącz wolumin do kontenera
 * Skopiuj plik do katalogu woluminu, pokaż w kontenerze
 * Utwórz plik w kontenerze, na obszarze woluminu, pokaż na hoście
 
-![screen2](screen2.png)
+![screen2](screen2.PNG)
 
 #### Kiepski pomysł: SSH
 * Uruchom i wyeksponuj wybrany port w kontenerze
@@ -26,6 +26,7 @@ Zamiast tego uruchomiono nginx. Serwer HTTP nasłuchuje w kontenerze na porcie 8
 Sprawdzamy działanie poprzez polecenie curl
 * dla hosta witryna dostępna jest pod adresem -> localhost:1234
 * w kontenerze witryna dostępna jest pod adresem -> localhost:80
+![screen3](screen3.PNG)
 
 #### Skonteneryzowany Jenkins stosujący Dockera
 
