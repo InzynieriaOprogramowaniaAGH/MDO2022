@@ -49,12 +49,19 @@
  - Oznacz tagiem ostatni commit i wypchnij go na zdalną gałąź
  "git tag v.1.0.0MK" [Zdjecie 14]
  - Ustal hook, który będzie sprawdzał, czy wiadomość z commitem zawiera nazwę przedmiotu
+  Wyjasnione punkt nizej [Zdjecie 14.1] oraz [Zdjecie 15]
+
  - W jaki sposób stworzyć hook, który będzie ustawiał prefiks wiadomości commitu tak, by miał nazwę przedmiotu?
   nalezy przejsc do katologu \MDO2022\.git\hooks, a nastepnie sworzyc plik z opowiednim skryptem, źródło: https://www.tygertec.com/git-hooks-practical-uses-windows/ w przypadku windowsa samo #/bin/bash albo #/bin/ssh nie zadziała trzeba podac cala sciezke czyli na przyklad #!C:\Git\usr\bin\bash.exe tak przynajmniej wyglada to w teori, niestety u mnie to nie dziala 
   Zrodlo: https://www.visualstudiogeeks.com/DevOps/UsingPowerShellForGitHooksWithVstsGitOnWindows
   Na zdjeciu skrypt, ktory powinien dzialac, ale nie dziala 
   Jako, ze probowalem sprawic, aby to zadzialalo to koniec koncow sie poddalem :( 
-  [Zdjecie 15]
+  [Zdjecie 15] 
+  
+  Poprawka z dnia 4.12 -> uzylem juz gotowego pliku pre-commit i dodalem do niego zawartosc i zadzialalo :)
+  Hint z dodaniem calej sciezki do pierwszej linijki skrpytu jest potrzebny!
+  - Jednakze dodawanie prefixu nie dziala, poniewaz na winowsie sed nie wykrywa input file (w naszym przypadku input filem bedzie nazwa commita, a niestety na windowsie $1 nie dziala)
+  [Zdjecie 15.1] [Zdjecie 15.2]
 
  7. Wystaw Pull Request do gałęzi grupowej
   [Zdjecie 16]
