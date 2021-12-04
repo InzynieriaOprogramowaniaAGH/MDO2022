@@ -7,6 +7,7 @@ services:
     depends_on:
       - build
   build:
+    image: jest-test
     build:
       context: .
       dockerfile: Dockerfile_build
