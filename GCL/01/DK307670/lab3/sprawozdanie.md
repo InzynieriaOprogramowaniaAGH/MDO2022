@@ -4,13 +4,13 @@
 
 * Pobierz obraz Ubuntu
 
-![screen1](/screen1.png)
+![screen1](screen1.png)
 
 * Podłącz wolumin do kontenera
 * Skopiuj plik do katalogu woluminu, pokaż w kontenerze
 * Utwórz plik w kontenerze, na obszarze woluminu, pokaż na hoście
 
-![screen2](/screen2.png)
+![screen2](screen2.png)
 
 #### Kiepski pomysł: SSH
 * Uruchom i wyeksponuj wybrany port w kontenerze
