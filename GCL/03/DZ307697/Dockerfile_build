@@ -1,0 +1,7 @@
+FROM node:14
+
+WORKDIR /usr/jest-test
+
+RUN ["npm", "ci"]
+
+RUN ["npm", "run", "build"]
