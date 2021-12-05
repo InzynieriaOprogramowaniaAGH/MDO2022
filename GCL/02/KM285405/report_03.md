@@ -42,3 +42,20 @@ Dopiero wtedy mamy pełen dostęp do plików
 ![](img_03/10.jpg)
 
 ![](img_03/11.jpg)
+
+# "Kiepski pomysł": SSH
+
+## Uruchom, wyeksponuj wybrany port w kontenerze, zainstaluj w kontenerze serwer ssh
+
+```apt-get update
+apt-get -y install openssh-server```
+
+![](img_03/12.jpg)
+
+![](img_03/13.jpg)
+
+
+## zezwól na logowanie root
+## umieść klucz publiczny w woluminie, skopiuj go do pliku zaufanych w kontenerze
+## odnajdź adres IP kontenera w wewnętrznej sieci
+## uruchom usługę, połącz się z kontenerem
