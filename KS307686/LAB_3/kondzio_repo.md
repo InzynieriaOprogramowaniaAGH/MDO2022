@@ -2,20 +2,21 @@
 
 #### Łączność i woluminy na podstawie "złych" praktyk
 
-```shell
-
-```
 
 * Pobierz obraz Ubuntu
 ```shell
 $sudo docker pull ubuntu
 ```
+!(ss1.png)
 * Podłącz wolumin do kontenera
 ```shell
 $sudo docker volume ls
 $sudo docker volume create --name dysk
 $sudo docker volume inspect dysk
 ```
+!(ss2.png)
+!(ss3.png)
+!(ss4.png)
 * Skopiuj plik do katalogu woluminu, pokaż w kontenerze
 ```shell
 $touch example.txt
@@ -24,6 +25,8 @@ $cd /var/lib/docker/volumes/dysk/_data/
 $ls
 $sudo docker run -it --mount type=bind,source=/var/lib/docker/volumes/dysk,target=/_data  ubuntu
 ```
+!(ss5.png)
+!(ss6.png)
 * Utwórz plik w kontenerze, na obszarze woluminu, pokaż na hoście
 ```shell
 $sudo docker run -it --mount type=bind,source=/var/lib/docker/volumes/dysk,target=/_data  ubuntu
@@ -32,16 +35,46 @@ $exit
 $cd /var/lib/docker/volumes/dysk/_data/
 $ls
 ```
-
+!(ss7.png)
+!(ss8.png)
 #### "Kiepski pomysł": SSH
 * Uruchom i wyeksponuj wybrany port w kontenerze
+```shell
+$sudo netstat -tunpa
+$sudo docker run -it --mount type=bind,source=/var/lib/docker/volumes/dysk,target=/_data  --publish 2222:22 ubuntu
+$sudo docker ps
+```
+!(ss9.png)
+!(ss10.png)
+!(ss11.png)
 * Zainstaluj w kontenerze serwer ssh
+```shell
+$apt-get install upgrade && -y install openssh-server
+```
 * zmień port na wybrany port >1024
+Zrobione 2 kroki temu 
 * zezwól na logowanie root
 * umieść klucz publiczny w woluminie, skopiuj go do pliku zaufanych w kontenerze
+```shell
+$ssh-keygen
+$sudo cp id_rsa.pub /var/lib/docker/volumes/dysk/_data
+```
+!(ss14.png)
+```shell
+$cp id_rsa.pub /root/.ssh/authorized_keys/
+```
+!(ss15.png)
 * odnajdź adres IP kontenera w wewnętrznej sieci
+```shell
+$ifconfig
+```
+!(ss12.png)
+!(ss13.png)
 * uruchom usługę, połącz się z kontenerem
-
+```shell
+ssh root@172.17.0.1 -p 2222e
+```
+!(ss20.png)
 #### Skonteneryzowany Jenkins stosujący Dockera
 
 #### Przygotowanie
@@ -65,3 +98,4 @@ $ls
   * Wymagania wstępne środowiska
   * Diagram aktywności, pokazujący kolejne etapy (collect, build, test, report)
   * Diagram wdrożeniowy, opisujący relacje między składnikami, zasobami i artefaktami
+
