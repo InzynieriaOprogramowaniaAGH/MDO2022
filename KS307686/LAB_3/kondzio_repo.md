@@ -7,16 +7,16 @@
 ```shell
 $sudo docker pull ubuntu
 ```
-!(ss1.png)
+![image](ss1.png)
 * Podłącz wolumin do kontenera
 ```shell
 $sudo docker volume ls
 $sudo docker volume create --name dysk
 $sudo docker volume inspect dysk
 ```
-!(ss2.png)
-!(ss3.png)
-!(ss4.png)
+![image](ss2.png)
+![image](ss3.png)
+![image](ss4.png)
 * Skopiuj plik do katalogu woluminu, pokaż w kontenerze
 ```shell
 $touch example.txt
@@ -25,8 +25,8 @@ $cd /var/lib/docker/volumes/dysk/_data/
 $ls
 $sudo docker run -it --mount type=bind,source=/var/lib/docker/volumes/dysk,target=/_data  ubuntu
 ```
-!(ss5.png)
-!(ss6.png)
+![image](ss5.png)
+![image](ss6.png)
 * Utwórz plik w kontenerze, na obszarze woluminu, pokaż na hoście
 ```shell
 $sudo docker run -it --mount type=bind,source=/var/lib/docker/volumes/dysk,target=/_data  ubuntu
@@ -35,8 +35,8 @@ $exit
 $cd /var/lib/docker/volumes/dysk/_data/
 $ls
 ```
-!(ss7.png)
-!(ss8.png)
+![image](ss7.png)
+![image](ss8.png)
 #### "Kiepski pomysł": SSH
 * Uruchom i wyeksponuj wybrany port w kontenerze
 ```shell
@@ -44,9 +44,9 @@ $sudo netstat -tunpa
 $sudo docker run -it --mount type=bind,source=/var/lib/docker/volumes/dysk,target=/_data  --publish 2222:22 ubuntu
 $sudo docker ps
 ```
-!(ss9.png)
-!(ss10.png)
-!(ss11.png)
+![image](ss9.png)
+![image](ss10.png)
+![image](ss11.png)
 * Zainstaluj w kontenerze serwer ssh
 ```shell
 $apt-get install upgrade && -y install openssh-server
@@ -59,22 +59,22 @@ Zrobione 2 kroki temu
 $ssh-keygen
 $sudo cp id_rsa.pub /var/lib/docker/volumes/dysk/_data
 ```
-!(ss14.png)
+![image](ss14.png)
 ```shell
 $cp id_rsa.pub /root/.ssh/authorized_keys/
 ```
-!(ss15.png)
+![image](ss15.png)
 * odnajdź adres IP kontenera w wewnętrznej sieci
 ```shell
 $ifconfig
 ```
-!(ss12.png)
-!(ss13.png)
+![image](ss12.png)
+![image](ss13.png)
 * uruchom usługę, połącz się z kontenerem
 ```shell
 ssh root@172.17.0.1 -p 2222e
 ```
-!(ss20.png)
+![image](ss20.png)
 #### Skonteneryzowany Jenkins stosujący Dockera
 
 #### Przygotowanie
