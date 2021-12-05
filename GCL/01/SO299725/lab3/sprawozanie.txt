@@ -1,0 +1,7 @@
+
+1. volumen: 
+- docker volume create <nazwa> 
+2. Podpinamy volumen i urchamiamy dockera: 
+- docker run --interactive --tty --mount source=nazwa volumenu,destination=/store ubuntu (img2)
+
+
