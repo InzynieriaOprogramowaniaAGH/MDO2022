@@ -61,30 +61,67 @@ Sprawozdanie
     
   - zmień port na wybrany port >1024
     
-    Najpierw musiałam zainstalować poleceniem "apt-get install vim" program vim, który pozwali mi odtworzyć pliki. Następnie weszłam w plik sshd_config
+    Najpierw musiałam zainstalować poleceniem "apt-get install vim" program vim, który pozwali mi odtworzyć pliki. Następnie weszłam w plik sshd_config.
     
     ![image](https://user-images.githubusercontent.com/28841971/144752975-01c66a35-a25c-4d46-b119-cae605314a54.png)
     ![image](https://user-images.githubusercontent.com/28841971/144752999-61cf5d05-b0e5-4590-8eeb-db4d3d19bc88.png)
 
-    i edytowałam port z 22, na 2048:20
+    i edytowałam port z 22, na 20
     
-    ![image](https://user-images.githubusercontent.com/28841971/144753012-07d74c12-a62e-4b80-8523-833a611be7a8.png)
+    ![image](https://user-images.githubusercontent.com/28841971/144757288-853c9671-c031-4445-804f-43876ab798dd.png)
+
+    Także powtórzyłam te czynności po prostu w terminalu. 
+
+    ![image](https://user-images.githubusercontent.com/28841971/144757255-1bff6ee5-d0e6-45cf-ae96-ca096318827b.png)
+
 
   - zezwól na logowanie root
   
-    Używając tego samego polecenia co przy zmianie portu zezwalam na logowanie root
+    Używając tego samego polecenia co przy zmianie portu zezwalam na logowanie root.
 
     ![image](https://user-images.githubusercontent.com/28841971/144753449-046a6c7e-443a-4fa8-b7ef-22b65eb2836f.png)
 
     przy PermitRootLogin usuwam prohibit-password na yes
     
-    ![image](https://user-images.githubusercontent.com/28841971/144753481-75409d2e-84d5-4fd8-9719-4b2e54d40ec5.png)
+    ![image](https://user-images.githubusercontent.com/28841971/144757285-8f306da6-9fa6-41d6-9f1e-cdaaeeb688ce.png)
+    
+    Tak samo tutaj powtórzyłam zmiane ogólnie w terminalu.
+    
+    ![image](https://user-images.githubusercontent.com/28841971/144757257-7834016c-bbfc-48c1-a8ca-1c12643c3510.png)
 
   - umieść klucz publiczny w woluminie, skopiuj go do pliku zaufanych w kontenerze
   
+   Stworzyłam klucz rsa w katalogu .ssh (wejście do katalogu "cd ~/.ssh"), poleceniem: "ssh-keygen -t rsa" 
+
+   ![image](https://user-images.githubusercontent.com/28841971/144757351-62f69f86-d910-49d5-bd2f-1583be578a41.png)
+   
+   i klucz publiczny umieściłam w woluminie. (na screenie przeniesiony nie z .ssh ze względu, że przypadkiem przeniosłam w inne miejsce zapominając o screenie)
+   
+   ![image](https://user-images.githubusercontent.com/28841971/144757567-cff70d83-4123-4c48-a07c-7a9cf42fd96f.png)
+   
+   ![image](https://user-images.githubusercontent.com/28841971/144757572-5ef5ba91-c44c-4c64-a328-47df8208bc90.png)
+   
+   ![image](https://user-images.githubusercontent.com/28841971/144757546-cb2980f4-e8f4-4bc6-b198-682cdb9f5738.png)
+   
+   Następnie utworzyłam katalog .ssh skopiowałam klucz do pliku zaufanego poleceniem
+   
+   ![image](https://user-images.githubusercontent.com/28841971/144757931-1c1620ac-db4f-4d72-8dc2-975ceb01d190.png)
     
   - odnajdź adres IP kontenera w wewnętrznej sieci
+
+    Najpierw zainstalowałam net-tools, poleceniem: "apt-get install net-tools". 
+
+    ![image](https://user-images.githubusercontent.com/28841971/144757498-0b9a631e-40ca-4fe9-b3b9-9ff367da5432.png)
+
+    Później używając "ifconfig" wyświetliłam adres IP kontenera.
+    
+    ![image](https://user-images.githubusercontent.com/28841971/144757622-20e08660-f936-46ab-97e8-ff0b22a85d9d.png)
+    
   - uruchom usługę, połącz się z kontenerem
+  
+    Poleceniem "ssh root@127.17.0.3 -p 20" uruchomiłam usługe.
+    
+    ![image](https://user-images.githubusercontent.com/28841971/144758004-22c55bc0-00e9-45c9-a6c6-f3c69cfe7121.png)
 
 Skonteneryzowany Jenkins stosujący Dockera
 
