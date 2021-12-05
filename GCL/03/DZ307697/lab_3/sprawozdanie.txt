@@ -20,13 +20,14 @@
 Przygotowanie
 
     - Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone - 16_jenkins.png, 17_jenkins.png
-    - Przygotuj obraz blueocean na podstawie obrazu jenkinsa - 18_jenkins.png, 19_jenkins.png
+    - Przygotuj obraz blueocean na podstawie obrazu jenkinsa - 18_jenkins.png, 19_jenkins.png, Dockerfile_jenkins
     - Uruchom blueocean - 20_jenkins.png, 21_jenkins.png
     - Zaloguj się i skonfiguruj Jenkins - 22_jenkins.png, 23_jenkins.png
 
 Mikro-projekt Jenkins
 
     - Utwórz projekt, który wyświetla uname - 24_jenkins_project.png, 25_jenkins_project.png
-    - Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta - 26_jenkins_project.png, 27_jenkins_project.png
+    - Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta - 26_jenkins_project.png, 27_jenkins_project.png, hour_script.sh
     - Utwórz "prawdziwy" projekt - 28_jenkins_project.png, 29_jenkins_project.png,
-      30_jenkins_project.png, 31_jenkins_project.png(doinstalowanie docker-compose'a w jenkins), 32_jenkins_project.png
+      30_jenkins_project.png, 31_jenkins_project.png(doinstalowanie docker-compose'a w jenkins), 32_jenkins_project.png,
+      Dockerfile_build, Dockerfile_test, docker-compose.yml
