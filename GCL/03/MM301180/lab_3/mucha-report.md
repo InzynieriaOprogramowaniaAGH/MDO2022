@@ -47,13 +47,48 @@ $ touch /store/plit_testowy_store
 `[img] screen_10 - screen_11`
 
 #### "Kiepski pomysł": SSH
+```shell
+$ sudo netstat -tunpa
+```
+`[img] screen_12`
+
 * Uruchom i wyeksponuj wybrany port w kontenerze
-* Zainstaluj w kontenerze serwer ssh
 * zmień port na wybrany port >1024
-* zezwól na logowanie root
-* umieść klucz publiczny w woluminie, skopiuj go do pliku zaufanych w kontenerze
+```shell
+$ sudo docker run -it --mount source=pendrajw,destination=/store --publish 2222:22 ubuntu
+$ sudo docker ps -a
+```
+
+`[img] screen_13`
+
+* Zainstaluj w kontenerze serwer ssh
+```shell
+$ apt-get update
+$ apt-get -y install openssh-server
+```
+
+`[img] screen_14`
+
+```shell
+$ /usr/sbin/sshd -D &
+$ mkdir /run/sshd
+$ /usr/sbin/sshd -D &
+```
+
+`[img] screen_15 - screen_17`
+
 * odnajdź adres IP kontenera w wewnętrznej sieci
+
+`[img] screen_18 - screen_20`
+
+* umieść klucz publiczny w woluminie, skopiuj go do pliku zaufanych w kontenerze
+* zezwól na logowanie root
+  
+`[img] screen_21 - screen_23`
+
 * uruchom usługę, połącz się z kontenerem
+  
+`[img] screen_24`
 
 #### Skonteneryzowany Jenkins stosujący Dockera
 
