@@ -1,31 +1,32 @@
 1. Łączność i woluminy na podstawie "złych" praktyk
 
-    - Pobierz obraz Ubuntu
-    - Podłącz wolumin do kontenera
-    - Skopiuj plik do katalogu woluminu, pokaż w kontenerze
-    - Utwórz plik w kontenerze, na obszarze woluminu, pokaż na hoście
+    - Pobierz obraz Ubuntu - 1_ubuntu.png
+    - Podłącz wolumin do kontenera - 2_volume.png, 3_volume.png
+    - Skopiuj plik do katalogu woluminu, pokaż w kontenerze - 4_volume.png, 5_volume.png
+    - Utwórz plik w kontenerze, na obszarze woluminu, pokaż na hoście - 6_volume.png, 7_volume.png
 
 2. "Kiepski pomysł": SSH
 
-    - Uruchom i wyeksponuj wybrany port w kontenerze
-    - Zainstaluj w kontenerze serwer ssh
-    - zmień port na wybrany port >1024
-    - zezwól na logowanie root
-    - umieść klucz publiczny w woluminie, skopiuj go do pliku zaufanych w kontenerze
-    - odnajdź adres IP kontenera w wewnętrznej sieci
-    - uruchom usługę, połącz się z kontenerem
+    - Uruchom i wyeksponuj wybrany port w kontenerze - 8_ports.png
+    - Zainstaluj w kontenerze serwer ssh - 8_ssh.png
+    - zmień port na wybrany port >1024 - 9_ssh.png
+    - zezwól na logowanie root - 10_ssh.png
+    - umieść klucz publiczny w woluminie, skopiuj go do pliku zaufanych w kontenerze - 11_ssh.png, 12_ssh.png
+    - odnajdź adres IP kontenera w wewnętrznej sieci - 14_ssh.png, 15_ssh.png
+    - uruchom usługę, połącz się z kontenerem - 13_ssh.png, 15_ssh.png
 
 3. Skonteneryzowany Jenkins stosujący Dockera
 
 Przygotowanie
 
-    - Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone
-    - Przygotuj obraz blueocean na podstawie obrazu jenkinsa
-    - Uruchom blueocean
-    - Zaloguj się i skonfiguruj Jenkins
+    - Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone - 16_jenkins.png, 17_jenkins.png
+    - Przygotuj obraz blueocean na podstawie obrazu jenkinsa - 18_jenkins.png, 19_jenkins.png
+    - Uruchom blueocean - 20_jenkins.png, 21_jenkins.png
+    - Zaloguj się i skonfiguruj Jenkins - 22_jenkins.png, 23_jenkins.png
 
 Mikro-projekt Jenkins
 
-    - Utwórz projekt, który wyświetla uname
-    - Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta
-    - Utwórz "prawdziwy" projekt
+    - Utwórz projekt, który wyświetla uname - 24_jenkins_project.png, 25_jenkins_project.png
+    - Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta - 26_jenkins_project.png, 27_jenkins_project.png
+    - Utwórz "prawdziwy" projekt - 28_jenkins_project.png, 29_jenkins_project.png,
+      30_jenkins_project.png, 31_jenkins_project.png(doinstalowanie docker-compose'a w jenkins), 32_jenkins_project.png
