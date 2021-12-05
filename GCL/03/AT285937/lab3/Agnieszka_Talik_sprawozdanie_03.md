@@ -3,6 +3,11 @@
 #### Łączność i woluminy na podstawie "złych" praktyk
 
 * Pobierz obraz Ubuntu
+
+      sudo docker pull ubuntu
+      
+      ![image](https://user-images.githubusercontent.com/80592460/144741165-6811ff90-9738-4929-bb7d-10f3db964bae.png)
+      
 * Podłącz wolumin do kontenera
 
 Tworzenie woluminu:
@@ -33,11 +38,33 @@ Podłączanie do kontenera:
 
 #### "Kiepski pomysł": SSH
 * Uruchom i wyeksponuj wybrany port w kontenerze
+
+      docker run -it --mount source=moj_wolumin,destination=/store --publish 2222:22 ubuntu
+
+![image](https://user-images.githubusercontent.com/80592460/144742850-7a87b887-2cfa-4158-ab44-b119d5491d38.png)
+
 * Zainstaluj w kontenerze serwer ssh
+
+      apt-get update
+      apt-get install openssh-server
+      
+![image](https://user-images.githubusercontent.com/80592460/144742341-91c7c5dd-fde5-4c5b-968d-adcad5ccb23e.png)
+
 * zmień port na wybrany port >1024
 * zezwól na logowanie root
+
+![image](https://user-images.githubusercontent.com/80592460/144744454-4bed90f6-7407-44a8-8718-7b4194a9995e.png)
+
+![image](https://user-images.githubusercontent.com/80592460/144744478-be20ad93-1b65-4344-b14b-62d27f87bde5.png)
+
 * umieść klucz publiczny w woluminie, skopiuj go do pliku zaufanych w kontenerze
 * odnajdź adres IP kontenera w wewnętrznej sieci
+
+      docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nazwa_kontenera
+
+![image](https://user-images.githubusercontent.com/80592460/144743895-08eefb7e-d689-47e4-aa9c-03e52ddae96f.png)
+
+
 * uruchom usługę, połącz się z kontenerem
 
 #### Skonteneryzowany Jenkins stosujący Dockera
