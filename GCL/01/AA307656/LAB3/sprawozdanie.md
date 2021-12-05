@@ -5,6 +5,7 @@
 
    - Pobierz obraz Ubuntu
    - Podłącz wolumin do kontenera
+   
     $ docker volume create pendrive
     $ docker volume inspect pendrive
 [
@@ -35,21 +36,31 @@
 ##2 . "Kiepski pomysł": SSH
 
    - Uruchom i wyeksponuj wybrany port w kontenerze
+   
     $ sudo docker run -iteractive --tty --mount source=pendrive,destination=/store --publish 2345:22 ubuntu
   
 ![screen: port w kontenerze](screenshots/4.png)
 ![screen: port w kontenerze](screenshots/5.png)
 
    - Zainstaluj w kontenerze serwer ssh
-   # apt update
-   # apt install ssh
+   
+   	# apt update
+   	# apt install ssh
+   	# apt-get -y install openssh-server
+   	# apt-get install net-tools
 
    - zmień port na wybrany port >1024
-   Aby to wykonać potrzebujemy doinstalować sobie usługi
-   # apt-get -y install openssh-server
    
+   $ sudo docker inspect 23d9fb41d069
+   
+![screen: port w kontenerze](screenshots/6.png)  
+   
+
    - zezwól na logowanie root
    - umieść klucz publiczny w woluminie, skopiuj go do pliku zaufanych w kontenerze
+   
+![screen: port w kontenerze](screenshots/8.png)
+ 
    - odnajdź adres IP kontenera w wewnętrznej sieci
    - uruchom usługę, połącz się z kontenerem
 }
