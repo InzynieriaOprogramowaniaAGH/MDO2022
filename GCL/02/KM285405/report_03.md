@@ -47,8 +47,9 @@ Dopiero wtedy mamy pełen dostęp do plików
 
 ## Uruchom, wyeksponuj wybrany port w kontenerze, zainstaluj w kontenerze serwer ssh
 
-```apt-get update
-apt-get -y install openssh-server```
+```apt-get update```
+
+```apt-get -y install openssh-server ```
 
 ![](img_03/12.jpg)
 
