@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+    jenkins:
+        image: jenkins/jenkins:lts-alpine
+        ports:
+            - 8989:8080
+            # Do not map the JNLP port for security reasons
+            # - 50000:50000
