@@ -63,11 +63,97 @@
 ### Skonteneryzowany Jenkins stosujący Dockera
 #### Przygotowanie
 1. Upewnij się, że Dockerfiles i Docker Compose z poprzednich zajęć są w repozytorium [zrzut 06]
-    - 
+    - Mozemy sprawdzic to logujac sie na GitHubie
+    - Mozemy rowniez zrobic to lokalnie prze git'a
+        - git pull origin SS306505
+        - git status
 
 2. Zapoznaj się z instrukcją https://www.jenkins.io/doc/book/installing/docker/
-Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone
-Przygotuj obraz blueocean na podstawie obrazu jenkinsa
-Uruchom blueocean
-Zaloguj się i skonfiguruj Jenkins
+    - Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone
+        - docker run \
+            --name jenkins-docker \
+            --rm \
+            --detach \
+            --privileged \
+            --network jenkins \
+            --network-alias docker \
+            --env DOCKER_TLS_CERTDIR=/certs \
+            --volume jenkins-docker-certs:/certs/client \
+            --volume jenkins-data:/var/jenkins_home \
+            --publish 2376:2376 \
+            docker:dind \
+            --storage-driver overlay2
+    - Przygotuj obraz blueocean na podstawie obrazu jenkinsa
+        - 03_Dockerfile
+            ```
+            FROM jenkins/jenkins:2.319.1-jdk11
+            USER root
+            RUN apt-get update && apt-get install -y lsb-release
+            RUN curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc \
+            https://download.docker.com/linux/debian/gpg
+            RUN echo "deb [arch=$(dpkg --print-architecture) \
+            signed-by=/usr/share/keyrings/docker-archive-keyring.asc] \
+            https://download.docker.com/linux/debian \
+            $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
+            RUN apt-get update && apt-get install -y docker-ce-cli
+            USER jenkins
+            RUN jenkins-plugin-cli --plugins "blueocean:1.25.1 docker-workflow:1.26"
+            ```
+        - Zbudujemy to uzywajac komendy build [zrzut 07]
+            - docker build -f 03_Dockerfile -t myjenkins-blueocean:1.1 .
+        
+    - Uruchom blueocean
+        - Uzyjemy gotowej komendy
+            - docker run \
+                --name jenkins-blueocean \
+                --rm \
+                --detach \
+                --network jenkins \
+                --env DOCKER_HOST=tcp://docker:2376 \
+                --env DOCKER_CERT_PATH=/certs/client \
+                --env DOCKER_TLS_VERIFY=1 \
+                --publish 8080:8080 \
+                --publish 50000:50000 \
+                --volume jenkins-data:/var/jenkins_home \
+                --volume jenkins-docker-certs:/certs/client:ro \
+                myjenkins-blueocean:1.1 
+    - Wyniki uruchomienia obu kontenerow mozemy sprawdzic poleceniem ps [zrzut 8]
+        - docker ps
+    - Zaloguj się i skonfiguruj Jenkins 
+        - W adresue przegladarki przejdz do http://localhost:8080 [zrzut 09]
+        - Haslo do Jenkinsa mozemy znalezc w logach kontenera
+            - docker logs <container_id>
+        - Haslo mozemy rowniez zobaczyc wykonujac komende w kontenerze
+            - sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+        - Jenkins poprosi o stworzenie konta admina i wybor wtyczek
+        - Po przeklikaniu powinnismy zobaczyc ekran glowny [zrzut 10]
     
+    ### Mikro-projekt Jenkins
+
+    1. Utwórz projekt, który wyświetla uname
+        - Klikamy Nowy Projekt i nadajemy mu nazwe [zrzut 11]
+        - W zakladce Budowanie dodajemy krok Uruchom powloke i wpisujemy komende [zrzut 12]
+            - uname -a
+        - Klikamy Uruchom, aby uruchomic naszego builda
+        - Sprawdzamy w logach konsoli wynik dzialania builda [zrzut 13]
+    2. Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta 
+        - Tworzymy projekt jak w kroku poprzednim 
+        - W polu Uruchom powloke wpisujemy sciezke bezwgledna do skryptu shell-a [zrzut 14]
+            -/tmp/skrypt.sh
+        - Tworzymy skrypt
+            -touch skrypt.sh
+            -chmod ugo+x skrypt.sh
+        - skrypt.sh 
+        ```
+        #!/bin/bash
+        currenthour=$(date +"%H")
+        if ! (($currenthour%2)) ; then 
+            echo "Even hour!"
+            exit 0
+        else
+            echo "Odd hour!"
+            exit 1
+        fi
+        ```
+        - Sprawdzamy dla godziny parzystej [zrzut 15] oraz nieparzystej [zrzut 16]
+    3. Buduje obrazy z dockerfiles i/lub komponuje via docker-compose
