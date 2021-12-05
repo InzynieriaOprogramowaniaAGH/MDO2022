@@ -1,4 +1,4 @@
-# Metodyki DevOps - Labolatoria 2
+# Metodyki DevOps - Laboratoria 2
 
 ## Zestawienie środowiska
 

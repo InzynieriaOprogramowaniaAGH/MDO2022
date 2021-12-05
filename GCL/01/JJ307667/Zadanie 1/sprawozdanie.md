@@ -1,4 +1,4 @@
-# Metodyki DevOps - Labolatoria 1
+# Metodyki DevOps - Laboratoria 1
 
 ### Ściągamy niezbędne narzędzia (github, ssh)
 Komendy:
