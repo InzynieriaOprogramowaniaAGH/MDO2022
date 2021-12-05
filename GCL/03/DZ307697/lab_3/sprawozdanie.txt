@@ -1,0 +1,31 @@
+1. Łączność i woluminy na podstawie "złych" praktyk
+
+    - Pobierz obraz Ubuntu
+    - Podłącz wolumin do kontenera
+    - Skopiuj plik do katalogu woluminu, pokaż w kontenerze
+    - Utwórz plik w kontenerze, na obszarze woluminu, pokaż na hoście
+
+2. "Kiepski pomysł": SSH
+
+    - Uruchom i wyeksponuj wybrany port w kontenerze
+    - Zainstaluj w kontenerze serwer ssh
+    - zmień port na wybrany port >1024
+    - zezwól na logowanie root
+    - umieść klucz publiczny w woluminie, skopiuj go do pliku zaufanych w kontenerze
+    - odnajdź adres IP kontenera w wewnętrznej sieci
+    - uruchom usługę, połącz się z kontenerem
+
+3. Skonteneryzowany Jenkins stosujący Dockera
+
+Przygotowanie
+
+    - Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone
+    - Przygotuj obraz blueocean na podstawie obrazu jenkinsa
+    - Uruchom blueocean
+    - Zaloguj się i skonfiguruj Jenkins
+
+Mikro-projekt Jenkins
+
+    - Utwórz projekt, który wyświetla uname
+    - Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta
+    - Utwórz "prawdziwy" projekt
