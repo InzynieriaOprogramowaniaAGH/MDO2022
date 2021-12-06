@@ -1,15 +1,14 @@
-#Część pierwsza - czas do końća weekendu
-{
+# Część pierwsza - czas do końća weekendu
 
-##1 . Łączność i woluminy na podstawie "złych" praktyk
+
+## 1 . Łączność i woluminy na podstawie "złych" praktyk
 
    - Pobierz obraz Ubuntu
    - Podłącz wolumin do kontenera
    
     $ docker volume create pendrive
     $ docker volume inspect pendrive
-[
-    {
+
         "CreatedAt": "2021-12-04T15:51:48+01:00",
         "Driver": "local",
         "Labels": {},
@@ -17,8 +16,8 @@
         "Name": "pendrive",
         "Options": {},
         "Scope": "local"
-    }
-]
+    
+
     $ sudo docker run -iteractive --tty --mount source=pendrive,destination=/store ubuntu
 
 ![screen: utworzenie volumenu](screenshots/1.png)
@@ -33,14 +32,19 @@
 ![screen: pokazanie pliku na hoscie](screenshots/3.png)	
 
 
-##2 . "Kiepski pomysł": SSH
+## 2 . "Kiepski pomysł": SSH
 
    - Uruchom i wyeksponuj wybrany port w kontenerze
    
-    $ sudo docker run -iteractive --tty --mount source=pendrive,destination=/store --publish 2345:22 ubuntu
+    $ sudo docker run --interactive --tty --mount source=pendrive,destination=/store --publish 2345:22 ubuntu
   
-![screen: port w kontenerze](screenshots/4.png)
-![screen: port w kontenerze](screenshots/5.png)
+![screen: uruchomione procesy](screenshots/4.png)
+![screen: docker-proxy](screenshots/5.png)
+
+    $ sudo docker ps -a
+    $ sudo docker container inspect "id"
+
+![screen: poszukiwanie ip contenera](screenshots/7.png)
 
    - Zainstaluj w kontenerze serwer ssh
    
@@ -48,23 +52,29 @@
    	# apt install ssh
    	# apt-get -y install openssh-server
    	# apt-get install net-tools
+   	# mkdir /run/sshd
+	# /usr/sbin/sshd -D &
 
    - zmień port na wybrany port >1024
    
    $ sudo docker inspect 23d9fb41d069
    
-![screen: port w kontenerze](screenshots/6.png)  
+![screen: poszukiwanie ip contenera](screenshots/6.png)
    
 
    - zezwól na logowanie root
    - umieść klucz publiczny w woluminie, skopiuj go do pliku zaufanych w kontenerze
-   
-![screen: port w kontenerze](screenshots/8.png)
+    # ls -la /store
+    # cp /store/id_ed25519.pub /root/.ssh/authorized_keys
+      
+![screen: skopiowanie klucza publicznego](screenshots/8.png)
  
    - odnajdź adres IP kontenera w wewnętrznej sieci
    - uruchom usługę, połącz się z kontenerem
-}
-
+   
+![screen: netstat w kontenerze](screenshots/9.png)
+![screen: błędy z kluczem](screenshots/10.png)
+![screen: uruchomiona usługa z kontenerem](screenshots/11.png)
 
 
 Skonteneryzowany Jenkins stosujący Dockera
