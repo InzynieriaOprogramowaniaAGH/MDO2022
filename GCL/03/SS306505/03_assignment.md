@@ -3,6 +3,8 @@
 ## Kilka rad zanim zaczniesz
 - Niniejsza instrukcja zaklada prace pod systemem Windows z zainstalowanym WSL2
 - Aby korzystac z docker'a pod WSL2 nalezy zainstalowac aplikacje [Docker Desktop for Windows ](https://hub.docker.com/editions/community/docker-ce-desktop-windows)
+- Korzystajac z WSL2 nalezy pamietac o tym ze adresy kontenerow beda NAT-owane. 
+- Prawidlowego adresu ip szukamy np. poleceniem ip addr 
 
 ## Kroki
 
@@ -56,7 +58,7 @@
     - Na hoście kopiujemy klucz publiczny do katalogu wolumenu
         - cp ~/.ssh/id_es25519.pub /home/seb/volume
     - W kontenerze kopiujemy klucz ten publiczny do zaufanych kluczy
-        - echo /home/root/id_es25519.pub > ~/.ssh/authorized_keys
+        - cat /home/seb/id_es25519.pub > /root/.ssh/authorized_keys
 6. Odnajdź adres IP kontenera w wewnętrznej sieci [zrzut 05]
     - Adres ip kontenera mozemy znalezc uzywajac polecenia inspect
         - docker inspect <container_id>
