@@ -29,36 +29,47 @@
 1. Uruchom i wyeksponuj wybrany port w kontenerze
     - Aby wyeksportowac port nalezy uzyc flagi -p lub --publish
     - Mozemy eksportowac kilka portow jednoczesnie
-        - docker run -it -v /home/seb/volume:/home/root --publish 2222:22 ubuntu
+        - docker run -it -v /home/seb/volume:/home/root --publish 8080:8080 ubuntu
 2. Zainstaluj w kontenerze serwer ssh
     - Nalezy najpierw zaktualizowac system
         - apt update
     - Nastepnie menadzerem pakietow doinstalowac serwer ssh
         - apt install openssh-server
+    - Na systemie nie posiadamy systemctl wiec daemona sshd bedziemy musieli opdalic recznie [zrzut 03]
+        - /usr/sbin/sshd -D &
+    - Moze wystapic problem z brakiem uprawnien i bedziemy musieli wtedy stworzyc brakujacy folder
+        - mkdir /run/sshd
 3. Zmień port na wybrany port > 1024
-    - ???????????????????
+    - Port na kontenerze od poczatku spelnial to zalozenie (>1024)
+    - Pozostaje nam zmienic nasluch ssh z domyslnego 22 na port wyeksponowany 8080
+        - Aby nie zwariowac podczas edytowania pliku polecam doinstalowac edytor tekstowy nano
+            - apt install nano
+        - Nastepnie zmienic linie Port w pliku sshd_config [zrzut 04]
+            - nano /etc/ssh/sshd_config
 4. Zezwól na logowanie root
     - Nalezy w tym celu zaktualizowac plik /etc/ssh/sshd_config
         - echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
+        - lub uzyc edytora nano
     - Nastepnie zrestartowac serwis sshd lub opdalić daemon'a od nowa
-        - systemctl restart sshd.service
         - /usr/sbin/sshd -D &
 5. Umieść klucz publiczny w woluminie, skopiuj go do pliku zaufanych w kontenerze
     - Na hoście kopiujemy klucz publiczny do katalogu wolumenu
-        - cp ~/.ssh/id_rsa.pub /home/seb/volume
+        - cp ~/.ssh/id_es25519.pub /home/seb/volume
     - W kontenerze kopiujemy klucz ten publiczny do zaufanych kluczy
-        - echo /home/root/id_rsa.pub > ~/.ssh/authorized_keys
-6. Odnajdź adres IP kontenera w wewnętrznej sieci [zrzut 04]
+        - echo /home/root/id_es25519.pub > ~/.ssh/authorized_keys
+6. Odnajdź adres IP kontenera w wewnętrznej sieci [zrzut 05]
     - Adres ip kontenera mozemy znalezc uzywajac polecenia inspect
         - docker inspect <container_id>
-        - docker inspect d3f13 | grep IPAddress | cut -d '"' -f 4
+        - docker inspect 0129 | grep IPAddress | cut -d '"' -f 4
+    
+    !!! UWAGA !!!
+    - Jako ze korzystamy z WSL2 nalezy pamietac o tym ze adresy kontenerow beda NAT-owane. Prawidlowego adresu ip szukamy poleceniem ip addr.
+        - ip addr
+        
 7. Uruchom usługę, połącz się z kontenerem
-    - Doinstalujemy systemctl aby sprawniej uruchomic usluge
-        - apt install systemctl
-    - Uruchomimy ja jak w normalnym ubuntu
-        - systemctl start sshd.service
-    - Z poziomu hosta podlaczymy sie po ssh do kontenera
-        - ssh root@172.17.0.2
+        - /usr/sbin/sshd -D &
+    - Z poziomu hosta podlaczymy sie po ssh do kontenera [zrzut 05]
+        - ssh root@172.19.102.162 -p 8080
 
 ### Skonteneryzowany Jenkins stosujący Dockera
 #### Przygotowanie
