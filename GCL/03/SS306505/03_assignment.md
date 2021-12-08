@@ -157,3 +157,18 @@
         ```
         - Sprawdzamy dla godziny parzystej [zrzut 15] oraz nieparzystej [zrzut 16]
     3. Buduje obrazy z dockerfiles i/lub komponuje via docker-compose
+        - Najpierw musimy podlaczyc sie do contenera jenkinsa i doinstalowac docker-compose'a
+            - uzyjemy w tym celu nastepujacych polecen [zrzut 17]
+                ```
+                docker exec -it -u root <container_id> /bin/bash
+                curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)"  -o /usr/local/bin/docker-compose
+                mv /usr/local/bin/docker-compose /usr/bin/docker-compose
+                chmod +x /usr/bin/docker-compose
+                ```
+        - Doinstalowujemy wtyczke do Jenkins-a
+            - Wchodzimy z głównego ekranu jenkinsa -> Zarządzaj Jenkinsem -> Zarządzaj wtyczkami -> Dostępne -> Docker Compose Build Step Plugin
+        - Następnie tworzymy nowy projekt jak poprzednio i nadajemy mu nazwe
+            - W sekcji 'Repozytorium kodu' wpisujemy adres URL [zrzut 18]
+            - W sekcji 'Budowanie' wybieramy naszą wtyczkę i wpisujemy ścieżke do pliku z docker-compose.yaml [zrzut 19]
+        - Klikamy Uruchom projekt
+        - Oglądamy wyniki logów w konsoli [zrzut 20-21]
