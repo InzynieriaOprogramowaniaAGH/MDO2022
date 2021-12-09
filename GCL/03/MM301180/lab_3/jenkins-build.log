@@ -1,0 +1,158 @@
+Started by user michal
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/real_one
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/real_one/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/michalmuchakr/docker-react-test-app.git # timeout=10
+Fetching upstream changes from https://github.com/michalmuchakr/docker-react-test-app.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.2'
+ > git fetch --tags --force --progress -- https://github.com/michalmuchakr/docker-react-test-app.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision 0ef89c20488a6f02bc7a72fc41637fcbbaa81a4e (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 0ef89c20488a6f02bc7a72fc41637fcbbaa81a4e # timeout=10
+Commit message: "fix naming for docker compose"
+ > git rev-list --no-walk 5d19a8b7cb2c0013671936796186ea7a57547a0b # timeout=10
+[real_one] $ /bin/sh -xe /tmp/jenkins10822196684495876168.sh
++ docker build .
+Sending build context to Docker daemon  2.099MB
+
+Step 1/7 : FROM node:10
+10: Pulling from library/node
+76b8ef87096f: Pulling fs layer
+2e2bafe8a0f4: Pulling fs layer
+b53ce1fd2746: Pulling fs layer
+84a8c1bd5887: Pulling fs layer
+7a803dc0b40f: Pulling fs layer
+b800e94e7303: Pulling fs layer
+0da9fbf60d48: Pulling fs layer
+04dccde934cf: Pulling fs layer
+73269890f6fd: Pulling fs layer
+84a8c1bd5887: Waiting
+7a803dc0b40f: Waiting
+b800e94e7303: Waiting
+0da9fbf60d48: Waiting
+04dccde934cf: Waiting
+73269890f6fd: Waiting
+b53ce1fd2746: Verifying Checksum
+b53ce1fd2746: Download complete
+2e2bafe8a0f4: Verifying Checksum
+2e2bafe8a0f4: Download complete
+76b8ef87096f: Verifying Checksum
+76b8ef87096f: Download complete
+b800e94e7303: Verifying Checksum
+b800e94e7303: Download complete
+84a8c1bd5887: Verifying Checksum
+84a8c1bd5887: Download complete
+04dccde934cf: Verifying Checksum
+04dccde934cf: Download complete
+73269890f6fd: Verifying Checksum
+73269890f6fd: Download complete
+76b8ef87096f: Pull complete
+2e2bafe8a0f4: Pull complete
+b53ce1fd2746: Pull complete
+0da9fbf60d48: Verifying Checksum
+0da9fbf60d48: Download complete
+84a8c1bd5887: Pull complete
+7a803dc0b40f: Verifying Checksum
+7a803dc0b40f: Download complete
+7a803dc0b40f: Pull complete
+b800e94e7303: Pull complete
+0da9fbf60d48: Pull complete
+04dccde934cf: Pull complete
+73269890f6fd: Pull complete
+Digest: sha256:59531d2835edd5161c8f9512f9e095b1836f7a1fcb0ab73e005ec46047384911
+Status: Downloaded newer image for node:10
+ ---> 28dca6642db8
+Step 2/7 : WORKDIR /usr/src/app
+ ---> Running in 5246f7873538
+
+Removing intermediate container 5246f7873538
+ ---> 605bfd21ffb0
+Step 3/7 : COPY package*.json ./
+ ---> 5429207da874
+Step 4/7 : RUN npm install
+ ---> Running in 9f2d68cd3408
+
+[91mnpm[0m[91m [0m[91mWARN[0m[91m [0m[91mread-shrinkwrap[0m[91m This version of npm is compatible with lockfileVersion@1, but package-lock.json was generated for lockfileVersion@2. I'll try to do my best with it!
+
+[0m
+> core-js@2.6.12 postinstall /usr/src/app/node_modules/babel-runtime/node_modules/core-js
+> node -e "try{require('./postinstall')}catch(e){}"
+
+[96mThank you for using core-js ([94m https://github.com/zloirock/core-js [96m) for polyfilling JavaScript standard library![0m
+
+[96mThe project needs your help! Please consider supporting of core-js on Open Collective or Patreon: [0m
+[96m>[94m https://opencollective.com/core-js [0m
+[96m>[94m https://www.patreon.com/zloirock [0m
+
+[96mAlso, the author of core-js ([94m https://github.com/zloirock [96m) is looking for a good job -)[0m
+
+
+> core-js@3.19.1 postinstall /usr/src/app/node_modules/core-js
+> node -e "try{require('./postinstall')}catch(e){}"
+
+[96mThank you for using core-js ([94m https://github.com/zloirock/core-js [96m) for polyfilling JavaScript standard library![0m
+
+[96mThe project needs your help! Please consider supporting of core-js:[0m
+[96m>[94m https://opencollective.com/core-js [0m
+[96m>[94m https://patreon.com/zloirock [0m
+[96m>[94m https://paypal.me/zloirock [0m
+[96m>[94m bitcoin: bc1qlea7544qtsmj2rayg0lthvza9fau63ux0fstcz [0m
+
+[96mAlso, the author of core-js ([94m https://github.com/zloirock [96m) is looking for a good job -)[0m
+
+
+> core-js-pure@3.19.1 postinstall /usr/src/app/node_modules/core-js-pure
+> node -e "try{require('./postinstall')}catch(e){}"
+
+[96mThank you for using core-js ([94m https://github.com/zloirock/core-js [96m) for polyfilling JavaScript standard library![0m
+
+[96mThe project needs your help! Please consider supporting of core-js:[0m
+[96m>[94m https://opencollective.com/core-js [0m
+[96m>[94m https://patreon.com/zloirock [0m
+[96m>[94m https://paypal.me/zloirock [0m
+[96m>[94m bitcoin: bc1qlea7544qtsmj2rayg0lthvza9fau63ux0fstcz [0m
+
+[96mAlso, the author of core-js ([94m https://github.com/zloirock [96m) is looking for a good job -)[0m
+
+
+> ejs@2.7.4 postinstall /usr/src/app/node_modules/ejs
+> node ./postinstall.js
+
+Thank you for installing [35mEJS[0m: built with the [32mJake[0m JavaScript build tool ([32mhttps://jakejs.com/[0m)
+
+[91mnpm[0m[91m [0m[91mWARN[0m[91m [0m[91moptional[0m[91m SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules/webpack-dev-server/node_modules/fsevents):
+[0m[91mnpm[0m[91m [0m[91mWARN[0m[91m [0m[91mnotsup[0m[91m SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+[0m[91mnpm[0m[91m [0m[91mWARN[0m[91m [0m[91moptional[0m[91m SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.13 (node_modules/watchpack-chokidar2/node_modules/fsevents):
+[0m[91mnpm[0m[91m [0m[91mWARN[0m[91m [0m[91mnotsup[0m[91m SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.13: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+[0m[91mnpm[0m[91m [0m[91mWARN[0m[91m [0m[91moptional[0m[91m SKIPPING OPTIONAL DEPENDENCY: fsevents@2.3.2 (node_modules/fsevents):
+[0m[91mnpm[0m[91m [0m[91mWARN[0m[91m [0m[91mnotsup[0m[91m SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@2.3.2: wanted {"os":"darwin","arch":"any"} (current: {"os":"linux","arch":"x64"})
+[0m[91m
+[0madded 1940 packages from 742 contributors and audited 1945 packages in 167.757s
+
+154 packages are looking for funding
+  run `npm fund` for details
+
+found 13 vulnerabilities (8 moderate, 4 high, 1 critical)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+Removing intermediate container 9f2d68cd3408
+ ---> 0d83746c9693
+Step 5/7 : COPY . .
+
+ ---> f284f102c23b
+Step 6/7 : EXPOSE 3000
+ ---> Running in d70f258be0c9
+
+Removing intermediate container d70f258be0c9
+ ---> f7115c8c402b
+Step 7/7 : CMD [ "npm", "start" ]
+ ---> Running in cdec6adab649
+Removing intermediate container cdec6adab649
+ ---> 9da22b553b06
+Successfully built 9da22b553b06
+Finished: SUCCESS
