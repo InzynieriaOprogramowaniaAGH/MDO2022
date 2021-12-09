@@ -3,33 +3,51 @@
 #### Łączność i woluminy na podstawie "złych" praktyk
 
 * Pobierz obraz Ubuntu
-#PobranieObrazuUbuntu.png
+
+`PobranieObrazuUbuntu.png`
 * Podłącz wolumin do kontenera
-StworzenieWoluminu.png
-SprawdzenieWoluminu.png
-podlaczeniewoluminum.png
+
+`StworzenieWoluminu.png`
+
+`SprawdzenieWoluminu.png`
+
+`podlaczeniewoluminum.png`
+
 * Skopiuj plik do katalogu woluminu, pokaż w kontenerze
-StworzeniePlikuNaHoscieDoKontenera
+
+`StworzeniePlikuNaHoscieDoKontenera.png`
+
 * Utwórz plik w kontenerze, na obszarze woluminu, pokaż na hoście
-PliczekZKontenera.png
+
+`PliczekZKontenera.png`
 
 #### "Kiepski pomysł": SSH
 * Uruchom i wyeksponuj wybrany port w kontenerze
-OdpalenieZPrzekierowaniemportu.png
+
+`OdpalenieZPrzekierowaniemportu.png`
 * Zainstaluj w kontenerze serwer ssh
-InstalacjaSSHWkontenerze.png
+
+`InstalacjaSSHWkontenerze.png`
 * zmień port na wybrany port >1024
 * zezwól na logowanie root
-EdycjaPlikuKonfiguracyjnegoSSH.png
+
+`EdycjaPlikuKonfiguracyjnegoSSH.png`
 * umieść klucz publiczny w woluminie, skopiuj go do pliku zaufanych w kontenerze
-Skopiowaniekluczydowoluminium.png
-SkopiowanieKluczyZwoluminium.png
+
+`Skopiowaniekluczydowoluminium.png`
+
+`SkopiowanieKluczyZwoluminium.png`
 * odnajdź adres IP kontenera w wewnętrznej sieci
+
 OdczytanieAdresuKontenera.png
 * uruchom usługę, połącz się z kontenerem
-uruchomienie usługi 
-service ssh start
-PodlaczenieDoKonteneraSSH.png
+
+`uruchomienie usługi `
+
+`service ssh start`
+
+`PodlaczenieDoKonteneraSSH.png`
+
 #### Skonteneryzowany Jenkins stosujący Dockera
 
 #### Przygotowanie
