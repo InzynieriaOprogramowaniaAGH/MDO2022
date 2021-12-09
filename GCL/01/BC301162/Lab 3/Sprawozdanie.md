@@ -80,13 +80,50 @@ Oraz zezwalamy na logowanie roota, które znajduje się w tym samym pliku
 
 ![10](https://user-images.githubusercontent.com/61689132/145461713-b18ed7b6-45ae-4607-8f36-d5cfeb8dc8fa.png)
 
+Do wolumenu kopiujemy klucze publiczne
 
+`cp <nazwa_pliku> <miejsce_do_którego_kopiujemy>`
 
+![11 1](https://user-images.githubusercontent.com/61689132/145464123-50fd34d8-4bb8-4359-aca3-519b9626a42e.png)
+![11 2](https://user-images.githubusercontent.com/61689132/145464126-277dc44d-fcc0-48c6-88df-707ed89c7dca.png)
 
+A następnie w kontenerze tworzymy folder i w nim wklejamy klucz
 
+`mkdir <ścieżka_do_folderu>`
 
+Klucz można wkleić na dwa sposoby
 
+Pierwszy -> `cp <plik_z_kluczem> <miejsce_do_którego_go_wklejamy>`
+Drugi -> `cat <plik_z_kluczem> >> <miejsce_do_którego_go_wklejamy>`
 
+![12 1](https://user-images.githubusercontent.com/61689132/145464424-89de9832-43f5-47a3-b7a9-6ab6db7f3459.png)
+![12 2](https://user-images.githubusercontent.com/61689132/145464437-81e5d962-64ac-4d5d-8207-f54e1fe4d725.png)
+
+Po przeklejeniu kluczy, uruchamiamy usługę ssh w kontenerze
+
+`service ssh start`
+
+![13](https://user-images.githubusercontent.com/61689132/145464508-f01aa40f-7805-4ff4-9496-468bdc1e6475.png)
+
+Możemy sprawdzić status usługi korzystając z komendy
+
+`service ssh status`
+
+Nie mamy zainstalowanej paczki która umożliwia użycie komendy `netstat`? Nic prostszego! Wystarczy wcześniej ją zainstalować
+
+`apt-get install net-tools`
+
+Po odpaleniu, sprawdzamy sobie adres IP naszego kontenera komendą
+
+`netstat -tunpa4`
+
+![14](https://user-images.githubusercontent.com/61689132/145464820-7ac35e4b-d588-4b3c-8dd1-66cf07a16154.png)
+
+Wychodzimy sobie z kontenera i łączymy sie komendą 
+
+`ssh root@<adres_ip_kontenera> -p <wcześniej_ustawiony_port>`
+
+![15](https://user-images.githubusercontent.com/61689132/145464977-3e2090ef-0e94-405c-88ac-23dbc1eb4199.png)
 
 
 
