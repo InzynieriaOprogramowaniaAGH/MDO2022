@@ -3,7 +3,7 @@
 #### Łączność i woluminy na podstawie "złych" praktyk
 
 * Pobierz obraz Ubuntu
-PobranieObrazuUbuntu.png
+####PobranieObrazuUbuntu.png
 * Podłącz wolumin do kontenera
 StworzenieWoluminu.png
 SprawdzenieWoluminu.png
