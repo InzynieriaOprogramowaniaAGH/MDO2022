@@ -210,3 +210,53 @@ Oraz ponownie testujemy, tym razem w kontenerze, korzystając z polecenia
 npm run test
 
 ![15](https://user-images.githubusercontent.com/61689132/142768834-732ce112-aa2a-41a4-808b-9b10a828fdc4.png)
+
+## 5. Stwórz Dockerfile 
+
+Dockerfile tworzymy za pomocą komendy
+
+touch <nazwa_pliku>
+
+A następnie edytujemy go dowolnym edytorem, w moim przypadku było to nano, jeśli nie posiadamy tego edytora, to doinstalowujemy go
+
+apt-get install nano 
+
+I wchodzimy do pliku
+
+nano <plik_który_edytujemy>
+
+Plik po edycji powinien wyglądać jak poniżej:
+
+![16](https://user-images.githubusercontent.com/61689132/145456550-633f8825-d576-4a2c-9a2f-22f8dc57ce5e.png)
+
+FROM <nazwa_obrazu> - Ustalamy, na bazie jakiego obrazu ma być tworzony
+RUN <komendy> - Wybieramy, jakie komendy mają się odpalić
+ARG DEBIAN_FRONTEND=noninteractive - Ten argument, automatycznie pomija miejsca przy instalacji, gdzie potrzebna jest nasza interakcja
+WORKDIR <nazwa_katalogu> - Wybieramy miejsce do wykonania poleceń
+CMD ["komendy", "komendy"] - Odpala wybrane przez nas komendy. Można zastosować tylko raz w takim pliku, w przeciwnym razie, reszta tych komend zostanie pominięta i odpalona zostanie tylko ostatnia.
+ 
+Budujemy obraz korzystając z poniższej komendy:
+ 
+sudo docker build -t <nazwa_obrazu> <miejsce_zbudowania>
+ 
+![17](https://user-images.githubusercontent.com/61689132/145457460-f95e7843-624d-4d0c-b128-50666bb4870d.png)
+![18](https://user-images.githubusercontent.com/61689132/145457480-eb07b5f0-bbad-41ed-940c-8660c8c301ce.png)
+ 
+Jak widzimy, plik został zbudowany
+ 
+Plik z testami budujemy w identyczny sposób
+ 
+touch Dockerfile-test
+nano Dockerfile-test
+ 
+![19](https://user-images.githubusercontent.com/61689132/145457635-04c1d00f-8845-4726-a19a-988cc4187ef2.png)
+
+sudo docker build -t <nazwa_obrazu> <ścieżka> -f <nazwa_pliku>
+
+![20](https://user-images.githubusercontent.com/61689132/145457775-d56f68ed-0a3c-4724-851a-0a9e7992c207.png)
+
+Możemy zobaczyć stworzone obrazy korzystając z komendy
+ 
+sudo docker image ls
+ 
+![21](https://user-images.githubusercontent.com/61689132/145457830-f92c4069-670d-4ed7-a535-7cef6f2cba13.png)
