@@ -8,9 +8,9 @@
 * Utwórz plik w kontenerze, na obszarze woluminu, pokaż na hoście `4.png`
 
 #### "Kiepski pomysł": SSH
-* Uruchom i wyeksponuj wybrany port w kontenerze
-* Zainstaluj w kontenerze serwer ssh
-* zmień port na wybrany port >1024
+* Uruchom i wyeksponuj wybrany port w kontenerze `5.png`
+* Zainstaluj w kontenerze serwer ssh `6.png`
+* zmień port na wybrany port >1024 `7.png`
 * zezwól na logowanie root
 * umieść klucz publiczny w woluminie, skopiuj go do pliku zaufanych w kontenerze
 * odnajdź adres IP kontenera w wewnętrznej sieci
