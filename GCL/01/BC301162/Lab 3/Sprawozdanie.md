@@ -94,6 +94,7 @@ A następnie w kontenerze tworzymy folder i w nim wklejamy klucz
 Klucz można wkleić na dwa sposoby
 
 Pierwszy -> `cp <plik_z_kluczem> <miejsce_do_którego_go_wklejamy>`
+
 Drugi -> `cat <plik_z_kluczem> >> <miejsce_do_którego_go_wklejamy>`
 
 ![12 1](https://user-images.githubusercontent.com/61689132/145464424-89de9832-43f5-47a3-b7a9-6ab6db7f3459.png)
