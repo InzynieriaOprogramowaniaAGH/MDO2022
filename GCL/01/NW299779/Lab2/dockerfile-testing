@@ -1,5 +1,0 @@
-FROM app
-
-WORKDIR /app/nodeunit
-
-CMD ["npm", "test"]
