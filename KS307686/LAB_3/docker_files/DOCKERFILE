@@ -1,0 +1,10 @@
+FROM node:latest
+
+RUN apt-get update -y
+RUN apt-get install -y nodejs
+RUN apt-get install -y npm
+RUN npx create-react-app new_app
+
+WORKDIR /new_app
+
+CMD ["npm","run","build"]

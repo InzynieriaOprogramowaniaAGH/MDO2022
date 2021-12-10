@@ -1,0 +1,3 @@
+FROM app
+
+CMD ["npm","test"]
