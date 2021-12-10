@@ -161,11 +161,45 @@ Gotowe
 
 #### Mikro-projekt Jenkins
 * Utwórz projekt, który wyświetla uname
+
+![image](https://user-images.githubusercontent.com/80592460/145648434-eea4ddcd-3385-4f1b-b320-efb7b56b2374.png)
+
+![image](https://user-images.githubusercontent.com/80592460/145648548-19d11c27-0951-4fe0-9ef8-26e22f04d2fb.png)
+
+![image](https://user-images.githubusercontent.com/80592460/145649148-3714fbd3-a95b-4714-ac5a-8b881a01c0d9.png)
+
+![image](https://user-images.githubusercontent.com/80592460/145649245-90cb44ed-9f62-4598-862a-bb16057c0257.png)
+
 * Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta 
+
+Zakładam, że nieparzysta ma być godzina, a nie minuty. Przypisuję więc do zmiennej godzinę, obliczam modulo, przyrównuję do 0 i wyświetlam error gdy jest nieparzysta.
+
+![image](https://user-images.githubusercontent.com/80592460/145652583-27161fc6-8691-4e1c-a52b-0c2c7e72da36.png)
+
+![image](https://user-images.githubusercontent.com/80592460/145652634-c69834b4-d29b-47ab-a096-abcce92d9dfa.png)
+
 * Utwórz "prawdziwy" projekt, który:
   * klonuje nasze repozytorium
+
+Podajemy linka do repo
+
+![image](https://user-images.githubusercontent.com/80592460/145652757-f01c296c-a278-4c78-aba0-7095b04a5d31.png)
+
   * przechodzi na osobistą gałąź
+
+![image](https://user-images.githubusercontent.com/80592460/145652792-5cf173c6-23d8-44bb-991b-e51a4d8a7906.png)
+
   * buduje obrazy z dockerfiles i/lub komponuje via docker-compose
+  
+![image](https://user-images.githubusercontent.com/80592460/145654694-03718a49-ed6f-4f4c-9c1f-2b772c5fe1f3.png)
+
+![image](https://user-images.githubusercontent.com/80592460/145654710-dc3ce6c1-49e6-494d-8259-b8aaf9e84c38.png)
+
+![image](https://user-images.githubusercontent.com/80592460/145654728-224b508e-7879-4cdf-9acf-02390ad8e8d6.png)
+
+![image](https://user-images.githubusercontent.com/80592460/145654743-06704857-dad4-47aa-8049-9d8fd93ab4ed.png)
+
+
   
 #### Sprawozdanie
 * Opracuj dokument z diagramami UML, opisującymi proces CI. Opisz:
