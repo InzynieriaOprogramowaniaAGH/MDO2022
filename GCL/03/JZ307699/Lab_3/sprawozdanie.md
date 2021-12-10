@@ -128,20 +128,109 @@ Skonteneryzowany Jenkins stosujący Dockera
 Przygotowanie
 
   - Upewnij się, że Dockerfiles i Docker Compose z poprzednich zajęć są w repozytorium
+  
+    Upewniłam się, że Dockerfiles znajdują się w repozoytorium
+    
+    ![image](https://user-images.githubusercontent.com/28841971/145502824-c5eeb7b7-c766-4e0a-adb9-ba19824122cf.png)
+
   - Zapoznaj się z instrukcją https://www.jenkins.io/doc/book/installing/docker/
     - Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone
+      
+      Uruchomiłam według instrukcji zamieszczonej wyżej obraz Dockera i wszelkie zależności.
+      
+      ![image](https://user-images.githubusercontent.com/28841971/145502981-95c25d91-6e63-4558-bef4-afa9c4944be2.png)
+      ![image](https://user-images.githubusercontent.com/28841971/145502993-cff1cbc3-8053-4929-a91d-967a5b5f1e01.png)
+      
     - Przygotuj obraz blueocean na podstawie obrazu jenkinsa
+    
+      Poleceniem "vim Dockerfile" utworzyłam Dockerfile i zamieściłam tam jego zawartość.
+      
+      ![image](https://user-images.githubusercontent.com/28841971/145503213-b3608f4f-e0b1-4a8c-b3ca-2e457cc296b4.png)
+      
+      Następnie zbudowałam obraz na podstawie Dockerfile
+      
+      ![image](https://user-images.githubusercontent.com/28841971/145503267-a9572674-3501-47ab-a77f-805fad2c570d.png)
+      ![image](https://user-images.githubusercontent.com/28841971/145503281-e04eb200-a883-4ac5-920c-cfd397f80183.png)
+    
     - Uruchom blueocean
+      
+      Następnie uruchomiłam blueocean
+
+      ![image](https://user-images.githubusercontent.com/28841971/145503367-7ebb9f98-0aa4-4a18-ae4f-c2869c32f9b8.png)
+      
     - Zaloguj się i skonfiguruj Jenkins
+    
+      Następnie odtworzyłam w przeglądarce localhost:8080 i została uruchmiona strona Jenkinsa z prośbą do zalogowania.
+      
+      ![image](https://user-images.githubusercontent.com/28841971/145503541-0190ecfb-8321-40f3-8607-36ad114a0bea.png)
+
+      Hasło, które było potrzebne do zalogowania się uzyskałam poleceniem "sudo docker logs 54f82c7e6788". Ostatni numer to id kontenera, który wcześniejszymi poleceniami utworzyłam. 
+      
+      ![image](https://user-images.githubusercontent.com/28841971/145503568-263bd6ed-6404-44cf-b7c0-1f5a72ce0a2c.png)
+
+      Po wpisaniu hasła uzyskałam dostęp do zawartości. 
+      
+      ![image](https://user-images.githubusercontent.com/28841971/145503773-af737e1d-c82c-408d-a43f-b7e39ec13ce7.png)
 
 Mikro-projekt Jenkins
 
   - Utwórz projekt, który wyświetla uname
+
+    Stworzyłam nowy projekt, podając mu nazwe "Projekt" i wybierając opcje ogólny projekt. Nastepnie przeszłam do opcji budowanie i ustawiłam na "Uruchom powłoke". Tam wpisałam polecenie uname -a:
+    
+    ![image](https://user-images.githubusercontent.com/28841971/145504064-a52a3fa1-a0ea-443c-ae7e-35cff2a3004b.png)
+
+    Zapisałam projekt i uruchomiłam.
+    
+    ![image](https://user-images.githubusercontent.com/28841971/145504155-83a5ed42-010d-41a2-9759-1f9384ab72ee.png)
+    
   - Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta
+
+    Tak jak poprzednio stworzyłam projekt. Użyłam następujących komend:
+    Data=`date +"%-H"` // do zmiennej Data przypisałam aktualną godzine (samą), - między %, a H pozwala mi usunąć zero w przypadku godziny jednocyfrowej.
+    Test=`expr $Data \% 2` // Zmienna Test oblicza mi wartość modulo z wcześniej uzyskanej godziny
+    if [ $Data -eq 0]
+    then
+      echo "Godzina jest poprawna"
+    else
+      echo "ERROR - Godzina nie jest poprawna"
+    fi // instrukcja warunkowa, która w momencie godziny parzystej wyswietla komunikat, ze jest poprawna, a w momencie nieparzystej wyświetla błąd. 
+    
+    ![image](https://user-images.githubusercontent.com/28841971/145504692-632debc2-992c-4fa4-946d-2a494f8859c5.png)
+    
+    Projekt wykonał się poprawnie
+    
+    ![image](https://user-images.githubusercontent.com/28841971/145504814-1dcb4de1-5bc0-41df-b82f-be9ddcd058c5.png)
+    
   - Utwórz "prawdziwy" projekt, który:
     - klonuje nasze repozytorium
+    
+      W opcjach projektu zaznaczyłam git, żeby sklonować repozytorium. Podałam tam adres repozytorium.
+    
+      ![image](https://user-images.githubusercontent.com/28841971/145504854-575aa498-f6cb-40aa-b461-0b274f7888ce.png)
+    
     - przechodzi na osobistą gałąź
+
+      Pod adresem repozytorium wpisałam swoją gałąź na którą ma się przełączyć.
+      
+      ![image](https://user-images.githubusercontent.com/28841971/145504951-ad752621-980f-4b4d-be7f-13020f6668d4.png)
+
     - buduje obrazy z dockerfiles i/lub komponuje via docker-compose
+
+      Na końcu w powłoce użyłam następnujących komend: 
+      cd GCL/03/JZ307699/Lab_3 // przejscie do odpowiedniego katalogu w którym znajduje się Dockerfile
+      docker build -t easy/sauce:latest . // zbudowanie obrazu z Dockerfile
+      cd Dockerfile2 // przejscie do katalogu gdzie znajduję się drugi Dockerfile
+      docker build -t easy/sauce2:latest . // zbudowanie z drugiego Dockerfile
+      docker run easy/sauce2:latest // uruchomienie testu
+      
+      ![image](https://user-images.githubusercontent.com/28841971/145505256-8043f126-6c83-47e3-ad4d-c0e01c2ea026.png)
+
+      Projekt po dłuższej chwili zakończył się sukcesem.
+      
+      ![image](https://user-images.githubusercontent.com/28841971/145505310-ffb3d0d1-45ff-4ee4-9cb5-b6a24b75e8c1.png)
+      ![image](https://user-images.githubusercontent.com/28841971/145505322-f9127b39-999f-4282-a201-1d10337e13d8.png)
+
 
 Sprawozdanie
   - Opracuj dokument z diagramami UML, opisującymi proces CI. Opisz:
