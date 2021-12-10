@@ -119,10 +119,46 @@ lub
 * Upewnij się, że Dockerfiles i Docker Compose z poprzednich zajęć są w repozytorium
 * Zapoznaj się z instrukcją https://www.jenkins.io/doc/book/installing/docker/
   * Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone
+
+![image](https://user-images.githubusercontent.com/80592460/145644154-994e21de-1933-4925-9b88-b86834d81936.png)
+
   * Przygotuj obraz blueocean na podstawie obrazu jenkinsa
+
+Dockerfile skopiowany z dokumentacji:
+
+![image](https://user-images.githubusercontent.com/80592460/145644493-16d56b35-ff0b-4db2-b9fd-6f1040186ee1.png)
+
+Budowanie obrazu:
+
+	docker build -t myjenkins-blueocean:1.1 .
+
+![image](https://user-images.githubusercontent.com/80592460/145645907-2fa78b2e-3b80-4361-a6e8-e42ae1266d02.png)
+
+![image](https://user-images.githubusercontent.com/80592460/145645981-49fe5d5d-af1b-4a9f-a3d8-0fa4141f29db.png)
+
+
   * Uruchom blueocean
+
+![image](https://user-images.githubusercontent.com/80592460/145646234-e20fbcee-253b-4895-a7a5-60b2b3bc348c.png)
+
   * Zaloguj się i skonfiguruj Jenkins
   
+  -Uruchamiamy Jenkinsa na porcie 8080
+  
+  ![image](https://user-images.githubusercontent.com/80592460/145647194-f7d2756e-dce3-4978-b724-c1abf6c64425.png)
+  
+  -Szukamy hasła w logach kontenera
+  
+  	docker logs 78e6f1810214d255e74ff9e01bd50d99a9d24490d6d763f7cac4cda6132ad167
+	
+Gotowe
+
+![image](https://user-images.githubusercontent.com/80592460/145647329-dc339a47-f21b-44d8-8d13-da5ec5ebfc7f.png)
+
+![image](https://user-images.githubusercontent.com/80592460/145647374-ba53a3b1-d3e5-44b8-9dc3-fd51c2e0f5f3.png)
+
+![image](https://user-images.githubusercontent.com/80592460/145647501-3403a707-96cd-48a0-928d-a7e894e32091.png)
+
 #### Mikro-projekt Jenkins
 * Utwórz projekt, który wyświetla uname
 * Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta 
