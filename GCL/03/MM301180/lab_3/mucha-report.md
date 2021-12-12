@@ -175,4 +175,7 @@ docker run --name jenkins-blueocean --rm --detach \
 * Opracuj dokument z diagramami UML, opisującymi proces CI. Opisz:
    * Wymagania wstępne środowiska
    * Diagram aktywności, pokazujący kolejne etapy (collect, build, test, report)
+
+   * `[img] diagram_aktywnosci` 
+
    * Diagram wdrożeniowy, opisujący relacje między składnikami, zasobami i artefaktami
