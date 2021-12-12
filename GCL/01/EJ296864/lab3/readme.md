@@ -47,7 +47,7 @@ Również, żadne z przedstawionych rozwiązań nie pomogło, oprócz *docker ru
 
 ![Podłączenie woluminu do kontenera cd](screenshots/2.3.podlaczenie-woluminu-2.png)
 
-#### Kopiowanie pliku do katalogu woluminu i pokazanie go w kontenerze
+### Kopiowanie pliku do katalogu woluminu i pokazanie go w kontenerze
 
 Tworzę plik, który kopiuję do folderu **~/volume-host**:
 
@@ -59,7 +59,7 @@ Sprawdzam przekopiowany plik na kontenerze w folderze **/store**:
 
 Jak widać, plik istnieje.
 
-#### Utworzenie pliku w kontenerze i pokazanie go na hoście
+### Utworzenie pliku w kontenerze i pokazanie go na hoście
 
 Tworzę plik na kontenerze:
 
@@ -69,4 +69,23 @@ Plik pokazuje się w folderze z woluminem na hoście:
 
 ![Sprawdzenie pliku na hoście](screenshots/4.1.sprawdzenie-pliku-na-hoscie.png)
 
+## "Kiepski pomysł": SSH
+
+### Uruchomienie i wyeksportowanie wybranego portu w kontenerze
+
+Uruchamiam kontener z wybranem portem 7312:
+
+![Uruchomienie kontenera z wybranym portem](screenshots/5.uruchomienie-kontenera-z-wybranym-portem.png)
+
+Przekierowuję port 7312 hosta na port 22 wewnątrz kontenera. 
+
+### Instalacja serwera SSH w kontenerze
+
+Instalacja serwera SSH obywa się przy użyciu komendy: **apt-get install openssh-server**.
+
+Po wykonaniu tej komendy sprawdzam wersję serwera SSH:
+
+![Sprawdzenie wersji SSH](screenshots/6.sprawdzenie-wersji-ssh.png)
+
+### Zmiana portu na wybrany port
 
