@@ -87,19 +87,91 @@ Ponieważ w moim przypadku dostępy w kluczach publicznych były dla użytkownik
 
 #### Przygotowanie
 * Upewnij się, że Dockerfiles i Docker Compose z poprzednich zajęć są w repozytorium
+
+![Dockerfile w repo](screenshots/12.PNG)
+
 * Zapoznaj się z instrukcją https://www.jenkins.io/doc/book/installing/docker/
   * Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone
+
+
+  ```sh
+  docker run \
+    --name jenkins-docker \
+    --rm \
+    --detach \
+    --privileged \
+    --network jenkins \
+    --network-alias docker \
+    --env DOCKER_TLS_CERTDIR=/certs \
+    --volume jenkins-docker-certs:/certs/client \
+    --volume jenkins-data:/var/jenkins_home \
+    --publish 2376:2376 \
+    docker:dind \
+    --storage-driver overlay2
+  ```
+
+  ![docket network create jenkins](screenshots/13.PNG)
+
   * Przygotuj obraz blueocean na podstawie obrazu jenkinsa
+  ![Dockerfile w repo](screenshots/14.PNG)
+
+
   * Uruchom blueocean
+  ![Uruchamianie blueocean](screenshots/15.PNG)
+  ![Uruchamianie blueocean 2](screenshots/16.PNG)
+
   * Zaloguj się i skonfiguruj Jenkins
+  ![Jenkins_1](screenshots/17.PNG)
+
+  Hasło do admina otrzymujemy w ten sposób:
+  ![Jenkins_2](screenshots/18.PNG)
+
+  Kontynuujemy konfiguracje Jenkinsa:
+  ![Jenkins_2](screenshots/19.PNG)
+  ![Jenkins_2](screenshots/20.PNG)
+  ![Jenkins_2](screenshots/21.PNG)
+
 
 #### Mikro-projekt Jenkins
 * Utwórz projekt, który wyświetla uname
+
+Tworzymy projekt typu **Ogólny projekt** i w budownie dodajemy krok **Uruchom powłokę** i wpisujemy odpowiednią komendę:
+![Uname1](screenshots/22.PNG)
+
+Działa bez zarzutu:
+![Uname2](screenshots/23.PNG)
+
 * Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta
+
+Projekt tworzymy w identyczny sposób jak poprzedni. Zmienia się tylko nazwa projektu, ewentualny opis i oczywiście komenda.
+![is_hour_even1](screenshots/24.PNG)
+
+Również działa bez zarzutu:
+![is_hour_even2](screenshots/25.PNG)
+
 * Utwórz "prawdziwy" projekt, który:
   * klonuje nasze repozytorium
   * przechodzi na osobistą gałąź
   * buduje obrazy z dockerfiles i/lub komponuje via docker-compose
+
+Przed wykonaniem projektu, należy doinstalować wtyczkę **Docker Compose Build Step**
+![is_hour_even2](screenshots/26.PNG)
+
+Przystępujemy do wykonania projektu:
+![Prawdziwy_projekt](screenshots/27.PNG)
+
+![Prawdziwy_projekt](screenshots/28.PNG)
+
+![Prawdziwy_projekt](screenshots/29.PNG)
+
+![Prawdziwy_projekt](screenshots/30.PNG)
+
+Projekt buduje się bez zarzutu:
+![Prawdziwy_projekt](screenshots/31.PNG)
+
+Testy zbudowały się bez problemu, cały projekt również:
+![Prawdziwy_projekt](screenshots/32.PNG)
+
 
 #### Sprawozdanie
 * Opracuj dokument z diagramami UML, opisującymi proces CI. Opisz:
