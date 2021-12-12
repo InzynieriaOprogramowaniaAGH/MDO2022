@@ -43,3 +43,16 @@
 4. Jenkins z Blueocean (img18)
 
 ----------------------------
+1. Projekt wyświetlający uname
+- Nowy projekt -> pipeline -> zapisz -> uruchom -> console output
+(img19)(img20)
+2. Projekt z godziną (kroki jak wyżej)
+(img21)(img22)
+3. "Prawdziwy" projekt
+ - instalujemy plugin Docker i Docker Pipeline (zarządzaj Jenkinsem -> zarządzaj wtyczkami -> Docker/Docker Pipeline)
+ - dodajemy użytkownika root do docker-compose.yml: user: root
+(img23)
+- Projekt: (img24)
+- uruchamiamy
+(img 25)(img26)
+(img27) - failed, bo kręcił się ponad pół h i musiałam ubić maszynę

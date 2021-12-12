@@ -1,7 +1,8 @@
 version: '3'
 services:
     jenkins:
-        image: jenkinsci/blueocean  
+        image: jenkinsci/blueocean
+        user: root  
         ports:
             - 80:8080
             # Do not map the JNLP port for security reasons
