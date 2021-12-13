@@ -97,3 +97,56 @@ A następnie sprawdzam adres ip kontenera:
 `ssh root@127.17.0.1 -p 2222`
 
 ![Zrzut_ekranu-15](15.jpg)
+
+
+## Skonteneryzowany Jenkins Stsujący dockera
+
+### Przygotowanie
+
+1. Uruchomienie Dockera, który eksponuje środowisko zagnieżdzone:
+
+`
+docker run --name jenkins-docker --rm --detach \
+  --privileged --network jenkins --network-alias docker \
+  --env DOCKER_TLS_CERTDIR=/certs \
+  --volume jenkins-docker-certs:/certs/client \
+  --volume jenkins-data:/var/jenkins_home \
+  --publish 2376:2376 docker:dind --storage-driver overlay2
+`
+
+![Zrzut_ekranu-15.1](15.1.jpg)
+
+2. Przygotowanie obraz blueocean, który eksponuje środowisko zagnieżdzone:
+
+Tworzę nowy plik **Dockerfile**, a następnie wklejam do niego treść z instrukcji
+
+![Zrzut_ekranu-16](16.jpg)
+
+3. Uruchomienie blueocean:
+
+komenda: 
+
+`
+docker run --name jenkins-blueocean --rm --detach \
+  --network jenkins --env DOCKER_HOST=tcp://docker:2376 \
+  --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 \
+  --publish 8080:8080 --publish 50000:50000 \
+  --volume jenkins-data:/var/jenkins_home \
+  --volume jenkins-docker-certs:/certs/client:ro \
+  myjenkins-blueocean:1.1
+`
+
+
+![Zrzut_ekranu-16.1](16.1.jpg)
+
+4. Logowanie się do jenkins:
+
+![Zrzut_ekranu-18](18.jpg)
+
+Aby zalogować się do jenkins musiałem odczytać hasło, które zostało zapisane w logach. Użyłem do tego komendy `sudo docker logs <id_kontenera>`
+
+![Zrzut_ekranu-19](19.jpg)
+
+Wpisałem hasło, a następnie skonfigurowałem jenkinsa.
+
+![Zrzut_ekranu-20](20.jpg)
