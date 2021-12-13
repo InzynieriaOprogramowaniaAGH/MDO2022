@@ -87,5 +87,13 @@ Po wykonaniu tej komendy sprawdzam wersję serwera SSH:
 
 ![Sprawdzenie wersji SSH](screenshots/6.sprawdzenie-wersji-ssh.png)
 
+Dodatkowo, aby sprawić, żeby SSH działało, potrzebne jest 
+
+![Dokonfigurowanie SSH](screenshots/6.2.dokonfigurowanie-ssh-2.png)
+
+Sprawdzam status połączeń sieciowych przy użyciu *netstat*:
+
+![netstat -tunpa](screenshots/6.3.netstat-tunpa.png)
+
 ### Zmiana portu na wybrany port
 
