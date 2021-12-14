@@ -87,7 +87,38 @@ Po wykonaniu tej komendy sprawdzam wersję serwera SSH:
 
 ![Sprawdzenie wersji SSH](screenshots/6.sprawdzenie-wersji-ssh.png)
 
-Dodatkowo, aby sprawić, żeby SSH działało, potrzebne jest 
+
+### Zmiana portu na wybrany port > 1024 oraz zezwolenie na logowanie root'a
+
+W celu zmiany portu edytuję plik **sshd_config**, znajdujący się w */etc/ssh/* oraz dodaję linijkę **PermitRootLogin yes**, gdyż nie było jest standardowo:
+
+![Zmiana portu i pozwolenie na logowanie root'a](screenshots/7.zmiana-portu-i-umozliwienie-logowania-roota.png)
+
+### Umieszczenie klucza publicznego w woluminie
+
+Kopiuję klucz publiczny hosta do woluminu:
+
+![Kopiowanie kluczu publicznego hosta](screenshots/8.1.kopiowanie-kluczu-pub-hosta-do-wolimuinu.png)
+
+### Kopiuję klucz publiczzny do zaufanych w kontenerze
+
+Na początku tworzę folder **.ssh** w kontenerze:
+
+![Utworzenie folderu .ssh](screenshots/8.utworzenie-folderu-.ssh.png)
+
+Kopiuję klucz publiczny z woluminu do pliku zaufanych znajdującego się w folderze *~/.ssh/* w kontenerze pod nazwą **authrozed_keys**:
+
+![Umieczenie klucza publicznego hosta w ~/.ssh/authorized_keys](screenshots/8.2.umieszczenie-klucza-pub-w-authorized_keys.png)
+
+### Odnalezienie adresu IP kontenera w wewnętrznej sieci
+
+Adres kontenera możemy uzyskać poleceniem **docker container inspect <container_id>**:
+
+![Odnalezienie adresu IP kontenera](screenshots/9.odnalezienie-adresu-ip-kontenera.png)
+
+### Uruchomienie usługi
+
+Aby SSH działało, potrzebne jest uruchomienie serwisu **sshd -D**, znajdującego się w */usr/sbin/*, oraz utworzenie folderów **/run/sshd**:
 
 ![Dokonfigurowanie SSH](screenshots/6.2.dokonfigurowanie-ssh-2.png)
 
@@ -95,5 +126,6 @@ Sprawdzam status połączeń sieciowych przy użyciu *netstat*:
 
 ![netstat -tunpa](screenshots/6.3.netstat-tunpa.png)
 
-### Zmiana portu na wybrany port
+Widać, że usługa SSH działa na kontenerze na porcie 22.
 
+### Połączenie się z kontenerem
