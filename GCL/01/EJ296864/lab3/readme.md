@@ -6,6 +6,10 @@
 
 ![Zdjęcie środowiska](../lab1/screenshots/macos-big-siur.png)
 
+Potem postawiłem Ubuntu na Paralellsach, gdyż Docker for Mac na macOS nie działa tak jak powinien, więcej poniżej:
+
+![Ubutnu środowisko](screenshots/0.ubuntu-srodowisko.png)
+
 ## Łączność i woluminy na podstawie "złych" praktyk
 
 ### Pobranie obrazu Ubuntu
@@ -118,7 +122,7 @@ Adres kontenera możemy uzyskać poleceniem **docker container inspect <containe
 
 ### Uruchomienie usługi
 
-Aby SSH działało, potrzebne jest uruchomienie serwisu **sshd -D**, znajdującego się w */usr/sbin/*, oraz utworzenie folderów **/run/sshd**:
+Aby SSH działało, potrzebne jest uruchomienie serwisu **sshd -D &**, znajdującego się w */usr/sbin/*, oraz utworzenie folderów **/run/sshd**:
 
 ![Dokonfigurowanie SSH](screenshots/6.2.dokonfigurowanie-ssh-2.png)
 
@@ -139,5 +143,16 @@ Nie ma też wirtualnego interfejsu *docker0* :(
 ![ifconfig grep docker](screenshots/10.1.ifconfig-docker.png)
 
 To jest ten moment, żeby zmienić sprzęt.
+
+#### Few moments later - Postawienie Ubuntu na Paralellsach
+
+Powtórzyłem wszystkie powyższe kroki na nowo postawionym hoście Ubuntu 20.04 LTS.
+
+Finalnie, udało się połączyć, użyłem portu 4200, zamiast 2222, który był na screenie.
+
+![Wejście na kontener z Ubuntu](screenshots/10.2.wejscie-na-kontener-po-ssh.png)
+
+
+
 
 
