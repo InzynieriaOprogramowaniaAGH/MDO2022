@@ -129,3 +129,15 @@ Sprawdzam status połączeń sieciowych przy użyciu *netstat*:
 Widać, że usługa SSH działa na kontenerze na porcie 22.
 
 ### Połączenie się z kontenerem
+
+Niestety z tego samego powodu, dla którego nie mogłem znaleźć ścieżki */var/lib/docker* (https://docs.docker.com/desktop/mac/networking/):
+
+![Brak docker0 bridge](screenshots/10.docker0.png)
+
+Nie ma też wirtualnego interfejsu *docker0* :(
+
+![ifconfig grep docker](screenshots/10.1.ifconfig-docker.png)
+
+To jest ten moment, żeby zmienić sprzęt.
+
+
