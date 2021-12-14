@@ -210,7 +210,7 @@ Po zalogowaniu się mogę korzystać z serwisu:
 
 ### Utworzenie projektu, który wyświetla uname
 
-Tworzę nowy projekt i podaję skypt bashowy do wykonania:
+Tworzę nowy projekt - na dashboardzie klikam **New item**, następnie podaję nazwę projektu i wybieram **Freestyle projekt**. Następnie w sekcji **Build** podaję skrypt bashowy do wykonania:
 
 ![Tworzenie projektu ze skryptem Bash](screenshots/15.projekt-uname.png)
 
