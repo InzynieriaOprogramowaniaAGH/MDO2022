@@ -1,0 +1,3 @@
+FROM jest-test
+
+RUN ["npm", "run", "test"]
