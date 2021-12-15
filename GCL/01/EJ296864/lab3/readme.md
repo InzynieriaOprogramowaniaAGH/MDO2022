@@ -242,18 +242,22 @@ Logi konsolowe:
 
 Godzina była w formacie UTC, a czas na mojej maszynie jest CET (UTC + 1), aktualnie 22:51, więc wg czasu UTC, jest to godzina nieparzysta, więc projekt nie zostanie zbudowany.
 
-### Utworzenie "prawdziwego" projektu, który:
+### Utworzenie "prawdziwego" projektu, który klonuje nasze repozytorium, przechodzi na osobistą gałąź, buduje obrazy z dockerfiles i/lub komponuje via docker-compose
 
 Na początek instaluję wtyczkę **Docker Compose Build Step** wchodząc w **Manage Jenkins** -> **Plugin Manager**:
 
 ![Instalacja wtyczki Docker COmpose Build Step](screenshots/16.instalacja-wtyczki-docker-compose.png)
 
-Tworzę nowy projekt **Multi-configuration project** 
-#### klonuje nasze repozytorium
+Tworzę nowy projekt **Multi-configuration project**
 
+Następnie wybieram poniższe ustawienia:
 
+![Wybranie repozytorium](screenshots/16.2.wybranie-repozytorium.png)
 
-#### przechodzi na osobistą gałąź
+![Klonowanie repozytorium](screenshots/16.1.klonowanie-repo.png)
 
+![Przejście na osobistą gałąź](screenshots/16.3.przejscie-na-osobista-galaz.png)
 
-#### buduje obrazy z dockerfiles i/lub komponuje via docker-compose
+Niestety budowanie nie jest zakończone sukcesem i nie jestem w stanie się dowiedzieć dlaczego, gdyż z logów nic nie wynika:
+
+![Build failed](screenshots/16.5.console-faile.png)
