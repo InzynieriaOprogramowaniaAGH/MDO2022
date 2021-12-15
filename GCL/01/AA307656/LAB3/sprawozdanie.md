@@ -1,5 +1,3 @@
-# Część pierwsza - czas do końća weekendu
-
 
 ## 1 . Łączność i woluminy na podstawie "złych" praktyk
 
@@ -20,16 +18,16 @@
 
     $ sudo docker run -iteractive --tty --mount source=pendrive,destination=/store ubuntu
 
-![screen: utworzenie volumenu](screenshots/1.png)
+ ![screen: utworzenie volumenu](screenshots/1.png)
   
    - Skopiuj plik do katalogu woluminu, pokaż w kontenerze
     $ sudo cp sprawozdanie /var/lib/docker/volumes/pendrive/_data
 
-![screen: plik pokazany w kontenerze](screenshots/2.png)	
+ ![screen: plik pokazany w kontenerze](screenshots/2.png)	
     
    - Utwórz plik w kontenerze, na obszarze woluminu, pokaż na hoście
    
-![screen: pokazanie pliku na hoscie](screenshots/3.png)	
+ ![screen: pokazanie pliku na hoscie](screenshots/3.png)	
 
 
 ## 2 . "Kiepski pomysł": SSH
@@ -38,13 +36,13 @@
    
     $ sudo docker run --interactive --tty --mount source=pendrive,destination=/store --publish 2345:22 ubuntu
   
-![screen: uruchomione procesy](screenshots/4.png)
-![screen: docker-proxy](screenshots/5.png)
+ ![screen: uruchomione procesy](screenshots/4.png)
+ ![screen: docker-proxy](screenshots/5.png)
 
     $ sudo docker ps -a
     $ sudo docker container inspect "id"
 
-![screen: poszukiwanie ip contenera](screenshots/7.png)
+ ![screen: poszukiwanie ip contenera](screenshots/7.png)
 
    - Zainstaluj w kontenerze serwer ssh
    
@@ -59,7 +57,7 @@
    
    $ sudo docker inspect 23d9fb41d069
    
-![screen: poszukiwanie ip contenera](screenshots/6.png)
+ ![screen: poszukiwanie ip contenera](screenshots/6.png)
    
 
    - zezwól na logowanie root
@@ -67,66 +65,71 @@
     # ls -la /store
     # cp /store/id_ed25519.pub /root/.ssh/authorized_keys
       
-![screen: skopiowanie klucza publicznego](screenshots/8.png)
+ ![screen: skopiowanie klucza publicznego](screenshots/8.png)
  
    - odnajdź adres IP kontenera w wewnętrznej sieci
    - uruchom usługę, połącz się z kontenerem
    
-![screen: netstat w kontenerze](screenshots/9.png)
-![screen: błędy z kluczem](screenshots/10.png)
-![screen: uruchomiona usługa z kontenerem](screenshots/11.png)
+ ![screen: netstat w kontenerze](screenshots/9.png)
+ ![screen: błędy z kluczem](screenshots/10.png)
+ ![screen: uruchomiona usługa z kontenerem](screenshots/11.png)
 
 
-Skonteneryzowany Jenkins stosujący Dockera
-Przygotowanie
+##Skonteneryzowany Jenkins stosujący Dockera
+###Przygotowanie
 
     Upewnij się, że Dockerfiles i Docker Compose z poprzednich zajęć są w repozytorium
     Zapoznaj się z instrukcją https://www.jenkins.io/doc/book/installing/docker/
+    
         Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone
         Przygotuj obraz blueocean na podstawie obrazu jenkinsa
         Uruchom blueocean
         Zaloguj się i skonfiguruj Jenkins
         
+###Wykonanie        
     Korzystając z instrukcji na oficjalnej stronie Jenkinsa pobieramy i instalujemy jenkins docker na naszym dockerze.
     https://www.jenkins.io/doc/book/installing/docker/
     
     Następnie przy pomocy Dockerfila polecanego na stronie tworzymy jego obraz.
     
- FROM jenkins/jenkins:2.319.1-jdk11
- USER root
- RUN apt-get update && apt-get install -y lsb-release
- RUN curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc \
-  https://download.docker.com/linux/debian/gpg
- RUN echo "deb [arch=$(dpkg --print-architecture) \
-  signed-by=/usr/share/keyrings/docker-archive-keyring.asc] \
-  https://download.docker.com/linux/debian \
-  $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
- RUN apt-get update && apt-get install -y docker-ce-cli
- USER jenkins
- RUN jenkins-plugin-cli --plugins "blueocean:1.25.2 docker-workflow:1.26"
+	 FROM jenkins/jenkins:2.319.1-jdk11
+	 USER root
+	 RUN apt-get update && apt-get install -y lsb-release
+	 RUN curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc \
+	  https://download.docker.com/linux/debian/gpg
+	 RUN echo "deb [arch=$(dpkg --print-architecture) \
+	  signed-by=/usr/share/keyrings/docker-archive-keyring.asc] \
+	  https://download.docker.com/linux/debian \
+	  $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
+	 RUN apt-get update && apt-get install -y docker-ce-cli curl
+RUN  sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+RUN chmod +x /usr/local/bin/docker-compose
+	 USER jenkins
+	 RUN jenkins-plugin-cli --plugins "blueocean:1.25.2 docker-workflow:1.26"
 
    Zbudowanie obrazu:
-   $ sudo docker build -t myjenkins-blueocean:1.1 . -f Dockerfile-jenkins
-   Uruchomienie jenkins-blueocean:
-   $ docker run \
-  --name jenkins-blueocean \
-  --rm \
-  --detach \
-  --network jenkins \
-  --env DOCKER_HOST=tcp://docker:2376 \
-  --env DOCKER_CERT_PATH=/certs/client \
-  --env DOCKER_TLS_VERIFY=1 \
-  --publish 8080:8080 \
-  --publish 50000:50000 \
-  --volume jenkins-data:/var/jenkins_home \
-  --volume jenkins-docker-certs:/certs/client:ro \
-  myjenkins-blueocean:1.1 
+	   $ sudo docker build -t myjenkins-blueocean:1.1 . -f Dockerfile-jenkins
+	   
+	   Uruchomienie jenkins-blueocean:
+	   $ docker run \
+	  --name jenkins-blueocean \
+	  --rm \
+	  --detach \
+	  --network jenkins \
+	  --env DOCKER_HOST=tcp://docker:2376 \
+	  --env DOCKER_CERT_PATH=/certs/client \
+	  --env DOCKER_TLS_VERIFY=1 \
+	  --publish 8080:8080 \
+	  --publish 50000:50000 \
+	  --volume jenkins-data:/var/jenkins_home \
+	  --volume jenkins-docker-certs:/certs/client:ro \
+	  myjenkins-blueocean:1.1 
    
  ![screen: pull jenkins](screenshots/14.png)
  ![screen: build blueocean](screenshots/15.png)
  
   Little problem:
-![screen: little problem](screenshots/16.png)
+ ![screen: little problem](screenshots/16.png)
 
   Odblokowanie i dopracowanie Jenkinsa:
  ![screen: wyświetlenie kodu z kontenera](screenshots/17.png)
@@ -135,14 +138,21 @@ Przygotowanie
  ![screen: logowanie i konfiguracja Jenkins](screenshots/20.png)
   
  
-Mikro-projekt Jenkins
+### Mikro-projekt Jenkins
 
-    Utwórz projekt, który wyświetla uname
+    Utwórz projekt, który wyświetla uname:
+  ![screen: pierwszy projekt](screenshots/21.png)
+    
     Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta
+  ![screen: pierwszy projekt](screenshots/22.png)
+  ![screen: pierwszy projekt](screenshots/23.png)
+    
     Utwórz "prawdziwy" projekt, który:
         klonuje nasze repozytorium
         przechodzi na osobistą gałąź
         buduje obrazy z dockerfiles i/lub komponuje via docker-compose
+
+   
 
 Sprawozdanie
 
