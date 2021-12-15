@@ -125,10 +125,16 @@ Przygotowanie
  ![screen: pull jenkins](screenshots/14.png)
  ![screen: build blueocean](screenshots/15.png)
  
-Little problem:
-![screen: little problem](screenshots/15.png)
+  Little problem:
+![screen: little problem](screenshots/16.png)
 
-
+  Odblokowanie i dopracowanie Jenkinsa:
+ ![screen: wyświetlenie kodu z kontenera](screenshots/17.png)
+ ![screen: ustaweinia Jenkinsa](screenshots/18.png)
+ ![screen: install plugins](screenshots/19.png)
+ ![screen: logowanie i konfiguracja Jenkins](screenshots/20.png)
+  
+ 
 Mikro-projekt Jenkins
 
     Utwórz projekt, który wyświetla uname
