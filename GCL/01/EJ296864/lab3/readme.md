@@ -6,6 +6,10 @@
 
 ![Zdjęcie środowiska](../lab1/screenshots/macos-big-siur.png)
 
+Potem postawiłem Ubuntu na Paralellsach, gdyż Docker for Mac na macOS nie działa tak jak powinien, więcej poniżej:
+
+![Ubutnu środowisko](screenshots/0.ubuntu-srodowisko.png)
+
 ## Łączność i woluminy na podstawie "złych" praktyk
 
 ### Pobranie obrazu Ubuntu
@@ -118,7 +122,7 @@ Adres kontenera możemy uzyskać poleceniem **docker container inspect <containe
 
 ### Uruchomienie usługi
 
-Aby SSH działało, potrzebne jest uruchomienie serwisu **sshd -D**, znajdującego się w */usr/sbin/*, oraz utworzenie folderów **/run/sshd**:
+Aby SSH działało, potrzebne jest uruchomienie serwisu **sshd -D &**, znajdującego się w */usr/sbin/*, oraz utworzenie folderów **/run/sshd**:
 
 ![Dokonfigurowanie SSH](screenshots/6.2.dokonfigurowanie-ssh-2.png)
 
@@ -140,4 +144,109 @@ Nie ma też wirtualnego interfejsu *docker0* :(
 
 To jest ten moment, żeby zmienić sprzęt.
 
+#### Few moments later - Postawienie Ubuntu na Paralellsach
 
+Powtórzyłem wszystkie powyższe kroki na nowo postawionym hoście Ubuntu 20.04 LTS.
+
+Finalnie, udało się połączyć, w pliku */etc/ssh/sshd_config* użyłem portu 4200, zamiast 2222, który był na powyżej, gdy zmieniałem go będąc na kontenerze postawionym na natywnym macOS.
+
+![netstat -tunpa na kontenerze](screenshots/10.3.netstat-tunpa-na-kontenerze.png)
+
+![Wejście na kontener z Ubuntu](screenshots/10.2.wejscie-na-kontener-po-ssh.png)
+
+Wniosek z tego taki, że mimo iż mapujemy dane porty host:kontener, ostateczny port kontenera zostanie wzięty z pliku *sshd_config* i zrestartowaniu serwisu sshd.
+
+## Skonteneryzowany Jenkins stosujący Dockera
+
+#### Przygotowanie
+
+### Upewnienie się, że Dockerfiles i Docker Compose z poprzednich zajęć są w repozytorium
+
+![Upewnienie się](screenshots/11.upewnienie-sie.png)
+
+### Zapoznanie się z instrukcją
+
+Zapoznałem się z instrukcją postawienia kontenera jenkinsowego:
+*https://www.jenkins.io/doc/book/installing/docker/*
+
+### Uruchomienie obrazu Dockera, który eksponuje środowisko zagnieżdżone
+
+Uruchamia, obraz dockera ze środowiskiem zagnieżdżonym:
+
+![Uruchomienie obrazu dockera](screenshots/12.uruchomienie-obrazu-dockera.png)
+
+### Przygotowanie obrazu Blue Ocean na podstawie obrazu Jenkinsa
+
+Przygotowałem obraz Blue Ocean na podstawie obrazu Jenkinsa
+
+![Przygotowanie obrazu Blue Ocean](screenshots/13.przygotowanie-obrazu-blueocean.png)
+
+### Uruchomienie Blue Ocean
+
+Na początku buduję obraz Blue Ocean:
+
+![Budowanie obrazu Blue Ocean](screenshots/13.1.budowanie-obrazu-blueocean.png)
+![Koniec budowania obrazu Blue Ocean](screenshots/13.1.1.koniec-budowania-obrazu-blueocean.png)
+
+Następnie uruchamiam kontener z Blue Ocean:
+
+![Uruchomienie kontenera z Blue Ocean](screenshots/13.2.uruchomienie-kontenera-blueocean.png)
+
+### Loguję się i konfiguruję Jenkins
+
+Odblokowuję Jenkinsa sprawdzając hasło admina używając **docker logs <container_id>**:
+
+![Docker logs](screenshots/14.docker-logs.png)
+
+Następnie odblokowuje Jenkinsa podanym hasłem:
+
+![Odblokowanie Jenkinsa](screenshots/14.1.odblokowanie-jenkinsa.png)
+
+Po zalogowaniu się mogę korzystać z serwisu:
+
+![Można korzystać z Jenkins](screenshots/14.2.jenkins-alive.png)
+
+#### Mikro-projekt Jenkins
+
+### Utworzenie projektu, który wyświetla uname
+
+Tworzę nowy projekt - na dashboardzie klikam **New item**, następnie podaję nazwę projektu i wybieram **Freestyle projekt**. Następnie w sekcji **Build** podaję skrypt bashowy do wykonania:
+
+![Tworzenie projektu ze skryptem Bash](screenshots/15.projekt-uname.png)
+
+Sprawdzam output konsolowy:
+
+![Output](screenshots/15.1.logi-z-konsoli.png)
+
+### Utwórz projekt, który zwraca błąd, gdy godzina jest nieparzysta
+
+Projekt jest tworzony w taki sam sposób, zmienia się jedynie skrypt:
+
+```shell
+hour=$(date '+%H')
+if [ $((hour  % 2 )) -eq 0 ];
+then
+    echo "is even";
+    exit 0;
+else
+    echo "is odd";
+    exit 1;
+fi
+```
+
+![Sprawdzenie czy parzyste](screenshots/15.4.check-if-even.png)
+
+Logi konsolowe:
+
+![Logi konsolowe - sprawdzenie parzystości godziny](screenshots/15.5.logi-z-konsoli.png)
+
+Godzina była w formacie UTC, a czas na mojej maszynie jest CET (UTC + 1), aktualnie 22:51, więc wg czasu UTC, jest to godzina nieparzysta, więc projekt nie zostanie zbudowany.
+
+### Utworzenie "prawdziwego" projektu, który:
+#### klonuje nasze repozytorium
+
+
+#### przechodzi na osobistą gałąź
+
+
+####buduje obrazy z dockerfiles i/lub komponuje via docker-compose
