@@ -243,10 +243,17 @@ Logi konsolowe:
 Godzina była w formacie UTC, a czas na mojej maszynie jest CET (UTC + 1), aktualnie 22:51, więc wg czasu UTC, jest to godzina nieparzysta, więc projekt nie zostanie zbudowany.
 
 ### Utworzenie "prawdziwego" projektu, który:
+
+Na początek instaluję wtyczkę **Docker Compose Build Step** wchodząc w **Manage Jenkins** -> **Plugin Manager**:
+
+![Instalacja wtyczki Docker COmpose Build Step](screenshots/16.instalacja-wtyczki-docker-compose.png)
+
+Tworzę nowy projekt **Multi-configuration project** 
 #### klonuje nasze repozytorium
+
 
 
 #### przechodzi na osobistą gałąź
 
 
-####buduje obrazy z dockerfiles i/lub komponuje via docker-compose
+#### buduje obrazy z dockerfiles i/lub komponuje via docker-compose
