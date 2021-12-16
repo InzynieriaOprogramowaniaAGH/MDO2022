@@ -182,4 +182,8 @@ Testy zbudowały się bez problemu, cały projekt również:
   ![Diagram aktywności](screenshots/Diagram_aktywnosci.jpg)
 
   * Diagram wdrożeniowy, opisujący relacje między składnikami, zasobami i artefaktami
+<<<<<<< HEAD
+  ![Diagram wdrożeniowy](screenshots/Diagram_wdrozeniowy.jpg)
+=======
   ![Diagram wdrożeniowy](screenshots/Diagram_wdrożeniowy.jpg)
+>>>>>>> e4a23ea487c3f8613339f63cf125421b95d0096d
