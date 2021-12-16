@@ -75,16 +75,17 @@
  ![screen: uruchomiona usługa z kontenerem](screenshots/11.png)
 
 
-##Skonteneryzowany Jenkins stosujący Dockera
+## 3. Skonteneryzowany Jenkins stosujący Dockera
+
 ###Przygotowanie
 
     Upewnij się, że Dockerfiles i Docker Compose z poprzednich zajęć są w repozytorium
     Zapoznaj się z instrukcją https://www.jenkins.io/doc/book/installing/docker/
-    
-        Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone
-        Przygotuj obraz blueocean na podstawie obrazu jenkinsa
-        Uruchom blueocean
-        Zaloguj się i skonfiguruj Jenkins
+     
+      Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone
+      Przygotuj obraz blueocean na podstawie obrazu jenkinsa
+      Uruchom blueocean
+      Zaloguj się i skonfiguruj Jenkins
         
 ###Wykonanie        
     Korzystając z instrukcji na oficjalnej stronie Jenkinsa pobieramy i instalujemy jenkins docker na naszym dockerze.
@@ -102,8 +103,8 @@
 	  https://download.docker.com/linux/debian \
 	  $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
 	 RUN apt-get update && apt-get install -y docker-ce-cli curl
-RUN  sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-RUN chmod +x /usr/local/bin/docker-compose
+	 RUN  sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+	 RUN chmod +x /usr/local/bin/docker-compose
 	 USER jenkins
 	 RUN jenkins-plugin-cli --plugins "blueocean:1.25.2 docker-workflow:1.26"
 
@@ -138,7 +139,7 @@ RUN chmod +x /usr/local/bin/docker-compose
  ![screen: logowanie i konfiguracja Jenkins](screenshots/20.png)
   
  
-### Mikro-projekt Jenkins
+### 4. Mikro-projekt Jenkins
 
     Utwórz projekt, który wyświetla uname:
   ![screen: pierwszy projekt](screenshots/21.png)
@@ -152,6 +153,13 @@ RUN chmod +x /usr/local/bin/docker-compose
         przechodzi na osobistą gałąź
         buduje obrazy z dockerfiles i/lub komponuje via docker-compose
 
+   Po zainstalowaniu dodatkowe pluginu, docker-compose build step
+   I usprawnieniu konfiguracji uznaje że chyba mam niewłaściwie napisany docker-compose.yml.
+   Ponieważ nadal budowanie kończy się failem.
+   Nie wiem jak inaczej to wykonać by działało.
+  ![screen: pierwszy projekt](screenshots/24.png)
+  ![screen: pierwszy projekt](screenshots/25.png)
+  ![screen: pierwszy projekt](screenshots/26.png)
    
 
 Sprawozdanie
