@@ -1,0 +1,7 @@
+version "3"
+
+service:
+
+dockerfile: Dockerfile-buapp
+dockerfile: Dockerfile-test
+
