@@ -150,3 +150,42 @@ Aby zalogować się do jenkins musiałem odczytać hasło, które zostało zapis
 Wpisałem hasło, a następnie skonfigurowałem jenkinsa.
 
 ![Zrzut_ekranu-20](20.jpg)
+
+
+## Mikro projekt jenkins
+
+1. Projekt, który wyświetla uname.
+
+Na dashboardzie, który pokazałem wcześniej przechodzę pod **Nowy projekt**, a następnie w konfiguracji nowego projektu w sekcji **Budowanie** wybieram **Uruchom powłokę** i wpisuje tam komendę `uname`.
+
+![Zrzut_ekranu-21](21.jpg)
+
+Po uruchomieniu tak prezentują się logi konsoli: 
+
+![Zrzut_ekranu-22](22.jpg)
+
+2. Projekt, który zwraca błąd gdy godzina jest nieparzysta.
+
+Tworze nowy projekt, analogicznie jak we wcześniejszym punkcie. Jedyna zmiana następuje tylko w sekcji Budowanie, gdzie zamiast uname, wpisuje odpowiedni skrypt bashowy.
+
+![Zrzut_ekranu-23](23.jpg)
+
+Po odpaleniu, logi konsoli prezentują się następująco:
+
+![Zrzut_ekranu-24](24.jpg)
+U mnie była godzina 18, więc projekt nie wyrzucił błędu, tylko zbudował się poprawnie.
+
+3. Prawdziwy projekt.
+
+Tworze nowy projekt jak wcześniej. Tym razem w sekcji repozytorium kodu wybieram **Git**, oraz wklejam URL naszego repo. Niżej podaje własnego brancha.
+
+![Zrzut_ekranu-25](25.jpg)
+
+W sekcji Budowanie znowu wybieram **Uruchom powłokę** i wpisuje następujący zestaw komend:
+
+![Zrzut_ekranu-26](26.jpg)
+
+Tak prezentuje się konsola po próbie zbudowania projektu:
+
+![Zrzut_ekranu-27](27.jpg)
+Niestety we wcześniejszych etapach prawdopodobnie nieświadomie coś zrobiłem źle, dlatego projekt wyrzuca błędy podczas budowania.
