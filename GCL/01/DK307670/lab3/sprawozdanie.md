@@ -97,6 +97,19 @@ Budowanie projektu
 
 #### Sprawozdanie
 * Opracuj dokument z diagramami UML, opisującymi proces CI. Opisz:
-  * Wymagania wstępne środowiska
+  * Wymagania wstępne środowiska:
+  
+    Host:
+    * Docker z obrazami jenkinsa oraz dind
+    Jenkins:
+    * Wtyczka docker-compose-build-step
+    Środowisko uruchomieniow obrazów:e
+    * Docker
+  
   * Diagram aktywności, pokazujący kolejne etapy (collect, build, test, report)
+
+![diagram-aktywnosci](diagram-aktywnosci.png)
+
   * Diagram wdrożeniowy, opisujący relacje między składnikami, zasobami i artefaktami
+
+![diagram-wdrozeniowy](diagram-wdrozeniowy.png)
