@@ -6,8 +6,6 @@ RUN apt-get -y install git
 
 RUN apt -y install cargo
 
-RUN ln -snf /usr/share/zoneinfo/$CONTAINER_TIMEZONE /etc/localtime && echo $CO>
-
 RUN apt-get update && apt-get install -y tzdata
 
 RUN apt -y install cmake
