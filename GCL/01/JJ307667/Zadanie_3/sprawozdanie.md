@@ -179,7 +179,7 @@ Testy zbudowały się bez problemu, cały projekt również:
     * Docker (do uruchamiania obrazów)
     * Wtyczka Docker Compose Build Step (do zdefiniowania budowania projektu w Jenkinsie)
   * Diagram aktywności, pokazujący kolejne etapy (collect, build, test, report)
-  ![Diagram aktywności](screenshots/Diagram aktywności.jpg)
+  ![Diagram aktywności](screenshots/Diagram_aktywnosci.jpg)
 
   * Diagram wdrożeniowy, opisujący relacje między składnikami, zasobami i artefaktami
-  ![Diagram wdrożeniowy](screenshots/Diagram wdrożeniowy.jpg)
+  ![Diagram wdrożeniowy](screenshots/Diagram_wdrożeniowy.jpg)
