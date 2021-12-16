@@ -176,5 +176,10 @@ Testy zbudowały się bez problemu, cały projekt również:
 #### Sprawozdanie
 * Opracuj dokument z diagramami UML, opisującymi proces CI. Opisz:
   * Wymagania wstępne środowiska
+    * Docker (do uruchamiania obrazów)
+    * Wtyczka Docker Compose Build Step (do zdefiniowania budowania projektu w Jenkinsie)
   * Diagram aktywności, pokazujący kolejne etapy (collect, build, test, report)
+  ![Diagram aktywności](screenshots/Diagram aktywności.jpg)
+
   * Diagram wdrożeniowy, opisujący relacje między składnikami, zasobami i artefaktami
+  ![Diagram wdrożeniowy](screenshots/Diagram wdrożeniowy.jpg)
