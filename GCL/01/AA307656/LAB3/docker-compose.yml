@@ -1,10 +1,13 @@
 version: "2.2"
 services:
-  tester:
-   image: "test:latest"
 
   builder:
-   image: "builder:latest"
   
+   dockerfile: Dockerfile-build
+            context: builder
  
+  tester:
+   dockerfile: Dockerfile-test
+            context: test
+  
 
