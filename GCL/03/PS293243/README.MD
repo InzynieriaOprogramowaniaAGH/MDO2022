@@ -250,3 +250,68 @@ Przechodzimy do **Build History** i wybieramy naszego builda.
 Klikamy na **Console Output** i wyświetli nam się wynik działania naszego builda - czyli to, co zwróciła nam komenda `uname -a`.
 
 ![Zrzut ekranu - uname #7](uname-7.jpg)
+
+### Projekt zwracający błąd, gdy aktualna godzina jest nieparzysta
+
+Tworzymy nowy projekt **Freestyle project**.
+
+Przechodzimy do **Build**. Klikamy **Add build step** i wybieramy opcję **Execute shell**. W polę komendy podajemy poniższy skrypt:
+
+    #!/bin/bash
+
+    hour=$(date +%H)
+    echo $hour
+
+    if [ $((hour%2)) -eq 0 ];
+    then
+
+    exit 0
+
+    else
+
+    exit 1
+
+    fi
+
+Wciskamy przycisk **Save**.
+
+![Zrzut ekranu - jenkins hour script](jenkins-hour-script.jpg)
+
+Uruchamiamy builda i sprawdzamy wyjście.
+
+![Zrzut ekranu - jenkins hour odd](jenkins-hour-odd.jpg)
+![Zrzut ekranu - jenkins hour even](jenkins-hour-even.jpg)
+
+### Projekt "prawdziwy"
+
+Zadaniem naszego prawdziwego projektu będzie sklonowanie naszego repozytorium, przejście na osobistą gałąź i zbudowanie obrazów na podstawie docker-compose.
+
+Najpierw instalujemy wtyczkę, która pozwoli nam na dodanie kroku do builda na podstawie naszego docker-compose.
+
+Przechodzimy do **Dashboard**, **Manage Jenkins** i następnie **Manage Plugins**. Tam klikamy na zakładkę **Available** i wyszukujemy wtyczki **Docker Compose Build Step**, którą instalujemy.
+
+![Zrzut ekranu - jenkins plugin manager](jenkins-plugin-manager.jpg)
+
+Żebyśmy mieli obsługę docker-compose na naszym Jenkinsie, musimy zainstalować go w skontenerowanym Dockerze.
+
+Wykonujemy kolejno komendy:
+
+`sudo docker exec -u 0 <ID kontenera> curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`
+
+`sudo docker exec -u 0 <ID kontenera> chmod +x /usr/local/bin/docker-compose`
+
+![Zrzut ekranu - docker apk](docker-apk.jpg)
+
+W ustawieniach projektu pod **Source Code Management** podajemy adres do naszego repozytorium oraz nazwę gałęzi.
+
+![Zrzut ekranu - jenkins git branch](jenkins-git-branch.jpg)
+
+Pod **Build** dodajemy nowy krok - **Docker Compose Build Step** i podajemy ścieżkę do naszego `docker-compose.yml`.
+
+![Zrzut ekranu - jenkins docker compose](jenkins-docker-compose.jpg)
+
+Zapisujemy projekt i uruchamiamy go.
+
+![Zrzut ekranu - jenkins docker compose success](jenkins-docker-compose-success.jpg)
+
+![Zrzut ekranu - jenkins docker compose log](jenkins-docker-compose-log.jpg)
