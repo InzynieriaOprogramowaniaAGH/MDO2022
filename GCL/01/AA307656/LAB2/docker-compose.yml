@@ -1,0 +1,10 @@
+version: "2.2"
+services:
+  tester:
+   image: "test:latest"
+
+  builder:
+   image: "builder:latest"
+  
+ 
+

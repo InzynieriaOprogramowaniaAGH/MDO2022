@@ -1,0 +1,14 @@
+version: "2.2"
+services:
+
+  builder:
+   build:
+   context: .
+   dockerfile: Dockerfile-build
+   image: builder
+ 
+  tester:
+   image: test
+   dockerfile: Dockerfile-test
+   command: npm run test
+
