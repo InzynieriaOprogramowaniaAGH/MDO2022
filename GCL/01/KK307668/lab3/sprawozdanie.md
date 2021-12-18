@@ -21,10 +21,10 @@
 #### Przygotowanie
 * Upewnij się, że Dockerfiles i Docker Compose z poprzednich zajęć są w repozytorium ![12.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/12.png)
 * Zapoznaj się z instrukcją https://www.jenkins.io/doc/book/installing/docker/
-    * Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone `13.png`
-    * Przygotuj obraz blueocean na podstawie obrazu jenkinsa `14.png`
-    * Uruchom blueocean `15.png` `16.png`
-    * Zaloguj się i skonfiguruj Jenkins `17.png` `18.png` `19.png` `20.png` `21.png`
+    * Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone ![13.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/13.png)
+    * Przygotuj obraz blueocean na podstawie obrazu jenkinsa ![14.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/14.png)
+    * Uruchom blueocean ![15.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/15.png) ![16.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/16.png)
+    * Zaloguj się i skonfiguruj Jenkins ![17.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/17.png) ![18.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/18.png)  ![19.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/19.png)  ![20.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/20.png) ![21.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/21.png)
 
 #### Mikro-projekt Jenkins
 * Utwórz projekt, który wyświetla uname `22.png` `23.png`
