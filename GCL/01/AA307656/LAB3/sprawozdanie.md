@@ -160,6 +160,9 @@
   ![screen: pierwszy projekt](screenshots/24.png)
   ![screen: pierwszy projekt](screenshots/25.png)
   ![screen: pierwszy projekt](screenshots/26.png)
+  ![screen: pierwszy projekt](screenshots/27.png)
+  ![screen: pierwszy projekt](screenshots/28.png)
+  
    
 
 Sprawozdanie
