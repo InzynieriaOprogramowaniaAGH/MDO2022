@@ -27,12 +27,12 @@
     * Zaloguj się i skonfiguruj Jenkins ![17.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/17.png) ![18.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/18.png)  ![19.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/19.png)  ![20.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/20.png) ![21.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/21.png)
 
 #### Mikro-projekt Jenkins
-* Utwórz projekt, który wyświetla uname `22.png` `23.png`
-* Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta `24.png` `25.png`
+* Utwórz projekt, który wyświetla uname ![22.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/22.png) ![23.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/23.png)
+* Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta ![24.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/24.png) ![25.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/25.png)
 * Utwórz "prawdziwy" projekt, który:
-    * klonuje nasze repozytorium `26.png`
-    * przechodzi na osobistą gałąź `27.png`
-    * buduje obrazy z dockerfiles i/lub komponuje via docker-compose `28.png`
+    * klonuje nasze repozytorium ![26.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/26.png)
+    * przechodzi na osobistą gałąź ![27.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/27.png)
+    * buduje obrazy z dockerfiles i/lub komponuje via docker-compose ![28.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/28.png)
 
 #### Sprawozdanie
 * Opracuj dokument z diagramami UML, opisującymi proces CI. Opisz:
