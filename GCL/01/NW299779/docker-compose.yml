@@ -1,0 +1,14 @@
+version: "3.4"
+
+services:
+  aria2:
+    &aria2
+    build:
+      context: ./
+      dockerfile: aria2-dockerfile
+      target: base
+
+  aria2-test:
+    <<: *aria2
+    command:
+        make check  
