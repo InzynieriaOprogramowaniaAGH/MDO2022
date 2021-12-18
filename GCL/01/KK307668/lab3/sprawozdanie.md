@@ -19,20 +19,20 @@
 #### Skonteneryzowany Jenkins stosujący Dockera
 
 #### Przygotowanie
-* Upewnij się, że Dockerfiles i Docker Compose z poprzednich zajęć są w repozytorium
+* Upewnij się, że Dockerfiles i Docker Compose z poprzednich zajęć są w repozytorium `12.png`
 * Zapoznaj się z instrukcją https://www.jenkins.io/doc/book/installing/docker/
-    * Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone
-    * Przygotuj obraz blueocean na podstawie obrazu jenkinsa
-    * Uruchom blueocean
-    * Zaloguj się i skonfiguruj Jenkins
+    * Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone `13.png`
+    * Przygotuj obraz blueocean na podstawie obrazu jenkinsa `14.png`
+    * Uruchom blueocean `15.png` `16.png`
+    * Zaloguj się i skonfiguruj Jenkins `17.png` `18.png` `19.png` `20.png` `21.png`
 
 #### Mikro-projekt Jenkins
-* Utwórz projekt, który wyświetla uname
-* Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta
+* Utwórz projekt, który wyświetla uname `22.png` `23.png`
+* Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta `24.png` `25.png`
 * Utwórz "prawdziwy" projekt, który:
-    * klonuje nasze repozytorium
-    * przechodzi na osobistą gałąź
-    * buduje obrazy z dockerfiles i/lub komponuje via docker-compose
+    * klonuje nasze repozytorium `26.png`
+    * przechodzi na osobistą gałąź `27.png`
+    * buduje obrazy z dockerfiles i/lub komponuje via docker-compose `28.png`
 
 #### Sprawozdanie
 * Opracuj dokument z diagramami UML, opisującymi proces CI. Opisz:
