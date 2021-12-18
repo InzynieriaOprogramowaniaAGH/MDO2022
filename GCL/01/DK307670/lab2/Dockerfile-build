@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:latest as build-vol
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -13,4 +13,8 @@ RUN npm init react-app my-app --use-npm
 
 WORKDIR /my-app
 
-CMD ["npm","run","build"]
+RUN echo "REACT_APP_PUBLIC_URL=http://localhost" > .env
+
+ENV CI=true
+
+RUN npm run build
