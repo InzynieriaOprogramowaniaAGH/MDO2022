@@ -19,7 +19,7 @@
 #### Skonteneryzowany Jenkins stosujący Dockera
 
 #### Przygotowanie
-* Upewnij się, że Dockerfiles i Docker Compose z poprzednich zajęć są w repozytorium `12.png`
+* Upewnij się, że Dockerfiles i Docker Compose z poprzednich zajęć są w repozytorium ![12.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab3/ss/12.png)
 * Zapoznaj się z instrukcją https://www.jenkins.io/doc/book/installing/docker/
     * Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone `13.png`
     * Przygotuj obraz blueocean na podstawie obrazu jenkinsa `14.png`
