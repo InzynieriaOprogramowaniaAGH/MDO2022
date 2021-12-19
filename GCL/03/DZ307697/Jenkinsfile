@@ -13,8 +13,14 @@ pipeline {
             }
         }
         stage('Deploy') {
+            environment {
+                DOCKER_HUB_USER = credentials('docker-hub-user')
+                DOCKER_HUB_PASSWORD = credentials('docker-hub-password')
+            }
             steps {
-                echo 'Deploying....'
+                sh 'docker image tag jest-test:latest zxcvnm/jest-test:latest'
+                sh 'docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD docker.io'
+                sh 'docker push zxcvnm/jest-test:latest'
             }
         }
     }
