@@ -6,10 +6,26 @@ pipeline {
             steps {
                 sh 'docker-compose -f GCL/03/DZ307697/docker-compose.yml up build'
             }
+            post {
+                success {
+                    mail to: 'damian.zboro@gmail.com', subject: "Build passed"
+                }
+                failure {
+                    mail to: 'damian.zboro@gmail.com', subject: "Build failed"
+                }
+            }
         }
         stage('Test') {
             steps {
                 sh 'docker-compose -f GCL/03/DZ307697/docker-compose.yml up test'
+            }
+            post {
+                success {
+                    mail to: 'damian.zboro@gmail.com', subject: "Test passed"
+                }
+                failure {
+                    mail to: 'damian.zboro@gmail.com', subject: "Test failed"
+                }
             }
         }
         stage('Deploy') {
@@ -21,6 +37,14 @@ pipeline {
                 sh 'docker image tag jest-test:latest zxcvnm/jest-test:latest'
                 sh 'docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD docker.io'
                 sh 'docker push zxcvnm/jest-test:latest'
+            }
+            post {
+                success {
+                    mail to: 'damian.zboro@gmail.com', subject: "Deploy passed"
+                }
+                failure {
+                    mail to: 'damian.zboro@gmail.com', subject: "Deploy failed"
+                }
             }
         }
     }
