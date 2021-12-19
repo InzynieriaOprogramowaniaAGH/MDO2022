@@ -8,10 +8,10 @@ pipeline {
             }
             post {
                 success {
-                    mail to: 'damian.zboro@gmail.com', subject: "Build passed"
+                    mail to: 'damian.zboro@gmail.com', subject: "Build passed", body: "Build - ${BUILD_URL}"
                 }
                 failure {
-                    mail to: 'damian.zboro@gmail.com', subject: "Build failed"
+                    mail to: 'damian.zboro@gmail.com', subject: "Build failed", body: "Build - ${BUILD_URL}"
                 }
             }
         }
@@ -21,10 +21,10 @@ pipeline {
             }
             post {
                 success {
-                    mail to: 'damian.zboro@gmail.com', subject: "Test passed"
+                    mail to: 'damian.zboro@gmail.com', subject: "Test passed", body: "Build - ${BUILD_URL}"
                 }
                 failure {
-                    mail to: 'damian.zboro@gmail.com', subject: "Test failed"
+                    mail to: 'damian.zboro@gmail.com', subject: "Test failed", body: "Build - ${BUILD_URL}"
                 }
             }
         }
@@ -40,10 +40,10 @@ pipeline {
             }
             post {
                 success {
-                    mail to: 'damian.zboro@gmail.com', subject: "Deploy passed"
+                    mail to: 'damian.zboro@gmail.com', subject: "Deploy passed", body: "Build - ${BUILD_URL}"
                 }
                 failure {
-                    mail to: 'damian.zboro@gmail.com', subject: "Deploy failed"
+                    mail to: 'damian.zboro@gmail.com', subject: "Deploy failed", body: "Build - ${BUILD_URL}"
                 }
             }
         }
