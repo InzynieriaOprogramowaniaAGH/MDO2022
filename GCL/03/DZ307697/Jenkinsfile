@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                cd GCL/03/DZ307697
+                sh 'cd GCL/03/DZ307697'
                 sh 'docker-compose up build'
             }
         }
         stage('Test') {
             steps {
-                cd GCL/03/DZ307697
+                sh 'cd GCL/03/DZ307697'
                 sh 'docker-compose up test'
             }
         }
