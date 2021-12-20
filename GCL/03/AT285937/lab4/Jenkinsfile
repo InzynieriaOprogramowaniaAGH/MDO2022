@@ -1,10 +1,19 @@
+library identifier: "pipeline-library@v1.5",
+retriever: modernSCM(
+  [
+    $class: "GitSCMSource",
+    remote: "https://github.com/InzynieriaOprogramowaniaAGH/MDO2022.git"
+  ]
+)
+appName = "MyApp"
+
 pipeline {
     agent any
     
     stages {
         stage('Build') {
             steps {
-                binaryBuild(buildConfigName: MyApp, buildFromPath: "AT285937/GCL/03/AT285937/lab2/dockerfile-bldr")
+                binaryBuild(buildConfigName: appName, buildFromPath: "AT285937/GCL/03/AT285937/lab2/dockerfile-bldr")
             }
         }
         
