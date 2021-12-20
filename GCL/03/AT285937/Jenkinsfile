@@ -6,7 +6,7 @@ pipeline {
         stage('Build') {
             steps {
                  sh '''
-                docker-compose -f GCL/03/AT285937/docker-compose.yml build --no-cache build
+                docker-compose -f GCL/03/AT285937/docker-compose.yml build
                 '''
             }
         }
