@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                    docker build  -t app -f GCL/03/AT285937/lab2/dockerfile-bldr .
+                    docker build -f GCL/03/AT285937/lab2/dockerfile-bldr
                 '''
             }
         }
