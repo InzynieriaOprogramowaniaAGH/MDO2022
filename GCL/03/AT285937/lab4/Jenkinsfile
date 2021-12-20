@@ -4,12 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                - task: Docker@2
-                 displayName: Build an image
-                 inputs:
-                 repository: $(MDO2022)
-                 command: build
-                 Dockerfile: AT285937/GCL/03/AT285937/lab2/dockerfile-bldr
+                binaryBuild(buildConfigName: MyApp, buildFromPath: "AT285937/GCL/03/AT285937/lab2/dockerfile-bldr")
             }
         }
         
