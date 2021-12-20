@@ -1,14 +1,11 @@
 pipeline {
-     environment {
-        PATH = "$PATH:/usr/bin"
-    }
-    agent any
+
+     agent any
     
     stages {
         stage('Build') {
             steps {
                  sh '''
-                apt-get install docker-compose -y
                 docker-compose -f GCL/03/AT285937/docker-compose.yml build --no-cache build
                 '''
             }
