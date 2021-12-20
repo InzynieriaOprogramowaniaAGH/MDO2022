@@ -4,14 +4,10 @@ services:
     build:
       context: .
       dockerfile: dockerfile-test
-      ports:
-        - "8080:8080"
     depends_on:
       - build
   build:
     image: MyApp
     build:
-      ports:
-        - "8080:8080"
       context: .
       dockerfile: dockerfile-bldr
