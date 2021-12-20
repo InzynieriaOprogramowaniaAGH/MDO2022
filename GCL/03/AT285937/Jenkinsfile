@@ -5,7 +5,6 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-<<<<<<< HEAD
                 sh '''
                 echo 'Starting building'
                 apt-get update
@@ -15,10 +14,6 @@ pipeline {
                 git clone https://github.com/caolan/nodeunit.git
                 cd nodeunit && npm install
                 npm test
-=======
-                 sh '''
-                docker-compose -f GCL/03/AT285937/docker-compose.yml build
->>>>>>> 2003177d9dd8cd014f1ba747a3e99f13a46da3ae
                 '''
             }
         }
