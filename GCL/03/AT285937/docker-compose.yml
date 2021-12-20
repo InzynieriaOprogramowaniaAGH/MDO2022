@@ -2,6 +2,8 @@ version: "3"
 services:
   test:
     build:
+       ports:
+      - "8080:8080"
       context: .
       dockerfile: dockerfile-test
     depends_on:
