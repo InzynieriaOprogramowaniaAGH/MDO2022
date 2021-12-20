@@ -8,7 +8,7 @@ pipeline {
         stage('Build') {
             steps {
                  sh '''
-                apt-get install docker-compose
+                apt-get install docker-compose -y
                 docker-compose -f GCL/03/AT285937/docker-compose.yml build --no-cache build
                 '''
             }
