@@ -9,7 +9,7 @@ pipeline {
 sh 'ls'               
 dir("junit5-maven-example") {
 sh 'ls'               
-  sh 'mvn clean package -DskipTests'
+  sh 'mvn package -DskipTests'
                }
             }
         }
