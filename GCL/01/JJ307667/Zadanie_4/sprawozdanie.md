@@ -15,9 +15,9 @@
   * albo pipeline zawiera treść Jenkinsfile'a
   * albo forkujemy repozytorium wybranej aplikacji i dodajemy Jenkinsfile do niego
 
-##Tworzymy pipeline
-![Tworzenie pipeline](screenshots/1.PNG)
-![Tworzenie pipeline](screenshots/2.PNG)
+#### Tworzymy pipeline
+![Tworzenie pipeline 1](screenshots/1.PNG)
+![Tworzenie pipeline 2](screenshots/2.PNG)
 
 **Wynik uruchomienia**:
 ![Wynik pipeline](screenshots/3.PNG)
