@@ -6,7 +6,8 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-               dir("junit5-maven-example") {
+sh 'ls'               
+dir("junit5-maven-example") {
 sh 'ls'               
   sh 'mvn clean package -DskipTests'
                }
