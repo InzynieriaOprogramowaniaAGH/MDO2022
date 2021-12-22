@@ -1,0 +1,36 @@
+pipeline {
+    agent any 
+    tools {
+        maven 'mvn' 
+    }
+    stages {
+        stage('Build') { 
+            steps {
+               dir("junit5-maven-example") {
+                 sh 'mvn clean package -DskipTests'
+               }
+            }
+        }
+        stage('Tests') { 
+            steps {
+                        dir("junit5-maven-example") {
+          sh 'mvn test'
+        }
+            }
+        }
+        stage('Build docker image') { 
+            steps {
+                sh 'docker build . -t obraz-jenkinsfile'
+            }
+        }
+    }
+    post {  
+         success {  
+             echo 'This will run only if successful'
+             mail bcc: '', body: "<b></b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "SUCCESS CI: Project name -> ${env.JOB_NAME}", to: "foo@foomail.com";  
+         }  
+         failure {  
+             mail bcc: '', body: "<b></b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "foo@foomail.com";  
+         }  
+     } 
+}
