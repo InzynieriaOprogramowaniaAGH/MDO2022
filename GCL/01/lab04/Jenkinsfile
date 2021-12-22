@@ -7,7 +7,7 @@ pipeline {
         stage('Build') { 
             steps {
 sh 'ls'               
-dir("junit5-maven-example") {
+dir("GCL/01/lab04/junit5-maven-example") {
 sh 'ls'               
   sh 'mvn package -DskipTests'
                }
@@ -15,7 +15,7 @@ sh 'ls'
         }
         stage('Tests') { 
             steps {
-                        dir("junit5-maven-example") {
+                        dir("GCL/01/lab04/junit5-maven-example") {
           sh 'mvn test'
         }
             }
