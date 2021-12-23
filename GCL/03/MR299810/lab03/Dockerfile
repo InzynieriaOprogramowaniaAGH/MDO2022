@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
-RUN apt-get update &&\
-    apt-get upgrade &&\
+RUN apt-get -y update &&\
+    apt-get -y upgrade &&\
     apt-get -y install nodejs &&\
     npx create-react-app my-app
     
