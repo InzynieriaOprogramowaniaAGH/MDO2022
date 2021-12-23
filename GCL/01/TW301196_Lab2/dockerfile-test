@@ -1,3 +1,0 @@
-FROM build:latest
-
-RUN dotnet test

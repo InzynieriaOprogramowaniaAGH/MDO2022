@@ -1,5 +1,0 @@
-FROM builder:latest
-
-WORKDIR deltachat-desktop
-
-RUN npm run test
