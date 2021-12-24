@@ -119,6 +119,8 @@ W celu utworzenia "prawdziwego" projektu
 
 Tworzymy nowy projekt wybierając opcje Multi-configuration project
 
+#### W WYNIKACH NAZWA PROJEKTU JEST INNA ZE WZGLĘDU NA PODEJMOWANIE RÓŻNYCH PRÓB NAPRAWIENIA NAPOTKANYCH BŁĘDÓW 
+
 ![screen realJenkins1.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/MR299810/GCL/03/MR299810/lab03/realJenkins1.png)
 
 Następnie wewnątrz konfiguracji projektu ustawiamy GitHub project wewnątrz wstawiając link naszego git
