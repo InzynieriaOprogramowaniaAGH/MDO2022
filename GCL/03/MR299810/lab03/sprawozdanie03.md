@@ -1,6 +1,6 @@
 ﻿
 
-## Sprawozdanie Metodtki DevOps
+## Sprawozdanie Metodyki DevOps
 Mateusz Rudziński
 Laboratoria 3
 
