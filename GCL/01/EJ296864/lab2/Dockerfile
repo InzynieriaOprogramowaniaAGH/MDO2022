@@ -1,10 +1,14 @@
 FROM ubuntu:20.04 AS development
 
-RUN apt-get update && apt-get -y upgrade
-ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get install -y nodejs npm
-RUN npx create-react-app my-app-container
+RUN apt-get update -y && apt-get upgrade -y
+RUN apt-get install -y curl git
 
-WORKDIR /my-app-container
+RUN curl -sL https://deb.nodesource.com/setup_14.x -o setup_14.sh
+RUN sh ./setup_14.sh
+RUN apt-get update -y
+RUN apt-get install -y nodejs
+RUN npm init react-app my-app --use-npm
+
+WORKDIR /my-app
 
 CMD ["npm", "run", "build"]

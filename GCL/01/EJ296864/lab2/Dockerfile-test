@@ -1,5 +1,5 @@
 FROM ubuntu-init-react-react-app AS test
 
-WORKDIR /my-app-container
+WORKDIR /my-app
 
 CMD ["npm", "test"]

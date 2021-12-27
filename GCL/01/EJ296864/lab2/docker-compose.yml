@@ -4,11 +4,11 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        image: ubuntu-init-react-react-app
+        image: ubuntu-init-react-react-app:1.0.1
 
     ubuntu-init-react-react-app-test:
-        image: ubuntu-init-react-react-app-test
+        image: ubuntu-init-react-react-app:1.0.1
         depends_on:
             - ubuntu-init-react-react-app
-        working_dir: /my-app-container
+        working_dir: /my-app
         command: npm test
