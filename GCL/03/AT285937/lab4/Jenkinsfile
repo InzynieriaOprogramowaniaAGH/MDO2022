@@ -6,7 +6,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                docker build -f GCL/03/AT285937/lab4/dockerfile-bldr build
+                docker build -f GCL/03/AT285937/lab4/dockerfile-bldr
                 sh '''               
             }
             post {
@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'docker build -f GCL/03/AT285937/lab4/dockerfile-tst test'        
+                sh 'docker build -f GCL/03/AT285937/lab4/dockerfile-tst'        
             }
          post {
             success {
