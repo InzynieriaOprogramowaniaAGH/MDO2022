@@ -51,9 +51,17 @@ Jednokrokowy pipeline (Build i test), pobierający narzędzie docker-compose i u
 	* npm build
   * test
     * npm test
+
+![image](https://user-images.githubusercontent.com/80592460/147591694-5979753f-aef7-433c-94af-131702779d03.png)
+
 	
 ### Jenkinsfile: powiadomienia
   * Sekcja "post" dla każdego stage'a, informująca mailem o rezultacie
+
+![image](https://user-images.githubusercontent.com/80592460/147591597-b0b0fc0d-6b28-4252-9abe-4d72a22bb8be.png)
+
+![image](https://user-images.githubusercontent.com/80592460/147591474-0c7704cd-bbe6-418e-870b-76313b59ea7a.png)
+
   
 ### Jenkinsfile: deploy
  * W razie sukcesu, build ma zostać wypromowany jako kandydat do wydania
