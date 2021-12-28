@@ -1,11 +1,13 @@
 version: "3.7"
 services:
   new_app:
+    tty: true
     image: new_app:latest
     build:
       context: .
       dockerfile: DOCKERFILE
   test:
+    tty: true
     build:
       context: .
       dockerfile: DOCKERFILE-test
