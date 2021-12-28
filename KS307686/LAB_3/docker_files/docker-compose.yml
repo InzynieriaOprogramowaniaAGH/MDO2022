@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   new_app:
-    images: new_app:latest
+    image: new_app:latest
     build:
       context: .
       dockerfile: DOCKERFILE
