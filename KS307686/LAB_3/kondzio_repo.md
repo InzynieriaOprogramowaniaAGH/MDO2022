@@ -105,11 +105,16 @@ RUN jenkins-plugin-cli --plugins "blueocean:1.25.2 docker-workflow:1.26"
 ![image](2_4.png)
 #### Mikro-projekt Jenkins
 * Utwórz projekt, który wyświetla uname
+![image](2_6.png)
 * Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta 
 * Utwórz "prawdziwy" projekt, który:
   * klonuje nasze repozytorium
+![image](2_7.png)
   * przechodzi na osobistą gałąź
+![image](2_8.png)
   * buduje obrazy z dockerfiles i/lub komponuje via docker-compose
+![image](2_9.png)
+![image](2_10.png)
   
 #### Sprawozdanie
 * Opracuj dokument z diagramami UML, opisującymi proces CI. Opisz:
