@@ -1,3 +1,4 @@
 FROM new_app:latest
+WORKDIR /my-app/new_app
 
 CMD ["npm","test"]
