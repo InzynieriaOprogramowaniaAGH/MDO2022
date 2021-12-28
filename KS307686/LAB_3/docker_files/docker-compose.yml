@@ -1,14 +1,12 @@
 version: "3.8"
 services:
   new_app:
-    tty: true
     build:
       context: .
-      dockerfile: ./DOCKERFILE
+      dockerfile: DOCKERFILE
   test:
-    tty: true
     build:
       context: .
-      dockerfile: ./DOCKERFILE-test
+      dockerfile: DOCKERFILE-test
     depends_on:
       - new_app
