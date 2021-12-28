@@ -79,12 +79,30 @@ ssh root@172.17.0.1 -p 2222e
 
 #### Przygotowanie
 * Upewnij się, że Dockerfiles i Docker Compose z poprzednich zajęć są w repozytorium
+![image](2_5.png)
 * Zapoznaj się z instrukcją https://www.jenkins.io/doc/book/installing/docker/
   * Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone
+![image](2_0.png)
   * Przygotuj obraz blueocean na podstawie obrazu jenkinsa
+```shell
+FROM jenkins/jenkins:2.319.1-jdk11
+USER root
+RUN apt-get update && apt-get install -y lsb-release
+RUN curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc \
+  https://download.docker.com/linux/debian/gpg
+RUN echo "deb [arch=$(dpkg --print-architecture) \
+  signed-by=/usr/share/keyrings/docker-archive-keyring.asc] \
+  https://download.docker.com/linux/debian \
+  $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
+RUN apt-get update && apt-get install -y docker-ce-cli
+USER jenkins
+RUN jenkins-plugin-cli --plugins "blueocean:1.25.2 docker-workflow:1.26"
+```
+![image](2_1.png)
   * Uruchom blueocean
+![image](2_3.png)  
   * Zaloguj się i skonfiguruj Jenkins
-  
+![image](2_4.png)
 #### Mikro-projekt Jenkins
 * Utwórz projekt, który wyświetla uname
 * Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta 
