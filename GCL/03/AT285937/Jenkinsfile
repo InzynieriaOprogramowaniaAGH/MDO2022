@@ -13,11 +13,28 @@ pipeline {
                 rm -rf nodeunit
                 git clone https://github.com/caolan/nodeunit.git
                 cd nodeunit && npm install
-                npm test
-                '''
+                sh '''               
             }
+            post {
+            success {
+            	mail to: 'atalik000@gmail.com', subject: "Budowanie ukonczone pomyslnie", body" "Budowanie ukonczone pomyslnie: ${BUILD_URL}"
+            }
+            failure {
+            	mail to: 'atalik000@gmail.com', subject: "Blad budowania", body: "Bledy w budowaniu: ${BUILD_URL}"
+            }
+            
         }
-        
+        stage('Test') {
+            steps {
+                sh 'npm test'        
+            }
+         post {
+            success {
+            	mail to: 'atalik000@gmail.com', subject: "Test uruchomiony pomyslnie", body" "Test uruchomiony pomyslnie: ${BUILD_URL}"
+            }
+            failure {
+            	mail to: 'atalik000@gmail.com', subject: "Blad testowania", body: "Bledy w testowaniu: ${BUILD_URL}"
+            }
     }
     
 }
