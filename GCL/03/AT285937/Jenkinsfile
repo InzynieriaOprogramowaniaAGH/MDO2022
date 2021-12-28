@@ -17,10 +17,10 @@ pipeline {
             }
             post {
             success {
-            	mail to: 'atalik000@gmail.com', subject: "Budowanie ukonczone pomyslnie", body" "Budowanie ukonczone pomyslnie: ${BUILD_URL}"
+            	mail to: 'atalik000@gmail.com', subject: "Budowanie ukonczone pomyslnie", body" "Budowanie ukonczone pomyslnie.
             }
             failure {
-            	mail to: 'atalik000@gmail.com', subject: "Blad budowania", body: "Bledy w budowaniu: ${BUILD_URL}"
+            	mail to: 'atalik000@gmail.com', subject: "Blad budowania", body: "Bledy w budowaniu.
             }
             
         }
@@ -30,10 +30,10 @@ pipeline {
             }
          post {
             success {
-            	mail to: 'atalik000@gmail.com', subject: "Test uruchomiony pomyslnie", body" "Test uruchomiony pomyslnie: ${BUILD_URL}"
+            	mail to: 'atalik000@gmail.com', subject: "Test uruchomiony pomyslnie", body" "Test uruchomiony pomyslnie.
             }
             failure {
-            	mail to: 'atalik000@gmail.com', subject: "Blad testowania", body: "Bledy w testowaniu: ${BUILD_URL}"
+            	mail to: 'atalik000@gmail.com', subject: "Blad testowania", body: "Bledy w testowaniu.
             }
     }
     
