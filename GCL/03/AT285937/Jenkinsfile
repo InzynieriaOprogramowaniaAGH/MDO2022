@@ -22,7 +22,7 @@ pipeline {
             failure {
             	mail to: 'atalik000@gmail.com', subject: "Blad budowania", body: "Bledy w budowaniu.
             }
-            
+          }            
         }
         stage('Test') {
             steps {
@@ -35,6 +35,7 @@ pipeline {
             failure {
             	mail to: 'atalik000@gmail.com', subject: "Blad testowania", body: "Bledy w testowaniu.
             }
+         }
     }
-    
+  }
 }
