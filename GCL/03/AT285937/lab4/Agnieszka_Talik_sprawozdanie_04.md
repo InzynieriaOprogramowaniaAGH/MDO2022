@@ -16,6 +16,8 @@
  * Początkowo, Jenkinsfile może być albo "wklejony" albo dodany do repozytorium, które jest sforkowane, to znaczy:
   * albo pipeline zawiera treść Jenkinsfile'a
 
+Jedninsfile budujący i testujący (Build + Test jako jeden etap), jako skrypt w Jenkins
+
 ![image](https://user-images.githubusercontent.com/80592460/146653070-85dd679f-a9b4-41c2-9552-9124906ecb21.png)
 
  ![logi1](https://user-images.githubusercontent.com/80592460/146653039-c24b454e-c77c-4ea2-9e9b-a22be5385d26.PNG)
@@ -23,9 +25,10 @@
  ![logi2](https://user-images.githubusercontent.com/80592460/146653042-6e121242-529f-42a1-9f4b-e1e901666ea2.PNG)
  
  ![image](https://user-images.githubusercontent.com/80592460/146653083-41588fd0-207a-40c9-b827-d615dfb56942.png)
-
+ 
  
   * albo forkujemy repozytorium wybranej aplikacji i dodajemy Jenkinsfile do niego 
+
  
 ![image](https://user-images.githubusercontent.com/80592460/146653023-e2386afc-bd51-4026-87b0-f86bd76b8c5f.png)
 
@@ -52,13 +55,30 @@ Jednokrokowy pipeline (Build i test), pobierający narzędzie docker-compose i u
   * test
     * npm test
 
-![image](https://user-images.githubusercontent.com/80592460/147591694-5979753f-aef7-433c-94af-131702779d03.png)
+
 
 	
 ### Jenkinsfile: powiadomienia
   * Sekcja "post" dla każdego stage'a, informująca mailem o rezultacie
 
-![image](https://user-images.githubusercontent.com/80592460/147591597-b0b0fc0d-6b28-4252-9abe-4d72a22bb8be.png)
+ Jenkinsfile z etapami budującym i testującym jako skrypt w Jenkins, ale pobierający dockerfile build i dockerfile test z mojego repo
+ 
+ ![image](https://user-images.githubusercontent.com/80592460/147771646-3ad74ec8-b16e-49b5-b802-0b5ef879f3bc.png)
+ 
+ ![image](https://user-images.githubusercontent.com/80592460/147771965-08ed3b4d-22de-4017-a850-32e417a7a431.png)
+
+ ![image](https://user-images.githubusercontent.com/80592460/147775129-492acd47-bd69-410f-a7b4-7869ceae4645.png)
+
+ 
+ Fork repozytorium z Jenkinsfilem w środku 
+
+![image](https://user-images.githubusercontent.com/80592460/147775432-99908a62-ef7c-4597-aafe-1d4d40e9b2c2.png)
+
+![image](https://user-images.githubusercontent.com/80592460/147775453-fae07faa-5733-4035-b437-6b94127d8a54.png)
+
+![image](https://user-images.githubusercontent.com/80592460/147775335-e5174771-f403-423b-87ae-b058aff94283.png)
+
+![image](https://user-images.githubusercontent.com/80592460/147775576-5daefb64-e0d7-4585-ada3-3ea2c05308d0.png)
 
 ![image](https://user-images.githubusercontent.com/80592460/147591474-0c7704cd-bbe6-418e-870b-76313b59ea7a.png)
 
