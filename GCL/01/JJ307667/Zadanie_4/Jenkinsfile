@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'docker-compose -f GCL/01/JJ307667/Zadanie_2/docker-compose.yml build --no-cache build'
+            }
+            post {
+                success {
+                    mail to: 'jagiellojedrzej@gmail.com', subject: "Jenkins pipeline build - passed", body: "Build has been finished successfully - ${BUILD_URL}"
+                }
+                failure {
+                    mail to: 'jagiellojedrzej@gmail.com', subject: "Jenkins pipeline build - failed", body: "Build has been finished with fail - ${BUILD_URL}"
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'docker-compose -f GCL/01/JJ307667/Zadanie_2/docker-compose.yml build --no-cache test'
+            }
+            post {
+                success {
+                    mail to: 'jagiellojedrzej@gmail.com', subject: "Jenkins pipeline test - passed", body: "Test has been finished successfully - ${BUILD_URL}"
+                }
+                failure {
+                    mail to: 'jagiellojedrzej@gmail.com', subject: "Jenkins pipeline test - failed", body: "Test has been finished with fail - ${BUILD_URL}"
+                }
+            }
+        }
+        stage('Deploy') {
+            environment {
+                DOCKER_HUB_LOGIN = credentials('docker-hub-login')
+                DOCKER_HUB_PASSWORD = credentials('docker-hub-password')
+            }
+            steps {
+                sh 'docker image tag mdo2022_jedrzej_jagiello:latest luckymylove/mdo2022_jedrzej_jagiello:latest'
+                sh 'docker login -u $DOCKER_HUB_LOGIN -p $DOCKER_HUB_PASSWORD docker.io'
+                sh 'docker push luckymylove/mdo2022_jedrzej_jagiello:latest'
+            }
+            post {
+                success {
+                    mail to: 'jagiellojedrzej@gmail.com', subject: "Jenkins pipeline - passed", body: "Build - ${BUILD_URL}"
+                }
+                failure {
+                    mail to: 'jagiellojedrzej@gmail.com', subject: "Jenkins pipeline - failed", body: "Build - ${BUILD_URL}"
+                }
+            }
+        }
+    }
+}
