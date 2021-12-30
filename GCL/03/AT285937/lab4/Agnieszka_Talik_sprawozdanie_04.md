@@ -7,6 +7,9 @@
  * dostępne w odpowiedniej gałęzi i katalogu w MDO2022
  
 ![image](https://user-images.githubusercontent.com/80592460/146652970-92e7125b-46b3-4dc0-aa37-c48291e7e6b8.png)
+
+![image](https://user-images.githubusercontent.com/80592460/147775941-15b6f737-c6dc-4a44-85e8-bdaa7a60c625.png)
+
  
 ### Stwórz Jenkinsfile: opis
  * Utwórz nowy pipeline budujący wybraną aplikację, oparty o Jenkinsfile
@@ -61,7 +64,11 @@ Jednokrokowy pipeline (Build i test), pobierający narzędzie docker-compose i u
 ### Jenkinsfile: powiadomienia
   * Sekcja "post" dla każdego stage'a, informująca mailem o rezultacie
 
- Jenkinsfile z etapami budującym i testującym jako skrypt w Jenkins, ale pobierający dockerfile build i dockerfile test z mojego repo
+Konfiguracja powiadomień:
+
+![18](https://user-images.githubusercontent.com/80592460/147778502-e50772dd-ed8d-42ca-b7a5-2824cb0018a0.png)
+
+Jenkinsfile z etapami budującym i testującym jako skrypt w Jenkins, ale pobierający dockerfile build i dockerfile test z mojego repo
  
  ![image](https://user-images.githubusercontent.com/80592460/147771646-3ad74ec8-b16e-49b5-b802-0b5ef879f3bc.png)
  
@@ -91,4 +98,20 @@ Jednokrokowy pipeline (Build i test), pobierający narzędzie docker-compose i u
      * końcowy to budujący, ale z odpaloną aplikacją na końcu
 	 * końcowy to np. ubuntu z posłanym artefaktem z budującego
 	 
-Po Nowym Roku, tydzień przed zajęciami, zrobimy sync zaawansowania prac i wybierzemy strategię.
+Credentials umożliwiający zalogowanie do Docker Hub w celu zrobienia push'a, w tym celu dodany Global Credential, później w skrypcie Pipeline environment z odwołaniem do crenentials, następnie dodany stage 'Login' oraz stage 'Deploy', w którym tworzymy taga i robimy push'a do stworzonego wcześniej repozytorium.
+
+Tag i push zgodnie z instrukcją z Docker Hub:
+
+![19](https://user-images.githubusercontent.com/80592460/147781334-9c872d6b-fb23-4578-a3ed-e248d3141ea2.png)
+
+![image](https://user-images.githubusercontent.com/80592460/147781196-e4d7372d-dd4f-4b92-943e-cb5ea8433f7f.png)
+
+![image](https://user-images.githubusercontent.com/80592460/147781106-79e7b672-76e6-4dda-8dd5-e1e45fa3d432.png)
+	 
+![image](https://user-images.githubusercontent.com/80592460/147781037-7dab74f7-5e4d-4b5d-88a5-f7c0da3d1774.png)
+
+![image](https://user-images.githubusercontent.com/80592460/147781436-c9755d1f-2c08-4b28-b8fa-3b881924b9dc.png)
+
+![image](https://user-images.githubusercontent.com/80592460/147781479-24f7d617-f34a-4ae9-8eba-4f6dd3749a55.png)
+
+
