@@ -115,4 +115,7 @@ Tag i push zgodnie z instrukcją z Docker Hub:
 
 ![image](https://user-images.githubusercontent.com/80592460/147781479-24f7d617-f34a-4ae9-8eba-4f6dd3749a55.png)
 
+![image](https://user-images.githubusercontent.com/80592460/147781698-6555a4a3-0e3c-43a6-9db7-ab42c47e0f15.png)
+
+
 
