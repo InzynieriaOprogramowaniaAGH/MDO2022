@@ -19,7 +19,7 @@
  * Początkowo, Jenkinsfile może być albo "wklejony" albo dodany do repozytorium, które jest sforkowane, to znaczy:
   * albo pipeline zawiera treść Jenkinsfile'a
 
-Jedninsfile budujący i testujący (Build + Test jako jeden etap), jako skrypt w Jenkins
+Jenkinsfile budujący i testujący (Build + Test jako jeden etap), jako skrypt w Jenkins
 
 ![image](https://user-images.githubusercontent.com/80592460/146653070-85dd679f-a9b4-41c2-9552-9124906ecb21.png)
 
@@ -31,7 +31,8 @@ Jedninsfile budujący i testujący (Build + Test jako jeden etap), jako skrypt w
  
  
   * albo forkujemy repozytorium wybranej aplikacji i dodajemy Jenkinsfile do niego 
-
+  
+Jak wyżej tylko Jenkinsfile wzięty z repo:
  
 ![image](https://user-images.githubusercontent.com/80592460/146653023-e2386afc-bd51-4026-87b0-f86bd76b8c5f.png)
 
