@@ -6,11 +6,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-                rm -rf MDO2022
-                git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022.git
-                cd MDO2022
-                git checkout AT285937
-                docker build -t app . -f MDO2022/GCL/03/AT285937/lab2/dockerfile-bldr
+                docker build -t app . -f /MDO2022/GCL/03/AT285937/lab2/dockerfile-bldr
                 sh '''               
             }
             post {
@@ -25,7 +21,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
-                docker build -t test . -f MDO2022/GCL/03/AT285937/lab4/dockerfile-tst
+                docker build -t test . -f /MDO2022/GCL/03/AT285937/lab4/dockerfile-tst
                 sh '''        
             }
          post {
