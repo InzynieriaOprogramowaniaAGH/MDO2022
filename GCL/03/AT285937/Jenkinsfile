@@ -5,15 +5,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh '''
-                echo 'Starting building'
-                apt-get update
-                apt-get install git
-                apt-get install npm -y
-                rm -rf nodeunit
-                git clone https://github.com/caolan/nodeunit.git
-                cd nodeunit && npm install
-                sh '''               
+                sh 'docker build -t app . -f GCL/03/AT285937/lab2/dockerfile-bldr'               
             }
             post {
             success {
@@ -26,7 +18,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'cd nodeunit && npm test'        
+                sh 'docker build -t test . -f MDO2022/GCL/03/AT285937/lab2/dockerfile-tst'     
             }
          post {
             success {
