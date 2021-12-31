@@ -10,6 +10,9 @@ Sprawozdanie
 Wprowadzenie
   1. Zapewnij dostępność plików w gałęzi
       - skrypty, Docker files, kompozycje (jeżeli są), Jenkinsfile
+      
+      
+      
       - dostępne w odpowiedniej gałęzi i katalogu w MDO2022
   2. Stwórz Jenkinsfile: opis
       - Utwórz nowy pipeline budujący wybraną aplikację, oparty o Jenkinsfile
