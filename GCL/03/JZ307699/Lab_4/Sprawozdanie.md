@@ -11,9 +11,13 @@ Wprowadzenie
   1. Zapewnij dostępność plików w gałęzi
       - skrypty, Docker files, kompozycje (jeżeli są), Jenkinsfile
       
-      
+        ![image](https://user-images.githubusercontent.com/28841971/147797643-35719f87-060f-4a79-94ce-9ff2202b294d.png)
       
       - dostępne w odpowiedniej gałęzi i katalogu w MDO2022
+
+        ![image](https://user-images.githubusercontent.com/28841971/147797615-a47dcdca-4f0d-4146-8364-bc0657ec0e11.png)
+        
+   
   2. Stwórz Jenkinsfile: opis
       - Utwórz nowy pipeline budujący wybraną aplikację, oparty o Jenkinsfile
       - Docelowo, ma zawierać etapy "Build" i "Test"
