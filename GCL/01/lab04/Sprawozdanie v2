@@ -6,8 +6,23 @@
  
 ### Stwórz Jenkinsfile:
  
+ - Utwórz nowy pipeline budujący wybraną aplikację, oparty o Jenkinsfile:
+ ![img2](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WK307669/GCL/01/lab04/img2.png)
+ 
+ - Jenkinsfile: 
+ ![img3] (https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WK307669/GCL/01/lab04/img3.png)
+ 
+ - Może, ale nie musi, budować się na dedykowanym DIND, ale może się to dziać od razu na kontenerze CI. Należy udokumentować funkcjonalną różnicę między niniejszymi podejściami:
+ ![img3] (https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WK307669/GCL/01/lab04/img4.png)
+ 
+ DIND, ponieważ Jenkins jest odpalony w koneterze i wybór był intuicyjny, gdyż pipeline jest wykonywany w tym kontenerze.
+ 
 ### Jenkinsfile: przebieg
-
+ ![img1](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WK307669/GCL/01/lab04/img1.png)
+ 
 ### Jenkinsfile: powiadomienia
+ ![img1](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WK307669/GCL/01/lab04/img1.png)
+ (ostatnia sekcja)
 
 ### Jenkinsfile: deploy
+![img5] (https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WK307669/GCL/01/lab04/img5.png)
