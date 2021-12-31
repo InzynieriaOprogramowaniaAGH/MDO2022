@@ -25,6 +25,11 @@ sh 'ls'
                 sh 'docker build . -t obraz-jenkinsfile'
             }
         }
+        stage('Deploy') {
+            steps {
+                sh 'docker run obraz-jenkinsfile''
+            }
+        }
     }
     post {  
          success {  
