@@ -17,6 +17,14 @@ Wprowadzenie
    
   2. Stwórz Jenkinsfile: opis
       - Utwórz nowy pipeline budujący wybraną aplikację, oparty o Jenkinsfile
+      
+        Utworzyłam nowy projekt typu pipeline.
+        
+          ![image](https://user-images.githubusercontent.com/28841971/147797798-b71792fd-64fb-4eca-a8ce-9f167626e2f8.png)
+          ![image](https://user-images.githubusercontent.com/28841971/147797825-93ec4a17-1323-400d-bcbe-a2d083e8d125.png)
+
+        
+      
       - Docelowo, ma zawierać etapy "Build" i "Test"
       - Przejściowo, może zawierać jeden etap "Build + Test"
       - Może, ale nie musi, budować się na dedykowanym DIND, ale może się to dziać od razu na kontenerze CI. Należy udokumentować funkcjonalną różnicę między niniejszymi podejściami
