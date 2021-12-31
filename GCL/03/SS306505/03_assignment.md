@@ -11,79 +11,80 @@
 ### Łączność i woluminy na podstawie "złych" praktyk
 1. Pobierz obraz Ubuntu [zrzut 00]
     - Uzyjemy do tego polecenie pull, ktore pobierze obraz z DockerHub'a
-        - docker pull ubuntu
+        - `docker pull ubuntu`
 2. Podłącz wolumin do kontenera [zrzut 01]
     - Aby podlaczyc wolumin do kontenera uzyjemy flagi -v podczas uruchamiania
     - Podlaczymy katalog /home/seb/volume z hosta do katalogu /home/root w kontenerze
-        - docker run -it -v /home/seb/volume:/home/root ubuntu
+        - `docker run -it -v /home/seb/volume:/home/root ubuntu`
 3. Skopiuj plik do katalogu woluminu, pokaż w kontenerze [zrzut 01]
     - W katalogu wolumenu na hoscie tworzymy plik
-        - echo 'Hejka z hosta!' > /home/seb/volume/hello-from-host.txt
+        - `echo 'Hejka z hosta!' > /home/seb/volume/hello-from-host.txt`
     - W kontenerze listujemy podmonotwany katalog 
-        - ls -alh /home/root
+        - `ls -alh /home/root`
 4. Utwórz plik w kontenerze, na obszarze woluminu, pokaż na hoście
     - W katalogu podmontowanym kontenera tworzymy plik
-        - echo 'Hejka z kontenera!' > /home/root/hello-from-container.txt
+        - `echo 'Hejka z kontenera!' > /home/root/hello-from-container.txt`
     - Na hoscie listujemy katalog wolumenu
-        - ls -alh /home/seb/volume
+        - `ls -alh /home/seb/volume`
 
 ### "Kiepski pomysł": SSH
 1. Uruchom i wyeksponuj wybrany port w kontenerze
     - Aby wyeksportowac port nalezy uzyc flagi -p lub --publish
     - Mozemy eksportowac kilka portow jednoczesnie
-        - docker run -it -v /home/seb/volume:/home/root --publish 8080:8080 ubuntu
+        - `docker run -it -v /home/seb/volume:/home/root --publish 8080:8080 ubuntu`
 2. Zainstaluj w kontenerze serwer ssh
     - Nalezy najpierw zaktualizowac system
-        - apt update
+        - `apt update`
     - Nastepnie menadzerem pakietow doinstalowac serwer ssh
-        - apt install openssh-server
+        - `apt install openssh-server`
     - Na systemie nie posiadamy systemctl wiec daemona sshd bedziemy musieli opdalic recznie [zrzut 03]
-        - /usr/sbin/sshd -D &
+        - `/usr/sbin/sshd -D &`
     - Moze wystapic problem z brakiem uprawnien i bedziemy musieli wtedy stworzyc brakujacy folder
-        - mkdir /run/sshd
+        - `mkdir /run/sshd`
 3. Zmień port na wybrany port > 1024
     - Port na kontenerze od poczatku spelnial to zalozenie (>1024)
     - Pozostaje nam zmienic nasluch ssh z domyslnego 22 na port wyeksponowany 8080
         - Aby nie zwariowac podczas edytowania pliku polecam doinstalowac edytor tekstowy nano
-            - apt install nano
+            - `apt install nano`
         - Nastepnie zmienic linie Port w pliku sshd_config [zrzut 04]
-            - nano /etc/ssh/sshd_config
+            - `nano /etc/ssh/sshd_config`
 4. Zezwól na logowanie root
     - Nalezy w tym celu zaktualizowac plik /etc/ssh/sshd_config
-        - echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
+        - `echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config`
         - lub uzyc edytora nano
     - Nastepnie zrestartowac serwis sshd lub opdalić daemon'a od nowa
-        - /usr/sbin/sshd -D &
+        - `/usr/sbin/sshd -D &`
 5. Umieść klucz publiczny w woluminie, skopiuj go do pliku zaufanych w kontenerze
     - Na hoście kopiujemy klucz publiczny do katalogu wolumenu
-        - cp ~/.ssh/id_es25519.pub /home/seb/volume
+        - `cp ~/.ssh/id_es25519.pub /home/seb/volume`
     - W kontenerze kopiujemy klucz ten publiczny do zaufanych kluczy
-        - cat /home/seb/id_es25519.pub > /root/.ssh/authorized_keys
+        - `cat /home/seb/id_es25519.pub > /root/.ssh/authorized_keys`
 6. Odnajdź adres IP kontenera w wewnętrznej sieci [zrzut 05]
     - Adres ip kontenera mozemy znalezc uzywajac polecenia inspect
-        - docker inspect <container_id>
-        - docker inspect 0129 | grep IPAddress | cut -d '"' -f 4
+        - `docker inspect <container_id>`
+        - `docker inspect 0129 | grep IPAddress | cut -d '"' -f 4`
     
     !!! UWAGA !!!
     - Jako ze korzystamy z WSL2 nalezy pamietac o tym ze adresy kontenerow beda NAT-owane. Prawidlowego adresu ip szukamy poleceniem ip addr.
-        - ip addr
+        - `ip addr`
         
 7. Uruchom usługę, połącz się z kontenerem
-        - /usr/sbin/sshd -D &
+        - `/usr/sbin/sshd -D &`
     - Z poziomu hosta podlaczymy sie po ssh do kontenera [zrzut 05]
-        - ssh root@172.19.102.162 -p 8080
+        - `ssh root@172.19.102.162 -p 8080`
 
 ### Skonteneryzowany Jenkins stosujący Dockera
 #### Przygotowanie
 1. Upewnij się, że Dockerfiles i Docker Compose z poprzednich zajęć są w repozytorium [zrzut 06]
     - Mozemy sprawdzic to logujac sie na GitHubie
     - Mozemy rowniez zrobic to lokalnie prze git'a
-        - git pull origin SS306505
-        - git status
+        - `git pull origin SS306505`
+        - `git status`
 
 2. Zapoznaj się z instrukcją https://www.jenkins.io/doc/book/installing/docker/
     - Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone
-        - docker run \
+        ```shell
+        docker run \
             --name jenkins-docker \
             --rm \
             --detach \
@@ -96,9 +97,10 @@
             --publish 2376:2376 \
             docker:dind \
             --storage-driver overlay2
+        ```
     - Przygotuj obraz blueocean na podstawie obrazu jenkinsa
         - 03_Dockerfile
-            ```
+            ```Dockerfile
             FROM jenkins/jenkins:2.319.1-jdk11
             USER root
             RUN apt-get update && apt-get install -y lsb-release
@@ -113,11 +115,12 @@
             RUN jenkins-plugin-cli --plugins "blueocean:1.25.1 docker-workflow:1.26"
             ```
         - Zbudujemy to uzywajac komendy build [zrzut 07]
-            - docker build -f 03_Dockerfile -t myjenkins-blueocean:1.1 .
+            - `docker build -f 03_Dockerfile -t myjenkins-blueocean:1.1 .`
         
     - Uruchom blueocean
         - Uzyjemy gotowej komendy
-            - docker run \
+            ```shell
+            docker run \
                 --name jenkins-blueocean \
                 --rm \
                 --detach \
@@ -129,15 +132,16 @@
                 --publish 50000:50000 \
                 --volume jenkins-data:/var/jenkins_home \
                 --volume jenkins-docker-certs:/certs/client:ro \
-                myjenkins-blueocean:1.1 
+                myjenkins-blueocean:1.1
+            ```
     - Wyniki uruchomienia obu kontenerow mozemy sprawdzic poleceniem ps [zrzut 8]
-        - docker ps
+        - `docker ps`
     - Zaloguj się i skonfiguruj Jenkins 
         - W adresue przegladarki przejdz do http://localhost:8080 [zrzut 09]
         - Haslo do Jenkinsa mozemy znalezc w logach kontenera
-            - docker logs <container_id>
+            - `docker logs <container_id>`
         - Haslo mozemy rowniez zobaczyc wykonujac komende w kontenerze
-            - sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+            - `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
         - Jenkins poprosi o stworzenie konta admina i wybor wtyczek
         - Po przeklikaniu powinnismy zobaczyc ekran glowny [zrzut 10]
     
@@ -146,7 +150,7 @@
     1. Utwórz projekt, który wyświetla uname
         - Klikamy Nowy Projekt i nadajemy mu nazwe [zrzut 11]
         - W zakladce Budowanie dodajemy krok Uruchom powloke i wpisujemy komende [zrzut 12]
-            - uname -a
+            - `uname -a`
         - Klikamy Uruchom, aby uruchomic naszego builda
         - Sprawdzamy w logach konsoli wynik dzialania builda [zrzut 13]
     2. Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta 
@@ -154,10 +158,10 @@
         - W polu Uruchom powloke wpisujemy sciezke bezwgledna do skryptu shell-a [zrzut 14]
             -/tmp/skrypt.sh
         - Tworzymy skrypt
-            -touch skrypt.sh
-            -chmod ugo+x skrypt.sh
+            - `touch skrypt.sh`
+            - `chmod ugo+x skrypt.sh`
         - skrypt.sh 
-        ```
+        ```bash
         #!/bin/bash
         currenthour=$(date +"%H")
         if ! (($currenthour%2)) ; then 
@@ -172,7 +176,7 @@
     3. Buduje obrazy z dockerfiles i/lub komponuje via docker-compose
         - Najpierw musimy podlaczyc sie do contenera jenkinsa i doinstalowac docker-compose'a
             - uzyjemy w tym celu nastepujacych polecen [zrzut 17]
-                ```
+                ```shell
                 docker exec -it -u root <container_id> /bin/bash
                 curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)"  -o /usr/local/bin/docker-compose
                 mv /usr/local/bin/docker-compose /usr/bin/docker-compose
