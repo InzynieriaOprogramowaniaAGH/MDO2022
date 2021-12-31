@@ -1,6 +1,10 @@
 pipeline {
 
      agent any
+     
+     environment {
+		DOCKERHUB_CREDENTIALS=credentials('agtal')
+	}
     
     stages {
         stage('Build') {
@@ -29,5 +33,28 @@ pipeline {
             }
          }
     }
+          stage('Login')
+            {
+                steps {
+                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                }
+            }
+          stage('Deploy') {
+                steps {
+                    sh '''
+                    docker tag app:latest agtal/mdo2022_deploy:1.2
+                    docker push agtal/mdo2022_deploy:1.2
+                    '''
+                }
+            post {
+                success {
+            	    mail to: 'atalik000@gmail.com', subject: "Deploy dziala:", body: "Deploy dziala: ${BUILD_URL}"
+                }
+                failure {
+            	mail to: 'atalik000@gmail.com', subject: "Deploy - Blad", body: "Deploy nie dziala: ${BUILD_URL}"
+                }
+            }
+                
+        }
   }
 }
