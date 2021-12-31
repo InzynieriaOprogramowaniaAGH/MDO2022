@@ -1,16 +1,8 @@
-Imię i nazwisko: Julia Żychowska, 
+Imię i nazwisko: Julia Żychowska, kierunek: Informatyka Stosowana (NS), nr. indeksu: 307699, przedmiot: Metodyki DevOps, sprawozdanie: 04, grupa: GĆL03
 
-Kierunek: Informatyka Stosowana (NS), 
-
-Nr. indeksu: 307699,
-
-Przedmiot: Metodyki DevOps, 
-
-Sprawozdanie: 03, 
-
-Grupa: GĆL03
 
 Sprawozdanie
+
 
 Wprowadzenie
   1. Zapewnij dostępność plików w gałęzi
