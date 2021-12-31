@@ -23,7 +23,9 @@ Wprowadzenie
       - Początkowo, Jenkinsfile może być albo "wklejony" albo dodany do repozytorium, które jest sforkowane, to znaczy:
       - albo pipeline zawiera treść Jenkinsfile'a
       - albo forkujemy repozytorium wybranej aplikacji i dodajemy Jenkinsfile do niego
+      
   3. Jenkinsfile: przebieg
+  
      https://www.jenkins.io/doc/book/pipeline/jenkinsfile/
       - Przykładowe zbiory czynności w Jenkinsfile: Jednokrokowy pipeline (Build i test), pobierający narzędzie docker-compose i uruchamiajacy docker compose up na kompozycji z poprzednich zajęć
         - build + test
@@ -35,9 +37,13 @@ Wprowadzenie
             - npm build
         - test
             - npm test
+            
   4. Jenkinsfile: powiadomienia
+  
       - Sekcja "post" dla każdego stage'a, informująca mailem o rezultacie
+      
   5. Jenkinsfile: deploy
+  
       - W razie sukcesu, build ma zostać wypromowany jako kandydat do wydania
       - Różne podejścia są możliwe:
         - Build i test wykonywane "na zewnątrz" i jeżeli się powiodą, odpalany docker build, który tworzy kontener
