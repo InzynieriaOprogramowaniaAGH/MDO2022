@@ -20,10 +20,16 @@ Jednokrokowy pipeline (Build i test), pobierający narzędzie docker-compose i u
 ### Jenkinsfile: powiadomienia
   * Sekcja "post" dla każdego stage'a, informująca mailem o rezultacie
   
+W Jenkinsfile zastosowano strukture try catch aby wiadomosci byly wysylane rowniez gdy stage zakonczy sie niepowodzeniem  
+
+![screen3.png](screen3.png)
+
+![screen4.png](screen4.png)  
+  
 ### Jenkinsfile: deploy
- * W razie sukcesu, build ma zostać wypromowany jako kandydat do wydania
- * Różne podejścia są możliwe:
-   * Build i test wykonywane "na zewnątrz" i jeżeli się powiodą, odpalany docker build, który tworzy kontener 
-   * Odpalane są kontenery budujący, testujący i końcowy
-     * końcowy to budujący, ale z odpaloną aplikacją na końcu
-     * końcowy to np. ubuntu z posłanym artefaktem z budującego
+
+Zastosowana strategia zaklada wypchniecie obrazu do rejestru (dockerhub) a nastepnie w kroku deploy ssh na zdalnej maszyny, pobranie swiezego obrazu z dockerhub i uruchomienie go.
+
+Szczegoly w Jenkinsfile. Zrzut ekranu z udanego deploya:
+
+![screen5.png](screen5.png)
