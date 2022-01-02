@@ -1,22 +1,28 @@
 ### Jenkinsfile: przebieg
 https://www.jenkins.io/doc/book/pipeline/jenkinsfile/
-* Przykładowe zbiory czynności w Jenkinsfile:
-Jednokrokowy pipeline (Build i test), pobierający narzędzie docker-compose i uruchamiajacy docker compose up na kompozycji z poprzednich zajęć
-  * build + test
-    * download docker-compose
-    * compose up
-    
-  * build
-    * git pull
-    * npm install
-    * npm build
-  * test
-    * npm test
+
+Poczatkowe kroki to build i test.
+
+Build - budujemy obraz z Dockerfile.
+Test - budujemy obraz z Dockerfile i go testujemy.
     
 ![screen1.png](screen1.png)
 
 ![screen2.png](screen2.png)
+
+Nastepne kroki do publish i deploy.
+
+Publish - budujemy obraz z Dockerfile (wyciaganie artefaktow z obrazu 'build') oraz wrzucamy go do dockerhuba.
+Deploy - ssh do maszyny zdalnej, pobranie obrazu z kroku 'publish', uruchomienie obrazu.
     
+![screen6.png](screen6.png)
+
+![screen7.png](screen7.png)
+
+Pipeline CI/CD po poprawnym zbudowaniu
+
+![screen8.png](screen8.png)
+
 ### Jenkinsfile: powiadomienia
   * Sekcja "post" dla każdego stage'a, informująca mailem o rezultacie
   
