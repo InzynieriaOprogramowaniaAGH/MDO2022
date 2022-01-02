@@ -1,4 +1,4 @@
-FROM ubuntu-init-react-react-app AS test
+FROM builder AS test
 
 WORKDIR /my-app
 
