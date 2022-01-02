@@ -127,4 +127,95 @@ Wychodzimy sobie z kontenera i łączymy sie komendą
 ![15](https://user-images.githubusercontent.com/61689132/145464977-3e2090ef-0e94-405c-88ac-23dbc1eb4199.png)
 
 
+## Skonteneryzowany Jenkins stosujący Dockera
 
+## Przygotowanie
+
+Na początku zapoznajemy się z instrukcją zamieszczoną na stronie
+
+`https://www.jenkins.io/doc/book/installing/docker/`
+
+Tworzymy mostek sieciowy o nazwie jenkins
+
+`sudo docker network create jenkins`
+
+![16](https://user-images.githubusercontent.com/61689132/147878139-f38ff55f-b7ef-4338-98b4-ef49664e1dde.png)
+
+A następnie uruchamiamy obraz Dockera który eksponuje środowisko zagnieżdżone. Służy do tego poniższy ciąg komend
+
+![17](https://user-images.githubusercontent.com/61689132/147878146-bd875d34-a751-42e5-87cf-306a19862d05.png)
+
+Do przygotowania obrazu blueocean korzystamy z Dockerfile który znajduje się w dokumentacji
+
+![18](https://user-images.githubusercontent.com/61689132/147878169-ba130762-4bb1-4b8b-8d86-d9b54ba241df.png)
+
+I budujemy obraz komendą
+
+`sudo docker build -t myjenkins-blueocean:1.1 .`
+
+![19 1](https://user-images.githubusercontent.com/61689132/147878186-688a214e-3222-40e2-9cb1-06176e4a16a7.png)
+![19 2](https://user-images.githubusercontent.com/61689132/147878188-e3b3a1d4-3cc7-4b81-9886-26ccd11ab79f.png)
+
+Po udanym budowaniu, uruchamiamy blueocean podobnym ciągiem komend:
+
+![20](https://user-images.githubusercontent.com/61689132/147878207-f2df01ed-23b7-4617-a770-25496b4fb98d.png)
+
+Jeśli wykonaliśmy wszystko poprawnie, powinniśmy móc po wejściu do przeglądarki wpisać adres
+
+`localhost:8080`
+
+Dzięki temu ukaże nam się poniższy obraz
+
+![21](https://user-images.githubusercontent.com/61689132/147878236-fd2346c2-dad6-4e6a-8aa6-18450399c713.png)
+
+Musimy podać hasło, aby je zdobyć wystarczy wpisać w konsoli komendę wyświetlające logi naszego kontenera
+
+`sudo docker logs <numer kontenera>`
+
+![22](https://user-images.githubusercontent.com/61689132/147878256-0581d20e-dd71-43fb-947d-ebdaaa6f436a.png)
+
+Po wejściu wybieramy domyślny wybór wtyczek i zaczynamy je instalować. Wynik tego na poniższym screenie. (W tle widać instalację, program do screenów mnie pokonał :) )
+
+![23](https://user-images.githubusercontent.com/61689132/147878275-382b6363-54df-465e-a256-e48c8e565b4c.png)
+
+Możemy utworzyć użytkownika, lub pominąć i kontynuować jako admin. Ja pominąłem ten krok.
+
+![24](https://user-images.githubusercontent.com/61689132/147878292-5bb8230b-921c-4380-b22e-9af8560966eb.png)
+
+Po wykonaniu tych kroków, przeniesiemy się na główną stronę jenkinsa.
+
+![25](https://user-images.githubusercontent.com/61689132/147878405-1117df04-b4e7-43fd-94ed-35a18fe1b954.png)
+![26](https://user-images.githubusercontent.com/61689132/147878409-8448d1bd-b1e0-490c-9ccc-3ab25bd58e6c.png)
+
+## Tworzymy projekt wyświetlający napis "uname"
+
+Wybieramy "New item", wpisujemy nazwę projektu oraz wybieramy jego typ.
+
+![27](https://user-images.githubusercontent.com/61689132/147878436-91a1d8db-55ef-4f16-bf3f-29f27f451657.png)
+
+Wybieramy zakładkę Build environment, a następnie z rozwijanej listy wybieramy "Execute shell"
+
+Poniżej wpisujemy co nasz projekt ma wykonywać.
+
+![28](https://user-images.githubusercontent.com/61689132/147878454-892aff15-ecde-4255-ad76-6f0ffa0245ce.png)
+
+Po stworzeniu, odpalamy go. 
+
+![29](https://user-images.githubusercontent.com/61689132/147878467-78829512-7d48-4d65-933d-9cf1bb252812.png)
+
+Wchodząc w wykonany build, możemy wybrać opcję "Console output" która pokaże nam wynik konsoli.
+
+![30](https://user-images.githubusercontent.com/61689132/147878471-388e7114-ebde-4a6a-9b4a-fb32d4633514.png)
+
+## Tworzymy projekt sprawdzający parzystość godziny
+
+Ponownie wybieramy opcję "New item", wpisujemy nazwę i typ projektu. Następnie przedhodzimy do zakładki build, wybieramy "Execute shell" i wpisujemy poniższy kod
+
+![31](https://user-images.githubusercontent.com/61689132/147878503-9164b85a-8d5c-450e-a7b5-e4ed961efd67.png)
+
+Kod na początku pobiera aktualną datę, wyświetla ją, a następnie w instrukcji warunkowej sprawdzamy czy godzina jest parzysta czy nie, a w zależności tego wypisuje nam odpowiedni komunikat.
+
+Poprawne zbudowanie i wynik poniżej
+
+![32](https://user-images.githubusercontent.com/61689132/147878532-2c3ac74a-d448-4e6c-9b8e-7ca6780564c0.png)
+![33](https://user-images.githubusercontent.com/61689132/147878535-4874acca-9bc4-4c39-90de-79b42a237273.png)
