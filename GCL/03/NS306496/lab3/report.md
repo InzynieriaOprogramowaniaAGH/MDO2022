@@ -39,22 +39,30 @@
 - Upewnij się, że Dockerfiles i Docker Compose z poprzednich zajęć są w repozytorium
 - Zapoznaj się z instrukcją https://www.jenkins.io/doc/book/installing/docker/
   - Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone
+    ![](./screens/part2/running-jenkins-container.png)
   - Przygotuj obraz blueocean na podstawie obrazu jenkinsa
+    ![](./screens/part2/docker-file-content.png)
   - Uruchom blueocean
+    ![](./screens/part2/build-docker-jenkins-blueocean.png)
   - Zaloguj się i skonfiguruj Jenkins
+    ![](./screens/part2/jenkins-unblock.png)
+    ![](./screens/part2/creating-user-for-jenkins.png)
 
 #### Mikro-projekt Jenkins
 
 - Utwórz projekt, który wyświetla uname
+  ![](./screens/part2/script-for-uname-project.png)
+  ![](./screens/part2/logs-from-uname-project.png)
 - Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta
+  ![](./screens/part2/script-for-hours-project.png)
+  ![](./screens/part2/logs-from-uname-project.png)
 - Utwórz "prawdziwy" projekt, który:
   - klonuje nasze repozytorium
+    ![](./screens/part2/set-git-repository.png)
   - przechodzi na osobistą gałąź
+    Ustawione na powyzszym zrzucie ekranu
   - buduje obrazy z dockerfiles i/lub komponuje via docker-compose
+    ![](./screens/part2/run-docker-images-from-jenkins.png)
 
-#### Sprawozdanie
-
-- Opracuj dokument z diagramami UML, opisującymi proces CI. Opisz:
-  - Wymagania wstępne środowiska
-  - Diagram aktywności, pokazujący kolejne etapy (collect, build, test, report)
-  - Diagram wdrożeniowy, opisujący relacje między składnikami, zasobami i artefaktami
+Lista stworzonych projektów
+![](./screens/part2/project-list.png)
