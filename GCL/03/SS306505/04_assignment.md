@@ -21,7 +21,8 @@ Pozwoli to **wyłączyć** weryfikacje z użyciem TLS-a i pozbyć się problemu 
 1. Utwórz nowy pipeline budujący wybraną aplikację, oparty o Jenkinsfile
     - Z menu Jenkins'a wybieramy Nowy projekt i wybieramy typ Pipeline
     - W sekcji Pipeline wklejamy nasz skrypt [Jenkinsfile](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/SS306505/GCL/03/SS306505/Jenkinsfile)
-    ![zrzut 01](screenshots/04/01-copy-paste-pipeline.png)
+   
+   ![zrzut 01](screenshots/04/01-copy-paste-pipeline.png)
 2. Może, ale nie musi, budować się na dedykowanym DIND, ale może się to dziać od razu na kontenerze CI. Należy udokumentować funkcjonalną różnicę między niniejszymi podejściami
     > **Budowanie następuje na kontenerze CI**
     > - Podejście to nie jest najlepsze, lecz najprostsze oraz najszybsze w implementacji
@@ -31,11 +32,13 @@ Pozwoli to **wyłączyć** weryfikacje z użyciem TLS-a i pozbyć się problemu 
 3. Początkowo, Jenkinsfile może być albo "wklejony" albo dodany do repozytorium, które jest sforkowane, to znaczy:
     - **albo pipeline zawiera treść Jenkinsfile'a** *(opisane w kroku 1)*
     - albo forkujemy repozytorium wybranej aplikacji i dodajemy Jenkinsfile do niego
-![zrzut 02](screenshots/04/02-working-pipeline.png)
+
+    ![zrzut 02](screenshots/04/02-working-pipeline.png)
 ### Jenkinsfile: przebieg
 1. Przykładowe zbiory czynności w Jenkinsfile: Jednokrokowy pipeline (Build i test), pobierający narzędzie docker-compose i uruchamiajacy docker compose up na kompozycji z poprzednich zajęć
     - Aby uniknąć interakcji z menedżerem pakietów oraz problemów z brakiem uprawnień zrezygnowałem z instalacji docker-compose'a
     - Zamiast tego używam w Jenkinsfile-u komend dockerowych do budowania i uruchamianinia obrazów oraz powstałych z nich kontenerów
+
     ![zrzut 03](screenshots/04/03-docker-cmds.png)  
 ### Jenkinsfile: powiadomienia
 1. Sekcja "post" dla każdego stage'a, informująca mailem o rezultacie
