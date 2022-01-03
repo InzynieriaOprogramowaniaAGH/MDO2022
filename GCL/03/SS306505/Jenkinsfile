@@ -1,15 +1,76 @@
 pipeline {
     agent any
+    environment {
+        SRC_PATH = 'MDO2022/GCL/03/SS306505'
+        MAIN_DIR = 'MDO2022'
+        MINOR_DIR = 'GCL/03/SS306505/'
+        BRANCH_NAME = 'SS306505'
+        REPO_ADDRESS = 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022.git'
+    }
+    options {
+        ansiColor('xterm')
+    }
+    
     stages {
         stage('Build') {
             steps {
-                
+                script{
+                    try {
+                        echo '\033[34;1mStarting build...\033[0m'
+                        sh '''
+                        rm -rf ${MAIN_DIR}
+                        git clone ${REPO_ADDRESS}
+                        cd ${MAIN_DIR}
+                        git checkout ${BRANCH_NAME}
+                        cd ${MINOR_DIR}
+                        docker build -t node_app:0.1 -f 02_Dockerfile_build .
+                        '''
+                        echo '\033[34;1mFinished build\033[0m'
+                    } catch(e) {
+                        currentBuild.result = "FAILED"
+                        throw e
+                    }
+                }
+            }
+            post {
+                always {
+                    notifyBuild(currentBuild.result)
+                }
             }
         }
-        stage('Test') {
+
+        stage('Tests') {
             steps {
-                echo 'testujemy'
+                echo '\033[34;1mRunning tests...\033[0m'
+                sh '''
+                cd ${SRC_PATH}
+                docker build -t node_app_run_tests:0.1 -f 02_Dockerfile_tests .
+                docker run -i node_app_run_tests:0.1
+                '''
+                echo '\033[34;1mFinished tests\033[0m'
+            }
+            post {
+                always {
+                    notifyBuild(currentBuild.result)
+                }
             }
         }
     }
+}
+
+def notifyBuild(String buildStatus = 'STARTED') {
+  // build status of null means successful
+  buildStatus = buildStatus ?: 'SUCCESS'
+
+  // Default values
+  def subject = "${buildStatus}: Stage ${STAGE_NAME} of job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
+  def summary = "${subject} (${env.BUILD_URL})"
+  def details = """<p><b>${buildStatus}</b>: Stage <b>${STAGE_NAME}</b> of job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'</p>"""
+
+  emailext (
+      mimeType: 'text/html',
+      subject: subject,
+      body: details,
+      to: 'sebaszafranski@gmail.com'
+    )
 }
