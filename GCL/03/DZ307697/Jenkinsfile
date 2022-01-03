@@ -1,0 +1,51 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'docker-compose -f GCL/03/DZ307697/docker-compose.yml build --no-cache build'
+            }
+            post {
+                success {
+                    mail to: 'damian.zboro@gmail.com', subject: "Build passed", body: "Build - ${BUILD_URL}"
+                }
+                failure {
+                    mail to: 'damian.zboro@gmail.com', subject: "Build failed", body: "Build - ${BUILD_URL}"
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'docker-compose -f GCL/03/DZ307697/docker-compose.yml build --no-cache test'
+            }
+            post {
+                success {
+                    mail to: 'damian.zboro@gmail.com', subject: "Test passed", body: "Build - ${BUILD_URL}"
+                }
+                failure {
+                    mail to: 'damian.zboro@gmail.com', subject: "Test failed", body: "Build - ${BUILD_URL}"
+                }
+            }
+        }
+        stage('Deploy') {
+            environment {
+                DOCKER_HUB_USER = credentials('docker-hub-user')
+                DOCKER_HUB_PASSWORD = credentials('docker-hub-password')
+            }
+            steps {
+                sh 'docker image tag jest-test:latest zxcvnm/jest-test:latest'
+                sh 'docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD docker.io'
+                sh 'docker push zxcvnm/jest-test:latest'
+            }
+            post {
+                success {
+                    mail to: 'damian.zboro@gmail.com', subject: "Deploy passed", body: "Build - ${BUILD_URL}"
+                }
+                failure {
+                    mail to: 'damian.zboro@gmail.com', subject: "Deploy failed", body: "Build - ${BUILD_URL}"
+                }
+            }
+        }
+    }
+}
