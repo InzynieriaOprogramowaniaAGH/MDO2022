@@ -8,8 +8,7 @@ RUN apt-get install -y curl git
 RUN curl -sL https://deb.nodesource.com/setup_14.x -o setup_14.sh
 RUN sh ./setup_14.sh
 RUN apt-get update -y
-RUN apt-get install -y nodejs
-RUN apt install -y nodejs npm git
+RUN apt-get install -y npm nodejs git
 
 RUN git clone https://github.com/lyhd/reactjs
 
