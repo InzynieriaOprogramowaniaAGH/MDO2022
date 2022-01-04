@@ -1,6 +1,7 @@
-FROM ubuntu:latest
+FROM ubuntu:latest as build-vol
 
 ARG DEBIAN_FRONTEND=noninteractive
+
 RUN apt update -y && apt upgrade -y
 RUN apt install -y nodejs npm git
 
@@ -10,4 +11,8 @@ WORKDIR /reactjs
 
 RUN npm install
 
-CMD ["npm","run","build"]
+RUN echo "REACT_APP_PUBLIC_URL=http://localhost" > .env
+
+ENV CI=true
+
+RUN npm run build
