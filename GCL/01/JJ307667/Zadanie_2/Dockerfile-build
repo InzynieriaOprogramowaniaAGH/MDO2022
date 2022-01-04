@@ -3,12 +3,12 @@ FROM ubuntu:latest as build-vol
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -y && apt-get upgrade -y
-RUN apt-get install -y curl git
+RUN apt-get install -y curl git npm
 
 RUN curl -sL https://deb.nodesource.com/setup_14.x -o setup_14.sh
 RUN sh ./setup_14.sh
 RUN apt-get update -y
-RUN apt-get install -y npm nodejs git
+RUN apt-get install -y nodejs
 
 RUN git clone https://github.com/lyhd/reactjs
 
