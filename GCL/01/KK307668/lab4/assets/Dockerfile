@@ -5,14 +5,9 @@ WORKDIR /app
 RUN apt-get update
 RUN apt-get install -y nodejs
 RUN apt-get install -y npm
-RUN npm i -y -g @angular/cli@11.1.1
+RUN npm install -g create-react-app
 RUN apt-get install -y git
-RUN apt-get install -y wget
-RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN apt install -y ./google-chrome-stable_current_amd64.deb
-RUN git clone https://github.com/fyodorio/angular-unit-testing-examples.git
-WORKDIR /app/angular-unit-testing-examples
+RUN git clone https://github.com/aditya-sridhar/simple-reactjs-app.git
+WORKDIR /app/simple-reactjs-app
 RUN npm i
 RUN npm run build
-
- 
