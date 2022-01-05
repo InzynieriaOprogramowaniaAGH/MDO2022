@@ -1,5 +1,5 @@
-FROM angular:latest
+FROM bldr:latest
 
-WORKDIR app/angular-unit-testing-examples
+WORKDIR app/reactjs-app
 
-RUN npm run e2e
+RUN npm run test -- a --watchAll=false
