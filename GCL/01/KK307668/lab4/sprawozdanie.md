@@ -3,19 +3,14 @@
 ## Wprowadzenie
 
 ### Zapewnij dostępność plików w gałęzi
-* skrypty, Docker files, kompozycje (jeżeli są), Jenkinsfile
-* dostępne w odpowiedniej gałęzi i katalogu w MDO2022<br>
 `1.png`
 
 ### Stwórz Jenkinsfile: opis
 * Utwórz nowy pipeline budujący wybraną aplikację, oparty o Jenkinsfile `2.png`
 * Docelowo, ma zawierać etapy "Build" i "Test" `3.png`
-* Przejściowo, może zawierać jeden etap "Build + Test"
 * Może, ale nie musi, budować się na dedykowanym DIND, ale może się to dziać od razu na kontenerze CI. Należy udokumentować funkcjonalną różnicę między niniejszymi podejściami
-* Początkowo, Jenkinsfile może być albo "wklejony" albo dodany do repozytorium, które jest sforkowane, to znaczy:
-* albo pipeline zawiera treść Jenkinsfile'a `4.png`
-* albo forkujemy repozytorium wybranej aplikacji i dodajemy Jenkinsfile do niego
-`5.png`
+* Pipeline zawiera treść Jenkinsfile'a `4.png`
+* Pomyślnie zbudowany pipeline `5.png`
 
 ### Jenkinsfile: przebieg
 https://www.jenkins.io/doc/book/pipeline/jenkinsfile/
