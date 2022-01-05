@@ -18,20 +18,27 @@ pipeline {
                         cd GCL/01/KK307668/lab4/assets
                         ls
                         docker build -t bldr:latest . -f ./Dockerfile
-                        emailext(body: 'test', mimeType: 'text/html', subject: 'Temat', to: 'kkachniarz@protonmail.com')
+                        emailext(body: 'Build step success', mimeType: 'text/html', subject: 'Jenkins', to: 'kkachniarz@protonmail.com')
                         '''
                     } catch(err) {
-                        emailext(body: 'errr', mimeType: 'text/html', subject: 'Temat', to: 'kkachniarz@protonmail.com')
+                        emailext(body: 'Build step err', mimeType: 'text/html', subject: 'Jenkins', to: 'kkachniarz@protonmail.com')
                     }
                 }
             }
         }
         stage('Test') {
             steps {
-                sh '''
-                cd MDO2022/GCL/01/KK307668/lab4/assets
-                docker build -t test:latest . -f ./Dockerfile-with-tests
-                '''
+                script {
+                    try {
+                        sh '''
+                        cd MDO2022/GCL/01/KK307668/lab4/assets
+                        docker build -t test:latest . -f ./Dockerfile-with-tests
+                        emailext(body: 'Test step success', mimeType: 'text/html', subject: 'Jenkins', to: 'kkachniarz@protonmail.com')
+                        '''
+                    } catch(err) {
+                        emailext(body: 'Test step err', mimeType: 'text/html', subject: 'Jenkins', to: 'kkachniarz@protonmail.com')
+                    }
+                }
             }
         }
     }
