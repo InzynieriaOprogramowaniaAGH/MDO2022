@@ -28,4 +28,9 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            emailext(body: 'test', mimeType: 'text/html', subject: 'Temat', to: 'kkachniarz@protonmail.com')
+        }
+    }
 }
