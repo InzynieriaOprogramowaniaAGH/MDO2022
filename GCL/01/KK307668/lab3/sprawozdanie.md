@@ -33,6 +33,7 @@
     * klonuje nasze repozytorium `26.png`
     * przechodzi na osobistą gałąź `27.png`
     * buduje obrazy z dockerfiles i/lub komponuje via docker-compose `28.png`
+  `29.png`
 
 #### Sprawozdanie
 * Opracuj dokument z diagramami UML, opisującymi proces CI. Opisz:
