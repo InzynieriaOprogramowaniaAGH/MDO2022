@@ -6,11 +6,16 @@ pipeline {
             steps {
                 sh '''
                 rm -rf MDO2022
+                git config --global user.name "kkachniarz220"
+                git config --global user.email "kkachniarz@protonmail.com"
                 git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022.git
                 cd MDO2022
-                git checkout KK307668
+                git switch -c KK307668
+                git branch --set-upstream-to=origin/KK307668 KK307668
+                git pull
                 cd GCL/01/KK307668/lab4/assets
-                docker build -t builder:latest -f ./Dockerfile .
+                ls
+                docker build -t bldr:latest . -f ./Dockerfile
                 '''
             }
         }
@@ -18,7 +23,7 @@ pipeline {
             steps {
                 sh '''
                 cd MDO2022/GCL/01/KK307668/lab4/assets
-                docker build -t tester:latest -f ./Dockerfile-with-tests .
+                docker build -t test:latest . -f ./Dockerfile-with-tests
                 '''
             }
         }
