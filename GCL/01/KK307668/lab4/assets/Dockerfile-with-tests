@@ -1,5 +1,4 @@
 FROM bldr:latest
 
-WORKDIR app/reactjs-app
-
+WORKDIR app/simple-reactjs-app
 RUN npm run test -- a --watchAll=false
