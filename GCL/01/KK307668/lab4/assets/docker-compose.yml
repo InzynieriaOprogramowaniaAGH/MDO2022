@@ -1,14 +1,15 @@
 services:
 
- angular-build:
+ bldr:
   build:
    context: .
    dockerfile: Dockerfile
-  image: angular
+  image: bldr
 
- angular-test:
-  image: angular
+ test:
+  image: bldr
   depends_on:
-    - angular-build
-  working_dir: /app
-  command: npm run e2e
+    - bldr
+  build:
+   context: .
+   dockerfile: Dockerfile-with-tests
