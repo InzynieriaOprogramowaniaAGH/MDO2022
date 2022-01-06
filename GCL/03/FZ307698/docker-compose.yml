@@ -1,0 +1,14 @@
+version: '2'
+services:
+  builder:
+    image: node_app:0.1
+    build: 
+      context: .
+      dockerfile: ./Dockerfile_build_Lab2
+  test_runner:
+    image: node_app_with_tests:0.1
+    build: 
+      context: .
+      dockerfile: ./Dockerfile_tests_Lab2
+    depends_on:
+      - builder
