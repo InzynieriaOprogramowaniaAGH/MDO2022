@@ -1,8 +1,14 @@
-FROM ubuntu:latest
+FROM ubuntu:latest as build-vol
 
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt update -y && apt upgrade -y
-RUN apt install -y nodejs npm git
+
+RUN apt-get update -y && apt-get upgrade -y
+RUN apt-get install -y curl git npm
+
+RUN curl -sL https://deb.nodesource.com/setup_14.x -o setup_14.sh
+RUN sh ./setup_14.sh
+RUN apt-get update -y
+RUN apt-get install -y nodejs
 
 RUN git clone https://github.com/lyhd/reactjs
 
@@ -10,4 +16,8 @@ WORKDIR /reactjs
 
 RUN npm install
 
-CMD ["npm","run","build"]
+RUN echo "REACT_APP_PUBLIC_URL=http://localhost" > .env
+
+ENV CI=true
+
+RUN npm run build
