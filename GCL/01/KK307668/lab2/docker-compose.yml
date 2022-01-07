@@ -1,0 +1,14 @@
+services:
+
+ angular-build:
+  build:
+   context: .
+   dockerfile: Dockerfile
+  image: angular
+
+ angular-test:
+  image: angular
+  depends_on:
+    - angular-build
+  working_dir: /app
+  command: npm run e2e
