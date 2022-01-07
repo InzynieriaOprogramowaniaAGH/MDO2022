@@ -170,3 +170,11 @@
         ![screenshots/22-add-docker-compose-plugin](screenshots/22-add-docker-compose-plugin.png)
         ![screenshots/23-add-build-step-docker-compose](screenshots/23-add-build-step-docker-compose.png)
         ![screenshots/25-result](screenshots/25-result.png)
+
+        # Diagram aktywności
+
+        ![screenshots/Diagram-aktywnosci](screenshots/Diagram-aktywnosci.png)
+
+        # Diagram wdrożeniowy
+
+        ![screenshots/Diagram-wdrozeniowy](screenshots/Diagram-wdrozeniowy.png)
