@@ -13,8 +13,8 @@
 4. Utwórz plik w kontenerze, na obszarze woluminu, pokaż na hoście
    Należy przejść do katalogu kontenera i utworzyć plik txt `echo 'blalbalba CONTENERA' > /home/root/nazwa-pliku-z-kontenera.txt`
 
-[screenshots/01-pull-ubuntu.png]
-[screenshots/02-attach-volume.png]
+![screenshots/01-pull-ubuntu](screenshots/01-pull-ubuntu.png)
+![screenshots/02-attach-volume](screenshots/02-attach-volume.png)
 
 ### "Kiepski pomysł": SSH
 1. Uruchom i wyeksponuj wybrany port w kontenerze
@@ -38,11 +38,11 @@
     W tym celu wykorzystamy polecenie: `/usr/sbin/sshd -D &`
     Z poziomu hosta podlaczymy sie po ssh do kontenera [zrzut 05] `ssh root@172.17.6.154 -p 8080`
 
-[screenshots/03-expose-ports.png]
-[screenshots/04-manualy-run-deamon.png]
-[screenshots/05-ssh-port-from-22-to-8080.png]
-[screenshots/06-add-sshkey-to-trusted-keys.png]
-[screenshots/07-connect-with-ssh.png]
+![screenshots/03-expose-ports](screenshots/03-expose-ports.png)
+![screenshots/04-manualy-run-deamon](screenshots/04-manualy-run-deamon.png)
+![screenshots/05-ssh-port-from-22-to-8080](screenshots/05-ssh-port-from-22-to-8080.png)
+![screenshots/06-add-sshkey-to-trusted-keys](screenshots/06-add-sshkey-to-trusted-keys.png)
+![screenshots/07-connect-with-ssh](screenshots/07-connect-with-ssh.png)
 
 ### Skonteneryzowany Jenkins stosujący Dockera
 #### Przygotowanie
@@ -109,13 +109,13 @@
         Hasło do Jenkinsa można znaleść w logach kontenera `docker logs <container_id>`
         Jenkins poprosi o stworzenie konta admina i wybor wtyczek [Można przeklikać]
     
-    [screenshots/08-docker-network-docker-run.png]
-    [screenshots/09-create-new-dockerfile-blueocean-jenkins.png]
-    [screenshots/10-build-jenkins-image.png]
-    [screenshots/10-run-blueocean.png]
-    [screenshots/11-find-jenkins-password.png]
-    [screenshots/12-run-and-configure-jenkins.png]
-    [screenshots/13-running-jenkins.png]
+    ![screenshots/08-docker-network-docker-run](screenshots/08-docker-network-docker-run.png)
+    ![screenshots/09-create-new-dockerfile-blueocean-jenkins](screenshots/09-create-new-dockerfile-blueocean-jenkins.png)
+    ![screenshots/10-build-jenkins-image](screenshots/10-build-jenkins-image.png)
+    ![screenshots/10-run-blueocean](screenshots/10-run-blueocean.png)
+    ![screenshots/11-find-jenkins-password](screenshots/11-find-jenkins-password.png)
+    ![screenshots/12-run-and-configure-jenkins](screenshots/12-run-and-configure-jenkins.png)
+    ![screenshots/13-running-jenkins](screenshots/13-running-jenkins.png)
     
     ### Mikro-projekt Jenkins
 
@@ -140,12 +140,12 @@
         ```
         Sprawdzamy wynik
         
-        [screenshots/14-create-project.png]
-        [screenshots/15-unamea.png]
-        [screenshots/16-success.png]
-        [screenshots/17-success-logs.png]
-        [screenshots/26-script-hour.png]
-        [screenshots/18-odd-hour.png]
+        ![screenshots/14-create-project](screenshots/14-create-project.png)
+        ![screenshots/15-unamea](screenshots/15-unamea.png)
+        ![screenshots/16-success](screenshots/16-success.png)
+        ![screenshots/17-success-logs](screenshots/17-success-logs.png)
+        ![screenshots/26-script-hour](screenshots/26-script-hour.png)
+        ![screenshots/18-odd-hour](screenshots/18-odd-hour.png)
         
     3. Buduje obrazy z dockerfiles i/lub komponuje via docker-compose
         W pierwszej kolejności trzeba podłączyć się do kontenera jenkinsa i zainstalować w nim docker-compose
@@ -164,9 +164,9 @@
         Uruchom projekt
         Sprawdź wynik w logach
         
-        [screenshots/19-new-project.png]
-        [screenshots/20-project-url.png]
-        [screenshots/21-set-branch.png]
-        [screenshots/22-add-docker-compose-plugin.png]
-        [screenshots/23-add-build-step-docker-compose.png]
-        [screenshots/25-result.png]
+        ![screenshots/19-new-project](screenshots/19-new-project.png)
+        ![screenshots/20-project-url](screenshots/20-project-url.png)
+        ![screenshots/21-set-branch](screenshots/21-set-branch.png)
+        ![screenshots/22-add-docker-compose-plugin](screenshots/22-add-docker-compose-plugin.png)
+        ![screenshots/23-add-build-step-docker-compose](screenshots/23-add-build-step-docker-compose.png)
+        ![screenshots/25-result](screenshots/25-result.png)
