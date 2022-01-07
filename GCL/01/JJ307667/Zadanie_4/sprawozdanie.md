@@ -40,12 +40,44 @@ Jednokrokowy pipeline (Build i test), pobierający narzędzie docker-compose i u
 ### Jenkinsfile: powiadomienia
   * Sekcja "post" dla każdego stage'a, informująca mailem o rezultacie
 
-### Jenkinsfile: deploy
- * W razie sukcesu, build ma zostać wypromowany jako kandydat do wydania
- * Różne podejścia są możliwe:
-   * Build i test wykonywane "na zewnątrz" i jeżeli się powiodą, odpalany docker build, który tworzy kontener
-   * Odpalane są kontenery budujący, testujący i końcowy
-     * końcowy to budujący, ale z odpaloną aplikacją na końcu
-	 * końcowy to np. ubuntu z posłanym artefaktem z budującego
+W naszym przypadku skorzystamy ze strony sendgrid.com jako serwer smtp. Po stworzeniu i skonfigurowaniu konta, tworzymy na stronie API Key który potem podamy w ustawieniach Jenkins:
 
-Po Nowym Roku, tydzień przed zajęciami, zrobimy sync zaawansowania prac i wybierzemy strategię.
+![sendgrid_API](screenshots/4.PNG)
+
+Następnie w Jenkinsie uzupełniamy potrzebne dane:
+
+![Jenkins_config_maili](screenshots/5.PNG)
+
+Tutaj jako username wpisujemy "apikey" i jako hasło nasz klucz do API.
+![Jenkins_config_maili_2](screenshots/6.PNG)
+
+Po ukończeniu procesu deployowania, wszystko działa bez zarzutu:
+
+![Dzialajace_maile](screenshots/7.PNG)
+![Dzialajace_maile_2](screenshots/8.PNG)
+
+### Jenkinsfile: deploy
+
+Jako proces przyjąłem wypchnięcie naszego obrazu do Docker Hub, połączenie się zdalnie przez SSH ze specjalnie stworzoną do tego celu maszyną wirtualną, pobraniu i uruchomieniu go.
+
+**Warto dodać, że w trakcie wykonywania tego ćwiczenia musiałem zaktualizować zawartość pliku Dockerfile-build z zadania 2 + dodać plik Dockerfile-deploy w tym samym folderze.**
+
+Aby całość działała, należy:
+* Stworzyć nową wirtualną maszynę z dostępem do sieci.
+* Wejść do naszego kontenera Jenkinsa i wygenerować w nim klucze SSH.
+* Dodać stworzony klucz prywatny w credencialach w ustawieniach na samym Jenkinsie.
+* Przerzucić stworzony klucz publiczny na nowo stworzoną maszyne wirtualną do deployu.
+
+Przed uruchomieniem skryptu, trzeba też zainstalować wtyczkę "SSH Agent":
+![SSH_Agent](screenshots/9.PNG)
+
+Uruchamiamy skrypt i jak widać, całość przebiega pomyśline:
+![Działajacy_pipeline](screenshots/10.PNG)
+
+Obraz publishuje się na Docker Hub:
+![Działajacy_pipeline](screenshots/11.PNG)
+
+Strona się uruchamia z IP naszej nowo stworzonej maszyny wirtualnej:
+![Działajacy_pipeline_2](screenshots/12.PNG)
+
+![Działajacy_pipeline_3](screenshots/13.PNG)
