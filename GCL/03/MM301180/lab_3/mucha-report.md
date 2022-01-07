@@ -55,8 +55,8 @@ $ sudo netstat -tunpa
 * Uruchom i wyeksponuj wybrany port w kontenerze
 * zmień port na wybrany port >1024
 ```shell
-$ sudo docker run -it --mount source=pendrajw,destination=/store --publish 2222:22 ubuntu
-$ sudo docker ps -a
+$ sudo docker run -it --mount source=drajw,destination=/store --publish 2222:22 ubuntu
+$ sudo docker ps -apen
 ```
 
 `[img] screen_13`
@@ -145,7 +145,7 @@ RUN jenkins-plugin-cli --plugins "blueocean:1.25.1 docker-workflow:1.26"
 docker build -t myjenkins-blueocean:1.1 .
 ```
 ```dockerfile
-docker run --name jenkins-blueocean --rm --detach \
+sudo docker run --name jenkins-blueocean --rm --detach \
   --network jenkins --env DOCKER_HOST=tcp://docker:2376 \
   --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 \
   --publish 8080:8080 --publish 50000:50000 \

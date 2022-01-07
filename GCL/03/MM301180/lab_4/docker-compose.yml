@@ -1,0 +1,14 @@
+version: '2.0'
+
+services:
+  builder:
+    image: node-pre-build
+    build:
+      dockerfile: Dockerfile-build
+      context: .
+  tester:
+    depends_on:
+      - builder
+    build:
+      dockerfile: Dockerfile-test
+      context: .
