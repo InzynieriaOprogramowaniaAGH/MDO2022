@@ -42,15 +42,18 @@ Imię i nazwisko: Julia Żychowska, kierunek: Informatyka Stosowana (NS), nr. in
                 cd easy-sauce 
                 npm install
                 '''
+                }
             }
-        }
             stage('Test') { 
               steps {
                 sh '''
                 cd easy-sauce
                 npm test
                 '''
+              }
             }
+          }
+        }
         ```
         sh ''' ''' pozwala na wprowadzenie poleceń terminalowych, w momencie gdy tego nie użyłam m.in nie wczytywało mi adresu do sklonowania repozytorium. 
         W momencie gdy uruchamiamy ponownie projekt to należy usunąć linijke ``` git clone https://github.com/philipwalton/easy-sauce.git ```, ponieważ mamy już sklonowane za pierwszym razem. 
