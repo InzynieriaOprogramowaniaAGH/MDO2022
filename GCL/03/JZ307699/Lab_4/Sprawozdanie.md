@@ -60,19 +60,19 @@ Imię i nazwisko: Julia Żychowska, kierunek: Informatyka Stosowana (NS), nr. in
         
         1. Brak dostępu do użytkownika root.
         
-        Początkowo zgodnie z poradnikami w internecie próbowałam zmieniać ustawienia w plikach konfiguracyjnych, ale nie przyniosły efektu. Problem dalej istniał, rozwiązałam go usunięciem z Dockerfile potrzebnego do utworzenia Jenkinsa linijki USER Jenkins.  
+           Początkowo zgodnie z poradnikami w internecie próbowałam zmieniać ustawienia w plikach konfiguracyjnych, ale nie przyniosły efektu. Problem dalej istniał, rozwiązałam go usunięciem z Dockerfile potrzebnego do utworzenia Jenkinsa linijki USER Jenkins.  
         
-        ![image](https://user-images.githubusercontent.com/28841971/148635762-40d1b284-ee5e-4f7b-a8f9-7ef3cf086161.png)
+           ![image](https://user-images.githubusercontent.com/28841971/148635762-40d1b284-ee5e-4f7b-a8f9-7ef3cf086161.png)
         
      
         2. Błąd - czas został przekroczony.
         
-        Problem występuje przy komendzie ```npm test```. Tutaj nie udało mi się naprawić problemu. Założyłam, że problem wynika z moją witrualną maszyną przez co zwiększalam pamięć RAM, co pomogło na chwile przy odpalaniu komendy w terminalu, ale po chwili sytuacja wróciła do poprzedniego stanu. Następnie zainstalowałam Ubuntu od nowa z większą ilością pamięci RAM oraz miejsca na dysku. Poza tym wszystko sie kompiluje, testy się wykonują, ale na samym końcu jest error związany z czasem. W terminalu mogłabym zwiększyć czas oczekiwania w pliku konfiguracyjnym, w Jenkins nie znalazłam możliwości.
+           Problem występuje przy komendzie ```npm test```. Tutaj nie udało mi się naprawić problemu. Założyłam, że problem wynika z moją witrualną maszyną przez co zwiększalam pamięć RAM, co pomogło na chwile przy odpalaniu komendy w terminalu, ale po chwili sytuacja wróciła do poprzedniego stanu. Następnie zainstalowałam Ubuntu od nowa z większą ilością pamięci RAM oraz miejsca na dysku. Poza tym wszystko sie kompiluje, testy się wykonują, ale na samym końcu jest error związany z czasem. W terminalu mogłabym zwiększyć czas oczekiwania w pliku konfiguracyjnym, w Jenkins nie znalazłam możliwości.
         
-        ![image](https://user-images.githubusercontent.com/28841971/148636185-59605edb-2969-449e-ad3f-f632c5a996ec.png)
-        ![image](https://user-images.githubusercontent.com/28841971/148636219-8a1c6e34-19f9-4112-967c-2a5dc8d2abcb.png)
-        ![image](https://user-images.githubusercontent.com/28841971/148636230-458d8954-ea42-4404-ae7d-3a9a4bf3fc20.png)
-        ![image](https://user-images.githubusercontent.com/28841971/148636253-344e76f9-eb0e-465d-bde3-cbb3d6655758.png)
+           ![image](https://user-images.githubusercontent.com/28841971/148636185-59605edb-2969-449e-ad3f-f632c5a996ec.png)
+           ![image](https://user-images.githubusercontent.com/28841971/148636219-8a1c6e34-19f9-4112-967c-2a5dc8d2abcb.png)
+           ![image](https://user-images.githubusercontent.com/28841971/148636230-458d8954-ea42-4404-ae7d-3a9a4bf3fc20.png)
+           ![image](https://user-images.githubusercontent.com/28841971/148636253-344e76f9-eb0e-465d-bde3-cbb3d6655758.png)
 
         
       - Przejściowo, może zawierać jeden etap "Build + Test"
