@@ -68,7 +68,7 @@ Imię i nazwisko: Julia Żychowska, kierunek: Informatyka Stosowana (NS), nr. in
      
         2. Błąd - czas został przekroczony.
         
-           Problem występuje przy komendzie ```npm test```. Tutaj nie udało mi się naprawić problemu. Założyłam, że problem wynika z moją witrualną maszyną przez co zwiększalam pamięć RAM, co pomogło na chwile przy odpalaniu komendy w terminalu, ale po chwili sytuacja wróciła do poprzedniego stanu. Następnie zainstalowałam Ubuntu od nowa z większą ilością pamięci RAM oraz miejsca na dysku. Poza tym wszystko sie kompiluje, testy się wykonują, ale na samym końcu jest error związany z czasem. W terminalu mogłabym zwiększyć czas oczekiwania w pliku konfiguracyjnym, w Jenkins nie znalazłam możliwości.
+           Problem występuje przy komendzie ```npm test```. Tutaj nie udało mi się naprawić problemu. Założyłam, że problem wynika z moją witrualną maszyną przez co zwiększalam pamięć RAM, co pomogło na chwile przy odpalaniu komendy w terminalu, ale po chwili sytuacja wróciła do poprzedniego stanu. Następnie zainstalowałam Ubuntu od nowa z większą ilością pamięci RAM oraz miejsca na dysku. Poza tym wszystko sie kompiluje, testy się uruchamiają, ale na samym końcu jest error związany z czasem. W terminalu mogłabym zwiększyć czas oczekiwania w pliku konfiguracyjnym, w Jenkins nie znalazłam możliwości.
         
            ![image](https://user-images.githubusercontent.com/28841971/148636185-59605edb-2969-449e-ad3f-f632c5a996ec.png)
            ![image](https://user-images.githubusercontent.com/28841971/148636219-8a1c6e34-19f9-4112-967c-2a5dc8d2abcb.png)
