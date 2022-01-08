@@ -52,7 +52,8 @@ Imię i nazwisko: Julia Żychowska, kierunek: Informatyka Stosowana (NS), nr. in
                 '''
             }
         ```
-        sh ''' ''' pozwala na wprowadzenie poleceń terminalowych, w momencie gdy tego nie użyłam m.in nie wczytywało mi adresu do sklonowania repozytorium.
+        sh ''' ''' pozwala na wprowadzenie poleceń terminalowych, w momencie gdy tego nie użyłam m.in nie wczytywało mi adresu do sklonowania repozytorium. 
+        W momencie gdy uruchamiamy ponownie projekt to należy usunąć linijke ``` git clone https://github.com/philipwalton/easy-sauce.git ```, ponieważ mamy już sklonowane za pierwszym razem. 
         
         ![image](https://user-images.githubusercontent.com/28841971/148635648-56c68e27-a14e-47d2-97d7-46a7a4a69634.png)
         
