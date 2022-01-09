@@ -4,7 +4,6 @@ pipeline {
         stage('Build') { 
             steps {
                 sh'''
-                cd GCL/03/JZ307699/Lab_4
                 npm build
                 '''
             }
