@@ -5,7 +5,7 @@ pipeline {
             steps {
                 sh'''
                 cd GCL/03/JZ307699/Lab_4
-                docker build -t easy/sauce:latest . -f Dockerfile
+                docker build -t easy/sauce:latest .
                 cd Dockerfile2
                 sudo docker build -t easy/sauce2:latest .
                 '''
