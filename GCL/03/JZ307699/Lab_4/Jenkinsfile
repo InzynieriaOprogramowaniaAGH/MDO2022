@@ -4,7 +4,7 @@ pipeline {
         stage('Build') { 
             steps {
                 sh'''
-                cd MDO2022/GCL/03/JZ307699/Lab_4
+                cd GCL/03/JZ307699/Lab_4
                 docker build -t easy/sauce:latest .
                 cd Dockerfile2
                 sudo docker build -t easy/sauce2:latest .
