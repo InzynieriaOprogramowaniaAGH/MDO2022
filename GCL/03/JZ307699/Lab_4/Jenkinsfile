@@ -4,14 +4,16 @@ pipeline {
         stage('Build') { 
             steps {
                 sh'''
-                npm build
+                docker build -t easy/sauce:latest .
+                cd Dockerfile2
+                sudo docker build -t easy/sauce2:latest .
                 '''
             }
         }
         stage('Test') { 
             steps {
                 sh '''
-                npm test
+                sudo docker run easy/sauce2:latest
                 '''
             }
         }
