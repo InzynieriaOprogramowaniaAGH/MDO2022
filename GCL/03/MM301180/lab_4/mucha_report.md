@@ -3,20 +3,25 @@
 ## Wprowadzenie
 
 ### Zapewnij dostępność plików w gałęzi
-* skrypty, Docker files, kompozycje (jeżeli są), Jenkinsfile
+* pliki pochodzą z repo: 
+  * https://github.com/michalmuchakr/docker-react-test-app
+  
 
-https://github.com/michalmuchakr/docker-react-test-app
+* Skrypty, Docker files, kompozycje (jeżeli są), Jenkinsfile
+  * docker-compose.yml
+  * Dockerfile-build
+  * Dockerfile-test
+  
+`[img] screen_1`
 
 * dostępne w odpowiedniej gałęzi i katalogu w MDO2022
-`[img] screen_1`
+  * Wrzucone 
 
 ### Stwórz Jenkinsfile: opis
 * Utwórz nowy pipeline budujący wybraną aplikację, oparty o Jenkinsfile
-
 `[img] screen_2`
 
 * Docelowo, ma zawierać etapy "Build" i "Test"
-
 * Przejściowo, pipeline napisany bezpośrednio w jenkins
   `[img] screen_3 - 4`
 
@@ -32,6 +37,20 @@ https://github.com/michalmuchakr/docker-react-test-app
 
 ### Jenkinsfile: powiadomienia
 * Sekcja "post" dla każdego stage'a, informująca mailem o rezultacie
+    * krok 1 - logowanie do jenkinsa
+      * `[img] screen_7`
+    * krok 2 - Instalacja rozszerzenia do wysyłania emaili - Mailer
+      * `[img] screen_8 - 12`
+    * krok 3 - konfiguracja mailera
+      * stworzone zostało konto do wysyłania maili:
+        * mm301180.mail.sender@gmail.com
+        * `[img] screen_13`
+      * konfiguracja mailera w Jenkins
+        * `[img] screen_14 - 15`
+      * test konfiguracji
+        * `[img] screen_16 - 17`
+      * test mail z jenkinsFile
+          * `[img] screen_16 - 17`
 
 ### Jenkinsfile: deploy
 * W razie sukcesu, build ma zostać wypromowany jako kandydat do wydania
