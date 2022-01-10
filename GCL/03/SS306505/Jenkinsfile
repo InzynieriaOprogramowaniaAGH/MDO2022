@@ -71,12 +71,40 @@ pipeline {
                         echo '\033[34;1mStarting publishing on DockerHub\033[0m'
                         sh '''
                         cd ${SRC_PATH}
-                        docker build -t node-app-prod:0.1 -f 04_Dockerfile_prod .
+                        docker build -t node-app-prod -f 04_Dockerfile_prod .
                         docker login -u $DOCKER_USR -p $DOCKER_PSW
+                        docker tag node-app-prod $DOCKER_USR/node-app-prod
                         docker push $DOCKER_USR/node-app-prod
                         '''
                         echo '\033[34;1mPublished\033[0m'   
                     } catch(e) {
+                        currentBuild.result = "FAILED"
+                        throw e
+                    }
+                }
+            }
+            post {
+                always {
+                    notifyBuild(currentBuild.result)
+                }
+            }
+        }
+
+        stage("Deployment on Azure") {
+            steps {
+                script {
+                    try {
+                        sshagent(credentials: ['AZURE_CREDENTIALS']) {
+                            sh '''
+                                ssh -o StrictHostKeyChecking=no seb@51.107.190.28 "
+                                    sudo docker system prune --force --all && 
+                                    sudo echo "$DOCKER_PSW" | docker login -u "$DOCKER_USR" --password-stdin &&
+                                    sudo docker run -p 80:80 -d $DOCKER_USR/node-app-prod
+                                "
+                            '''
+                        }
+                    
+                    } catch (err) {
                         currentBuild.result = "FAILED"
                         throw e
                     }

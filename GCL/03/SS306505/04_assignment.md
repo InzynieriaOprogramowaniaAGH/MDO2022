@@ -8,6 +8,7 @@
     - Podzielenie się samopodpisanym certyfikatem ze światem 
     - Wyłączenie weryfikacji z użyciem TLS-a **(wybrane przeze mnie)**
     - Dodanie insecure-registries do daemon.json
+- Musisz posiadać dostęp z uczelnianego konta do [platformy Azure'a](https://portal.azure.com)
 
 ## Kroki
 
@@ -84,4 +85,84 @@ Pozwoli to **wyłączyć** weryfikacje z użyciem TLS-a i pozbyć się problemu 
     CMD [ "npm", "start" ]
     ```
 
-    
+3. Do Jenkinsfile dodano nowy stage o nazwie 'Publish on Docker Hub', który będzie budował produkcyjny obraz, logował się do Docker Hub'a i publikował zbudowany obraz.
+    ```Groovy
+    stage('Publish on DockerHub') {
+        steps {
+            script{
+                try {
+                    echo '\033[34;1mStarting publishing on DockerHub\033[0m'
+                    sh '''
+                    cd ${SRC_PATH}
+                    docker build -t node-app-prod -f 04_Dockerfile_prod .
+                    docker login -u $DOCKER_USR -p $DOCKER_PSW
+                    docker tag node-app-prod $DOCKER_USR/node-app-prod
+                    docker push $DOCKER_USR/node-app-prod
+                    '''
+                    echo '\033[34;1mPublished\033[0m'   
+                } catch(e) {
+                    currentBuild.result = "FAILED"
+                    throw e
+                }
+            }
+        }
+        post {
+            always {
+                notifyBuild(currentBuild.result)
+            }
+        }
+    }
+    ```
+
+4. Przed odpalenie pipeline'a należy jeszcze dodać credentiale dla Docker Huba do Jenkins'a
+![zrzut 07](screenshots\04\07-added-credentials.png)
+Dashboard -> Manage Jenkins -> Credentials -> Jenkins -> Global credentials (unrestricted) -> Add Credentials -> Username with Password
+
+5. Uruchomienie pipeline'a z nowym krokiem
+![zrzut 08](screenshots\04\08-added-publish-stage.png)
+
+6. Wdrożenie obrazu odbędzie się na maszynie wirtualnej w chmurze Azure
+    - Stwórz konto na platformie Azure
+    - Utwórz maszynke wirtualną z Ubuntu
+    - Skonfiguruj klucze SSH (analogicznie do procedury z laboratorium 1)
+
+    ![zrzut 09](screenshots\04\09-azure-vm.png)
+7. Dodaj credentiale dostępowe do maszyny wirtualnej w Jenkinsie
+    - nazwe użytkownika
+    - klucz prywatny SSH (możesz go wygenerować lokalnie lub przez Azure'a) 
+
+    ![zrzut 10](screenshots\04\10-azure-creds.png)
+8. Dodaj wtyczke SSH Agent Plugin do Jenkinsa
+    ![zrzut 11](screenshots\04\11-ssh-agent-plugin.png)
+9. W Jenkinsfile dodaj nowego stage'a, który będzie odpowiadał za wdrożenie
+    ```Groovy
+    stage("Deployment on Azure") {
+        steps {
+            script {
+                try {
+                    sshagent(credentials: ['AZURE_CREDENTIALS']) {
+                        sh '''
+                            ssh -o StrictHostKeyChecking=no seb@51.107.190.28 "
+                                sudo docker system prune --force --all && 
+                                sudo echo "$DOCKER_PSW" | docker login -u "$DOCKER_USR" --password-stdin &&
+                                sudo docker run -p 80:80 -d $DOCKER_USR/node-app-prod
+                            "
+                        '''
+                    }
+                
+                } catch (err) {
+                    currentBuild.result = "FAILED"
+                    throw e
+                }
+            }
+        }
+        post {
+            always {
+                notifyBuild(currentBuild.result)
+            }
+        }
+    }
+    ```
+10. Uruchomienie pipeline'a z pełnym procesem
+![zrzut 12](screenshots\04\12-completed-pipeline.png)
+
