@@ -55,8 +55,8 @@ $ sudo netstat -tunpa
 * Uruchom i wyeksponuj wybrany port w kontenerze
 * zmień port na wybrany port >1024
 ```shell
-$ sudo docker run -it --mount source=drajw,destination=/store --publish 2222:22 ubuntu
-$ sudo docker ps -apen
+$ sudo docker run -it --mount source=pendrajw,destination=/store --publish 2222:22 ubuntu
+$ sudo docker ps -a
 ```
 
 `[img] screen_13`
@@ -126,14 +126,14 @@ Dockerfile
 ```dockerfile
 FROM jenkins/jenkins:2.319.1-jdk11
 USER root
-RUN apt-get update && apt-get install -y lsb-release
+RUN apt-get update -y && apt-get install -y lsb-release
 RUN curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc \
   https://download.docker.com/linux/debian/gpg
 RUN echo "deb [arch=$(dpkg --print-architecture) \
   signed-by=/usr/share/keyrings/docker-archive-keyring.asc] \
   https://download.docker.com/linux/debian \
   $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
-RUN apt-get update && apt-get install -y docker-ce-cli
+RUN apt-get update && apt-get install -y docker-ce-cli docker-ce
 USER jenkins
 RUN jenkins-plugin-cli --plugins "blueocean:1.25.1 docker-workflow:1.26"
 ```
