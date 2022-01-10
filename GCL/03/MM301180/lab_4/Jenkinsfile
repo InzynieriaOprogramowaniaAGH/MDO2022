@@ -1,34 +1,58 @@
 pipeline {
     agent any
-
+    environment {
+        DOCKER = credentials('DOCKER_HUB_CREDENTIALS')
+    }
     stages {
         stage('build') {
             steps {
-                sh('docker-compose build --no-cache builder')
+                script{
+                    try {
+                        sh 'docker-compose build --no-cache builder'
+                    } catch(e) {
+                        throw e
+                    }
+                }
             }
         }
         stage('test') {
             steps {
-                sh('docker-compose build --no-cache tester')
+
+                script{
+                    try {
+                        sh 'docker-compose build --no-cache tester'
+                    } catch(e) {
+                        throw e
+                    }
+                }
             }
         }
     }
     post {
-        always {
-            echo 'One way or another, I have finished'
-            deleteDir() /* clean up our workspace */
-        }
         success {
-            echo 'Build finish successfully!'
+            mailSender('Build finish successfully!')
         }
         unstable {
-            echo 'Build finish unstable!'
+            mailSender('Build finish unstable!')
         }
         failure {
             echo 'Build failed sad-frog.jpg!'
+            mailSender('Build failed sad-frog.jpg!')
         }
         changed {
             echo 'Things were different before...'
+            echo 'Interesting...'
         }
     }
+}
+
+def mailSender(String buildStatus) {
+    def subject = "${buildStatus}: of build [${env.BUILD_NUMBER}]'"
+    def summary = "Link to build: (${env.BUILD_URL})"
+
+    emailext (
+        mimeType: 'text/html',
+        subject: subject,
+        to: 'michal.mucha.kr@gmail.com'
+    )
 }
