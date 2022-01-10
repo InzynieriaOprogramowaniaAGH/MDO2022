@@ -54,4 +54,34 @@ Pozwoli to **wyłączyć** weryfikacje z użyciem TLS-a i pozbyć się problemu 
     ![zrzut 05](screenshots/04/05-email-message.png)
     ![zrzut 06](screenshots/04/06-email-messages.png)
 ### Jenkinsfile: deploy
-> Oczekiwanie na kontakt z prowadzącym w celu ustalenia strategii wdrożenia
+1. W razie sukcesu, build ma zostać wypromowany jako kandydat do wydania
+    - Kandydatem do wydania będzie kontener dockerowy
+    - Miejscem publikacji będzie Docker Hub
+2. Dopisany został produkcyjny Dockerfile. \
+   Jego zadania to:
+    - Ściągnięcie aplikacji
+    - Instalacja produkcyjnych zależności
+    - Uruchomienie samej aplikacji
+
+    ```Dockerfile
+    FROM node:16-alpine as builder
+
+    WORKDIR /usr/app
+
+    ENV NODE_ENV=production
+
+    RUN apk update --quiet
+    RUN apk add git --quiet
+    RUN git clone https://github.com/scoquix/quick-example-of-testing-in-nodejs.git
+    RUN cd /usr/app/quick-example-of-testing-in-nodejs && npm install --only=prod
+
+    FROM node:16-alpine
+
+    WORKDIR /usr/app
+
+    COPY --from=builder /usr/app/quick-example-of-testing-in-nodejs ./
+
+    CMD [ "npm", "start" ]
+    ```
+
+    

@@ -1,0 +1,18 @@
+FROM node:16-alpine as builder
+
+WORKDIR /usr/app
+
+ENV NODE_ENV=production
+
+RUN apk update --quiet
+RUN apk add git --quiet
+RUN git clone https://github.com/scoquix/quick-example-of-testing-in-nodejs.git
+RUN cd /usr/app/quick-example-of-testing-in-nodejs && npm install --only=prod
+
+FROM node:16-alpine
+
+WORKDIR /usr/app
+
+COPY --from=builder /usr/app/quick-example-of-testing-in-nodejs ./
+
+CMD [ "npm", "start" ]

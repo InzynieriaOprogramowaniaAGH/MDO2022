@@ -6,6 +6,7 @@ pipeline {
         MINOR_DIR = 'GCL/03/SS306505/'
         BRANCH_NAME = 'SS306505'
         REPO_ADDRESS = 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022.git'
+        DOCKER = credentials('DOCKER_HUB_CREDENTIALS')
     }
     options {
         ansiColor('xterm')
@@ -41,13 +42,45 @@ pipeline {
 
         stage('Tests') {
             steps {
-                echo '\033[34;1mRunning tests...\033[0m'
-                sh '''
-                cd ${SRC_PATH}
-                docker build -t node_app_run_tests:0.1 -f 02_Dockerfile_tests .
-                docker run -i node_app_run_tests:0.1
-                '''
-                echo '\033[34;1mFinished tests\033[0m'
+                script{
+                    try {
+                        echo '\033[34;1mRunning tests...\033[0m'
+                        sh '''
+                        cd ${SRC_PATH}
+                        docker build -t node_app_run_tests:0.1 -f 02_Dockerfile_tests .
+                        docker run -i node_app_run_tests:0.1
+                        '''
+                        echo '\033[34;1mFinished tests\033[0m'       
+                    } catch(e) {
+                        currentBuild.result = "FAILED"
+                        throw e
+                    }
+                }
+            }
+            post {
+                always {
+                    notifyBuild(currentBuild.result)
+                }
+            }
+        }
+        
+        stage('Publish on DockerHub') {
+            steps {
+                script{
+                    try {
+                        echo '\033[34;1mStarting publishing on DockerHub\033[0m'
+                        sh '''
+                        cd ${SRC_PATH}
+                        docker build -t node-app-prod:0.1 -f 04_Dockerfile_prod .
+                        docker login -u $DOCKER_USR -p $DOCKER_PSW
+                        docker push $DOCKER_USR/node-app-prod
+                        '''
+                        echo '\033[34;1mPublished\033[0m'   
+                    } catch(e) {
+                        currentBuild.result = "FAILED"
+                        throw e
+                    }
+                }
             }
             post {
                 always {
