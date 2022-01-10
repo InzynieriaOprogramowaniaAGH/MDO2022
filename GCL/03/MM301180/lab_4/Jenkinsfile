@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-        DOCKER = credentials('DOCKER_HUB_CREDENTIALS')
-    }
     stages {
         stage('build') {
             steps {
@@ -17,7 +14,6 @@ pipeline {
         }
         stage('test') {
             steps {
-
                 script{
                     try {
                         sh 'docker-compose build --no-cache tester'
@@ -47,12 +43,10 @@ pipeline {
 }
 
 def mailSender(String buildStatus) {
-    def subject = "${buildStatus}: of build [${env.BUILD_NUMBER}]'"
-    def summary = "Link to build: (${env.BUILD_URL})"
-
     emailext (
         mimeType: 'text/html',
-        subject: subject,
+        subject: "${buildStatus}: of build [${env.BUILD_NUMBER}]'",
+        body: "Link to build: (${env.BUILD_URL})"
         to: 'michal.mucha.kr@gmail.com'
     )
 }
