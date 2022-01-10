@@ -115,25 +115,25 @@ Pozwoli to **wyłączyć** weryfikacje z użyciem TLS-a i pozbyć się problemu 
     ```
 
 4. Przed odpalenie pipeline'a należy jeszcze dodać credentiale dla Docker Huba do Jenkins'a
-![zrzut 07](screenshots\04\07-added-credentials.png)
+![zrzut 07](screenshots/04/07-added-credentials.png)
 Dashboard -> Manage Jenkins -> Credentials -> Jenkins -> Global credentials (unrestricted) -> Add Credentials -> Username with Password
 
 5. Uruchomienie pipeline'a z nowym krokiem
-![zrzut 08](screenshots\04\08-added-publish-stage.png)
+![zrzut 08](screenshots/04/08-added-publish-stage.png)
 
 6. Wdrożenie obrazu odbędzie się na maszynie wirtualnej w chmurze Azure
     - Stwórz konto na platformie Azure
     - Utwórz maszynke wirtualną z Ubuntu
     - Skonfiguruj klucze SSH (analogicznie do procedury z laboratorium 1)
 
-    ![zrzut 09](screenshots\04\09-azure-vm.png)
+    ![zrzut 09](screenshots/04/09-azure-vm.png)
 7. Dodaj credentiale dostępowe do maszyny wirtualnej w Jenkinsie
     - nazwe użytkownika
     - klucz prywatny SSH (możesz go wygenerować lokalnie lub przez Azure'a) 
 
-    ![zrzut 10](screenshots\04\10-azure-creds.png)
+    ![zrzut 10](screenshots/04/10-azure-creds.png)
 8. Dodaj wtyczke SSH Agent Plugin do Jenkinsa
-    ![zrzut 11](screenshots\04\11-ssh-agent-plugin.png)
+    ![zrzut 11](screenshots/04/11-ssh-agent-plugin.png)
 9. W Jenkinsfile dodaj nowego stage'a, który będzie odpowiadał za wdrożenie
     ```Groovy
     stage("Deployment on Azure") {
@@ -164,5 +164,5 @@ Dashboard -> Manage Jenkins -> Credentials -> Jenkins -> Global credentials (unr
     }
     ```
 10. Uruchomienie pipeline'a z pełnym procesem
-![zrzut 12](screenshots\04\12-completed-pipeline.png)
+![zrzut 12](screenshots/04/12-completed-pipeline.png)
 
