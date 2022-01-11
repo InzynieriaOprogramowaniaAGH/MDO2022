@@ -50,14 +50,14 @@
       * test konfiguracji
         * `[img] screen_16 - 17`
       * test mail z jenkinsFile
-          * `[img] screen_16 - 17`
+        * `[img] screen_16 - 17`
+      * mail z pipeline
+        * `[img] screen_18`
 
 ### Jenkinsfile: deploy
 * W razie sukcesu, build ma zostać wypromowany jako kandydat do wydania
-* Różne podejścia są możliwe:
-    * Build i test wykonywane "na zewnątrz" i jeżeli się powiodą, odpalany docker build, który tworzy kontener
-    * Odpalane są kontenery budujący, testujący i końcowy
-        * końcowy to budujący, ale z odpaloną aplikacją na końcu
-        * końcowy to np. ubuntu z posłanym artefaktem z budującego
-
-Po Nowym Roku, tydzień przed zajęciami, zrobimy sync zaawansowania prac i wybierzemy strategię.
+* Dodano nazwę użytkownika oraz token bezpieczeństwa z docekrhub
+  * Manage Jenkins -> Manage Credentials -> Domains(global) -> Add Credentials.
+    * `[img] screen_19 - 21`
+* Stworzono repozytorium w dockerhub
+  * `[img] screen_22`
