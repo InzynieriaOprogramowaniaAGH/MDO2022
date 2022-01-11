@@ -1,5 +1,11 @@
 pipeline {
     agent any
+    environment {
+        registry = "generalcube/mm301180_dev_ops"
+        registryCredential = 'generalcube'
+        dockerImage = ''
+    }
+
     stages {
         stage('build') {
             steps {
@@ -19,6 +25,15 @@ pipeline {
                         sh 'docker-compose build --no-cache tester'
                     } catch(e) {
                         throw e
+                    }
+                }
+            }
+        }
+        stage('deploy') {
+            steps {
+                script {
+                    docker.withRegistry( '', registryCredential ) {
+                        dockerImage.push()
                     }
                 }
             }
