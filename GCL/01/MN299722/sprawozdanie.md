@@ -17,9 +17,11 @@
     - **Utwórz dwa klucze SSH, inne niż RSA, w tym co najmniej jeden zabezpieczony hasłem**
       
       Klucz bez hasła (metoda ed25519): 
+      
       ![Tworznie klucza ssh bez hasła](img/3_1_ssh_key_without_password.png)
 
       Klucz z hasłem (metoda ECDSA):
+      
       ![Tworznie klucza ssh z hasłem](img/3_2_ssh_key_with_password.png)
 
    - **Skonfiguruj klucz SSH jako metodę dostępu**
@@ -56,4 +58,22 @@
    - Dodaj zrzuty ekranu
     
         ![Tworznie katalogów na nowej gałęzi](img/6_1.png)
-
+        
+   - Wyślij zmiany do zdalnego źródła
+   
+        Dodajemy pliki do stage'a i tworzymy nowy commit:
+        
+        ![Stage i commit](img/6_2_stage_and_commit.png)
+        
+        Następnie wypychamy zmiany na wskazaną gałąź
+        
+        ![Push do brancha](img/6_3_push.png)
+        
+        
+   - Spróbuj wciągnąć swoją gałąź do gałęzi grupowej
+        
+        ![Próba wciągnięcia gałęzi do gałęzi grupowej](img/6_4.png)
+        
+        O ile nie ma problemu z wciągnięciem swojej gałęzi do gałęzi grupowej lokalnie, to z powodu blokady nie jesteśmy w stanie wykonać pusha:
+        
+        ![Blokada merga](img/6_5.png)
