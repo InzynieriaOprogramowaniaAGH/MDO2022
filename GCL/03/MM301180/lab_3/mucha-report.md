@@ -126,14 +126,14 @@ Dockerfile
 ```dockerfile
 FROM jenkins/jenkins:2.319.1-jdk11
 USER root
-RUN apt-get update && apt-get install -y lsb-release
+RUN apt-get update -y && apt-get install -y lsb-release
 RUN curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc \
   https://download.docker.com/linux/debian/gpg
 RUN echo "deb [arch=$(dpkg --print-architecture) \
   signed-by=/usr/share/keyrings/docker-archive-keyring.asc] \
   https://download.docker.com/linux/debian \
   $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
-RUN apt-get update && apt-get install -y docker-ce-cli
+RUN apt-get update && apt-get install -y docker-ce-cli docker-ce
 USER jenkins
 RUN jenkins-plugin-cli --plugins "blueocean:1.25.1 docker-workflow:1.26"
 ```
@@ -144,8 +144,8 @@ RUN jenkins-plugin-cli --plugins "blueocean:1.25.1 docker-workflow:1.26"
 ```shell
 docker build -t myjenkins-blueocean:1.1 .
 ```
-```dockerfile
-docker run --name jenkins-blueocean --rm --detach \
+```shell
+sudo docker run --name jenkins-blueocean --rm --detach \
   --network jenkins --env DOCKER_HOST=tcp://docker:2376 \
   --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 \
   --publish 8080:8080 --publish 50000:50000 \
@@ -175,4 +175,7 @@ docker run --name jenkins-blueocean --rm --detach \
 * Opracuj dokument z diagramami UML, opisującymi proces CI. Opisz:
    * Wymagania wstępne środowiska
    * Diagram aktywności, pokazujący kolejne etapy (collect, build, test, report)
+
+   * `[img] diagram_aktywnosci` 
+
    * Diagram wdrożeniowy, opisujący relacje między składnikami, zasobami i artefaktami
