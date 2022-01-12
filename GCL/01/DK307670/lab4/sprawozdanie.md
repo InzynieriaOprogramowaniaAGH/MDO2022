@@ -1,29 +1,41 @@
 ### Jenkinsfile: przebieg
 https://www.jenkins.io/doc/book/pipeline/jenkinsfile/
-* Przykładowe zbiory czynności w Jenkinsfile:
-Jednokrokowy pipeline (Build i test), pobierający narzędzie docker-compose i uruchamiajacy docker compose up na kompozycji z poprzednich zajęć
-  * build + test
-    * download docker-compose
-    * compose up
-    
-  * build
-    * git pull
-    * npm install
-    * npm build
-  * test
-    * npm test
+
+Poczatkowe kroki to build i test.
+
+Build - budujemy obraz z Dockerfile.
+Test - budujemy obraz z Dockerfile i go testujemy.
     
 ![screen1.png](screen1.png)
 
 ![screen2.png](screen2.png)
+
+Nastepne kroki do publish i deploy.
+
+Publish - budujemy obraz z Dockerfile (wyciaganie artefaktow z obrazu 'build') oraz wrzucamy go do dockerhuba.
+Deploy - ssh do maszyny zdalnej, pobranie obrazu z kroku 'publish', uruchomienie obrazu.
     
+![screen6.png](screen6.png)
+
+![screen7.png](screen7.png)
+
+Pipeline CI/CD po poprawnym zbudowaniu
+
+![screen8.png](screen8.png)
+
 ### Jenkinsfile: powiadomienia
   * Sekcja "post" dla każdego stage'a, informująca mailem o rezultacie
   
+W Jenkinsfile zastosowano strukture try catch aby wiadomosci byly wysylane rowniez gdy stage zakonczy sie niepowodzeniem  
+
+![screen3.png](screen3.png)
+
+![screen4.png](screen4.png)  
+  
 ### Jenkinsfile: deploy
- * W razie sukcesu, build ma zostać wypromowany jako kandydat do wydania
- * Różne podejścia są możliwe:
-   * Build i test wykonywane "na zewnątrz" i jeżeli się powiodą, odpalany docker build, który tworzy kontener 
-   * Odpalane są kontenery budujący, testujący i końcowy
-     * końcowy to budujący, ale z odpaloną aplikacją na końcu
-     * końcowy to np. ubuntu z posłanym artefaktem z budującego
+
+Zastosowana strategia zaklada wypchniecie obrazu do rejestru (dockerhub) a nastepnie w kroku deploy ssh na zdalnej maszyny, pobranie swiezego obrazu z dockerhub i uruchomienie go.
+
+Szczegoly w Jenkinsfile. Zrzut ekranu z udanego deploya:
+
+![screen5.png](screen5.png)
