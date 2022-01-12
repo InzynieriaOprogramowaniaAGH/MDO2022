@@ -7,36 +7,45 @@
 2. Podłącz wolumin do kontenera 
     Do podłączenia woluminu do kontenera należy użyć flagi -v w czasie uruchamiania. (Należy sprawdzić nazwę katalogu użytkownika. W moim przypadku jest to filip)
     Dodatkowo podłączymy katalog `/home/filip/volume` z hosta do katalogu `/home/root` 
-    Żeby to zrobić należy wykonać polecenie: `docker run -it -v /home/filip/volume:/home/root ubuntu`
+    Żeby to zrobić należy wykonać polecenie: 
+    
+    - `docker run -it -v /home/filip/volume:/home/root ubuntu`
+    
 3. Skopiuj plik do katalogu woluminu, pokaż w kontenerze 
-    Należy przejść do katalogu wolumenu na hoscie i utworzyć plik txt `echo 'bleblelbe HOSTA' > /home/filip/volume/nazwa-pliku-z-hosta.txt`
+    Należy przejść do katalogu wolumenu na hoscie i utworzyć plik txt 
+    
+    - `echo 'bleblelbe HOSTA' > /home/filip/volume/nazwa-pliku-z-hosta.txt`
+    
 4. Utwórz plik w kontenerze, na obszarze woluminu, pokaż na hoście
-   Należy przejść do katalogu kontenera i utworzyć plik txt `echo 'blalbalba CONTENERA' > /home/root/nazwa-pliku-z-kontenera.txt`
+   Należy przejść do katalogu kontenera i utworzyć plik txt 
+   
+   - `echo 'blalbalba CONTENERA' > /home/root/nazwa-pliku-z-kontenera.txt`
 
 ![screenshots/01-pull-ubuntu](screenshots/01-pull-ubuntu.png)
 ![screenshots/02-attach-volume](screenshots/02-attach-volume.png)
 
 ### "Kiepski pomysł": SSH
 1. Uruchom i wyeksponuj wybrany port w kontenerze
-    Do wyeksportowania portu należy użyć polecenia z flagą: `docker run -it -v /home/seb/volume:/home/root --publish 8080:8080 ubuntu`
+    Do wyeksportowania portu należy użyć polecenia z flagą: 
+    - `docker run -it -v /home/seb/volume:/home/root --publish 8080:8080 ubuntu`
 
 2. Zainstaluj w kontenerze serwer ssh
-    Aktualizujemy system `apt update` dalej wykorzystując menadżera pakietów należy doinstalować serwer ssh `apt install openssh-server`.
-    Ponieważ na prezentowanym systemie nie istnieje systemctl, będzie trzeba uruchomić daemona sshd ręcznie [zrzut 03] `/usr/sbin/sshd -D &`
-3. Zmień port na wybrany port > 1024
-    Zmienic linie z Portem w pliku sshd_config [zrzut 04]. Możemy do tego wykorzystać np. edytor nano. `nano /etc/ssh/sshd_config`
-4. Zezwól na logowanie root
+    Aktualizujemy system `apt update`. Dalej wykorzystując menadżera pakietów należy doinstalować serwer ssh `apt install openssh-server`.
+    Ponieważ na prezentowanym systemie nie istnieje systemctl, będzie trzeba uruchomić daemona sshd ręcznie  `/usr/sbin/sshd -D &`
+    
+3. Zmień port na wybrany port > 1024. Aby to zrobić zmień linie z Portem w pliku `sshd_config`. Możemy do tego wykorzystać np. edytor nano. `nano /etc/ssh/sshd_config`
+5. Zezwól na logowanie root
     W tym celu edytujemy ponownie plik /etc/ssh/sshd_config `echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config`
     Teraz musimy uruchomić daemona od nowa `/usr/sbin/sshd -D &`
 5. Umieść klucz publiczny w woluminie, skopiuj go do pliku zaufanych w kontenerze
     Żeby to zrobić, trzeba skopiować na hoście klucz publiczny do katalogu wolumenu `cp /home/root/id_ed25519.pub /root/.ssh/authorized_keys`
     W kontenerze kopiujemy klucz ten publiczny do zaufanych kluczy `cat /home/root/id_ed25519.pub > /root/.ssh/authorized_keys`
-6. Odnajdź adres IP kontenera w wewnętrznej sieci [zrzut 05]
+6. Odnajdź adres IP kontenera w wewnętrznej sieci 
     W tym celu wykorzystamy polecenie: `ip addr`
         
 7. Uruchom usługę, połącz się z kontenerem
     W tym celu wykorzystamy polecenie: `/usr/sbin/sshd -D &`
-    Z poziomu hosta podlaczymy sie po ssh do kontenera [zrzut 05] `ssh root@172.17.6.154 -p 8080`
+    Z poziomu hosta podłączymy sie po ssh do kontenera `ssh root@172.17.6.154 -p 8080`
 
 ![screenshots/03-expose-ports](screenshots/03-expose-ports.png)
 ![screenshots/04-manualy-run-deamon](screenshots/04-manualy-run-deamon.png)
@@ -120,11 +129,11 @@
     ### Mikro-projekt Jenkins
 
     1. Utwórz projekt, który wyświetla uname
-        Należy wybrać Nowy Projekt i nadać mu jakąś nazwę. W zakłądce "Budowanie" dodaj krok "Uruchom powłokę" i wpisz polecenie [zrzut 12] `uname -a`
-        Wybierz "Uruchom", żeby uruchomić build. Nastepnie sprawdź w logach konsoli wynik działania builda [zrzut 13]
+        Należy wybrać Nowy Projekt i nadać mu jakąś nazwę. W zakłądce "Budowanie" dodaj krok "Uruchom powłokę" i wpisz polecenie  `uname -a`
+        Wybierz "Uruchom", żeby uruchomić build. Nastepnie sprawdź w logach konsoli wynik działania builda 
         
     2. Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta 
-        Tworzymy projekt analogicznie jak uprzednio. W polu "Uruchom powłokę" należy wpisać skrypt [zrzut 14]
+        Tworzymy projekt analogicznie jak uprzednio. W polu "Uruchom powłokę" należy wpisać skrypt 
 
         ```bash
         hour=$(date +"%H")
@@ -156,11 +165,12 @@
                 mv /usr/local/bin/docker-compose /usr/bin/docker-compose
                 chmod +x /usr/bin/docker-compose
                 ```
+                
         Następnie instalujemy wtyczkę do Docker Compose w Jenkinsie:
-        Ekran Główny >> Zarządzaj Jenkinsem >> Zarządzaj wtyczkami >> Dostępne >> Docker Compose Build Step
+        `Ekran Główny >> Zarządzaj Jenkinsem >> Zarządzaj wtyczkami >> Dostępne >> Docker Compose Build Step`
         W kolejnym kroku trzeba utworzyć nowy projekt i nadać mu nazwę np. nazwą brancha. W tym wypadku jest to `FZ307698`
-            - Sekcja 'Repozytorium kodu' dodaj adres URL do repo [zrzut 18]
-            - Sekcja 'Budowanie' wybieramy naszą wtyczkę i wpisujemy ścieżke do pliku z docker-compose.yaml [zrzut 19]
+            - Sekcja 'Repozytorium kodu' dodaj adres URL do repo 
+            - Sekcja 'Budowanie' wybieramy naszą wtyczkę i wpisujemy ścieżke do pliku z docker-compose.yaml 
         Uruchom projekt
         Sprawdź wynik w logach
         
@@ -170,3 +180,11 @@
         ![screenshots/22-add-docker-compose-plugin](screenshots/22-add-docker-compose-plugin.png)
         ![screenshots/23-add-build-step-docker-compose](screenshots/23-add-build-step-docker-compose.png)
         ![screenshots/25-result](screenshots/25-result.png)
+
+        # Diagram aktywności
+
+        ![screenshots/Diagram-aktywnosci](screenshots/Diagram-aktywnosci.png)
+
+        # Diagram wdrożeniowy
+
+        ![screenshots/Diagram-wdrozeniowy](screenshots/Diagram-wdrozeniowy.png)
