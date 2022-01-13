@@ -8,7 +8,7 @@ pipeline {
                 cd GCL/03/JZ307699/Lab_4
                 ls
                 '''
-                app = docker.build("easy/sauce:latest")
+                docker.build("easy/sauce:latest")
                 sh'''
                 cd Dockerfile2
                 docker build -t easy/sauce2:latest .
