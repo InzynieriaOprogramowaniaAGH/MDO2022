@@ -6,7 +6,9 @@ pipeline {
         stage('Build') { 
             steps {
                 sh'''
+                ls
                 cd GCL/03/JZ307699/Lab_4
+                ls
                 apt-get install npm -y
                 docker build -t easy/sauce:latest .
                 cd Dockerfile2
