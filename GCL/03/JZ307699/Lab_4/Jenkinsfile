@@ -7,8 +7,9 @@ pipeline {
                 ls
                 cd GCL/03/JZ307699/Lab_4
                 ls
-                apt-get install npm -y
-                docker build -t easy/sauce:latest .
+                '''
+                app = docker.build("easy/sauce:latest")
+                sh'''
                 cd Dockerfile2
                 docker build -t easy/sauce2:latest .
                 '''
