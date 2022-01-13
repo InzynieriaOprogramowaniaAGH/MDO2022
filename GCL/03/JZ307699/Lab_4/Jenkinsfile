@@ -5,16 +5,17 @@ pipeline {
             steps {
                 sh'''
                 cd GCL/03/JZ307699/Lab_4
+                apt-get install npm -y
                 docker build -t easy/sauce:latest .
                 cd Dockerfile2
-                sudo docker build -t easy/sauce2:latest .
+                docker build -t easy/sauce2:latest .
                 '''
             }
         }
         stage('Test') { 
             steps {
                 sh '''
-                sudo docker run easy/sauce2:latest
+                docker run easy/sauce2:latest
                 '''
             }
         }
