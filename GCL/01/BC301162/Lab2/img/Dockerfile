@@ -1,6 +1,6 @@
-FROM ubuntu
+﻿FROM ubuntu
 
-RUN apt-get update && apt-get upgrade
+RUN apt-get update
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get install -y nodejs npm
 RUN npx create-react-app test-app-container

@@ -1,0 +1,30 @@
+﻿pipeline {
+    agent any
+    
+    stages {
+        stage('Build'){
+            steps {
+                sh '''
+                apt-get update
+                apt-get upgrade
+                apt-get install git
+                rm -rf MDO2022/
+                git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022.git
+                cd MDO2022/
+                git checkout BC301162
+                cd GCL/01/BC301162/Lab2/img
+                docker build -t builder:latest -f ./Dockerfile
+                '''
+            }
+        }
+        
+        stage('Test') {
+            stepst {
+                sh '''
+                cd MDO2022/GCL/01/BC301162/Lab2/img
+                docker build -t tester:latest -f ./Dockerfile-test
+                '''
+            }
+        }
+    }
+}
