@@ -77,6 +77,8 @@ Imię i nazwisko: Julia Żychowska, kierunek: Informatyka Stosowana (NS), nr. in
            ![image](https://user-images.githubusercontent.com/28841971/148636219-8a1c6e34-19f9-4112-967c-2a5dc8d2abcb.png)
            ![image](https://user-images.githubusercontent.com/28841971/148636230-458d8954-ea42-4404-ae7d-3a9a4bf3fc20.png)
            ![image](https://user-images.githubusercontent.com/28841971/148636253-344e76f9-eb0e-465d-bde3-cbb3d6655758.png)
+           
+           Według otrzymanych wskazówek zrobiłam fork repozytorium wybranej aplikacji, w folderze test wkleilam otrzymany tekst.patch i użyłam komendy ```patch -u easy-sauce-test.js -i tests.patch```, która wprowadziła komentasz do pliku easy-sauce-test.js. Początkowo i to u mnie nie działało, ale problemem też okazał się błąd instalacji npm, odinstalowałam node.js, npm i zainstalowałam ponownie. Dodatkowo potrzebny był reset maszyny. Następnie wysłałam zmiany do repozytorium. Testy wykonują się tylko raz po resecie. W Jenkinsfile nie działa nadal.
 
         
       - Przejściowo, może zawierać jeden etap "Build + Test"
@@ -103,6 +105,8 @@ Imię i nazwisko: Julia Żychowska, kierunek: Informatyka Stosowana (NS), nr. in
       - test
           - npm test
             
+            ![image](https://user-images.githubusercontent.com/28841971/149419006-eff0fe58-36b1-46ba-8433-1bded3433e1e.png)
+
  #### 4. Jenkinsfile: powiadomienia
   
    - Sekcja "post" dla każdego stage'a, informująca mailem o rezultacie
