@@ -1,5 +1,6 @@
 pipeline {
-    agent any
+    agent{
+    dockerfile true}
     stages {
         stage('Build') { 
             steps {
@@ -7,10 +8,10 @@ pipeline {
                 ls
                 cd GCL/03/JZ307699/Lab_4
                 ls
-                docker build -t easy/sauce:latest . -f Dockerfile
-                cd Dockerfile2
-                docker build -t easy/sauce2:latest .
                 '''
+                //docker build -t easy/sauce:latest . -f Dockerfile
+                //                cd Dockerfile2
+                //docker build -t easy/sauce2:latest .
             }
         }
         stage('Test') { 
