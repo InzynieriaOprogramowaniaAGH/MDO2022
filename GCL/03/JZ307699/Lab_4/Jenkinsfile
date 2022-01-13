@@ -3,6 +3,9 @@ pipeline {
     dockerfile true}
     stages {
         stage('Build') { 
+            agent {
+                docker { image 'node' }
+            }
             steps {
                 sh'''
                 ls
