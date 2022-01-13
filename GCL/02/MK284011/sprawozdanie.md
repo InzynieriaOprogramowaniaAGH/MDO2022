@@ -1,60 +1,70 @@
 ZESTAWIENIE ŚRODOWISKA
 
 1. Zainstauj Docker w systemie linkus
-<Zdjecie1>
+
+*Zdjecie1
     "sudo apt install docker-ce"
 
 2. Zarejestruj się w Docker Hub i zapoznaj z sugerowanymi obrazami
     Strona: https://hub.docker.com/
-<Zdjęcie2>
+
+*Zdjęcie2
 
 
 3. Pobierz hello-world, busybox, ubuntu lub fedorę, mysql
     "docker run hello-world" -> pobierze nam obraz hello-world
-<zdjecie3>
+
+*zdjecie3
 
 4. Uruchom busybox
 - Pokaż efekt uruchomienia kontenera
 - Podłącz się do kontenera interaktywnie i wywołaj numer wersji
 
     "docker run busybox" -> uruchomi nam busybox, ale jako, że nie wcześniej go nie mieliśmy to pobierze nam pierw obraz
-<Zdjecie4>
-<Zdjecie5>
+*zdjecie4
+*zdjecie5
 
 
 5. Uruchom "system w kontenerze"
     "docker run -it ubuntu" -> uruchomienie ubuntu w kontenerze
-<Zjdecie6>
+*zdjecie6
 
 - Zaprezentuj PID1 w kontenerze i procesy dockera na hoście
 
 PID1 można zaprezentować za pomocą polecenia ps
-<Zdjecie7>
+
+*zdjecie7
 Natomiast procesy dockera na hoście za pomocą:
     "docker ps" -> aby sprwadzić id kontenera
     "docker top <id kontenera> -> aby wylistowac procesy dockera na hoscie
-<Zdjecie8>
+
+*zdjecie8
 
 - Zaktualizuj pakiety
     "apt update && apt upgrade" -> wpisujemy polecenie wewnatrz kontenera
-<Zdjecie9>
+
+*zdjecie9
 
 - Wyjdź
     Wystarczy wpisać polecenie "exit"
-<Zdjecie10>
+
+*zdjecie10
 
 6. Pokaż uruchomione ( != "działające" ) kontenery, wyczyść je.
     "docker ps" -> pokazuje wszystkie uruchomione kontenery
     "docker ps -a" -> pokazuje nam wszystkie kontenery
-<Zdjecie11>
+
+*zdjecie11
     "docker rm <id kontenera> -> czyścimy kontener
-<Zdjecie12>
+
+*zdjecie12
 
 7. Wyczyść obrazy
 Podobnie jak powyżej:
     "docker images" -> sprawdzamy obrazy
     "docker image rm <id obrazu> -> usuwamy obraz
-<Zdjecie13>
+
+*zdjecie13
 
 BUDOWANIE PROGRAMU
 
@@ -65,7 +75,8 @@ BUDOWANIE PROGRAMU
 4. Ponów ten proces w kontenerze
  - Wybierz i uruchom platformę
     "sudo docker run -it ubuntu" -> wybrana platforma to unbuntu
-<Zdjecie14>
+
+*zdjecie14
 
  - Zaopatrz ją w odpowiednie oprogramowanie wstępne
     Jako, ze wybrana przeze mnie aplikacja bazuje potrzebowalem zainstalować nodejs, npm, git
@@ -82,15 +93,16 @@ BUDOWANIE PROGRAMU
 
  - Skonfiguruj środowisko i uruchom build
  - Uruchom testy
- <Zdjecie15>
+*zdjecie15
 
 5. Stwórz Dockerfile, który ma to osiągnąć
  - Na bazie platformowego obrazu...
  - ...doinstaluj wymagania wstępne...
  - ...sklonuj repozytorium...
  - ...zbuduj kod
- <Zdjecie16>
- <Zdjecie17>
+
+*zdjecie16
+*zdjecie17
  
 6. Zaprezentuj Dockerfile i jego zbudowanie
-<Zdjecie18>
+*zdjecie18
