@@ -6,7 +6,7 @@ RUN apt-get update
 
 RUN apt-get install git
 
-RUN git clone https://github.com/philipwalton/easy-sauce.git
+RUN git clone https://github.com/Lila367/easy-sauce.git
 
 WORKDIR /appES/easy-sauce
 
