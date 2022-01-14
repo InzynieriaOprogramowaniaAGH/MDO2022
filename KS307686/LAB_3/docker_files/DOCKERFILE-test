@@ -1,4 +1,4 @@
-FROM new_app:latest
+FROM app:latest
 WORKDIR /my-app/new_app
 
 CMD ["npm","test"]
