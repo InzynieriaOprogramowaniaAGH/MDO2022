@@ -10,15 +10,13 @@ pipeline {
                 docker build -t easy/sauce2:latest .
                 '''
             }
-        }
-        post {
+            post {
             success {
                 echo 'I succeeded!'
                 mail to: 'juligabi@tlen.pl',
                     subject: "Successful Pipeline: ${currentBuild.fullDisplayName}",
                     body: "Wszystko gra w Build. :)"
             }
-
             failure {
                 echo 'I failed :('
                 mail to: 'juligabi@tlen.pl',
@@ -26,14 +24,14 @@ pipeline {
                     body: "Coś poszło nie tak w Build. :("
             }
         }
+        }
         stage('Test') { 
             steps {
                 sh '''
                 docker run easy/sauce2:latest
                 '''
             }
-        }
-        post {
+            post {
             success {
                 echo 'I succeeded!'
                 mail to: 'juligabi@tlen.pl',
@@ -47,6 +45,7 @@ pipeline {
                     subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
                     body: "Coś poszło nie tak w Test. :("
             }
+        }
         }
     }
 }
