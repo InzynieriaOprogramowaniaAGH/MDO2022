@@ -10,7 +10,7 @@
  * Docelowo, ma zawierać etapy "Build" i "Test" 
  
   * albo pipeline zawiera treść Jenkinsfile'a
-   * ![image](/ss1.png)
+   * ![image](ss/ss1.png)
   
  
 ### Jenkinsfile: przebieg
