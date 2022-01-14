@@ -20,15 +20,13 @@ Jednokrokowy pipeline (Build i test), pobierający narzędzie docker-compose i u
   * build + test
     * download docker-compose
 	* compose up
-	
-  * build
-    * git pull
-	* npm install
-	* npm build
-  * test
-    * npm test
-	
+To się nie udało, przy próbie instalacji docker-compose zawsze miałem odmowę dostępu do katalogu...
+Więc wróciłem do opcji Buld i test na oddzielnym dockerfile:
+![image](ss/ss2.png)
+![image](ss/ss3.png)
+![image](ss/ss4.png)
 ### Jenkinsfile: powiadomienia
   * Sekcja "post" dla każdego stage'a, informująca mailem o rezultacie
-  
+  ![image](ss/ss6.png)
+  ![image](ss/ss5.png)
 ### Jenkinsfile: deploy 
