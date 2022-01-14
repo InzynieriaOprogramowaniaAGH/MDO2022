@@ -142,7 +142,6 @@ Imię i nazwisko: Julia Żychowska, kierunek: Informatyka Stosowana (NS), nr. in
                      steps {
                          sh'''
                          docker build -t easy/sauce:latest .
-                         cd Dockerfile2
                          docker build -t easy/sauce2:latest . -f Dockerfile2
                          '''
                      }
@@ -157,10 +156,12 @@ Imię i nazwisko: Julia Żychowska, kierunek: Informatyka Stosowana (NS), nr. in
              }
            }
            ```
+           ![image](https://user-images.githubusercontent.com/28841971/149572228-778b5792-7922-4377-873f-b0c121b18032.png)
            
+           ![image](https://user-images.githubusercontent.com/28841971/149572129-2e1bc6ef-0a19-491a-97f9-bf3d6bdc3900.png)
            
-        
-        
+           ![image](https://user-images.githubusercontent.com/28841971/149572526-53533331-5656-4d58-a89f-c5434e8f8071.png)
+
       
  #### 3. Jenkinsfile: przebieg
   
@@ -219,6 +220,83 @@ Imię i nazwisko: Julia Żychowska, kierunek: Informatyka Stosowana (NS), nr. in
  #### 4. Jenkinsfile: powiadomienia
   
    - Sekcja "post" dla każdego stage'a, informująca mailem o rezultacie
+
+      Na początku musiałam skonfigurowac Jenkins'a. Zarządzaj Jenkins -> Skonfiguruj system -> E-mail Notification 
+      SMTP server: smtp.gmail.com
+      Use SMTP Authentication zaznaczamy i wypełniamy:
+         User Name: lilcia367@gmail.com
+         Password: *********
+      Use SSL zaznaczamy
+      SMTP Port 465
+      
+      ![image](https://user-images.githubusercontent.com/28841971/149590259-554ce937-11b0-49b0-982d-fb49cc89e60d.png)
+      
+      Przetestowałam konfiguracje e-mail:
+      
+      ![image](https://user-images.githubusercontent.com/28841971/149590504-c1f28443-330c-426d-8469-a4d92288c9fa.png)
+      ![image](https://user-images.githubusercontent.com/28841971/149590552-5f81d389-6a96-466e-8c1b-5a3798f68f0a.png)
+
+      Uzupełniłam Jenkinsfile o sekcje post:
+      
+      ```
+      pipeline {
+     agent any
+     stages {
+        stage('Build') { 
+            steps {
+                sh'''
+                cd GCL/03/JZ307699/Lab_4
+                docker build -t easy/sauce:latest .
+                cd Dockerfile2
+                docker build -t easy/sauce2:latest .
+                '''
+            }
+            post {
+                success {
+                    echo 'juligabi@tlen.pl!'
+                    mail to: 'lilcia367@gmail.com',
+                       subject: "Successful Pipeline",
+                      body: "Wszystko gra w Build. :)"
+                }
+                failure {
+                    echo 'I failed :('
+                    mail to: 'juligabi@tlen.pl',
+                        subject: "Failed Pipeline",
+                        body: "Coś poszło nie tak w Build. :("
+                }
+            }
+        }
+        stage('Test') { 
+            steps {
+                sh '''
+                docker run easy/sauce2:latest
+                '''
+            }
+            post {
+            success {
+                echo 'I succeeded!'
+                mail to: 'juligabi@tlen.pl',
+                    subject: "Successful Pipeline: ${currentBuild.fullDisplayName}",
+                    body: "Wszystko gra w Test. :)"
+            }
+
+            failure {
+                echo 'I failed :('
+                mail to: 'juligabi@tlen.pl',
+                    subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                    body: "Coś poszło nie tak w Test. :("
+            }
+        }
+        }
+      }
+     }
+      ```
+      Uruchomiłam z sukcesem:
+      
+      ![image](https://user-images.githubusercontent.com/28841971/149590740-0bf4d22c-e9bc-44e7-8d91-9c06f0c69aa5.png)
+      
+      ![image](https://user-images.githubusercontent.com/28841971/149590916-f2abf338-8258-4195-bb35-9620485f8d9d.png)
+
       
  #### 5. Jenkinsfile: deploy
   
