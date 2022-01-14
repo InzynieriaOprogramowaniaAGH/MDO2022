@@ -27,6 +27,6 @@ Więc wróciłem do opcji Buld i test na oddzielnym dockerfile:
 ![image](ss/ss4.png)
 ### Jenkinsfile: powiadomienia
   * Sekcja "post" dla każdego stage'a, informująca mailem o rezultacie
-  ![image](ss/ss6.png)
-  ![image](ss/ss5.png)
+  *   ![image](ss/ss6.png)
+  *   ![image](ss/ss5.png)
 ### Jenkinsfile: deploy 
