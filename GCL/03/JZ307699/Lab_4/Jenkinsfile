@@ -14,13 +14,13 @@ pipeline {
             success {
                 echo 'I succeeded!'
                 mail to: 'lilcia367@gmail.com',
-                    subject: "Successful Pipeline: ${currentBuild.fullDisplayName}",
+                    subject: "Successful Pipeline",
                     body: "Wszystko gra w Build. :)"
             }
             failure {
                 echo 'I failed :('
                 mail to: 'juligabi@tlen.pl',
-                    subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+                    subject: "Failed Pipeline",
                     body: "Coś poszło nie tak w Build. :("
             }
         }
