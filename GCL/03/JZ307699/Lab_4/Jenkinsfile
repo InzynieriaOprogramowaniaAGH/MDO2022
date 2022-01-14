@@ -13,7 +13,7 @@ pipeline {
             post {
                 success {
                     echo 'I succeeded!'
-                    mail to: 'lilcia367@gmail.com',
+                    mail to: 'juligabi@tlen.pl',
                        subject: "Successful Pipeline",
                       body: "Wszystko gra w Build. :)"
                 }
