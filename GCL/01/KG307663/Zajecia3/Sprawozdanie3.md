@@ -54,17 +54,28 @@ OdczytanieAdresuKontenera.png
 * Upewnij się, że Dockerfiles i Docker Compose z poprzednich zajęć są w repozytorium
 * Zapoznaj się z instrukcją https://www.jenkins.io/doc/book/installing/docker/
   * Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone
+  `Jenkins1`
   * Przygotuj obraz blueocean na podstawie obrazu jenkinsa
+  `DockerFileJenkins`
   * Uruchom blueocean
+  `ZbudowanieJenkinsaBlueOcean`
   * Zaloguj się i skonfiguruj Jenkins
+  `Jenkins`
+  `Haslojenkins`
+  `InstalacjaJenkins`
+  `JenkinsDziala`
   
 #### Mikro-projekt Jenkins
 * Utwórz projekt, który wyświetla uname
+`uname`
 * Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta 
+`wrongdaterun`
 * Utwórz "prawdziwy" projekt, który:
   * klonuje nasze repozytorium
+  `projektzgita1`
   * przechodzi na osobistą gałąź
   * buduje obrazy z dockerfiles i/lub komponuje via docker-compose
+  `projekszgita2`
   
 #### Sprawozdanie
 * Opracuj dokument z diagramami UML, opisującymi proces CI. Opisz:
