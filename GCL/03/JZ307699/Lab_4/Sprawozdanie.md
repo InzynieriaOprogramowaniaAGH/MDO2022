@@ -38,7 +38,7 @@ Imię i nazwisko: Julia Żychowska, kierunek: Informatyka Stosowana (NS), nr. in
                 sh '''
                 apt-get update
                 apt-get install npm -y
-                git clone https://github.com/philipwalton/easy-sauce.git
+                git clone https://github.com/Lila367/easy-sauce.git
                 cd easy-sauce 
                 npm install
                 '''
@@ -71,24 +71,96 @@ Imię i nazwisko: Julia Żychowska, kierunek: Informatyka Stosowana (NS), nr. in
      
         2. Błąd - czas został przekroczony.
         
-           Problem występuje przy komendzie ```npm test```. Tutaj nie udało mi się naprawić problemu. Założyłam, że problem wynika z moją witrualną maszyną przez co zwiększalam pamięć RAM, co pomogło na chwile przy odpalaniu komendy w terminalu, ale po chwili sytuacja wróciła do poprzedniego stanu. Następnie zainstalowałam Ubuntu od nowa z większą ilością pamięci RAM oraz miejsca na dysku. Poza tym wszystko sie kompiluje, testy się uruchamiają, ale na samym końcu jest error związany z czasem. W terminalu mogłabym zwiększyć czas oczekiwania w pliku konfiguracyjnym, w Jenkins nie znalazłam możliwości.
+           Problem występował przy komendzie ```npm test```. Założyłam, że problem wynika z moją witrualną maszyną przez co zwiększalam pamięć RAM, co pomogło na chwile przy odpalaniu komendy w terminalu, ale po chwili sytuacja wróciła do poprzedniego stanu. Następnie zainstalowałam Ubuntu od nowa z większą ilością pamięci RAM oraz miejsca na dysku. Poza tym wszystko sie kompiluje, testy się uruchamiają, ale na samym końcu jest error związany z czasem. 
         
            ![image](https://user-images.githubusercontent.com/28841971/148636185-59605edb-2969-449e-ad3f-f632c5a996ec.png)
            ![image](https://user-images.githubusercontent.com/28841971/148636219-8a1c6e34-19f9-4112-967c-2a5dc8d2abcb.png)
            ![image](https://user-images.githubusercontent.com/28841971/148636230-458d8954-ea42-4404-ae7d-3a9a4bf3fc20.png)
            ![image](https://user-images.githubusercontent.com/28841971/148636253-344e76f9-eb0e-465d-bde3-cbb3d6655758.png)
            
-           Według otrzymanych wskazówek zrobiłam fork repozytorium wybranej aplikacji, w folderze test wkleilam otrzymany tekst.patch i użyłam komendy ```patch -u easy-sauce-test.js -i tests.patch```, która wprowadziła komentasz do pliku easy-sauce-test.js. Początkowo i to u mnie nie działało, ale problemem też okazał się błąd instalacji npm, odinstalowałam node.js, npm i zainstalowałam ponownie. Dodatkowo potrzebny był reset maszyny. Następnie wysłałam zmiany do repozytorium. Testy wykonują się tylko raz po resecie. W Jenkinsfile nie działa nadal.
-
+           Według otrzymanych wskazówek zrobiłam fork repozytorium wybranej aplikacji, w folderze test wkleiłam otrzymany tests.patch i użyłam komendy ```patch -u easy-sauce-test.js -i tests.patch```, która wprowadziła komentasz do pliku easy-sauce-test.js. Początkowo i to u mnie nie działało, ale problemem też okazał się błąd instalacji npm, odinstalowałam node.js, npm i zainstalowałam ponownie. Dodatkowo potrzebny był reset maszyny. Następnie wysłałam zmiany do repozytorium. Testy wykonują się tylko raz po resecie. W Jenkins nie działał nadal. Korzystając z Dockerfile w pipeline wystąpił kolejny problem:
+           
+           ![image](https://user-images.githubusercontent.com/28841971/149419006-eff0fe58-36b1-46ba-8433-1bded3433e1e.png)
+           
+           Problemem okazała się moja wirtualna maszyna zawierająca Ubuntu. Gdy powróciłam w celach testowych do pierwszej postawionej maszyny okazało się, że z użyciem Dockerfile testy działają, bez nie. 
         
       - Przejściowo, może zawierać jeden etap "Build + Test"
       
         --------------------------------------------------
        
       - Może, ale nie musi, budować się na dedykowanym DIND, ale może się to dziać od razu na kontenerze CI. Należy udokumentować funkcjonalną różnicę między niniejszymi podejściami
+        
+        --------------------------------------------------
+        
       - Początkowo, Jenkinsfile może być albo "wklejony" albo dodany do repozytorium, które jest sforkowane, to znaczy:
-      - albo pipeline zawiera treść Jenkinsfile'a
-      - albo forkujemy repozytorium wybranej aplikacji i dodajemy Jenkinsfile do niego
+         - albo pipeline zawiera treść Jenkinsfile'a
+         
+            Stworzyłam pipeline, który zawiera Jenkinsfile. Klonuje to repozytorium i wykorzystuję Dockerfiles.  
+        
+              ```
+              pipeline {
+               agent any
+               stages {
+               stage('Build') { 
+                  steps {
+                  sh'''
+                  apt-get update
+                  git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022.git
+                  cd MDO2022
+                  git checkout JZ307699
+                  cd GCL/03/JZ307699/Lab_4
+                  docker build -t easy/sauce:latest .
+                  cd Dockerfile2
+                  docker build -t easy/sauce2:latest .
+                  '''
+               }
+              }
+              stage('Test') { 
+                  steps {
+                      sh '''
+                      docker run easy/sauce2:latest
+                      '''
+                  }
+              }
+              }
+            }
+            ```
+            
+            ![image](https://user-images.githubusercontent.com/28841971/149571327-09a6001c-01eb-4aaa-a91d-6f3697f43c5b.png)
+            ![image](https://user-images.githubusercontent.com/28841971/149571271-dae92911-a911-41fa-b003-a9f25cbbe951.png)
+
+        
+         - albo forkujemy repozytorium wybranej aplikacji i dodajemy Jenkinsfile do niego
+
+            Następnie wykorzystałam wcześniej zrobiony fork repozytorium i zamieściłam tam Jenkinsfile oraz Dockerfiles.
+            
+            ```
+            pipeline {
+             agent any
+             stages {
+                 stage('Build') { 
+                     steps {
+                         sh'''
+                         docker build -t easy/sauce:latest .
+                         cd Dockerfile2
+                         docker build -t easy/sauce2:latest . -f Dockerfile2
+                         '''
+                     }
+                 }
+                 stage('Test') { 
+                     steps {
+                         sh '''
+                         docker run easy/sauce2:latest
+                         '''
+                     }
+                 }
+             }
+           }
+           ```
+           
+           
+        
+        
       
  #### 3. Jenkinsfile: przebieg
   
@@ -105,7 +177,44 @@ Imię i nazwisko: Julia Żychowska, kierunek: Informatyka Stosowana (NS), nr. in
       - test
           - npm test
             
-            ![image](https://user-images.githubusercontent.com/28841971/149419006-eff0fe58-36b1-46ba-8433-1bded3433e1e.png)
+       Jenkinsfile jaki stworzyłam korzystający z Dockerfile umieściłam w tym repozytorium. Odwołuje się on do wcześniej stworzonych Dockerfiles. Jedyną zmianą jaką zrobiłam w Dockerfile była zmiana klonowania repozytorium. Zamiast repozytorium wybranej aplikacji umieściłam link do sforkowanego repozytorium tej aplikacji. W Jenkinsfile użyłam osobnych etapów dla build i test. 
+       
+       ```
+       pipeline {
+         agent any
+            stages {
+               stage('Build') { 
+               steps {
+                sh'''
+                ls
+                cd GCL/03/JZ307699/Lab_4
+                ls
+                docker build -t easy/sauce:latest .
+                cd Dockerfile2
+                docker build -t easy/sauce2:latest .
+                '''
+                //docker build -t easy/sauce:latest . -f Dockerfile
+                //                cd Dockerfile2
+                //docker build -t easy/sauce2:latest .
+               }
+            }
+         stage('Test') { 
+            steps {
+                sh '''
+                docker run easy/sauce2:latest
+                '''
+            }
+         }   
+         }
+       }
+       ```
+        ![image](https://user-images.githubusercontent.com/28841971/149557117-bd5ce543-3753-4291-9663-e2f9ea2e2e4f.png)
+        ![image](https://user-images.githubusercontent.com/28841971/149557163-a9e5155a-a31b-4c58-8d0b-d9c0aaf4b19f.png)
+        ![image](https://user-images.githubusercontent.com/28841971/149557203-7982d6bc-b0aa-416b-8bde-e22064fe84af.png)
+
+        ![image](https://user-images.githubusercontent.com/28841971/149557276-2dce1aba-80ac-44c8-abc0-4d5615ed14e7.png)
+
+        ![image](https://user-images.githubusercontent.com/28841971/149557347-2777f01c-5136-43a3-bb85-3574fffa475f.png)
 
  #### 4. Jenkinsfile: powiadomienia
   
