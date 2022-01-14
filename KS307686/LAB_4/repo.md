@@ -11,7 +11,7 @@
  
   * albo pipeline zawiera treść Jenkinsfile'a
    * ![image](ss/ss1.png)
-  
+   * ![image](ss/ss2.png)
  
 ### Jenkinsfile: przebieg
 https://www.jenkins.io/doc/book/pipeline/jenkinsfile/
@@ -22,7 +22,7 @@ Jednokrokowy pipeline (Build i test), pobierający narzędzie docker-compose i u
 	* compose up
 To się nie udało, przy próbie instalacji docker-compose zawsze miałem odmowę dostępu do katalogu...
 Więc wróciłem do opcji Buld i test na oddzielnym dockerfile:
-![image](ss/ss2.png)
+
 ![image](ss/ss3.png)
 ![image](ss/ss4.png)
 ### Jenkinsfile: powiadomienia
