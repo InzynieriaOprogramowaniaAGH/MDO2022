@@ -5,6 +5,7 @@
 * Upewnij się, że kontener jest dostępny
 * Zainstaluj wymagania wstępne dla środowiska Minikube
 * Zainstaluj minikube i kubectl
+* ![image](ss/ss1.png)
 * Przedstaw uruchomione oprogramowanie wstępne (i usługi)
   * Platforma konteneryzacji
   * Otwarte porty
