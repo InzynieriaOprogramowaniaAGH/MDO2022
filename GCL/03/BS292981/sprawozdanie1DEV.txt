@@ -1,0 +1,32 @@
+
+bartek@DESKTOP-4TRDJM6:/mnt/c/Users/48889/Desktop/DEVOPS1$ git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022.git
+Cloning into 'MDO2022'...
+remote: Enumerating objects: 7876, done.
+remote: Counting objects: 100% (2950/2950), done.
+remote: Compressing objects: 100% (2166/2166), done.
+remote: Total 7876 (delta 733), reused 2085 (delta 419), pack-reused 4926
+Receiving objects: 100% (7876/7876), 252.41 MiB | 1.76 MiB/s, done.
+Resolving deltas: 100% (1473/1473), done.
+bartek@DESKTOP-4TRDJM6:/mnt/c/Users/48889/Desktop/DEVOPS1$ git checkout GCL03
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+bartek@DESKTOP-4TRDJM6:/mnt/c/Users/48889/Desktop/DEVOPS1$ cd MDO2022/
+bartek@DESKTOP-4TRDJM6:/mnt/c/Users/48889/Desktop/DEVOPS1/MDO2022$ git checkout GCL03
+Updating files: 100% (686/686), done.
+Branch 'GCL03' set up to track remote branch 'GCL03' from 'origin'.
+Switched to a new branch 'GCL03'
+bartek@DESKTOP-4TRDJM6:/mnt/c/Users/48889/Desktop/DEVOPS1/MDO2022$ git checkout -b BS292981
+Switched to a new branch 'BS292981'
+bartek@DESKTOP-4TRDJM6:/mnt/c/Users/48889/Desktop/DEVOPS1/MDO2022$ ls
+GCL  KS307686  Labs  README.md  nodesource_setup.sh
+bartek@DESKTOP-4TRDJM6:/mnt/c/Users/48889/Desktop/DEVOPS1/MDO2022$ cd GCL
+bartek@DESKTOP-4TRDJM6:/mnt/c/Users/48889/Desktop/DEVOPS1/MDO2022/GCL$ ls
+03  withPass  withPass.pub  withoutPass  withoutPass.pub
+bartek@DESKTOP-4TRDJM6:/mnt/c/Users/48889/Desktop/DEVOPS1/MDO2022/GCL$ cd 03
+bartek@DESKTOP-4TRDJM6:/mnt/c/Users/48889/Desktop/DEVOPS1/MDO2022/GCL/03$ ls
+AT285937  BU279043  DZ307697  FZ307698  MM301180  MR299810  NS306496  SS306505
+bartek@DESKTOP-4TRDJM6:/mnt/c/Users/48889/Desktop/DEVOPS1/MDO2022/GCL/03$ mkdir BS292981
+bartek@DESKTOP-4TRDJM6:/mnt/c/Users/48889/Desktop/DEVOPS1/MDO2022/GCL/03$ ls
+AT285937  BS292981  BU279043  DZ307697  FZ307698  MM301180  MR299810  NS306496  SS306505
+bartek@DESKTOP-4TRDJM6:/mnt/c/Users/48889/Desktop/DEVOPS1/MDO2022/GCL/03$ cd BS292981/
+bartek@DESKTOP-4TRDJM6:/mnt/c/Users/48889/Desktop/DEVOPS1/MDO2022/GCL/03/BS292981$
