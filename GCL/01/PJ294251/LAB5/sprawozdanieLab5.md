@@ -5,38 +5,38 @@ Zestawienie platformy Kubernetes
 -   Zainstaluj wymagania wstępne dla środowiska Minikube
 	Skonfigurowałem w maszynie wirtualnej drugi procesor, sprawdziłem dostępne miejsce na dysku i pamięć RAM oraz Dockera.
 	
-img1
+![1](imgs/1.png)
 -   Zainstaluj minikube i kubectl
 
 	``` minikube start ```
 	
-	img2
+	![2](imgs/2.png)
 	
 	Jeśli nie ma zainstalowanego:
 	
     ```minikube kubectl -- get po -A```
 
-	img3
+	![3](imgs/3.png)
 
 - Dodanie aliasa do shell config
 
 	``` alias kubectl="minikube kubectl --"  ```
 	
-	img4
+	![4](imgs/4.png)
 	
 -   Przedstaw uruchomione oprogramowanie wstępne (i usługi)
     -   Platforma konteneryzacji
     -   Otwarte porty
     -   Stan Dockera
-    img2
-    img7
+    ![2](imgs/2.png)
+    ![7](imgs/7.png)
 
 ### Stan Minikube
 
 -   Uruchom Minikube Dashboard
-img5
+![5](imgs/5.png)
 -   Wyświetl działające usługi (k8s) i wdrożenia
-img6
+![6](imgs/6.png)
 -   Wyświetl dostępne wdrożenia (stan "przed")
 
 ### Wdrożenie kontenera via k8s
