@@ -46,6 +46,12 @@ pipeline {
                     subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
                     body: "Coś poszło nie tak w Test. :("
             }
+          }
+        }
+        stage('Deploy'){
+            docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+            push("${env.BUILD_NUMBER}")
+            push("easy/sauce:latest")
         }
         }
     }
