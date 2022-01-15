@@ -1,0 +1,18 @@
+1. Zestawienie platformy Kubernetes
+    - Zainstaluj minikube i kubectl
+    - Przedstaw uruchomione oprogramowanie wstępne (i usługi)
+
+2. Stan Minikube
+    - Uruchom Minikube Dashboard
+    - Wyświetl działające usługi (k8s) i wdrożenia
+    - Wyświetl dostępne wdrożenia (stan "przed")
+
+3. Wdrożenie kontenera via k8s
+    - Wdróż przykładowy deployment "hello k8s": k8s.gcr.io/echoserver
+    - Wykaż że wdrożenie nastąpiło
+
+4. Deployment
+    - Utwórz plik YAML z "deploymentem" k8s
+    - Zestaw 4 repliki, opisz zalety i wady takiej liczby
+    - Zaaplikuj wdrożenie via kubectl apply -f plik.yml
+    - Wykaż przeprowadzony deployment
