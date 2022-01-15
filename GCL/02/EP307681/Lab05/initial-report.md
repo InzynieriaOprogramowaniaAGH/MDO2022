@@ -14,13 +14,13 @@
 15. Teraz oczekujemy aż Pod się uruchomi, możemy to sprawdzić na liscie 
 > kubectl get pod
 
-![2(./Screenshots/Picture2png)
+![2](./Screenshots/Picture2.png)
 
 
 16. Zdobywamy adres URL utworzonego serwisu.
 >minikube service hello-minikube --url
 
-![3]./Screenshots/Picture3.png)
+![3](./Screenshots/Picture3.png)
 
 
 17. Aby zobaczyć detale, wchodzimy na uzyskany adres za pomocą przeglądarki.
