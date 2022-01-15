@@ -4,7 +4,8 @@ MAINTAINER Szymon Brandys
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get install -y curl git
+RUN apt-get update &&  apt-get -y install \
+curl 
 
 RUN curl -sL https://deb.nodesource.com/setup_16.x -o nodesource_setup.sh
 RUN sh ./bash nodesource_setup.sh
