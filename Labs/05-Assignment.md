@@ -16,6 +16,7 @@
 * Wyświetl dostępne wdrożenia (stan "przed")
 
 ### Wdrożenie kontenera via k8s
+* Wdróż przykładowy deployment "hello k8s": ```k8s.gcr.io/echoserver```
 * Użyj ```kubectl run <ctr> --image=<DOCKER_ID>/<IMG> --port=<port> --labels app=ctr```
 * Przekieruj porty
 * Wykaż że wdrożenie nastąpiło
