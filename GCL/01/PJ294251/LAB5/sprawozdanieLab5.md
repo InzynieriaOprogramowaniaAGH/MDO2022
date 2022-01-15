@@ -40,9 +40,10 @@ Zestawienie platformy Kubernetes
 
 -   Wyświetl działające usługi (k8s) i wdrożenia
 
-![6](imgs/6.png)
-
 -   Wyświetl dostępne wdrożenia (stan "przed")
+
+![6](imgs/6.png)
+![8](imgs/8.png)
 
 ### Wdrożenie kontenera via k8s
 
