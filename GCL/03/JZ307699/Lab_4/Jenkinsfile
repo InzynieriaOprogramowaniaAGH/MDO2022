@@ -13,7 +13,7 @@ pipeline {
             post {
                 success {
                     echo 'I succeeded!'
-                    archiveArtifacts artifacts: 'Build/libs/**/*.jar'
+                    //archiveArtifacts artifacts: 'Build/libs/**/*.jar'
                     mail to: 'juligabi@tlen.pl',
                       subject: "Successful Pipeline",
                       body: "Wszystko gra w Build. :)"
