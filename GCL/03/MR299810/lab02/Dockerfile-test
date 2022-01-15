@@ -1,2 +1,0 @@
-FROM ubuntu_app_build
-CMD ["npm","test"]

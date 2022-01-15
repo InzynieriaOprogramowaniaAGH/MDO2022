@@ -1,9 +1,0 @@
-FROM node:latest
-
-WORKDIR /usr/app
-
-RUN apt-get update -qq
-RUN apt-get install git -qq
-
-RUN git clone https://github.com/Lissy93/quick-example-of-testing-in-nodejs.git
-RUN cd /usr/app/quick-example-of-testing-in-nodejs && npm install --silent

@@ -1,5 +1,0 @@
-FROM node_app:0.1
-
-WORKDIR /usr/app/quick-example-of-testing-in-nodejs
-
-CMD [ "npm","test" ]
