@@ -1,0 +1,8 @@
+FROM ubuntu
+
+WORKDIR /my-app
+
+RUN npm run test
+
+EXPOSE 3000
+
