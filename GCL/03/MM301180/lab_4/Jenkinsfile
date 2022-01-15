@@ -3,9 +3,7 @@ pipeline {
     environment {
         registry = "generalcube/mm301180_dev_ops"
         registryCredential = 'generalcube'
-        dockerImage = ''
     }
-
     stages {
         stage('build') {
             steps {
@@ -33,7 +31,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry( '', registryCredential ) {
-                        dockerImage.push()
+                        sh 'docker push generalcube/mm301180_dev_ops:rc01'
                     }
                 }
             }
@@ -61,7 +59,7 @@ def mailSender(String buildStatus) {
     emailext (
         mimeType: 'text/html',
         subject: "${buildStatus}: of build [${env.BUILD_NUMBER}]'",
-        body: "Link to build: (${env.BUILD_URL})"
+        body: "Link to build: (${env.BUILD_URL})",
         to: 'michal.mucha.kr@gmail.com'
     )
 }

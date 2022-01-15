@@ -2,7 +2,7 @@ version: '2.0'
 
 services:
   builder:
-    image: node-pre-build
+    image: generalcube/mm301180_dev_ops:rc01
     build:
       dockerfile: Dockerfile-build
       context: .

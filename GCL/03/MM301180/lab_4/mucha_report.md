@@ -61,3 +61,5 @@
     * `[img] screen_19 - 21`
 * Stworzono repozytorium w dockerhub
   * `[img] screen_22`
+* Pipeline z sukcesem wypycha obraz dokerowy na dockerhub'a
+  * `[img] screen_23 - 26`
