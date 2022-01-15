@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jest-test-deployment
+  labels:
+    app: jest-test
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: jest-test
+  template:
+    metadata:
+      labels:
+        app: jest-test
+    spec:
+      containers:
+        - name: jest-test
+          image: zxcvnm/jest-test:latest
+          command: [ "npm" ]
+          args: [ "run", "start" ]
+          ports:
+            - containerPort: 3000
