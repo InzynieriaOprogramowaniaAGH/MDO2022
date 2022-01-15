@@ -8,20 +8,20 @@
 
 Na zrzucie ekranu nie zainstalowało Dockera, ponieważ miałem już najnowszą wersję.
 
-img1
+![instalacja-dockera](imgs/1.PNG)
 
 Sprawdzam czy Docker działa poprawnie.
 
     docker run docker/whalesay cowsay hello
 
 
-img2
+![2](imgs/2.PNG)
 
 ###  Pobieramy obrazy hello-world, busybox, ubuntu
 
     docker pull [nazwa obrazu]
 
-img3
+![3](imgs/3.PNG)
 
 ###  Uruchamiamy busybox
 
@@ -30,7 +30,7 @@ img3
     docker ps -a
 Kontener po zakończeniu działania obrazu Busybox zatrzymał się
 
-img4
+![4](imgs/4.PNG)
 
 **Podłączamy się do kontenera w trybie interaktywnym z terminalem `-it` i wywołujemy numer wersji**
 
@@ -38,7 +38,7 @@ img4
 
     busybox | head -1
 
-img5
+![5](imgs/5.PNG)
 
 ###  Uruchomić "system w kontenerze"
 
@@ -53,8 +53,7 @@ Uruchamiamy terminal w kontenerze z Ubuntu
     ls /proc
     apt update
     exit
-
-img6
+![6](imgs/6.PNG)
 
 ###  Pokazać niedziałające kontenery i je wyczyścić:
 
@@ -62,7 +61,7 @@ img6
 
     docker rm [np. po 2 pierwszych znakach id jeśli niewiele kontenerów]
 
-img7
+![7](imgs/7.PNG)
 
 ###  Czyszczenie obrazów
 
@@ -75,7 +74,7 @@ Usuwam
 
 Przed usunięciem wszystkich obrazów należy wyłączyć podlegające im kontenery
 
-img8
+![8](imgs/8.PNG)
 
 ##  Budowanie programu
 
@@ -87,15 +86,14 @@ Projekt: https://github.com/lyhd/reactjs
 
 Ściągam projekt za pomocą komendy `git clone https://github.com/lyhd/reactjs`, wchodzę do ściągniętego repozytorium `cd reactjs` i wpisuję komendę `npm install`. Uruchamiam aplikację `npm start`.
 
-img9
+![9](imgs/9.PNG)
 
 
 ###  Uruchomić testy
 
 Robimy to za pomocą komendy `npm test`
 
-img10
-
+![10](imgs/10.PNG)
 ###  Stworzenie dockerfile (build + test)+ tworzenie obrazu + run
 
 `docker build -t=[nazwa_obrazu_po_stworzeniu] -f [nazwa dockerfile] .` .
@@ -105,9 +103,9 @@ Dockerfile-build i uruchomienie docker build
 
     docker build -t=ubuntu_react -f Dockerfile-build .
 
-img11
+![11](imgs/11.PNG)
 
-img12
+![12](imgs/12.PNG)
 
 
 **Test:**
@@ -117,8 +115,9 @@ Dockerfile-test i uruchomienie docker build
     docker build -t=ubuntu_react_test -f Dockerfile-test .
 
 
-img13
+![13](imgs/13.PNG)
 
+![14](imgs/14.PNG)
 
 ##  Kompozycja
 
@@ -128,12 +127,12 @@ img13
 
 Plik docker-compose:
 
-img15
+![15](imgs/15.PNG)
 
 Uruchamiamy nasz plik docker-compose.yml:
 
-img16
+![16](imgs/16.PNG)
 
 Wyłączamy nasz plik
 
-img17
+![17](imgs/17.PNG)
