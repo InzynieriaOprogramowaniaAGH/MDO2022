@@ -50,9 +50,17 @@ pipeline {
         }
         stage('Deploy'){
             steps {
-                docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                push("${env.BUILD_NUMBER}")
-                push("easy/sauce:latest")
+                //docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+                //push("${env.BUILD_NUMBER}")
+                //push("easy/sauce:latest")
+                withCredentials([usernamePassword(
+                credentialsId: 'ARTIFACTORY_CREDENTIALS', 
+                passwordVariable: 'ARTI_PASSWD', 
+                usernameVariable: 'ARTI_USERNAME')]) {
+           script {
+             sh 'deploy command with ${ARTI_USERNAME} and ${ARTI_PASSWD}'
+           }
+                    
             }
          }
         }
