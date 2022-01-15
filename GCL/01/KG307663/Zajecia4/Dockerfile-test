@@ -1,3 +1,0 @@
-FROM docker-ubuntu-react-app AS test
-WORKDIR /test-app-container
-CMD ["npm", "test"]
