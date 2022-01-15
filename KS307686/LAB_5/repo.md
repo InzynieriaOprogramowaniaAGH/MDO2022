@@ -6,6 +6,11 @@
 * Zainstaluj wymagania wstępne dla środowiska Minikube
 * Zainstaluj minikube i kubectl
 * ![image](ss/ss1.png)
+* Testowo uruchomiono hello-node
+* ![image](ss/ss2.png)
+* ![image](ss/ss3.png)
+* ![image](ss/ss4.png)
+* ![image](ss/ss5.png)
 * Przedstaw uruchomione oprogramowanie wstępne (i usługi)
   * Platforma konteneryzacji
   * Otwarte porty
