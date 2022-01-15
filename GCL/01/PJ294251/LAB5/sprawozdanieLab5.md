@@ -28,15 +28,20 @@ Zestawienie platformy Kubernetes
     -   Platforma konteneryzacji
     -   Otwarte porty
     -   Stan Dockera
+    
     ![2](imgs/2.png)
     ![7](imgs/7.png)
 
 ### Stan Minikube
 
 -   Uruchom Minikube Dashboard
+
 ![5](imgs/5.png)
+
 -   Wyświetl działające usługi (k8s) i wdrożenia
+
 ![6](imgs/6.png)
+
 -   Wyświetl dostępne wdrożenia (stan "przed")
 
 ### Wdrożenie kontenera via k8s
