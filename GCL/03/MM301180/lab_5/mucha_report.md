@@ -1,10 +1,32 @@
 # Zajęcia 05
 
 ### Zestawienie platformy Kubernetes
-* Upewnij się, że kontener jest dostępny
-* Zainstaluj wymagania wstępne dla środowiska Minikube
+* Upewniono się, że kontener z poprzednich zajęć działa:
+
+    * obraz z poprzednich zajęć:
+      ![minikube_screen_2.PNG](./img/begining_1.PNG)
+
+    * sprawdzenie czy buduwanie działa, builder stage:
+
+`docker build -t dev-1.0.0 -f Dockerfile-build .`
+
+![minikube_screen_2.PNG](./img/begining_2.PNG)
+
+`docker images -a`
+
+![minikube_screen_2.PNG](./img/begining_3.PNG)
+
+* uruchomienie konterera z obrazu:
+
+`docker run -it -d -p 3301:3306 dev-1.0.0`
+
+![minikube_screen_2.PNG](./img/begining_4.PNG)
+
+* Wymagania wstępne dla środowiska Minikube:
     
     * ```sudo chmod 666 /var/run/docker.sock```
+    * trzeba przydzielić min 2 procesory do virtualnej maszyny Fedora
+![ustawienia_vb_procesory.PNG](./img/ustawienia_vb_procesory.PNG)
 
 * Zainstaluj kubectl
   ![minikube_screen_2.PNG](./img/kubectl_1.PNG)
@@ -23,7 +45,6 @@
 
 ![kubectl_2.PNG](./img/kubectl_3.PNG)
 
-
 * Zainstaluj minikube
   * pobrano najnowszą paczkę z minikube
   ```curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm```
@@ -33,10 +54,6 @@
 ![minikube_screen_2.PNG](./img/minikube_screen_2.PNG)
 
 ![minikube_screen_3.PNG](./img/minikube_screen_3.PNG)
-
-* Okazało się, że koniecznie trzeba przydzielić min 2 procesory do virtualnej maszyny Fedora
-
-![ustawienia_vb_procesory.PNG](./img/ustawienia_vb_procesory.PNG)
 
 uruchomiono minicube:
 
@@ -56,62 +73,64 @@ uruchomiono minicube:
     * Platforma konteneryzacji
     * Otwarte porty
     * Stan Dockera
+    
+    `docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}"`
 
 ### Stan Minikube
 * Uruchom Minikube Dashboard
     ```minikube dashboard```
 
-![minikube_screen_2.PNG](./img/kubernetes_dashboard_0.PNG)
+![kubernetes_dashboard_0.PNG](./img/kubernetes_dashboard_0.PNG)
 
-![minikube_screen_2.PNG](./img/kubernetes_dashboard_1.PNG)
+![kubernetes_dashboard_1.PNG](./img/kubernetes_dashboard_1.PNG)
 * Wyświetl działające usługi (k8s) i wdrożenia
 
-![minikube_screen_2.PNG](./img/kubernetes_dashboard_services_1.PNG)
+![kubernetes_dashboard_services_1.PNG](./img/kubernetes_dashboard_services_1.PNG)
 
 * Wyświetl dostępne wdrożenia (stan "przed")
 
-![minikube_screen_2.PNG](./img/kubernetes_dashboard_deployments_1.PNG)
+![kubernetes_dashboard_deployments_1.PNG](./img/kubernetes_dashboard_deployments_1.PNG)
 
-![minikube_screen_2.PNG](./img/kubernetes_dashboard_pods_1.PNG)
+![kubernetes_dashboard_pods_1.PNG](./img/kubernetes_dashboard_pods_1.PNG)
 
 ### Wdrożenie kontenera via k8s
-* Wdróż przykładowy deployment "hello k8s": ```k8s.gcr.io/echoserver```
-* Użyj ```kubectl run <ctr> --image=<DOCKER_ID>/<IMG> --port=<port> --labels app=ctr```
+* Wdrożono przykładowy deployment "hello k8s": ```k8s.gcr.io/echoserver```
 
 `kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4`
 
-* Przekieruj porty
+* Przekierowano porty
 `kubectl expose deployment hello-minikube --type=NodePort --port=8080`
 
-![minikube_screen_2.PNG](./img/hello_minikube_1.PNG)
+![hello_minikube_1.PNG](./img/hello_minikube_1.PNG)
 
-* Wykaż że wdrożenie nastąpiło
+* Wykazano, że wdrożenie nastąpiło
 
 kontenery widoczne z fedory:
 
-![minikube_screen_2.PNG](./img/hello_minikube_2.PNG)
+![hello_minikube_2.PNG](./img/hello_minikube_2.PNG)
 
 wdrożenie nie jest widoczne z tego poziomu.
 
 Wdrożenie jest widoczne z dashboardu k8s:
 
-![minikube_screen_2.PNG](./img/hello_minikube_3.PNG)
+![hello_minikube_3.PNG](./img/hello_minikube_3.PNG)
 
 można też podglądnąc wdrożenie przy użyciu `kubectl`
 
 * `kubectl get deployment`
 * `kubectl get pods -o wide`
-![minikube_screen_2.PNG](./img/hello_minikube_4.PNG)
+* 
+![hello_minikube_4.PNG](./img/hello_minikube_4.PNG)
 
 Więcej szczegółów:
 
-![minikube_screen_2.PNG](./img/hello_minikube_5.PNG)
-![minikube_screen_2.PNG](./img/hello_minikube_6.PNG)
-
+![hello_minikube_5.PNG](./img/hello_minikube_5.PNG)
+![hello_minikube_6.PNG](./img/hello_minikube_6.PNG)
 
 ### Deployment
 * Utwórz plik YAML z "deploymentem" k8s
-* Zestaw 4 repliki, opisz zalety i wady takiej liczby
+* Zestaw 4 repliki
+* testowo napisano plik dla deploymentu `nginx`
 
 ```yaml
 apiVersion: apps/v1
@@ -137,14 +156,28 @@ spec:
         - containerPort: 80
 ```
 
-* Zaaplikuj wdrożenie
+* opisz zalety i wady takiej liczby
+    * zalety
+      * skalowalność, możliwość wykorzystaia laod balancera, 
+      który pozowli na zoptymalizowanie działania pod kątem wydajności
+      * zwiększona odporność na awarię, w razie jej wystąpienia, 
+      k8s'owy deployment będzie dbał aby wszystkie pody się restartowały i żeby były zdrowe
+      * zwiększone bezpieczeństwo
+    * wady
+      * możliwe wysokie koszty utrzymywania 4 replik
+
+
+* Zaaplikowano wdrożenie
 
 `kubectl apply -f ./nginx-deploy.yaml`
 
+
+* Pody zaraz po uruchomieniu:
 ![minikube_screen_2.PNG](./img/nginx_deploy_1.PNG)
 
 
-* Wykaż przeprowadzony deployment
+
+* Przeprowadzony deployment
 
 ![minikube_screen_2.PNG](./img/nginx_deploy_2.PNG)
 
@@ -152,8 +185,11 @@ spec:
 
 ![minikube_screen_2.PNG](./img/nginx_deploy_4.PNG)
 
-* 4 uruchomione pody
+* 4 uruchomione pody, gdy już pody w pełni działają:
 
 ![minikube_screen_2.PNG](./img/nginx_deploy_5.PNG)
 ![minikube_screen_2.PNG](./img/nginx_deploy_pods.PNG)
 
+Docker stat:
+
+![minikube_screen_2.PNG](./img/docker-stat.PNG)
