@@ -117,5 +117,15 @@ Tag i push zgodnie z instrukcją z Docker Hub:
 
 ![image](https://user-images.githubusercontent.com/80592460/147781698-6555a4a3-0e3c-43a6-9db7-ab42c47e0f15.png)
 
+To samo tylko Jenkinsfile z Githuba:
 
+![image](https://user-images.githubusercontent.com/80592460/147817367-ac1a5de0-61af-4ac1-b838-5af98309006c.png)
+
+![image](https://user-images.githubusercontent.com/80592460/147817396-7714549d-2067-47c6-beb6-62681892abe5.png)
+
+![image](https://user-images.githubusercontent.com/80592460/147817414-94a37ee3-b649-4768-a467-334d6d6a1c8b.png)
+
+![image](https://user-images.githubusercontent.com/80592460/147817441-1c679033-b085-43d0-8d18-13c74ece579f.png)
+
+Czasy budowania zawsze są znacznie krótsze niż przy ręcznie pisanym skrypcie w Pipeline
 
