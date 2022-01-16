@@ -22,4 +22,7 @@
     15_deployment_service_1.png, 16_deployment_setup_2.png
 
 5. Bezpieczeństwo
-    -
+    - z racji tego, że aplikacja, którą użyłem wystawia na zewnątrz serwer http należy plinować czy nie występują podatności w
+    runtime node'a, który został użyty oraz pakietu express(również jego podpakietów) przy pomocy którego tworzymy serwer
+    - framework użyty do testowania "jest", nie musi być zawsze aktualizowany ponieważ nie jest on wystawiony na zewnątrz, jest
+    użyty tylko w kroku testowania na pipeline
