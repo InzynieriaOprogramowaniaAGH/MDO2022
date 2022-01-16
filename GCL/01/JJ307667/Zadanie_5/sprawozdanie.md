@@ -73,6 +73,14 @@ Services:
 ### Deployment
 * Utwórz plik YAML z "deploymentem" k8s
 * Zestaw 4 repliki, opisz zalety i wady takiej liczby
+
+ Zalety:
+ - Jeżeli przestanie działać jedna replika, ruch zostanie przekierowany na inną.
+ - Mając więcej niż jedną replike, jesteśmy zabezpieczeni na wypadek gdy problem wystąpi w aplikacji uruchamianej w ramach repliki.
+
+ Wady:
+ - Aż 4 repliki wydają się być zbędne, ponieważ gdy node zostałby uszkodzony i tak wszystkie przestaną działać. Moglibyśmy zamiast tego rozdzielić więcej zasobów pomiędzy 2/3 repliki.
+
 * Zaaplikuj wdrożenie via ```kubectl apply -f plik.yml```
 
 ![yaml_file](screenshots/13.PNG)
