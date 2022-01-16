@@ -48,3 +48,16 @@
 * Zestaw 4 repliki, opisz zalety i wady takiej liczby
 * Zaaplikuj wdrożenie via ```kubectl apply -f plik.yml```
 * Wykaż przeprowadzony deployment
+
+![10](https://user-images.githubusercontent.com/80592460/149663507-64493c93-8840-4479-b5df-da1fe7f90251.png)
+
+![11](https://user-images.githubusercontent.com/80592460/149663500-ce1778fd-faa5-4402-8da0-b35f64eeb12b.PNG)
+
+![12](https://user-images.githubusercontent.com/80592460/149663553-caaa73c7-4499-4b81-a6eb-b53786b3fb0c.PNG)
+
+![13](https://user-images.githubusercontent.com/80592460/149663549-d54532e3-7ab8-41bd-9b52-1044d4c23db9.PNG)
+
+![14](https://user-images.githubusercontent.com/80592460/149663610-9bcd881f-9a8e-4fa0-91f0-b5160fdc57f5.PNG)
+
+![15](https://user-images.githubusercontent.com/80592460/149663634-07dc42f6-e183-49c3-bc61-5573bd7ade5c.PNG)
+
