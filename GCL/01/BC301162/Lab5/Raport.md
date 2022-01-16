@@ -35,6 +35,7 @@ Zostajemy przekierowani do przeglądarki w której możemy sprawdzić aktualny s
 ![9 2](https://user-images.githubusercontent.com/61689132/149662606-76dc7ada-30dd-439f-983e-f71ee2ee8c5e.png)
 
 Dostępne usługi:
+
 ![9 3](https://user-images.githubusercontent.com/61689132/149662674-11a9a3c1-eb50-4437-8a13-dc801265a02b.png)
 
 Stan "przed":
