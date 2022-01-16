@@ -12,11 +12,13 @@ pipeline {
                 sh'''
                 cd GCL/03/JZ307699/Lab_4
                 docker build -t easy/sauce:latest .
-                dockerImage = docker.build registry + ":$BUILD_NUMBER" 
                 cd Dockerfile2
                 docker build -t easy/sauce2:latest .
-                dockerImage1 = docker.build registry + ":$BUILD_NUMBER" 
                 '''
+                script { 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                    dockerImage1 = docker.build registry + ":$BUILD_NUMBER" 
+                }
             }
             post {
                 success {
