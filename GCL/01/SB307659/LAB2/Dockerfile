@@ -14,10 +14,6 @@ RUN npx create-react-app my-app
 
 WORKDIR /my-app
 
-
 RUN npm run test
 
 EXPOSE 3000
-
-CMD ["npm", "run", "build"]
-
