@@ -17,7 +17,8 @@ pipeline {
                 docker build -t easy/sauce2:latest .
                 '''
                 script { 
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" -f 'GCL/03/JZ307699/Lab_4/Dockerfile'
+                    cd "GCL/03/JZ307699/Lab_4/Dockerfile"
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" -f "GCL/03/JZ307699/Lab_4/Dockerfile"
                     sh'''
                     cd Dockerfile2
                     '''
