@@ -18,7 +18,7 @@ pipeline {
                 '''
                 script { 
                     cd "GCL/03/JZ307699/Lab_4/Dockerfile"
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" -f "GCL/03/JZ307699/Lab_4/Dockerfile"
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
                     sh'''
                     cd Dockerfile2
                     '''
