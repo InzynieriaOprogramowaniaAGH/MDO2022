@@ -42,7 +42,13 @@ Uruchamiam Minikube, tak jak zalecono w guidzie:
 
 ![kubectl get svc](screenshots/kubectl-get-services.png)
 
-#### Stan Dockera i otwarte porty
+#### Stan Dockera
+
+![Kube status](screenshots/kube-status.png)
+
+![Docker status](screenshots/docker-status.png)
+
+#### Otwarte porty
 ![Stan Dockera](screenshots/docker-ps.png)
 
 ## Stan Minikube
