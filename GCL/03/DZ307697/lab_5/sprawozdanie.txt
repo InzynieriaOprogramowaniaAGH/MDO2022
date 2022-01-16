@@ -26,3 +26,6 @@
     runtime node'a, który został użyty oraz pakietu express(również jego podpakietów) przy pomocy którego tworzymy serwer
     - framework użyty do testowania "jest", nie musi być zawsze aktualizowany ponieważ nie jest on wystawiony na zewnątrz, jest
     użyty tylko w kroku testowania na pipeline
+
+6. Diagram wdrożenia
+    - diagram.png
