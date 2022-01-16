@@ -12,7 +12,10 @@ pipeline {
             steps {
                 sh'''
                 cd GCL/03/JZ307699/Lab_4
-                docker build -t easy/sauce:latest .
+                '''
+                dockerImage = docker build -t easy/sauce:latest .
+                
+                sh'''
                 cd Dockerfile2
                 docker build -t easy/sauce2:latest .
                 '''
