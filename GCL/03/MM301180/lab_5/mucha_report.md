@@ -112,7 +112,48 @@ Więcej szczegółów:
 ### Deployment
 * Utwórz plik YAML z "deploymentem" k8s
 * Zestaw 4 repliki, opisz zalety i wady takiej liczby
-* Zaaplikuj wdrożenie via ```kubectl apply -f plik.yml```
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+```
+
+* Zaaplikuj wdrożenie
+
+`kubectl apply -f ./nginx-deploy.yaml`
+
+![minikube_screen_2.PNG](./img/nginx_deploy_1.PNG)
+
+
 * Wykaż przeprowadzony deployment
 
+![minikube_screen_2.PNG](./img/nginx_deploy_2.PNG)
+
+![minikube_screen_2.PNG](./img/nginx_deploy_3.PNG)
+
+![minikube_screen_2.PNG](./img/nginx_deploy_4.PNG)
+
+* 4 uruchomione pody
+
+![minikube_screen_2.PNG](./img/nginx_deploy_5.PNG)
+![minikube_screen_2.PNG](./img/nginx_deploy_pods.PNG)
 
