@@ -74,20 +74,79 @@ Jak widać, działa:
 
 ![hello minikube w przeglądarce](screenshots/hello-minikube-w-przegladarce1.png)
 ### Użycie ```kubectl run <ctr> --image=<DOCKER_ID>/<IMG> --port=<port> --labels app=ctr```
+
+Użyłem dokładnie tej komendy `minikubectl run echoserver --image=k8s.gcr.io/echoserver:1.4 --port 8082 --labels app=echoserver`:
+
+![Użycie podanej komendy](screenshots/uzycie-minikubectl.png)
+
 ### Przekierowanie portów
 
 Przekierowuje porty:
+![Przekierowanie portow - przeglądarka](screenshots/przekierowanie-portow-przegladarka3.png)
 
-![Przekierowanie portów](screenshots/przekierowanie-portow.png)
+![Przekierowanie portów](screenshots/przekierowanie-portow1.png)
 
-![Przekierowanie portow - przeglądarka](screenshots/przekierowanie-portow-przegladarka1.png)
 
 ### Wykazanie, że wdrożenie nastąpiło
 
-Nastąpiło wdrożenie:
+Jak widać na poniższym zrzucie, muszę wyjść z tunnelowania ręcznie, gdyż używam driver Dockera na macOS i jest problem. Poza tym nastąpiło wdrożenie:
 
-![Nastąpiło wdrożenie](screenshots/wdrozenie-nastapilo.png)
+![Nastąpiło wdrożenie](screenshots/wdrozenie-nowe.png)
 
-![Nastąpiło wdrożenie 2](screenshots/wdrozenie-nastapilo2.png)
+![Nastąpiło wdrożenie 2](screenshots/wdrozenie-new2.png)
 
-### Opisanie napotkanych ograniczeń, W przypadku "niemożliwych" wdrożeń 
+## Deployment
+### Utworzenie pliku YAML z "deploymentem" k8s
+
+https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+
+Plik YAML został utworzony:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minikube-deployment
+  labels:
+    app: echoserver
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: echoserver
+  template:
+    metadata:
+      labels:
+        app: echoserver
+    spec:
+      containers:
+        - name: hello-minikube
+          image: k8s.gcr.io/echoserver:1.4
+          ports:
+            - containerPort: 8081
+```
+
+
+### Zestawienie 4 replik, opisanie zalet i wad takiej liczby
+#### Zalety
+
+* Awaria jednej z replik spowoduje przekierowanie ruchu na kolejne.
+* Uszkodzona replika powinna się zrestartować, ponieważ control-plane będzie chciał utrzymać stan 4 replik.
+* Więcej niż jedej ReplicaSet chroni przed downtime.
+
+#### Wady
+
+* Raczej jest mało prawdopodobne, żeby tak duża liczba replik była potrzebna do takiej prostego Deploymentu, jeśli by to było coś ważnego, to w porządku.
+* Raczej rzadko pada więcej niż jedna replika na raz.
+* Zapłacimy więcej, chyba, że firma stawia to ok.
+
+### Zaaplikowanie wdrożenia via ```kubectl apply -f plik.yml``
+
+Wdrożono deployment komendą `minikubectl apply -f deployment.yml` (w moim przypadku):
+
+![Wdrożenie via apply](screenshots/wdrozenie-via-apply.png)
+
+### Wykazanie przeprowadzonego deploymentu
+
+![Przeprowadzony deployment 2.1](screenshots/wdrozenie2.1.png)
+![Przeprowadzony deployment 2.2](screenshots/wdrozenie2.2.png)
