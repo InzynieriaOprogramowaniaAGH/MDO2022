@@ -54,7 +54,7 @@ pipeline {
                 //push("${env.BUILD_NUMBER}")
                 //push("easy/sauce:latest")
                 withCredentials([usernamePassword(
-                credentialsId: 'docker-hub-credentials', 
+                credentialsId: 'https://registry.hub.docker.com', docker-hub-credentials', 
                 passwordVariable: 'ARTI_PASSWD', 
                 usernameVariable: 'ARTI_USERNAME')]) {
            script {
