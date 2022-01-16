@@ -13,7 +13,11 @@
 
 4. Deployment
     - Utwórz plik YAML z "deploymentem" k8s - 11_deployment_setup.png
-    - Zestaw 4 repliki, opisz zalety i wady takiej liczby
+    - Zestaw 4 repliki, opisz zalety i wady takiej liczby - liczba replik większa od 1 jest zawsze dobra ponieważ, gdy jedna przestanie
+    działać ruch zostanie przekierowany na inną, w naszym przypadku wybrałbym 2 repliki ponieważ wszystkie znajdują się na tym samym node'dzie
+    i jeżeli node zostałby uszkodzony to nie ma znaczenia czy ich będzie 2 czy 4 i tak wszystkie przestaną działać, a tak moglibyśmy tym 2
+    przydzielić większe zasoby które zostałby zwolnione przez redukcję runtime'u pozostałych 2, mając 2 repliki jesteśmy zabezpieczni na wypadek
+    gdy problem wystąpi w aplikacji uruchamianej w ramach repliki
     - Wykaż przeprowadzony deployment - 12_deployment_validation_1.png, 13_deployment_validation_2.png, 14_deployment_validation_3.png,
     15_deployment_service_1.png, 16_deployment_setup_2.png
 
