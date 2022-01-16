@@ -60,3 +60,34 @@ oraz zakładki **Deployments**, i wyświetlam wdrożenia:
 
 ![Minikube deployments](screenshots/minikube-deployments.png)
 
+## Wdrożenie kontenera via k8s
+### Wdrożenie przykładowego deploymentu "hello k8s": ```k8s.gcr.io/echoserver```
+Wdrażam deployment "hello k8s":
+
+![Wdrożenie hello k8s](screenshots/wdrozenie-hello-k8s.png)
+
+Dostęp do serwisu minikube otrzymujemy poprzez uruchomienie przeglądarki stosując:
+
+![Włączenie minikube](screenshots/minikube-service-hello-minikube.png)
+
+Jak widać, działa:
+
+![hello minikube w przeglądarce](screenshots/hello-minikube-w-przegladarce1.png)
+### Użycie ```kubectl run <ctr> --image=<DOCKER_ID>/<IMG> --port=<port> --labels app=ctr```
+### Przekierowanie portów
+
+Przekierowuje porty:
+
+![Przekierowanie portów](screenshots/przekierowanie-portow.png)
+
+![Przekierowanie portow - przeglądarka](screenshots/przekierowanie-portow-przegladarka1.png)
+
+### Wykazanie, że wdrożenie nastąpiło
+
+Nastąpiło wdrożenie:
+
+![Nastąpiło wdrożenie](screenshots/wdrozenie-nastapilo.png)
+
+![Nastąpiło wdrożenie 2](screenshots/wdrozenie-nastapilo2.png)
+
+### Opisanie napotkanych ograniczeń, W przypadku "niemożliwych" wdrożeń 
