@@ -1,18 +1,21 @@
 1. Zestawienie platformy Kubernetes
-    - Zainstaluj minikube i kubectl
-    - Przedstaw uruchomione oprogramowanie wstępne (i usługi)
+    - Zainstaluj minikube i kubectl - 1_kubernetes_setup_1.png, 2_kubernetes_setup_2.png
+    - Przedstaw uruchomione oprogramowanie wstępne (i usługi) - 3_kubernetes_setup_3.png, 4_kubernetes_setup_4.png, 5_kubernetes_setup_5.png
 
 2. Stan Minikube
-    - Uruchom Minikube Dashboard
-    - Wyświetl działające usługi (k8s) i wdrożenia
-    - Wyświetl dostępne wdrożenia (stan "przed")
+    - Uruchom Minikube Dashboard - 6_minikube_dashboard.png
+    - Wyświetl działające usługi (k8s) i wdrożenia - 7_minikube_services.png
+    - Wyświetl dostępne wdrożenia (stan "przed") - 8_minikube_deployments.png
 
 3. Wdrożenie kontenera via k8s
-    - Wdróż przykładowy deployment "hello k8s": k8s.gcr.io/echoserver
-    - Wykaż że wdrożenie nastąpiło
+    - Wdróż przykładowy deployment "hello k8s": k8s.gcr.io/echoserver - 9_k8s_container_start.png
+    - Wykaż że wdrożenie nastąpiło - 10_k8s_container_validation.png
 
 4. Deployment
-    - Utwórz plik YAML z "deploymentem" k8s
+    - Utwórz plik YAML z "deploymentem" k8s - 11_deployment_setup.png
     - Zestaw 4 repliki, opisz zalety i wady takiej liczby
-    - Zaaplikuj wdrożenie via kubectl apply -f plik.yml
-    - Wykaż przeprowadzony deployment
+    - Wykaż przeprowadzony deployment - 12_deployment_validation_1.png, 13_deployment_validation_2.png, 14_deployment_validation_3.png,
+    15_deployment_service_1.png, 16_deployment_setup_2.png
+
+5. Bezpieczeństwo
+    -
