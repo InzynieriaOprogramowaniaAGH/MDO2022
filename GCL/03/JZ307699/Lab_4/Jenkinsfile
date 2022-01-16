@@ -1,6 +1,7 @@
 pipeline {
      environment { 
-        registry = "YourDockerhubAccount/YourRepository" 
+        registry = "Build" 
+        registry1 = "Test"
         registryCredential = 'docker-hub-credentials' 
         dockerImage = '' 
         dockerImage1 = '' 
@@ -17,7 +18,7 @@ pipeline {
                 '''
                 script { 
                     dockerImage = docker.build registry + ":$BUILD_NUMBER" 
-                    dockerImage1 = docker.build registry + ":$BUILD_NUMBER" 
+                    dockerImage1 = docker.build registry1 + ":$BUILD_NUMBER" 
                 }
             }
             post {
