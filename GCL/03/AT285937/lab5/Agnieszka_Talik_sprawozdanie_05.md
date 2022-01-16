@@ -6,7 +6,43 @@
 * Zainstaluj wymagania wstępne dla środowiska Minikube
 * Zainstaluj minikube i kubectl
 
+Instalacja zgodnie z dokumentacją:
+
+-Pobieramy pliki binarne i instalujemy
+
+		curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+		sudo install minikube-linux-amd64 /usr/local/bin/minikube
+		
+-Odpalamy:
+
+		minikube start
+		
+-Dostęp do klastra:
+		
+		minikube kubectl -- get po -A
+
 ![1](https://user-images.githubusercontent.com/80592460/149655799-0073357e-bb3b-42b4-b4c2-d726e244a897.png)
+
+Instalacja kubectl
+
+-Pobieramy najnowszą wersję:
+
+		curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+
+-Sprawdzamy poprawność binarną (opcjonalnie, jak na screenie)
+
+-Instalacja
+
+		sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+		
+-Sprawdzenie aktualnej wersji:
+
+		kubectl version --client
+		
+Od teraz dostęp do klastra mamy również za pomocą polecenia:
+
+		kubectl get po -A	
+
 
 ![image](https://user-images.githubusercontent.com/80592460/149657989-102ea68f-f065-4d57-a411-19102567c127.png)
 
@@ -24,6 +60,8 @@
 * Wyświetl działające usługi (k8s) i wdrożenia
 * Wyświetl dostępne wdrożenia (stan "przed")
 
+Wszystko jak na screenach:
+
 ![4](https://user-images.githubusercontent.com/80592460/149658980-4e997cf3-db58-498c-909d-4567eac397d0.png)
 
 ![5](https://user-images.githubusercontent.com/80592460/149658981-1fc6468b-0354-4876-96da-060c82fd6c6d.png)
@@ -35,9 +73,13 @@
 * Wykaż że wdrożenie nastąpiło
 * W przypadku "niemożliwych" wdrożeń, opisz napotkane ograniczenia
 
+Uruchomienie obrazu echoserver w klastrze, udostępnianie Podu na porcie 8080. Opcja --type=LoadBalancer wskazuje, że udostępniamy serwis na zewnątrz klastra. Następnie sprawdzamy utworzony serwis i uruchamiamy.
+
 ![5](https://user-images.githubusercontent.com/80592460/149658864-a6cab0d3-ab38-4f12-bd86-db4be87b086e.png)
 
 ![6](https://user-images.githubusercontent.com/80592460/149658870-c5029c3c-7826-4ab4-b1c0-f93a51fbd409.PNG)
+
+W Dashboardzie sprawdzamy wdrożenie i Podsy.
 
 ![7](https://user-images.githubusercontent.com/80592460/149658873-e4ab8076-db9a-43c8-a1cf-7b1265d3898a.PNG)
 
@@ -49,7 +91,11 @@
 * Zaaplikuj wdrożenie via ```kubectl apply -f plik.yml```
 * Wykaż przeprowadzony deployment
 
+Plik *.yml z ustawioną ręcznie liczbą replik 4. Poniżej aplikujemy wdrożenie.
+
 ![10](https://user-images.githubusercontent.com/80592460/149663507-64493c93-8840-4479-b5df-da1fe7f90251.png)
+
+Sprawdzamy w Dashboardzie:
 
 ![11](https://user-images.githubusercontent.com/80592460/149663500-ce1778fd-faa5-4402-8da0-b35f64eeb12b.PNG)
 
@@ -57,7 +103,13 @@
 
 ![13](https://user-images.githubusercontent.com/80592460/149663549-d54532e3-7ab8-41bd-9b52-1044d4c23db9.PNG)
 
+Uruchamiamy serwis:
+
 ![14](https://user-images.githubusercontent.com/80592460/149663610-9bcd881f-9a8e-4fa0-91f0-b5160fdc57f5.PNG)
 
 ![15](https://user-images.githubusercontent.com/80592460/149663634-07dc42f6-e183-49c3-bc61-5573bd7ade5c.PNG)
+
+Liczba replik zależy głównie od tego jak wiele instancji jednej aplikacji działa w tym samym czasie. Jeżeli wykorzystanie jest niewielkie nie ma potrzeby ustawiania dużej liczby, ponieważ tylko niepotrzebnie zajmujemy zasoby. Jednak w przypadku ustawienia tylko jednej repliki, gdy ulegnie ona awarii, nie będzie możliwości przekierowania na inną. Ręczne skalowanie sprawdzi się w przypadku aplikacji, w których liczba klientów jest mniej więcej stała lub zmienia się po dłuższym czasie. Jeżeli jednak nie wiemy ile maksymalnie instancji aplikacji będzie uruchomionych, ponieważ liczba dynamicznie się zmienia, lepiej ustawić autoskalowalność. Kubernetes jest w stanie w szybkim czasie dodawać nowe repliki gdy wykorzystanie przekroczy określoną wartość, aby zapewnić stabilną pracę. Decyzja o usuwanie replik trwa nieco dłużej, z wiadomych przyczyn (czasem ruch spada tylko na chwile i nie opłaca się usuwać i dodawać co kilka sekund nowych replik). Oczywiście bez przerw w działaniu aplikacji.
+
+Odpowiadając na pytanie, w naszym przypadku zaletami 4 replik jest możliwość przekierowania na inną w razie awarii lub stabilną pracę w przypadku zwiększenia skali zasięgu naszej aplikacji. Wadą jest większe zużycie zasobów.
 
