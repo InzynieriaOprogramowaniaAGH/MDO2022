@@ -17,7 +17,7 @@ pipeline {
                 docker build -t easy/sauce2:latest .
                 '''
                 script { 
-                    sh '/pip/GCL/03/JZ307699/Lab_4/Dockerfile'
+                    sh '/Pip/GCL/03/JZ307699/Lab_4/Dockerfile'
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
                     sh 'Dockerfile2'
                     dockerImage1 = docker.build registry1 + ":$BUILD_NUMBER" 
