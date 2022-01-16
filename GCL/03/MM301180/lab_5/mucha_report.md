@@ -2,15 +2,18 @@
 
 ### Zestawienie platformy Kubernetes
 * Upewniono się, że kontener z poprzednich zajęć działa:
+  * uruchomiono go ponownie ręcznie.
+  * obraz z poprzednich zajęć:
 
-    * obraz z poprzednich zajęć:
-      ![minikube_screen_2.PNG](./img/begining_1.PNG)
+![minikube_screen_2.PNG](./img/begining_1.PNG)
 
-    * sprawdzenie czy buduwanie działa, builder stage:
+* sprawdzenie czy buduwanie obrazu nadal działa, builder stage:
 
 `docker build -t dev-1.0.0 -f Dockerfile-build .`
 
 ![minikube_screen_2.PNG](./img/begining_2.PNG)
+
+* sprawdzenie czy obraz zbudowano poprawnie
 
 `docker images -a`
 
@@ -26,14 +29,16 @@
     
     * ```sudo chmod 666 /var/run/docker.sock```
     * trzeba przydzielić min 2 procesory do virtualnej maszyny Fedora
+
 ![ustawienia_vb_procesory.PNG](./img/ustawienia_vb_procesory.PNG)
 
-* Zainstaluj kubectl
-  ![minikube_screen_2.PNG](./img/kubectl_1.PNG)
-
-* sprawdzono czy poprawnie zostało zainstalowane przy użycia pliku sprawdzającego checksum
+* Zainstalowano kubectl z `https://dl.k8s.io`
 
 ```curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"```
+
+![minikube_screen_2.PNG](./img/kubectl_1.PNG)
+
+* sprawdzono czy poprawnie zostało zainstalowane przy użycia pliku sprawdzającego checksum
 
 ```echo "$(<kubectl.sha256)  kubectl" | sha256sum --check```
 
@@ -45,9 +50,10 @@
 
 ![kubectl_2.PNG](./img/kubectl_3.PNG)
 
-* Zainstaluj minikube
-  * pobrano najnowszą paczkę z minikube
-  ```curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm```
+* zainstalowano minikube
+  * pobrano najnowszą paczkę z minikube z storage.googleapis.com
+
+```curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm```
 
 ![minikube_screen_1.PNG](./img/minikube_screen_1.PNG)
 
@@ -55,26 +61,39 @@
 
 ![minikube_screen_3.PNG](./img/minikube_screen_3.PNG)
 
-uruchomiono minicube:
+* uruchomiono minicube:
 
 ![minikube_screen_4.PNG](./img/minikube_screen_4.PNG)
 
 ![minikube_screen_5.PNG](./img/minikube_screen_5.PNG)
 
-* status minicube
+* wyświetlono status minicube
 
 ![minikube_screen_6.PNG](./img/minikube_screen_6.PNG)
 
-* uruchomione kontenery
+* wyświetlono uruchomione kontenery
 
 ![minikube_screen_6.PNG](./img/minikube_screen_7.PNG)
 
-  * Przedstaw uruchomione oprogramowanie wstępne (i usługi)
-    * Platforma konteneryzacji
-    * Otwarte porty
-    * Stan Dockera
+* Przedstawiono uruchomione oprogramowanie wstępne
+  * Platforma konteneryzacji
     
-    `docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}"`
+`systemctl show  docker`
+
+![minikube_screen_6.PNG](./img/docker_show.PNG)
+
+`systemctl show --property ActiveState docker`
+
+![minikube_screen_6.PNG](./img/docker_show_2.PNG)
+
+  * Otwarte porty
+
+`netstat -l`
+
+![minikube_screen_6.PNG](./img/netstat.PNG)
+    * Stan Dockera
+
+`docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}"`
 
 ### Stan Minikube
 * Uruchom Minikube Dashboard
