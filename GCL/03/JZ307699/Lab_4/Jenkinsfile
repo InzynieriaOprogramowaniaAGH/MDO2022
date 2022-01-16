@@ -19,7 +19,7 @@ pipeline {
                 script { 
                     sh 'cd -'
                     sh 'ls'
-                    sh 'cd GCL/03/JZ307699/Lab_4/Dockerfile'
+                    sh 'cd GCL/03/JZ307699/Lab_4'
                     sh 'ls'
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
                     sh 'Dockerfile2'
