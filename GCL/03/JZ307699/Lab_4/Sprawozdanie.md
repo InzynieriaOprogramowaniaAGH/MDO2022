@@ -307,3 +307,9 @@ Imię i nazwisko: Julia Żychowska, kierunek: Informatyka Stosowana (NS), nr. in
          - końcowy to budujący, ale z odpaloną aplikacją na końcu
          - końcowy to np. ubuntu z posłanym artefaktem z budującego
 
+   Na początku stworzyłam credentials, które pozwolił mi się połączyć z hub.docker.com.
+   
+   ![image](https://user-images.githubusercontent.com/28841971/149641279-de3a52b5-6a1f-40f0-a683-c35afe979459.png)
+
+   
+   
