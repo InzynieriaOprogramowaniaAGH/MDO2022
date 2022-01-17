@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 FROM ubuntu:latest
 RUN apt-get update
 RUN echo 8 > input
@@ -7,14 +6,4 @@ RUN apt-get install -y default-jdk < input
 RUN apt-get install -y git maven
 RUN git clone https://github.com/IntrowertyczneLosieIO/introwertyczne-losie.git
 WORKDIR introwertyczne-losie/backend
-=======
-FROM ubuntu:latest
-RUN apt-get update
-RUN echo 8 > input
-RUN echo 60 >> input
-RUN apt-get install -y default-jdk < input
-RUN apt-get install -y git maven
-RUN git clone https://github.com/IntrowertyczneLosieIO/introwertyczne-losie.git
-WORKDIR introwertyczne-losie/backend
->>>>>>> aeb3a1149e20c58174650b51b131bd03b1dc7e85
 RUN mvn clean install -DskipTests
