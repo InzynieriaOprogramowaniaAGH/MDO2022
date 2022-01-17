@@ -1,6 +1,2 @@
-<<<<<<< HEAD
 FROM bldr:latest
-=======
-FROM bldr:latest
->>>>>>> aeb3a1149e20c58174650b51b131bd03b1dc7e85
 RUN mvn test
