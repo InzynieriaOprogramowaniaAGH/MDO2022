@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-react-from-yaml
+  labels:
+    app: react-from-yaml
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: react-from-yaml
+  template:
+    metadata:
+      labels:
+        app: react-from-yaml
+    spec:
+      containers:
+      - name: react-from-yaml
+        image: dedronek/mdo2022-dk:latest
+        ports:
+        - containerPort: 80
