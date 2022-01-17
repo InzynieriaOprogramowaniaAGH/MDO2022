@@ -8,7 +8,7 @@
 
       sudo docker pull ubuntu
       
-img1
+![1](imgs/1.png)
       
 * Podłącz wolumin do kontenera
 
@@ -20,22 +20,22 @@ Podłączanie do kontenera:
       
       sudo docker run --interactive --tty --mount source=volumin,destination=/store ubuntu
 
-img2
+![2](imgs/2.png)
 
 * Skopiuj plik do katalogu woluminu, pokaż w kontenerze
 
       touch plik_aaa
       cp plik_aaa /var/lib/docker/volumes/volumin/_data
 
-img3
+![3](imgs/3.png)
 
-img4
+![4](imgs/4.png)
 
 * Utwórz plik w kontenerze, na obszarze woluminu, pokaż na hoście
 
       touch /store/plik2
 
-img5
+![5](imgs/5.png)
 
 
 #### "Kiepski pomysł": SSH
@@ -43,14 +43,14 @@ img5
 
       docker run -it --mount source=volumin,destination=/store --publish 2222:22 ubuntu
 
-img6
+![6](imgs/6.png)
 
 * Zainstaluj w kontenerze serwer ssh
 
       apt-get update
       apt-get install openssh-server
       
-img7
+![7](imgs/7.png)
 
 * zezwól na logowanie root
 
@@ -59,38 +59,38 @@ Odkomentowanie portu i logowania roota w pliku sshd_config i zmiana PermitRootLo
       nano /etc/ssh/sshd_config
       
 
-img8
+![8](imgs/8.png)
 
 * umieść klucz publiczny w woluminie, skopiuj go do pliku zaufanych w kontenerze
 
 Umieszczenie klucza publicznego w woluminie:
 
-img9
+![9](imgs/9.png)
 
 Tworzymy katalog dla klucza
 
 	mkdir /root/.ssh
       
-img9
+![9](imgs/9.png)
 
 Kopiowanie klucza
 
 	cp /store/id_ed25519.pub /root/.ssh/authorized_keys
       
-img11
-img10
+![11](imgs/11.png)
+![10](imgs/10.png)
 
 * odnajdź adres IP kontenera w wewnętrznej sieci
 
       docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nazwa_kontenera
 
-img12
+![12](imgs/12.png)
 * uruchom usługę, połącz się z kontenerem
 
       mkdir /run/sshd
       /usr/sbin/sshd -D &
 
-img13
+![13](imgs/13.png)
 
 Łączenie z kontenerem na domyślnym porcie (22):
 
@@ -100,7 +100,7 @@ lub
 
       ssh root@172.17.0.4 -p 22
 
-img14
+![14](imgs/14.png)
 
 
 #### Skonteneryzowany Jenkins stosujący Dockera
@@ -110,79 +110,80 @@ img14
 * Zapoznaj się z instrukcją https://www.jenkins.io/doc/book/installing/docker/
   * Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone
 
-img15
+![15](imgs/15.png)
 
   * Przygotuj obraz blueocean na podstawie obrazu jenkinsa
 
 Dockerfile skopiowany z dokumentacji:
 
-img16
+![16](imgs/16.png)
 
 Budowanie obrazu:
 
 
     docker build -t myjenkins-blueocean:2.319.2-1 .
 
-img17
+![17](imgs/17.png)
 
 
   * Uruchom blueocean
 
-img18
+![18](imgs/18.png)
 
   * Zaloguj się i skonfiguruj Jenkins
   
   -Uruchamiamy Jenkinsa na porcie 8080
   
-  img19
+  ![19](imgs/19.png)
   
   -Hasła szukam w logach kontenera
   
   	docker logs <id_kontenera>
 	
 
-img20
+![20](imgs/20.png)
 
-img21
+![21](imgs/21.png)
 
-img22
+![22](imgs/22.png)
+
 
 #### Mikro-projekt Jenkins
 * Utwórz projekt, który wyświetla uname
 
-img23
+![23](imgs/23.png)
 
-img24
+![24](imgs/24.png)
 
 Uruchomione przez Blue Ocean
 
-img25
+![25](imgs/25.png)
 
-img26
+![26](imgs/26.png)
 
 * Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta 
 
 Przypisuję do zmiennej godzinę, obliczam modulo, przyrównuję do 0 i wyświetlam error gdy jest nieparzysta.
 
-img27
+![27](imgs/27.png)
 
-img28
+![28](imgs/28.png)
 
 * Utwórz "prawdziwy" projekt, który:
   * klonuje nasze repozytorium
 
 Podajemy linka do repo
 
-img29
+![29](imgs/29.png)
 
   * przechodzi na osobistą gałąź
 
-img30
+![30](imgs/30.png)
 
   * buduje obrazy z dockerfiles i/lub komponuje via docker-compose
   
-img31
+![31](imgs/31.png)
 
-img32
+![32](imgs/32.png)
 
-img33
+![33](imgs/33.png)
