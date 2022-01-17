@@ -1,0 +1,2 @@
+FROM bldr:latest
+RUN mvn test
