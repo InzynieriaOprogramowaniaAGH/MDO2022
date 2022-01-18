@@ -1,5 +1,6 @@
-FROM ubuntu_react
+FROM ubuntu-node:latest
 
 WORKDIR /reactjs
 
 CMD ["npm","test", "a"]
+
