@@ -1,11 +1,11 @@
-FROM ubuntu AS base
-ARG DEBIAN_FRONTEND=noninteractive
-ENV TZ=Europe/Warsaw
-RUN apt update && apt install build-essential git libgnutls28-dev nettle-dev libgmp-dev libssh2-1-dev libc-ares-dev libxml2-dev zlib1g-dev libsqlite3-dev pkg-config libxml2-dev libcppunit-dev autoconf automake autotools-dev autopoint libtool -y
-RUN git clone https://github.com/aria2/aria2.git
-WORKDIR aria2
-RUN autoreconf -i
-RUN ./configure
-RUN make
-FROM base AS test
-RUN make check
+FROM ubuntu:latest
+WORKDIR /app
+RUN apt-get update
+RUN apt-get install -y nodejs
+RUN apt-get install -y npm
+RUN npm install -g create-react-app
+RUN apt-get install -y git
+RUN git clone https://github.com/Yog9/SnapShot.git
+WORKDIR /app/SnapShot
+RUN npm i
+RUN npm run build
