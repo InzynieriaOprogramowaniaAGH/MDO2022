@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+ stages {
+        stage('Build') {
+            steps {
+                sh '''
+               rm -rf MDO2022/
+                git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022.git
+                cd MDO2022/
+                git checkout KG307663
+                cd GCL/01/KG307663/Zajecia2
+                docker build -t nodejshello . -f ./Dockerfile
+                        
+                '''
+            }
+        }
+        stage('Test') {
+            steps {
+                sh '''
+                cd MDO2022/GCL/01/KG307663/Zajecia4
+                docker build -t test:latest . -f ./Dockerfiletest
+                '''
+            }
+        }
+    }
+}
