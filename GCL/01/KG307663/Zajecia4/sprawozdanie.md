@@ -14,9 +14,10 @@
 
 * W moim pipeline zaczął występować problem z zbudowaniem, błąd dodaje na zrzucie ekranu.
 `pipelineblad.png`
+`timeline.png`
 
 ### Jenkinsfile: powiadomienia
-`` ``
+`emailjenkinsfile.png` `konfiguracjamail.png`
 
 ### Jenkinsfile: deploy
 * W razie sukcesu, build ma zostać wypromowany jako kandydat do wydania
@@ -27,3 +28,6 @@
         * końcowy to np. ubuntu z posłanym artefaktem z budującego
 
 Po Nowym Roku, tydzień przed zajęciami, zrobimy sync zaawansowania prac i wybierzemy strategię.
+
+*Budowanie za pomocą Jenkinsfile
+`JenkinsFile.png`
