@@ -21,9 +21,9 @@
 
 #### Tworzymy pipeline
 
-img1
+![1](imgs/1.png)
 
-img2
+![2](imgs/2.png)
 
 ### Jenkinsfile: przebieg
 
@@ -48,19 +48,19 @@ Następne kroki do publish i deploy.
 
 Publish - budujemy obraz z Dockerfile (wyciąganie artefaktów z obrazu 'build') oraz wrzucamy go do dockerhuba. Deploy - ssh do maszyny zdalnej, pobranie obrazu z kroku 'publish', uruchomienie obrazu.
 
-img3
+![3](imgs/3.png)
 
 Pipeline CI/CD po poprawnym zbudowaniu
 
-img4
-img5
-img6
-img7
-img8
-img9
+![4](imgs/4.png)
+![5](imgs/5.png)
+![6](imgs/6.png)
+![7](imgs/7.png)
+![8](imgs/8.png)
+![9](imgs/9.png)
 
 ### Jenkinsfile: powiadomienia
   * Sekcja "post" dla każdego stage'a, informująca mailem o rezultacie
-  img10
-  img11
-  img12
+  ![10](imgs/10.png)
+  ![11](imgs/11.png)
+  ![12](imgs/12.png)
