@@ -32,6 +32,7 @@ https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 * Uruchom Minikube Dashboard
 
 Komenda `minikube dashboard`
+
 `kubernetesdashboard.png`
 
 * Wyświetl działające usługi (k8s) i wdrożenia
