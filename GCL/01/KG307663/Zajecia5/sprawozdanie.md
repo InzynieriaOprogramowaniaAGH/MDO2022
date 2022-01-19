@@ -5,6 +5,7 @@
 * Upewnij się, że kontener jest dostępny
 * Zainstaluj wymagania wstępne dla środowiska Minikube
 * Zainstaluj minikube i kubectl
+
 Instalacja zgodnie z dokumentacją.
 https://minikube.sigs.k8s.io/docs/start/
 `curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64`
@@ -24,16 +25,21 @@ https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
   * Platforma konteneryzacji
   * Otwarte porty
   * Stan Dockera
+  
   `Standockera.png`
 
 ### Stan Minikube
 * Uruchom Minikube Dashboard
+
 Komenda `minikube dashboard`
 `kubernetesdashboard.png`
+
 * Wyświetl działające usługi (k8s) i wdrożenia
+
 `nowekubectl.png`
 `kubernetesservices.png`
 * Wyświetl dostępne wdrożenia (stan "przed")
+
 `deployments.png`
 `pods.png`
 
