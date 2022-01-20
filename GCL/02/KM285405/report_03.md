@@ -47,16 +47,48 @@ Dopiero wtedy mamy pełen dostęp do plików
 
 ## Uruchom, wyeksponuj wybrany port w kontenerze, zainstaluj w kontenerze serwer ssh
 
+```sudo docker run --interactive --tty --mount source=wolumin,destination=/store --publish 2048:4000 ubuntu```
+
+następnie:
+
 ```apt-get update```
 
 ```apt-get -y install openssh-server ```
 
-![](img_03/12.jpg)
+![](img_03/14.jpg)
 
-![](img_03/13.jpg)
+![](img_03/15.jpg)
 
+mkdir /run/sshd
 
-## zezwól na logowanie root
+## zezwól na logowanie root i zmień port >1024
+
+Aby zezwolić na logowanie root i zmienić port, należy zmodyfikować plik sshd_config, można do tego wykorzystać np. nano
+
+```apt install nano```
+
+```nano /etc/ssh/sshd_config```
+
+![](img_03/16.jpg)
+
 ## umieść klucz publiczny w woluminie, skopiuj go do pliku zaufanych w kontenerze
+
+Klucz utworzony w woluminie i przeniesiony do root/.ssh
+
+![](img_03/17.jpg)
+
+![](img_03/18.jpg)
+
 ## odnajdź adres IP kontenera w wewnętrznej sieci
+
+```apt-get install net-tools```
+
+![](img_03/19.jpg)
+
+```ifconfig```
+
+![](img_03/20.jpg)
+
 ## uruchom usługę, połącz się z kontenerem
+
+
