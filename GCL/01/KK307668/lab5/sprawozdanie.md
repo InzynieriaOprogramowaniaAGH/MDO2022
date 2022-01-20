@@ -47,3 +47,4 @@
 * Zestaw 4 repliki, opisz zalety i wady takiej liczby
 * Zaaplikuj wdrożenie via ```kubectl apply -f plik.yml```
 * Wykaż przeprowadzony deployment
+  ![21.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/KK307668/GCL/01/KK307668/lab5/ss/21.png)
