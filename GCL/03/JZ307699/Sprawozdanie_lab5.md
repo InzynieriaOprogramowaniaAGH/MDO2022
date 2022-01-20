@@ -55,24 +55,32 @@ Imię i nazwisko: Julia Żychowska, kierunek: Informatyka Stosowana (NS), nr. in
       - Platforma konteneryzacji
       - Otwarte porty
       - Stan Dockera
-      kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.4
-      kubectl get deployments
-      kubectl get pods
-      kubectl get events
-      kubectl config view
-      
-      ![image](https://user-images.githubusercontent.com/28841971/149645240-ec30c979-712e-4c95-91bb-6f0c742d1090.png)
-      ![image](https://user-images.githubusercontent.com/28841971/149645248-d28c9849-4611-4a5d-8784-b908457eb8a1.png)
-      ![image](https://user-images.githubusercontent.com/28841971/149645264-2780267e-f0dc-46b5-8a64-3f6c212c4c3e.png)
 
-      ![image](https://user-images.githubusercontent.com/28841971/149645304-16505764-b9a0-44c8-87b0-eaf1e72a7cc6.png)
-
-      ![image](https://user-images.githubusercontent.com/28841971/149645306-e2ad94c2-1f51-45a4-84ad-304a32fe0715.png)
+        ```kubectl get deployments```
+        
+        
+        ```kubectl get pods```
+        ```kubectl get events```
       
-      ![image](https://user-images.githubusercontent.com/28841971/149645350-c42b9d19-8923-4929-898b-5be8d126ff83.png)
-      
-      ![image](https://user-images.githubusercontent.com/28841971/149645364-260a9a73-d5a0-4edb-a4a8-ec73f3e815ea.png)
+        ![image](https://user-images.githubusercontent.com/28841971/149645240-ec30c979-712e-4c95-91bb-6f0c742d1090.png)
+        ![image](https://user-images.githubusercontent.com/28841971/149645248-d28c9849-4611-4a5d-8784-b908457eb8a1.png)
+        
+        ```kubectl config view```
+        
+        ![image](https://user-images.githubusercontent.com/28841971/149645264-2780267e-f0dc-46b5-8a64-3f6c212c4c3e.png)
 
+        ![image](https://user-images.githubusercontent.com/28841971/149645304-16505764-b9a0-44c8-87b0-eaf1e72a7cc6.png)
+
+        ![image](https://user-images.githubusercontent.com/28841971/149645306-e2ad94c2-1f51-45a4-84ad-304a32fe0715.png)
+      
+        ```kubectl get services```
+      
+        ![image](https://user-images.githubusercontent.com/28841971/149645350-c42b9d19-8923-4929-898b-5be8d126ff83.png)
+      
+        ```kubectl api-resources```
+        
+        ![2](https://user-images.githubusercontent.com/28841971/150245431-8d7ac2e4-6e8d-41db-81c0-08f3a7f63a42.png)
+        ![3](https://user-images.githubusercontent.com/28841971/150245442-cd7feb2d-4996-4fd5-aac3-8acf4c8453d4.png)
 
 
 ### Stan Minikube
@@ -83,16 +91,22 @@ Imię i nazwisko: Julia Żychowska, kierunek: Informatyka Stosowana (NS), nr. in
       ![image](https://user-images.githubusercontent.com/28841971/149644992-188e5cb2-7f81-489e-970c-364d7178042f.png)
     
   - Wyświetl działające usługi (k8s) i wdrożenia
+  
+    ![1](https://user-images.githubusercontent.com/28841971/150243842-bcbbb1ec-f929-41e0-a7b6-96d58063f802.png)
+    
+  
   - Wyświetl dostępne wdrożenia (stan "przed")
   
-  
-  ![image](https://user-images.githubusercontent.com/28841971/149645383-ebdccbf0-804c-4059-89c0-316071e2e82c.png)
-  ![image](https://user-images.githubusercontent.com/28841971/149645388-7a66f10c-f903-4653-b3bc-9fefbb07934b.png)
+    ![image](https://user-images.githubusercontent.com/28841971/149645383-ebdccbf0-804c-4059-89c0-316071e2e82c.png)
+    ![image](https://user-images.githubusercontent.com/28841971/149645388-7a66f10c-f903-4653-b3bc-9fefbb07934b.png)
 
 
 ### Wdrożenie kontenera via k8s
   - Wdróż przykładowy deployment "hello k8s": k8s.gcr.io/echoserver
   - Użyj kubectl run <ctr> --image=<DOCKER_ID>/<IMG> --port=<port> --labels app=ctr
+  
+    ![4](https://user-images.githubusercontent.com/28841971/150245603-245d78d3-bf81-4b15-8239-0f85bf118b6b.png)
+  
   - Przekieruj porty
   - Wykaż że wdrożenie nastąpiło
   - W przypadku "niemożliwych" wdrożeń, opisz napotkane ograniczenia
