@@ -73,17 +73,17 @@ Aby zezwolić na logowanie root i zmienić port, należy zmodyfikować plik sshd
 
 ## umieść klucz publiczny w woluminie, skopiuj go do pliku zaufanych w kontenerze
 
-Klucz utworzony w woluminie i przeniesiony do root/.ssh
+Klucz utworzony i przeniesiony do root/.ssh
 
 ![](img_03/17.jpg)
 
 ![](img_03/18.jpg)
 
+![](img_03/18a.jpg)
+
 ## odnajdź adres IP kontenera w wewnętrznej sieci
 
 ```apt-get install net-tools```
-
-![](img_03/19.jpg)
 
 ```ifconfig```
 
@@ -91,4 +91,38 @@ Klucz utworzony w woluminie i przeniesiony do root/.ssh
 
 ## uruchom usługę, połącz się z kontenerem
 
+![](img_03/21.jpg)
 
+
+# Skonteneryzowany Jenkins stosujący Dockera
+
+## Przygotowanie
+* Upewnij się, że Dockerfiles i Docker Compose z poprzednich zajęć są w repozytorium
+* Zapoznaj się z instrukcją https://www.jenkins.io/doc/book/installing/docker
+  * Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone
+
+![](img_03/22.jpg)
+
+  * Przygotuj obraz blueocean na podstawie obrazu jenkinsa - dockerfile z dokumentacji
+  
+![](img_03/22.jpg)
+
+  * Uruchom blueocean
+  
+```docker build -f dockerfile_blueocean -t myjenkins-blueocean:2.319.2-1 .```
+  
+  * Zaloguj się i skonfiguruj Jenkins
+  
+#### Mikro-projekt Jenkins
+* Utwórz projekt, który wyświetla uname
+* Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta 
+* Utwórz "prawdziwy" projekt, który:
+  * klonuje nasze repozytorium
+  * przechodzi na osobistą gałąź
+  * buduje obrazy z dockerfiles i/lub komponuje via docker-compose
+  
+#### Sprawozdanie
+* Opracuj dokument z diagramami UML, opisującymi proces CI. Opisz:
+  * Wymagania wstępne środowiska
+  * Diagram aktywności, pokazujący kolejne etapy (collect, build, test, report)
+  * Diagram wdrożeniowy, opisujący relacje między składnikami, zasobami i artefaktami
