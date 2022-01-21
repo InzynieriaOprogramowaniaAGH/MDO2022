@@ -14,12 +14,30 @@
  Teraz niestety nie mam na to czasu proszę wybaczyć że nie uruchomię dzisiaj minikuba.
 
   ![screen: pipeline config](screenshots/1.PNG) 
-   ![screen: pipeline config](screenshots/2.PNG) 
-
+  ![screen: pipeline config](screenshots/2.PNG) 
+   
+   Po ponownym postawieniu środowiska udało się rozpocząć pracę nad Minikube i Kubernetesem
+   $ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+   $ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+   $ kubectl version --client
+   $ minikube start
+   
+   ![screen: pipeline config](screenshots/3.png) 
+   ![screen: pipeline config](screenshots/4.png)
+   
+   $ kubectl get po -A
+   $ minikube kubectl -- get po -A
+   
+      ![screen: logs above commands](screenshots/5.png)
+   
 ### Stan Minikube
 * Uruchom Minikube Dashboard
 * Wyświetl działające usługi (k8s) i wdrożenia
-* Wyświetl dostępne wdrożenia (stan "przed")
+* Wyświetl dostępne wdrożenia (stan "przed") 
+
+   $ minikube dashboard
+
+   ![screen: first usage dashboard](screenshots/6.png)
 
 ### Wdrożenie kontenera via k8s
 * Wdróż przykładowy deployment "hello k8s": ```k8s.gcr.io/echoserver```
@@ -27,6 +45,17 @@
 * Przekieruj porty
 * Wykaż że wdrożenie nastąpiło
 * W przypadku "niemożliwych" wdrożeń, opisz napotkane ograniczenia
+
+   $ kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.4
+   $ kubectl expose deployment hello-minikube --type=NodePort --port=8080
+   $ kubectl get services hello-minikube
+   
+   ![screen: first deploymet](screenshots/7.png)
+   
+   $ kubectl get pods
+   $ kubectl get deployments
+   
+   ![screen: first deploymet](screenshots/8.png)
 
 ### Deployment
 * Utwórz plik YAML z "deploymentem" k8s
