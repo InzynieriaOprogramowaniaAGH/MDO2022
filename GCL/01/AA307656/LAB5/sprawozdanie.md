@@ -55,10 +55,20 @@
    $ kubectl get pods
    $ kubectl get deployments
    
-   ![screen: first deploymet](screenshots/8.png)
+   ![screen: hello deploymet](screenshots/8.png)
+   ![screen: nginx deploymet](screenshots/9.png)
+   
+   Niestety nie udało się utworzyć serwisu prawidłowo, obraz 
 
 ### Deployment
 * Utwórz plik YAML z "deploymentem" k8s
 * Zestaw 4 repliki, opisz zalety i wady takiej liczby
 * Zaaplikuj wdrożenie via ```kubectl apply -f plik.yml```
+
+  Niestety ponownie źle określiłem czas wykonania a czas poświęcony i znów nie udało mi się dokończyć instrukcji. Bardzo mi przykro z tego powodu ale czas w tym miesiącu leci swoim trybe. Pozdrawiam to były naprawdę zajęcia bardzo fajnie wprowadzające w tematyke zagadnień.
+
+
+
+
+
 * Wykaż przeprowadzony deployment
