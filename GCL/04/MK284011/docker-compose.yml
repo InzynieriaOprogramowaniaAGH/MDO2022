@@ -1,13 +1,14 @@
-version: "1"
+version: '1'
+
 services:
-  test:
+  builder:
+    image: k4zu/mk284011labs:rc01
     build:
+      dockerfile: Dockerfile-build
       context: .
-      dockerfile: DockerfileTest
+  tester:
     depends_on:
-      - build
-  build:
-    image: jest-test
+      - builder
     build:
+      dockerfile: Dockerfile-test
       context: .
-      dockerfile: DockerfileBuild

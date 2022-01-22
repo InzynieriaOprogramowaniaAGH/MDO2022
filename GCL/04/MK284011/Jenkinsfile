@@ -1,78 +1,65 @@
 pipeline {
-     environment { 
-        registry = "build" 
-        registry1 = "test"
-        registryCredential = 'docker-hub-credentials' 
-        dockerImage = '' 
-        dockerImage1 = '' 
-    }
     agent any
+    environment {
+        registry = "k4zu/mk284011labs:rc01"
+        registryCredential = 'k4zu'
+    }
     stages {
-        stage('Build') { 
+        stage('build') {
             steps {
-                sh'''
-                cd GCL/04/MK284011
-                docker build -t easy/sauce:latest .
-                cd Dockerfile2
-                docker build -t easy/sauce2:latest .
-                '''
-                script { 
-                    sh 'cd -'
-                    sh 'ls'
-                    sh 'cd GCL/04/MK284011'
-                    sh 'ls'
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                    sh 'Dockerfile2'
-                    dockerImage1 = docker.build registry1 + ":$BUILD_NUMBER" 
-                }
-            }
-            post {
-                success {
-                    echo 'I succeeded!'
-                    //archiveArtifacts artifacts: 'Build/libs/**/*.jar'
-                    mail to: 'maciejkubel@gmail.com',
-                      subject: "Successful Pipeline",
-                      body: "Wszystko gra w Build. :)"
-                }
-                failure {
-                    echo 'I failed :('
-                    mail to: 'maciejkubel@gmail.com',
-                        subject: "Failed Pipeline",
-                        body: "Coś poszło nie tak w Build. :("
+                script{
+                    try {
+                        sh 'docker-compose build --no-cache builder'
+                    } catch(e) {
+                        throw e
+                    }
                 }
             }
         }
-        stage('Test') { 
+        stage('test') {
             steps {
-                sh '''
-                docker run easy/sauce2:latest
-                '''
-            }
-            post {
-            success {
-                echo 'I succeeded!'
-                mail to: 'maciejkubel@gmail.com',
-                    subject: "Successful Pipeline: ${currentBuild.fullDisplayName}",
-                    body: "Wszystko gra w Test. :)"
-            }
-
-            failure {
-                echo 'I failed :('
-                mail to: 'maciejkubel@gmail.com',
-                    subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-                    body: "Coś poszło nie tak w Test. :("
-            }
-          }
-        }
-        stage('Deploy'){
-            steps {
-                script { 
-                    docker.withRegistry( '', registryCredential ) { 
-                    dockerImage.push() 
-                    dockerImage1.push()
+                script{
+                    try {
+                        sh 'docker-compose build --no-cache tester'
+                    } catch(e) {
+                        throw e
+                    }
                 }
             }
-         }
+        }
+        stage('deploy') {
+            steps {
+                script {
+                    docker.withRegistry( '', registryCredential ) {
+                        sh 'docker push k4zu/mk284011labs:rc01'
+                    }
+                }
+            }
         }
     }
+    post {
+        success {
+            mailSender('Build finish successfully!')
+        }
+        unstable {
+            mailSender('Build finish unstable!')
+        }
+        failure {
+            echo 'Build failed sad-frog.jpg!'
+            mailSender('Build failed sad-frog.jpg!')
+        }
+        changed {
+            echo 'Things were different before...'
+            echo 'Interesting...'
+        }
+    }
+}
+
+def mailSender(String buildStatus) {
+    emailext (
+        mimeType: 'text/html',
+        subject: "${buildStatus}: of build [${env.BUILD_NUMBER}]'",
+        body: "Link to build: (${env.BUILD_URL})",
+        to: 'maciejkubel@gmail.com'
+    )
 }
