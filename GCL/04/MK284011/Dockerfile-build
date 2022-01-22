@@ -1,15 +1,11 @@
-# pull official base image
-FROM node:16.13 as my_node_app
+FROM node:14
 
-# A directory within the virtualized Docker environment
-# Becomes more relevant when using Docker Compose later
-WORKDIR /usr/src/app
+WORKDIR /k4zu/mk284011labs
 
-# Copies source files to Docker environment
-COPY . ./
+RUN ["git", "clone", "https://github.com/dzborowski/jest-test.git"]
 
-# Installs all node packages
-RUN npm install --silent
+WORKDIR /k4zu/mk284011labs/jest-test
 
-# Installs all node packages
-RUN npm run build
+RUN ["npm", "ci"]
+
+RUN ["npm", "run", "build"]

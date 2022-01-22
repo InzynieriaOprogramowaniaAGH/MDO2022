@@ -1,65 +1,32 @@
 pipeline {
     agent any
-    environment {
-        registry = "k4zu/mk284011labs:rc01"
-        registryCredential = 'k4zu'
-    }
-    stages {
-        stage('build') {
-            steps {
-                script{
-                    try {
-                        sh 'docker-compose build --no-cache builder'
-                    } catch(e) {
-                        throw e
-                    }
-                }
-            }
-        }
-        stage('test') {
-            steps {
-                script{
-                    try {
-                        sh 'docker-compose build --no-cache tester'
-                    } catch(e) {
-                        throw e
-                    }
-                }
-            }
-        }
-        stage('deploy') {
-            steps {
-                script {
-                    docker.withRegistry( '', registryCredential ) {
-                        sh 'docker push k4zu/mk284011labs:rc01'
-                    }
-                }
-            }
-        }
-    }
-    post {
-        success {
-            mailSender('Build finish successfully!')
-        }
-        unstable {
-            mailSender('Build finish unstable!')
-        }
-        failure {
-            echo 'Build failed sad-frog.jpg!'
-            mailSender('Build failed sad-frog.jpg!')
-        }
-        changed {
-            echo 'Things were different before...'
-            echo 'Interesting...'
-        }
-    }
-}
 
-def mailSender(String buildStatus) {
-    emailext (
-        mimeType: 'text/html',
-        subject: "${buildStatus}: of build [${env.BUILD_NUMBER}]'",
-        body: "Link to build: (${env.BUILD_URL})",
-        to: 'maciejkubel@gmail.com'
-    )
+    stages {
+        stage('Build') {
+            steps {
+                sh 'docker-compose -f GCL/04/MK284011/docker-compose.yml build --no-cache build'
+            }
+            post {
+                success {
+                    mail to: 'maciejkubel@gmail.com', subject: "Build passed", body: "Build - OK"
+                }
+                failure {
+                    mail to: 'maciejkubel@gmail.com', subject: "Build failed", body: "Build - OK"
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'docker-compose -f GCL/04/MK284011/docker-compose.yml build --no-cache test'
+            }
+            post {
+                success {
+                    mail to: 'maciejkubel@gmail.com', subject: "Test passed", body: "Build - OK"
+                }
+                failure {
+                    mail to: 'maciejkubel@gmail.com', subject: "Test failed", body: "Build - OK"
+                }
+            }
+        }
+    }
 }
