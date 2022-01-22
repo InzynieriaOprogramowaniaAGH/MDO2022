@@ -1,0 +1,24 @@
+pipeline {
+  agent any 
+  stages {
+    stage('Build') { 
+      steps {
+        sh '''
+        apt-get update
+        apt-get install npm -y
+        git clone https://github.com/evanshortiss/nodejs-testing-examples.git
+        cd nodejs-testing-examples
+        npm install
+        '''
+        }
+    }
+    stage('Test') { 
+      steps {
+        sh '''
+        cd nodejs-testing-examples
+        npm test
+        '''
+      }
+    }
+  }
+}
