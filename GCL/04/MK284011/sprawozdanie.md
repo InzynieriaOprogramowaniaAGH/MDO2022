@@ -46,7 +46,22 @@ Przykładowe zbiory czynności w Jenkinsfile: Jednokrokowy pipeline (Build i tes
     Następnie ustawiłem pipeline z poniżymi danymi:
     *Zdjecie3
     *Zdjecie4
+    *Zdjecie5
+    *Zdjecie6
+    *Zdjecie7
+    *Zdjecie8
 
+    Niestety nie udało mi się zbudować jenkinsa używająć docker compose, wywalało mi pełno błędów z którymi nie udało mi się poradzić.
+    Jendakże załączam wszystkie pilki, które stworzył podążając dokumentacją oraz którmi próbowałem odpalić pipelina.
 
 3. Jenkinsfile: powiadomienia
 Sekcja "post" dla każdego stage'a, informująca mailem o rezultacie
+    Jeśli chodzi powiadomienia email to zainstalowałem wtyczkę "Email Extension"
+    *Zdjęcie9
+    *Zdjecie10
+    
+    Gdzie wystarczyło dodać poniżą część, aby wysłać powiadomienie mailowe:
+
+    emailext body: 'Error appeard?',
+    subject: 'Failed or Succesfully?',
+    to: 'maciejkubel@gmail.com'
