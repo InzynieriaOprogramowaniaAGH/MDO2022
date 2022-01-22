@@ -1,0 +1,11 @@
+FROM node:14
+
+WORKDIR /usr/mdo
+
+RUN ["git", "clone", "https://github.com/dzborowski/jest-test.git"]
+
+WORKDIR /usr/mdo/jest-test
+
+RUN ["npm", "ci"]
+
+RUN ["npm", "run", "build"]

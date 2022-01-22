@@ -1,0 +1,13 @@
+version: "1"
+services:
+  test:
+    build:
+      context: .
+      dockerfile: DockerfileTest
+    depends_on:
+      - build
+  build:
+    image: jest-test
+    build:
+      context: .
+      dockerfile: DockerfileBuild
