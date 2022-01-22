@@ -41,18 +41,12 @@
 https://www.jenkins.io/doc/book/pipeline/jenkinsfile/
 
 Przykładowe zbiory czynności w Jenkinsfile: Jednokrokowy pipeline (Build i test), pobierający narzędzie docker-compose i uruchamiajacy docker compose up na kompozycji z poprzednich zajęć
-build + test
 
-download docker-compose
-compose up
-build
+    Początkowo użyłem wcześniejszego Jenkinsfile, który umieśiłem w repo.
+    Następnie ustawiłem pipeline z poniżymi danymi:
+    *Zdjecie3
+    *Zdjecie4
 
-git pull
-npm install
-npm build
-test
-
-npm test
 
 3. Jenkinsfile: powiadomienia
 Sekcja "post" dla każdego stage'a, informująca mailem o rezultacie
