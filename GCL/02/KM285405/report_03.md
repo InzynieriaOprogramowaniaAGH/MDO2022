@@ -43,6 +43,8 @@ Dopiero wtedy mamy pełen dostęp do plików
 
 ![](img_03/11.jpg)
 
+W tym momencie, niestety musialem zmienić środowisko z WSL2 na VirtualBox
+
 # "Kiepski pomysł": SSH
 
 ## Uruchom, wyeksponuj wybrany port w kontenerze, zainstaluj w kontenerze serwer ssh
@@ -105,16 +107,44 @@ Klucz utworzony i przeniesiony do root/.ssh
 
   * Przygotuj obraz blueocean na podstawie obrazu jenkinsa - dockerfile z dokumentacji
   
-![](img_03/22.jpg)
+![](img_03/23.jpg)
+  
+```docker build -t myjenkins-blueocean:2.319.2-1 .```
 
+  ![](img_03/24.jpg)
+  
+  ![](img_03/25.jpg)
+  
   * Uruchom blueocean
   
-```docker build -f dockerfile_blueocean -t myjenkins-blueocean:2.319.2-1 .```
+  ![](img_03/26.jpg)
   
   * Zaloguj się i skonfiguruj Jenkins
   
+  ![](img_03/27.jpg)
+  
+  ![](img_03/29.jpg)
+  
+  wymagane hasło dostępne przez:
+  
+  ```docker logs```
+  
+  ![](img_03/28.jpg)
+  
+  ![](img_03/30.jpg)
+  
+   ![](img_03/31.jpg)
+
 #### Mikro-projekt Jenkins
 * Utwórz projekt, który wyświetla uname
+
+  ![](img_03/32.jpg)
+  
+  ![](img_03/33.jpg)
+
+  ![](img_03/34.jpg)
+  
+  
 * Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta 
 * Utwórz "prawdziwy" projekt, który:
   * klonuje nasze repozytorium
