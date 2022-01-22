@@ -7,9 +7,9 @@ pipeline {
          ls
          cd GCL/04/MK284011/
          ls
-         docker build -t nodejs/example .
+         docker build -t nodejs-example .
          cd Test
-         docker build -t nodejs/example2 .
+         docker build -t nodejs-example2 .
          '''
         }
      }

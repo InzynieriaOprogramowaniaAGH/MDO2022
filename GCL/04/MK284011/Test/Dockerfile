@@ -1,3 +1,3 @@
-FROM nodejs/example
+FROM nodejs-example
 
 CMD ["npm", "test"]
