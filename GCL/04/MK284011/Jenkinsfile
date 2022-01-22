@@ -11,7 +11,7 @@ pipeline {
         stage('Build') { 
             steps {
                 sh'''
-                cd GCL/03/JZ307699/Lab_4
+                cd GCL/04/MK284011
                 docker build -t easy/sauce:latest .
                 cd Dockerfile2
                 docker build -t easy/sauce2:latest .
@@ -19,7 +19,7 @@ pipeline {
                 script { 
                     sh 'cd -'
                     sh 'ls'
-                    sh 'cd GCL/03/JZ307699/Lab_4'
+                    sh 'cd GCL/04/MK284011'
                     sh 'ls'
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
                     sh 'Dockerfile2'
