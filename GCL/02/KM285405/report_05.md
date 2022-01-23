@@ -13,4 +13,8 @@ Instalacja przebiegła bez problemu, aż do momentu sprawdzenia minikube dashboa
 
 ![](img_05/04_minikube.jpg)
 
-Dzięki pracy z WSL2 wymaga to dodatkowego przygotowanie środowiska
+Praca z WSL2 wymaga dodatkowego przygotowanie środowiska, natmoiast w tym momencie musiałem zmienić środowisko na VirtualBox
+
+Instalacja przebiegła bez problemu, minikube dashboard również działa:
+
+![](img_05/05.JPG)
