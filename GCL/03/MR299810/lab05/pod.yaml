@@ -4,23 +4,20 @@ kind: Deployment
 metadata:
   name: hello-minikube
   labels:
-    app: web
+    app: hello-minikube
 spec:
   replicas: 4
   selector:
     matchLabels:
-      app: web
+      app: hello-minikube
   template:
     metadata:
       labels:
-        app: web
+        app: hello-minikube
     spec:
       containers:
-        - name: front-end
-          image: nginx
-          ports:
-            - containerPort: 80
         - name: hello-minikube
           image: k8s.gcr.io/echoserver:1.4
           ports:
-            - containerPort: 88
+            - containerPort: 80
+      
