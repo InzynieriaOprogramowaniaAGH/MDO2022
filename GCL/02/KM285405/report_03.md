@@ -57,9 +57,9 @@ następnie:
 
 ```apt-get -y install openssh-server ```
 
-![](img_03/14.jpg)
+![](img_03/14.JPG)
 
-![](img_03/15.jpg)
+![](img_03/15.JPG)
 
 mkdir /run/sshd
 
@@ -71,17 +71,17 @@ Aby zezwolić na logowanie root i zmienić port, należy zmodyfikować plik sshd
 
 ```nano /etc/ssh/sshd_config```
 
-![](img_03/16.jpg)
+![](img_03/16.JPG)
 
 ## umieść klucz publiczny w woluminie, skopiuj go do pliku zaufanych w kontenerze
 
 Klucz utworzony i przeniesiony do root/.ssh
 
-![](img_03/17.jpg)
+![](img_03/17.JPG)
 
-![](img_03/18.jpg)
+![](img_03/18.JPG)
 
-![](img_03/18a.jpg)
+![](img_03/18a.JPG)
 
 ## odnajdź adres IP kontenera w wewnętrznej sieci
 
@@ -89,11 +89,11 @@ Klucz utworzony i przeniesiony do root/.ssh
 
 ```ifconfig```
 
-![](img_03/20.jpg)
+![](img_03/20.JPG)
 
 ## uruchom usługę, połącz się z kontenerem
 
-![](img_03/21.jpg)
+![](img_03/21.JPG)
 
 
 # Skonteneryzowany Jenkins stosujący Dockera
@@ -103,56 +103,78 @@ Klucz utworzony i przeniesiony do root/.ssh
 * Zapoznaj się z instrukcją https://www.jenkins.io/doc/book/installing/docker
   * Uruchom obraz Dockera który eksponuje środowisko zagnieżdżone
 
-![](img_03/22.jpg)
+![](img_03/22.JPG)
 
   * Przygotuj obraz blueocean na podstawie obrazu jenkinsa - dockerfile z dokumentacji
   
-![](img_03/23.jpg)
+![](img_03/23.JPG)
   
 ```docker build -t myjenkins-blueocean:2.319.2-1 .```
 
-  ![](img_03/24.jpg)
+  ![](img_03/24.JPG)
   
-  ![](img_03/25.jpg)
+  ![](img_03/25.JPG)
   
   * Uruchom blueocean
   
-  ![](img_03/26.jpg)
+  ![](img_03/26.JPG)
   
   * Zaloguj się i skonfiguruj Jenkins
   
-  ![](img_03/27.jpg)
+  ![](img_03/27.JPG)
   
-  ![](img_03/29.jpg)
+  ![](img_03/29.JPG)
   
   wymagane hasło dostępne przez:
   
   ```docker logs```
   
-  ![](img_03/28.jpg)
+  ![](img_03/28.JPG)
   
-  ![](img_03/30.jpg)
+  ![](img_03/30.JPG)
   
-   ![](img_03/31.jpg)
+   ![](img_03/31.JPG)
 
 #### Mikro-projekt Jenkins
 * Utwórz projekt, który wyświetla uname
 
-  ![](img_03/32.jpg)
+  ![](img_03/32.JPG)
   
-  ![](img_03/33.jpg)
+  ![](img_03/33.JPG)
 
-  ![](img_03/34.jpg)
+  ![](img_03/34.JPG)
+  
+  ![](img_03/35.JPG)
+    
+  ![](img_03/36.JPG)
   
   
 * Utwórz projekt, który zwraca błąd, gdy... godzina jest nieparzysta 
+
+Należy powtórzyć wszystkie kroki, jak w poprzednim 'projekcie', tym razem jako komendę podająć np.:
+
+ ![](img_03/37.JPG)
+  
+  Wynmik dla godziny nieparzystej:
+  
+  ![](img_03/38.JPG)
+  
+  dla parzystej:
+   
+  ![](img_03/39.JPG)
+
 * Utwórz "prawdziwy" projekt, który:
   * klonuje nasze repozytorium
   * przechodzi na osobistą gałąź
   * buduje obrazy z dockerfiles i/lub komponuje via docker-compose
+ Projekt został przygotowany:
+
+![](img_03/40.JPG)
+
+![](img_03/41.JPG)
+
+Niestety kończy się błędem:
+
+![](img_03/42.JPG)
   
-#### Sprawozdanie
-* Opracuj dokument z diagramami UML, opisującymi proces CI. Opisz:
-  * Wymagania wstępne środowiska
-  * Diagram aktywności, pokazujący kolejne etapy (collect, build, test, report)
-  * Diagram wdrożeniowy, opisujący relacje między składnikami, zasobami i artefaktami
+
