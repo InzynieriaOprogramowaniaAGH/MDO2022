@@ -1,0 +1,28 @@
+stages:
+  - test
+  - build
+  - deploy
+
+tester project:
+  stage: test
+  image: node:15
+  script:
+    - yarn install
+    - yarn test
+
+builder project:
+  stage: build
+  image: node:15
+  script:
+    - yarn install
+    - yarn build
+  artifacts:
+    paths:
+      - build/
+
+deployer project:
+  stage: deploy
+  image: node:15
+  script:
+    - npm i netlify-cli -g
+    - netlify deploy --dir=build --prod

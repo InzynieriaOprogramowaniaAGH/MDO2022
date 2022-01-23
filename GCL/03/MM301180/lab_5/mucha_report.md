@@ -212,3 +212,114 @@ spec:
 Docker stat:
 
 ![minikube_screen_2.PNG](./img/docker-stat.PNG)
+
+## Zajęcia 06 : zależność ciągłej integracji od komponentów stron trzecich
+
+### Inwentaryzacja
+* Zdefiniuj w ramach stworzonego Dockerfile'a zależności platformowe
+    * Node JS
+    * NPM
+* Oprogramowanie, które doinstalowujesz aby uruchomić program
+    * Docker
+
+* W razie braku zależności (np. obraz ```node``` i aplikacje wymagająca tylko ```node```), "zależnością" jest sam obraz
+
+Zależności platformowe:
+
+https://github.com/michalmuchakr/docker-react-test-app
+
+* repozytorium, na podstawie którego tworzony jest deployowany artefakt samodzielnie zarządza pakietami instalowanymi,
+  należy zadbać, aby w środowisku uruhomieniowym była dostępna odpowiednia wersja NPM oraz NODE
+* to samo tyczy się bazowego obrazu na podstawie, którego budowany jest obraz.
+* Podejście to zostało wybrane, mając na uwadze, możliwość podzielenia obowiązków pomiędzy zespół developerski oraz zespół devOps'owy:
+    * zespół developerski - odpowiada za aktualizowanie zależności oraz stworzenie
+      gotowego do wdrożenia obraz aplikacji oraz deployment na środowiska dev, oraz QA
+    * zespół devOps - jest odpowiedzialny za deployment aplikacji na środowiska UAT oraz prod
+
+* Określ okoliczności, w których uzasadnione jest przebudowywanie i aktualizacja obrazu po wydaniu nowej wersji którejś z zależności
+
+    * jeżeli nowa wersja obrazu bazowego zawiera łatki bezpieczeństwa, które w naszym przypadku poprawiają bezpieczeństwo
+    * Konsekwencją uaktualnienia wesji bazowej obrazu jest wykorzystanie nowszej wersji Node,
+      co umożliwia wykorzystanie nowszych funkcji bez konieczności stosowania tzw. polyfills
+
+* Czy należy to robić "zawsze"?
+
+    * aktualizacjąc obraz, wersję NODE, należy się upewnić, że nasza aplikacja, po uaktualnieniu, nadal będzie działać sprawnie, bez błędów.
+    * istnieje czasem możliwość, że część funkcjonalności, która była dostępna wcześniej została przez twórców porzucona,
+      zastąpoina inną, to może za sobą ponosić ryzyko błędów oraz zwiększać "koszt" czasowy uaktualniania wersji
+    * nowa wersja NODE może nie zawierać żadnych unowocześnień oraz łatek bezpieczeństwa, które dotyczą naszej implementatacji,
+      zatem jej wdrażanie może być bezcelowe, a konsekwencji być stratą czasu
+
+* Jakie są przesłanki (i jak je ustalić) wskazujące na konieczność aktualizacji
+    * Można wykorzystać narzędzia do statycznej lub dynamicznej analizy kodu pod kątem bezpieczeństwa
+        * https://www.veracode.com/
+    * Można ręcznie sprawdzać biblioteki narzędziami online:
+        * https://nvd.nist.gov/vuln/search
+        * npm outdated
+
+* Jakie jest ryzyko aktualizowania/nieaktualizowania (im dokładniejszy przykład, tym lepiej)
+* Pytanie pomocnicze: czy obraz Fedory/Ubuntu na dockerhubie jest aktualizowany dla każdej nowej wersji pakietu wchodzącego w jego skład? Dlaczego tak/nie?
+
+### Wdrożenie
+
+Z tego co wiem kredyty się nie odnawiają, zatem zosawiam sobie na pracę inżynierską
+
+Alternatywnie do zadania wyżej: określenie zależności od dostawcy chmurowego
+* Określ poziom zależności wdrożenia od środowiska chmurowego
+* Zweryfikuj dostępność studenckiego konta Azure i **zapoznaj się z cennikiem**
+* Przeprowadź próbne wdrożenie obrazu w ramach dostępnych kredytów
+* Zatrzymaj i usuń kontener, i wstrzymaj storage space, aby nie generować rachunków na pustych przebiegach
+
+Z tego co wiem kredyty się nie odnawiają, zatem zosawiam sobie na pracę inżynierską
+jako bonus zrobiłem wdrożenie wykorzystując GitLab do nelify:
+
+netlify:
+- ![App Screenshot](.\img\nelify.PNG)
+
+zmienne środowiskowe gitLab:
+
+- ![App Screenshot](.\img\gitLab_2.PNG)
+
+
+
+.gitlab-ci.yml
+
+``` yaml
+stages:
+  - test
+  - build
+  - deploy
+
+tester project:
+  stage: test
+  image: node:15
+  script:
+    - yarn install
+    - yarn test
+
+builder project:
+  stage: build
+  image: node:15
+  script:
+    - yarn install
+    - yarn build
+  artifacts:
+    paths:
+      - build/
+
+deployer project:
+  stage: deploy
+  image: node:15
+  script:
+    - npm i netlify-cli -g
+    - netlify deploy --dir=build --prod
+
+```
+
+Zdeployowana aplikacjia:
+https://boring-jang-9c06f9.netlify.app/
+
+Repo GitLab:
+https://gitlab.com/michalmm/test-react-project
+
+- ![App Screenshot](.\img\nelify_3.PNG)
