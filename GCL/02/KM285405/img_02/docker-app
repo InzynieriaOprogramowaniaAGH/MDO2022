@@ -1,0 +1,14 @@
+FROM ubuntu
+
+RUN apt update
+
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Europe/Warsaw
+RUN apt-get install -y tzdata
+
+RUN apt install -y npm
+RUN apt install -y git
+
+RUN git clone https://github.com/MarcL/js-unit-testing-examples.git
+
+RUN cd js-unit-testing-examples && npm install
