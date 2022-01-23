@@ -6,7 +6,6 @@
 * Zainstaluj wymagania wstępne dla środowiska Minikube
 * Zainstaluj minikube i kubectl
 * ![image](ss/ss1.png)
-* Testowo uruchomiono hello-node
 * ![image](ss/ss2.png)
 * ![image](ss/ss3.png)
 * ![image](ss/ss4.png)
@@ -31,15 +30,18 @@
 * ![image](ss/ss15.png)
 * Użyj ```kubectl run <ctr> --image=<DOCKER_ID>/<IMG> --port=<port> --labels app=ctr```
 * Przekieruj porty
+* ![image](ss/ss16.png)
 * Wykaż że wdrożenie nastąpiło
-
+* ![image](ss/ss17.png)
 
 * W przypadku "niemożliwych" wdrożeń, opisz napotkane ograniczenia
 
 ### Deployment
 * Utwórz plik YAML z "deploymentem" k8s
+* ![image](ss/ss20.png)
 * Zestaw 4 repliki, opisz zalety i wady takiej liczby
 * Zaaplikuj wdrożenie via ```kubectl apply -f plik.yml```
+* ![image](ss/ss18.png)
 * Wykaż przeprowadzony deployment
-
+* ![image](ss/ss19.png)
 
