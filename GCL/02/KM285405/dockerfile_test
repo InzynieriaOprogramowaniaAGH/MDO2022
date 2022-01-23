@@ -1,0 +1,5 @@
+FROM ubuntu:latest
+
+WORKDIR js-unit-testing-examples
+
+CMD [ "npm","test" ]
