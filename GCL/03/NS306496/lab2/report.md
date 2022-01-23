@@ -75,7 +75,6 @@
                 RUN npm install
                 RUN npm build
 
-
 6.  Zaprezentuj Dockerfile i jego zbudowanie
     Zbuduj obraz `docker build -t node_build -f Dockerfile_build .`
 7.  Na bazie obrazu utworzonego poprzednim dockerfilem stwórz kolejny, który będzie uruchamiał testy

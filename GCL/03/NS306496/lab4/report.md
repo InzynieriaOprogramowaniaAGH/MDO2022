@@ -58,3 +58,22 @@ https://www.jenkins.io/doc/book/pipeline/jenkinsfile/
 Pipeline nie buduje się na dedykowanym DIND, lecz na kontenerze CI poniewaz jest to prostsze rozwiazanie pozwalajace uniknac dodatkowej konfiguracji.
 
 Zastosowanie kontenera DIND dałoby większą kontrolę i izolacje środowiska wraz z agentem.
+
+### Part 2 - deploy
+
+1. Dodaj login i hasło konta do platformy dockerhub w ustawieniach jenkinsa
+   ![](./screens/docker-credentials.png)
+2. Dodaj kolejny stage `Push images to dockerhub` do skryptu Jenkinsfile z ponizszymi krokami
+
+```
+sh '''
+docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW
+docker tag node_build $DOCKERHUB_CREDENTIALS_USR/node_build
+docker push $DOCKERHUB_CREDENTIALS_USR/node_build
+'''
+```
+
+![](./screens/success-logs.png)
+![](./screens/docker-hub-uploaded-image.png)
+
+Dodano brakujący plik Jenkinsfile

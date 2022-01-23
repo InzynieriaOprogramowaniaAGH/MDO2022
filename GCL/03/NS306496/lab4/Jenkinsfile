@@ -1,0 +1,47 @@
+pipeline
+{
+    agent any
+    
+    environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub-credentials')
+	}
+    
+    stages{
+        stage('Build')
+        {
+            steps 
+            {
+                sh '''
+                rm -rf MD02022
+                git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022.git
+                cd MDO2022
+                git checkout NS306496
+                cd GCL/03/NS306496/lab2
+                docker build -t node_build:latest -f Dockerfile_build .
+                '''
+                emailext attachLog: true, body: 'hello world', compressLog: true, subject: 'Pipeline email build', to: 'norbertsanpruch@gmail.com'
+            }
+        }
+        stage('Tests')
+        {
+            steps 
+            {
+                sh '''
+                cd MDO2022/GCL/03/NS306496/lab2
+                docker build -t node_tests:latest -f Dockerfile_tests .
+                '''
+                emailext attachLog: true, body: 'hello world', compressLog: true, subject: 'Pipeline email tests', to: 'norbertsanpruch@gmail.com'
+            }
+        }
+        stage('Push image to dockerhub')
+        {
+            steps{
+            sh '''
+            docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW
+            docker tag node_build $DOCKERHUB_CREDENTIALS_USR/node_build
+            docker push $DOCKERHUB_CREDENTIALS_USR/node_build
+            '''
+            }
+        }
+    }
+}
