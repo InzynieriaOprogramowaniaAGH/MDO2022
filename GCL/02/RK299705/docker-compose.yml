@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  build1:
+    build:
+      context: ./
+      dockerfile: dockerfile1
+
+  build2:
+    build:
+      context: ./
+      dockerfile: dockerfile2
