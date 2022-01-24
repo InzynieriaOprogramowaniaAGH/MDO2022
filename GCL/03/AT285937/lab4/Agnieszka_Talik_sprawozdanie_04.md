@@ -127,5 +127,5 @@ To samo tylko Jenkinsfile z Githuba:
 
 ![image](https://user-images.githubusercontent.com/80592460/147817441-1c679033-b085-43d0-8d18-13c74ece579f.png)
 
-Czasy są znacznie krótsze niż przy ręcznie pisanym skrypcie w Pipeline
+Czasy budowania zawsze są znacznie krótsze niż przy ręcznie pisanym skrypcie w Pipeline
 
