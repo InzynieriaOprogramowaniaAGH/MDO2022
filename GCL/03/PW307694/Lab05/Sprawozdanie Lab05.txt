@@ -1,0 +1,20 @@
+Część 1.
+1. Dostępnośc kontenera (sc. 1. Docker 1)
+2. Instalacja Minikube poleceniem "minikube start --driver=docker" (sc 2. Minikube start )
+3. Instalacja kubectl za pomocą manula ze strony https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/ 	(sc 3. kubectl install)
+4. Wyświetlenie usług, docker images, docker ps (ukazanie portow) (sc 4. services)
+
+Część 2.
+1. Uruchmienie Minikube Dashborad poleceniem - "minikube dashboard" (sc. 5. Minikube Dashboard)
+2. Wyświetlenie usług Dashboard (sc 6. Dashboard services) lub poprzez kubectl (sc 7. services and deployments 	before)
+
+Część 3.
+1. Aby wdrązyć przykładowy deployment uzywamy polecenia "kubectl create deployment hello-test --	image=k8s.gcr.io/echoserver:1.4", wdrązenie tworzy sie natychmiast i możemy je zobaczyc używając 	polecenia "kubectl get deployments" (sc 8. Test deployment )
+2. Zbudowanie obrazu z kontenera nginx, został stworzony POD lecz niestety nie został on wdrązony (sc. 9. kubectl run) oraz widok z dashbordu gdzie widać nasz odpalony kontener tylko w PODach (sc 10. Dashboard ngx)
+3. Logi utworzonego POD-a
+
+Część 4.
+1. Plik test.yml (sc 11. yml)
+2. Utworzenie 4 replik pozwala kuberetesowi stworzyc 4 instancji w klastrze, instancje te są gotowe do uzycia bez dodatkowej konfiguracji
+3. Za pomoc polecenia kubectl apply -f test.yml możemy wdrążyć aplikacje na podstawie pliku yml. Po wykonaniu wdrążenia widzimy poprawny rezultat. (sc 12. deployment yml) (sc 13. expose )
+

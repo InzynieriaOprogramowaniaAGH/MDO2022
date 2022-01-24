@@ -1,0 +1,5 @@
+FROM buapp:latest
+
+WORKDIR deltachat-core-rust
+
+cargo test --all
