@@ -7,11 +7,14 @@ Imię i nazwisko: Julia Żychowska, kierunek: Informatyka Stosowana (NS), nr. in
 ### Zestawienie platformy Kubernetes
   - Upewnij się, że kontener jest dostępny
   - Zainstaluj wymagania wstępne dla środowiska Minikube
-  
-      Zainstalowałam kind poleceniem:
-      ```curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.11.1/kind-linux-amd64```
-      
-      ![image](https://user-images.githubusercontent.com/28841971/149644855-984d41b4-b12e-40ed-a28c-2ecf25a263f3.png)
+     
+     Po użyciu polecenia ```minikube start```, musiałam dorobić odpowiednie wymagania:
+       - zmienić liczbę rdzeni procesora w ustawieniach na wirtualnej maszynie z 1 na 2,
+       
+         ![image](https://user-images.githubusercontent.com/28841971/150859325-4a765f70-e650-4522-8fb3-0f3a1c570d97.png)
+          
+       - dodać użytkownika do grupy docker poleceniem ```sudo usermod -aG docker ŞUSER && newgrp docker``` w terminalu
+       - oraz zatrzymać docker service (```sudo service docker stop```) skasować pliki w val/lib/docker (```sudo rm -rf /var/lib/docker```) i uruchomić na nowo docker service (```sudo service docker start```)
       
   - Zainstaluj minikube i kubectl
       Do zainstalowania minikube użyłam następujących poleceń:    
@@ -20,36 +23,20 @@ Imię i nazwisko: Julia Żychowska, kierunek: Informatyka Stosowana (NS), nr. in
     
       ![image](https://user-images.githubusercontent.com/28841971/149644035-464e23ca-c7b2-45c6-a277-a336bf73eb31.png)
     
-      Następnie uruchomiłam minikube poleceniem ```minikube start```
+      Następnie uruchomiłam minikube poleceniem ```minikube start``` po wykonaniu wcześniejszych wymagań.
     
-      ![image](https://user-images.githubusercontent.com/28841971/149644709-e1b55af8-e1ea-4ffa-a1be-f32cac5dccff.png)
+      ![image](https://user-images.githubusercontent.com/28841971/150860492-452b69c8-5d58-4fe7-9569-9df81caf548d.png)
     
-      Do zainstalowania kubectl użyłam następujących poleceń:
+      Minikube może pobrać odpowiednią wersję kubectl i można z niej korzystać przez dodanie minikube przed kubectl. Sprawdziłam w ten sposób dostęp do nowego klastera poleceniem ```minikube kubectl -- get po -A```. W ramach ułatwienia ustawiłam na alias na kubectl = minikube kubectl poleceniem ```alias kubectl="minikube kubectl --"``` 
+      
+      ![image](https://user-images.githubusercontent.com/28841971/150861743-3216c550-ece4-43ea-8cf4-8dc89cfb3440.png)
+      
+      Mimo zrobienia tego i tak nie chciały mi działać komenty kubectl'a więc zainstalowałam kubectl poleceniami:
       ```curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"```
-      ```curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"```
-      ```echo "$(<kubectl.sha256)  kubectl" | sha256sum --check // sprawdzenie poprawności```
+      
       ```sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl```
-      ```kubectl version --client // sprawdziłam wersje```
-      ```sudo apt-get update```
-      ```sudo apt-get install -y apt-transport-https ca-certificates curl```
-      ```sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg```
-      ```echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee/etc/apt/sources.list.d/kubernetes.list```
-      ```sudo apt-get update```
-      ```sudo apt-get install -y kubectl```
       
-      ![image](https://user-images.githubusercontent.com/28841971/149643799-cca721fe-6b74-413f-baba-1734b2f9f1b4.png)
-      ![image](https://user-images.githubusercontent.com/28841971/149643805-89f3f114-2c57-46c4-a169-d6e9d2ecb9b7.png)
-      ![image](https://user-images.githubusercontent.com/28841971/149643807-24010553-1973-4008-b539-5e3d96569e58.png)
-      ![image](https://user-images.githubusercontent.com/28841971/149643812-78688ed5-bdc0-485b-b8f4-1df43c619fa4.png)
-      ![image](https://user-images.githubusercontent.com/28841971/149643828-672abeb3-5a4d-49b4-8950-e55723427c39.png)
-      
-      Na koniec sprawdziłam poprawność konfiguracji poleceniem: ```kubectl cluster-info```
-      
-      ![image](https://user-images.githubusercontent.com/28841971/149644765-28260580-be39-4910-a57f-03de1f236ece.png)
-      
-      Po przejściu na adres url wyświetliło się:
-      
-      ![image](https://user-images.githubusercontent.com/28841971/149644869-c3029fd6-bf2a-406d-99b2-d45da2ab2e2e.png)
+      ![image](https://user-images.githubusercontent.com/28841971/150866351-5481cdeb-45f3-4d79-a973-d5d6579015d2.png)
     
   - Przedstaw uruchomione oprogramowanie wstępne (i usługi)
       - Platforma konteneryzacji
@@ -57,62 +44,109 @@ Imię i nazwisko: Julia Żychowska, kierunek: Informatyka Stosowana (NS), nr. in
       - Stan Dockera
 
         ```kubectl get deployments```
-        
-        
         ```kubectl get pods```
         ```kubectl get events```
       
-        ![image](https://user-images.githubusercontent.com/28841971/149645240-ec30c979-712e-4c95-91bb-6f0c742d1090.png)
-        ![image](https://user-images.githubusercontent.com/28841971/149645248-d28c9849-4611-4a5d-8784-b908457eb8a1.png)
+        ![image](https://user-images.githubusercontent.com/28841971/150867104-a6fa58bd-ca86-47d5-afc4-def0ade39763.png)
         
         ```kubectl config view```
         
-        ![image](https://user-images.githubusercontent.com/28841971/149645264-2780267e-f0dc-46b5-8a64-3f6c212c4c3e.png)
+        ![image](https://user-images.githubusercontent.com/28841971/150867164-c6833ccf-6d41-4f0b-9bbb-62f15eb09818.png)
 
-        ![image](https://user-images.githubusercontent.com/28841971/149645304-16505764-b9a0-44c8-87b0-eaf1e72a7cc6.png)
-
-        ![image](https://user-images.githubusercontent.com/28841971/149645306-e2ad94c2-1f51-45a4-84ad-304a32fe0715.png)
+        ![image](https://user-images.githubusercontent.com/28841971/150867193-a56e054b-0a9c-422c-b9f0-3cace964c8ea.png)
       
         ```kubectl get services```
       
-        ![image](https://user-images.githubusercontent.com/28841971/149645350-c42b9d19-8923-4929-898b-5be8d126ff83.png)
-      
         ```kubectl api-resources```
         
-        ![2](https://user-images.githubusercontent.com/28841971/150245431-8d7ac2e4-6e8d-41db-81c0-08f3a7f63a42.png)
-        ![3](https://user-images.githubusercontent.com/28841971/150245442-cd7feb2d-4996-4fd5-aac3-8acf4c8453d4.png)
-
+        ![image](https://user-images.githubusercontent.com/28841971/150867351-d437471b-c789-48da-a74f-20b2764594ba.png)
+        ![image](https://user-images.githubusercontent.com/28841971/150867403-2685ce4e-4b20-4a15-86f6-426490c482fe.png)
+        ![image](https://user-images.githubusercontent.com/28841971/150867455-7413e9a4-d79a-45a7-8194-a92c274b4e20.png)
+        ![image](https://user-images.githubusercontent.com/28841971/150867500-a77c53d9-5087-4973-a00e-57eb5cb00b11.png)
+        ![image](https://user-images.githubusercontent.com/28841971/150867531-8ea6f691-24de-411b-8d13-39ea415e5e39.png)
+        ![image](https://user-images.githubusercontent.com/28841971/150867561-e3c1c63e-4f35-48e3-a361-16d0b4e0be03.png)
 
 ### Stan Minikube
   - Uruchom Minikube Dashboard
     
-      Następnie uruchomiłam ```minikube dashboard --url```, po przejściu na stronę:
+      Następnie uruchomiłam ```minikube dashboard```
       
-      ![image](https://user-images.githubusercontent.com/28841971/149644992-188e5cb2-7f81-489e-970c-364d7178042f.png)
+      ![image](https://user-images.githubusercontent.com/28841971/150863889-563f2a39-5cee-4498-a95e-18ed8ff4d245.png)
+      
+      po przejściu na stronę:
+      
+      ![image](https://user-images.githubusercontent.com/28841971/150864308-6b288037-3c99-46d2-a62f-e06148ff7d08.png)
     
   - Wyświetl działające usługi (k8s) i wdrożenia
   
-    ![1](https://user-images.githubusercontent.com/28841971/150243842-bcbbb1ec-f929-41e0-a7b6-96d58063f802.png)
+    Usługi:
     
-  
+    ![image](https://user-images.githubusercontent.com/28841971/150864693-e07779a5-de45-424d-b72e-0ce922294946.png)
+    
+    Wdrożenia:
+    
+    ![image](https://user-images.githubusercontent.com/28841971/150864386-89472f6d-374d-4071-a74b-dfd857de049b.png)
+    
   - Wyświetl dostępne wdrożenia (stan "przed")
-  
-    ![image](https://user-images.githubusercontent.com/28841971/149645383-ebdccbf0-804c-4059-89c0-316071e2e82c.png)
-    ![image](https://user-images.githubusercontent.com/28841971/149645388-7a66f10c-f903-4653-b3bc-9fefbb07934b.png)
-
+    
+    Wyświetliłam dostępne wdrożenia jeszcze z terminala poleceniem ```kubectl get deployments```
+    ![image](https://user-images.githubusercontent.com/28841971/150866811-760aedb1-2450-4918-b8a7-b2134ace932b.png)
 
 ### Wdrożenie kontenera via k8s
   - Wdróż przykładowy deployment "hello k8s": k8s.gcr.io/echoserver
-  - Użyj kubectl run <ctr> --image=<DOCKER_ID>/<IMG> --port=<port> --labels app=ctr
   
-    ![4](https://user-images.githubusercontent.com/28841971/150245603-245d78d3-bf81-4b15-8239-0f85bf118b6b.png)
+    Poleceniem ``` kubectl create deployment hello-k8s --image=k8s.gcr.io/echoserver``` wzdrożyłam deployment hello-k8s 
+    
+    ![image](https://user-images.githubusercontent.com/28841971/150868284-81f5fa22-7c23-448b-a24a-eca3d1eacca3.png)
+    
+  - Użyj ``` kubectl run <ctr> --image=<DOCKER_ID>/<IMG> --port=<port> --labels app=ctr```
   
+    Poleceniem ```kubectl run ctr --image=k8s.gcr.io/echoserver --port=8080 --labels app=ctr``` uruchomiłam obraz na porcie 8080
+  
+    ![image](https://user-images.githubusercontent.com/28841971/150868995-f15df2be-af6e-4006-91c8-85dc4213cd2e.png)
+
   - Przekieruj porty
+  
+    Poleceniem ```kubectl port-forward service/hello-k8s 7080:8080``` ustawiłam na port 7080. Zmiana się nie udała uważam, że przez to, ze wdrożenie nie wystartowało.
+  
+    ![image](https://user-images.githubusercontent.com/28841971/150870869-1a95b058-4b0e-448f-8952-f1f4ae651a49.png)
+  
   - Wykaż że wdrożenie nastąpiło
+  
+    Wdorżenie się pojawiło, ale świeci na czerwono, w usługach najpierw sie pojawiła nowa usługa od hello-k8s, ale gdy skasowałam bo mimo to nie odpaliło się wdrożenie to przy ponownej próbie już nie utworzyło usługi.
+    ![image](https://user-images.githubusercontent.com/28841971/150870804-ff39e099-63ea-4c8d-9428-5398380539fe.png)
+    ![image](https://user-images.githubusercontent.com/28841971/150871109-c35cf80d-7c12-40b6-a75d-424be7fb6793.png)
+  
   - W przypadku "niemożliwych" wdrożeń, opisz napotkane ograniczenia
+  
+    Z obrazka na którym widać wdrożenia widać ze pods jest 0/1. W podsach pojawiły mi się dwie pozycje, ale również swiecą na czerwono. 
+  
+    ![image](https://user-images.githubusercontent.com/28841971/150871412-70d2958e-02fa-4656-8998-46aa20e32517.png)
 
 ### Deployment
   - Utwórz plik YAML z "deploymentem" k8s
+  
+  Poleceniem ```kubectl create deployment k8s --image=k8s.gcr.io/echoserver --dry-run=client -o yaml``` utworzyłam plik YAML z deploymentem k8s i skopiowałam do notatnika o nazwie k8s.yml.
+  
+  ![image](https://user-images.githubusercontent.com/28841971/150872158-12d87a7d-5f10-498e-b251-2eb1be2f1892.png)
+  ![image](https://user-images.githubusercontent.com/28841971/150871986-38303c3a-1a06-450c-a8bc-624b2448b39c.png)
+  ![image](https://user-images.githubusercontent.com/28841971/150873146-ae630c82-b55d-4ac1-9245-0fe571dc8d4c.png)
+ 
   - Zestaw 4 repliki, opisz zalety i wady takiej liczby
-  - Zaaplikuj wdrożenie via kubectl apply -f plik.yml
+
+    Plik k8s.yml edytowałam i zmieniłam repliki z 1 na 4.
+    
+    ![image](https://user-images.githubusercontent.com/28841971/150873338-1a16c061-ca1f-45a0-95f4-f04e15c67e8c.png)
+    
+  - Zaaplikuj wdrożenie via ```kubectl apply -f plik.yml```
+
+    Poleceniem wyż☺ej tylko ustawiając plik.yml na k8s.yml zaaplikowałam wdrożenie. Początkowo wychodził mi błąd przez przypadkowy tabulator przed nazwą replik
+    
+    ![image](https://user-images.githubusercontent.com/28841971/150874040-d466965d-7601-4fae-870b-fd51d2259cad.png)
+  
   - Wykaż przeprowadzony deployment
+  
+    Pojawił się ale niestety tez świeci na czerwono. 
+    
+    ![image](https://user-images.githubusercontent.com/28841971/150874118-d980ad5a-097a-4c27-8845-6bb7707b80b7.png)
+
