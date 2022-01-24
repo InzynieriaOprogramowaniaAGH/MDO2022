@@ -159,6 +159,30 @@ Odpowiadając na pytanie, w naszym przypadku zaletami 4 replik jest możliwość
 ### Wdrożenie
 Alternatywnie do zadania wyżej: określenie zależności od dostawcy chmurowego
 * Określ poziom zależności wdrożenia od środowiska chmurowego
+
+-Na stronie Azure można m.in. wyczytać, że istnieje kilka kategorii rozwiązań chmurowych w zależności od wymagań, a każda dostarcza sprecyzowane możliwości, aby m.in. ułatwić deweloperom szybkie tworzenie aplikacji bez przejmowania się konfigurowaniem niezbędnej podstawowej infrastruktury serwerów, magazynu, sieci i baz danych ani zarządzaniem nią, ponieważ dostawca chmury wyręcza Cię w konfigurowaniu, planowaniu wydajności i zarządzaniu serwerami.
+
 * Zweryfikuj dostępność studenckiego konta Azure i **zapoznaj się z cennikiem**
+
+![image](https://user-images.githubusercontent.com/80592460/150843042-9cc55c87-5571-4e2e-9e0b-20e347dddd53.png)
+
 * Przeprowadź próbne wdrożenie obrazu w ramach dostępnych kredytów
+
+![image](https://user-images.githubusercontent.com/80592460/150842992-9657d0a3-0e4d-4702-a2d1-3bc09804d291.png)
+
+![image](https://user-images.githubusercontent.com/80592460/150842910-ca88033a-03e7-469f-88ae-44f7748f119e.png)
+
+![image](https://user-images.githubusercontent.com/80592460/150843645-01d4080e-1b95-4fcb-a16b-f5a335ac9b25.png)
+
+![image](https://user-images.githubusercontent.com/80592460/150844306-08ff54c5-ae5c-4ce4-a941-445f465f5316.png)
+
+![image](https://user-images.githubusercontent.com/80592460/150844493-cc7c50a1-2957-4906-9115-da392fb70736.png)
+
+![image](https://user-images.githubusercontent.com/80592460/150844534-563fcf94-63d6-4cbd-a599-ef674f2a4363.png)
+
 * Zatrzymaj i usuń kontener, i wstrzymaj storage space, aby nie generować rachunków na pustych przebiegach
+
+![image](https://user-images.githubusercontent.com/80592460/150845160-ed661a24-057d-43b8-9839-407a48ceba84.png)
+
+![image](https://user-images.githubusercontent.com/80592460/150845221-a1a3ce52-a467-4bcb-a8ac-6c2291a452d9.png)
+
