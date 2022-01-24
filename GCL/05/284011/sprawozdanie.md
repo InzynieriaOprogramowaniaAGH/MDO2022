@@ -39,6 +39,15 @@
 *Zdjecie7
 
 W tym momencie okazało się, że moja VM jest za słaba, minimalna ilość CPU wynosi 2, więc musiałem to poprawić.
+Potem wyskoczył błąd, że VMD nie jest włączone, jak się okazało w biosie miałem to wyłączone.
+Niestety po tym nadal nie mogłem włączyć Virualizacji, skorzystałem z komendy:
+
+    "VBoxManage modifyvm "Nazwa serwera" --nested-hw-virt on" ->po tym w ogóle nie chciała włączyć mi sie wirtualna maszyna, pomogło wyłączenie hypervisora
+    "bcdedit.exe /set hypervisorlaunchtype off"
+
+    Niestty po użyciu minikube start process zatrzymuje się na etapie "Creating virtualbox VM..." i po wielu próbach nie udało mi się ruszyć dalej...
+
+*Zdjecie_error
 
     b) Otwarte porty
     c) Stan Dockera
@@ -70,5 +79,40 @@ W tym momencie okazało się, że moja VM jest za słaba, minimalna ilość CPU 
 
  - Określ poziom zależności wdrożenia od środowiska chmurowego
  - Zweryfikuj dostępność studenckiego konta Azure i zapoznaj się z cennikiem
+
+*Zdjecie9
+*Zdjecie10
+*Zdjecie11
+
  - Przeprowadź próbne wdrożenie obrazu w ramach dostępnych kredytów
+
+    Stworzyłem maszynę wirtualną 
+
+*Zdjecie12
+
+    Przypołczeniu za pomoćą RMD dostałem poniższy błąd
+
+*Zdjęcie13
+*Zdjecie14
+*Zdjecie15
+*Zdjecie16
+
+    Dodałem reguły zabezpieczeń
+
+*Zdjecie17
+
+    Trochę zmieniłem plany i zalogowalem się za pomocą SSH
+
+*Zdjecie18
+
+    Na stworzonej VM zainstalowałem Dockera
+
+*Zdjecie19
+*Zdjecie20
+*Zdjecie21
+
  - Zatrzymaj i usuń kontener, i wstrzymaj storage space, aby nie generować rachunków na pustych przebiegach
+
+    Usunąłem grupę zasobów
+
+*Zdjecie22
