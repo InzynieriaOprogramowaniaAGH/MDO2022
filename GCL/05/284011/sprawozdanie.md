@@ -3,11 +3,43 @@
 1. Zestawienie platformy Kubernetes
 
  - Upewnij się, że kontener jest dostępny
+
+ *Zdjecie1
+ *Zdjecie2
+ *Zdjecie3
+ 
  - Zainstaluj wymagania wstępne dla środowiska Minikube
+
+    "sudo apt update -y"
+    "sudo apt upgrade -y"
+    "sudo apt install -y curl wget apt-transport-https" -> Install Minikube dependencies
+    "wget https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64" -> Download Minikube Binary
+
+
  - Zainstaluj minikube i kubectl
+
+    "sudo cp minikube-linux-amd64 /usr/local/bin/minikube"
+    "sudo chmod +x /usr/local/bin/minikube"
+    "minikube version" -> minicube version
+
+*Zdjecie4
+
+    "curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl"
+    "chmod +x kubectl"
+    "sudo mv kubectl /usr/local/bin/"
+    "kubectl version -o yaml"
+
+*Zdjecie5
+
  - Przedstaw uruchomione oprogramowanie wstępne (i usługi)
 
     a) Platforma konteneryzacji
+
+*Zdjecie6
+*Zdjecie7
+
+W tym momencie okazało się, że moja VM jest za słaba, minimalna ilość CPU wynosi 2, więc musiałem to poprawić.
+
     b) Otwarte porty
     c) Stan Dockera
 
