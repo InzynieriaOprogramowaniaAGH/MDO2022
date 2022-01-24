@@ -12,37 +12,49 @@ Na potrzeby wykonania laboratorium w środowisku WSL2, będziemy potrzebowali za
     
 3. Zainstaluj minikube i kubectl 
     - Wykonaj polecenie `kubectl version` 
+    - 
     ![screenshots/2-kubectl-version.png](screenshots/2-kubectl-version.png)
 
 4. Przedstaw uruchomione oprogramowanie wstępne (i usługi)
     - Platforma konteneryzacji
+    
     ![screenshots/3-kubectl-get-nodes.png](screenshots/3-kubectl-get-nodes.png)
+    
     - Otwarte porty
+    
     ![screenshots/4-kubectl-config-view.png](screenshots/4-kubectl-config-view.png)
     ![screenshots/5-sudo-netstat-tulpa.png](screenshots/5-sudo-netstat-tulpa.png)
+    
     - Stan Dockera
+    
     ![screenshots/6-docker-ps.png](screenshots/6-docker-ps.png)
     ![screenshots/6-docker-ps.png](screenshots/6-docker-ps2.png)
     ![screenshots/6-docker-ps.png](screenshots/6-docker-ps3.png)
+    
 ### Stan Minikube
 1. Uruchom Minikube Dashboard
     - Wyświetl obiekty k8s używając `kubectl get pods` [Zamiast Dashboarda Minikube]
 2. Wyświetl działające usługi (k8s) i wdrożenia
     - Wykorzystaj do tego polecenie `kubectl get services`
+    
     ![screenshots/7-kubectl-get-services.png](screenshots/7-kubectl-get-services.png)
     
 ### Wdrożenie kontenera via k8s
 1. Wdróż przykładowy deployment "hello k8s": k8s.gcr.io/echoserver. 
     - Użyj polecenia: `kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.4`
     - Następnie użyj polecenia: `kubectl run hello-node --image=k8s.gcr.io/echoserver:1.4 --port=80 --labels app=hello-node` 
+    
     ![screenshots/8-kubectl-create-and-run.png](screenshots/8-kubectl-create-and-run.png)
+    
 3. Przekieruj porty 
     - Porty został przekierowane podczas w/w polecenia `run` z dodaną flagą `--port`
     
 4. Wykaż że wdrożenie nastąpiło
     - Użyj polecenia `get pods` lub `describe` aby wyświetlić szczegółowy opis danego obiektu : `kubectl describe pod hello-node` 
+    
     ![screenshots/9-kubectl-get-pods.png](screenshots/9-kubectl-get-pods.png)
     ![screenshots/10-kubectl-describe.png](screenshots/10-kubectl-describe.png)
+    
 5. W przypadku "niemożliwych" wdrożeń, opisz napotkane ograniczenia
     - Najbardziej oczywistymi ograniczeniami we wszystkich wdrożeniach mogą okazać się dostępne zasoby w środowisku produkcyjnym z czym wiąże się dość popularny problem,
     w którym młody devops używając rozwiązań chmurowych, nie zbadał zużytych zasobów i musiał zapłacić gigatnyczną kwotę dostawcy usługi. https://niebezpiecznik.pl/post/ile-kosztuje-niewiedza-w-chmurze-analiza-5-niepotrzebnie-wysokich-rachunkow/
@@ -50,7 +62,9 @@ Na potrzeby wykonania laboratorium w środowisku WSL2, będziemy potrzebowali za
 1. Utwórz plik YAML z "deploymentem" k8s
     - Stwórz plik deployment.yaml. Polecam wykorzystać do tego edytor VS Code. Komenda w konsoli `code .` i edytować plik yaml w nim
 2. Zestaw 4 repliki, opisz zalety i wady takiej liczby
+
     ![screenshots/11-papa-yaml.png](screenshots/11-papa-yaml.png)
+    
     Zalety:
      - Zdecydowana łatwość we wdrożeniu oraz utrzymaniu
      - Proste i szybkie "ewentualne" zmiany ilości replik
@@ -60,10 +74,13 @@ Na potrzeby wykonania laboratorium w środowisku WSL2, będziemy potrzebowali za
     - Może dojść do niepotrzebnego zużycia zasobów w przypadku niewielkiego ruchu
 
 3. Zaaplikuj wdrożenie via kubectl apply -f plik.yml
+
     ![screenshots/12-papa-deployment.png](screenshots/12-papa-deployment.png)
     ![screenshots/13-kubectl-get-deployments.png](screenshots/13-kubectl-get-deployments.png)
+    
 4. Wykaż przeprowadzony deployment
     - Konetery są uruchomione
+    
     ![screenshots/14-docker-ps.png](screenshots/14-docker-ps.png)
 
 # Zajęcia 6 : Zależność ciągłej integracji od komponentów stron trzecich
