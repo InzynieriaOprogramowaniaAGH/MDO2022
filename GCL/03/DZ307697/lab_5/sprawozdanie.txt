@@ -1,0 +1,31 @@
+1. Zestawienie platformy Kubernetes
+    - Zainstaluj minikube i kubectl - 1_kubernetes_setup_1.png, 2_kubernetes_setup_2.png
+    - Przedstaw uruchomione oprogramowanie wstępne (i usługi) - 3_kubernetes_setup_3.png, 4_kubernetes_setup_4.png, 5_kubernetes_setup_5.png
+
+2. Stan Minikube
+    - Uruchom Minikube Dashboard - 6_minikube_dashboard.png
+    - Wyświetl działające usługi (k8s) i wdrożenia - 7_minikube_services.png
+    - Wyświetl dostępne wdrożenia (stan "przed") - 8_minikube_deployments.png
+
+3. Wdrożenie kontenera via k8s
+    - Wdróż przykładowy deployment "hello k8s": k8s.gcr.io/echoserver - 9_k8s_container_start.png
+    - Wykaż że wdrożenie nastąpiło - 10_k8s_container_validation.png
+
+4. Deployment
+    - Utwórz plik YAML z "deploymentem" k8s - 11_deployment_setup.png
+    - Zestaw 4 repliki, opisz zalety i wady takiej liczby - liczba replik większa od 1 jest zawsze dobra ponieważ, gdy jedna przestanie
+    działać ruch zostanie przekierowany na inną, w naszym przypadku wybrałbym 2 repliki ponieważ wszystkie znajdują się na tym samym node'dzie
+    i jeżeli node zostałby uszkodzony to nie ma znaczenia czy ich będzie 2 czy 4 i tak wszystkie przestaną działać, a tak moglibyśmy tym 2
+    przydzielić większe zasoby które zostałby zwolnione przez redukcję runtime'u pozostałych 2, mając 2 repliki jesteśmy zabezpieczni na wypadek
+    gdy problem wystąpi w aplikacji uruchamianej w ramach repliki
+    - Wykaż przeprowadzony deployment - 12_deployment_validation_1.png, 13_deployment_validation_2.png, 14_deployment_validation_3.png,
+    15_deployment_service_1.png, 16_deployment_setup_2.png
+
+5. Bezpieczeństwo
+    - z racji tego, że aplikacja, którą użyłem wystawia na zewnątrz serwer http należy plinować czy nie występują podatności w
+    runtime node'a, który został użyty oraz pakietu express(również jego podpakietów) przy pomocy którego tworzymy serwer
+    - framework użyty do testowania "jest", nie musi być zawsze aktualizowany ponieważ nie jest on wystawiony na zewnątrz, jest
+    użyty tylko w kroku testowania na pipeline
+
+6. Diagram wdrożenia
+    - diagram.png
