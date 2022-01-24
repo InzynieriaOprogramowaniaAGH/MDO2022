@@ -1,5 +1,5 @@
 # Zajęcia 05
-
+ 
 ### Zestawienie platformy Kubernetes
 
 * Upewnij się, że kontener jest dostępny
