@@ -113,3 +113,37 @@ Liczba replik zależy głównie od tego jak wiele instancji jednej aplikacji dzi
 
 Odpowiadając na pytanie, w naszym przypadku zaletami 4 replik jest możliwość przekierowania na inną w razie awarii lub stabilną pracę w przypadku zwiększenia skali zasięgu naszej aplikacji. Wadą jest większe zużycie zasobów.
 
+## Zajęcia 06 : zależność ciągłej integracji od komponentów stron trzecich
+
+### Inwentaryzacja
+* Zdefiniuj w ramach stworzonego Dockerfile'a zależności platformowe
+	-node (latest)
+	
+ * Oprogramowanie, które doinstalowujesz aby uruchomić program
+	-Docker
+	
+ * W razie braku zależności (np. obraz ```node``` i aplikacje wymagająca tylko ```node```), "zależnością" jest sam obraz - tak właśnie jest teraz
+ 
+* Określ okoliczności, w których uzasadnione jest przebudowywanie i aktualizacja obrazu po wydaniu nowej wersji którejś z zależności
+	-W przypadku aktualizacji zabezpieczeń, które dotyczą naszego obrazu
+	-Kiedy aktualizacja zawiera takie nowości i usprawnienia, których będziesz aktualnie lub w najbliższej przyszłości potrzebował
+	
+ * Czy należy to robić "zawsze"?
+ 	-Należy dobrze zapoznać się z dokumentacją nowej wersji czy pewne wymagane w naszej aplikacji funkcje nie zostały wycofane
+	-Jeżeli nowe funkcjonalności nie przydadzą się w naszej aplikacji, to aktualizacja będzie zbędna, w żaden sposób nie poprawi jakości ani bezpieczeństwa, a może się okazać, że nawet spowoduje neistabilne działanie aplikacji.
+	
+ * Jakie są przesłanki (i jak je ustalić) wskazujące na konieczność aktualizacji
+	-Problemy z bezpieczeństwem (przeprowadzanie skanów bezpieczeństwa aplikacji, istnieją różne narzędzia do automatycznych skanów i testów)
+	-Chęć rozwinięcia aplikacji o konkretne funkcjonalności
+	-Poprawa jakości lub szybkości działania
+	
+ * Jakie jest ryzyko aktualizowania/nieaktualizowania (im dokładniejszy przykład, tym lepiej)
+* Pytanie pomocnicze: czy obraz Fedory/Ubuntu na dockerhubie jest aktualizowany dla każdej nowej wersji pakietu wchodzącego w jego skład? Dlaczego tak/nie?
+	-Nie. Tak jak w powyższych przykładach, są aktualizowane tylko wtedy gdy jest ku temu wyraźna przesłanka :)
+
+### Wdrożenie
+Alternatywnie do zadania wyżej: określenie zależności od dostawcy chmurowego
+* Określ poziom zależności wdrożenia od środowiska chmurowego
+* Zweryfikuj dostępność studenckiego konta Azure i **zapoznaj się z cennikiem**
+* Przeprowadź próbne wdrożenie obrazu w ramach dostępnych kredytów
+* Zatrzymaj i usuń kontener, i wstrzymaj storage space, aby nie generować rachunków na pustych przebiegach
