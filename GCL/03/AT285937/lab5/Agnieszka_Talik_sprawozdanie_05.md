@@ -113,3 +113,76 @@ Liczba replik zależy głównie od tego jak wiele instancji jednej aplikacji dzi
 
 Odpowiadając na pytanie, w naszym przypadku zaletami 4 replik jest możliwość przekierowania na inną w razie awarii lub stabilną pracę w przypadku zwiększenia skali zasięgu naszej aplikacji. Wadą jest większe zużycie zasobów.
 
+## Zajęcia 06 : zależność ciągłej integracji od komponentów stron trzecich
+
+### Inwentaryzacja
+* Zdefiniuj w ramach stworzonego Dockerfile'a zależności platformowe
+
+	-node (latest)
+	
+ * Oprogramowanie, które doinstalowujesz aby uruchomić program
+ 
+	-Docker
+	
+	
+ * W razie braku zależności (np. obraz ```node``` i aplikacje wymagająca tylko ```node```), "zależnością" jest sam obraz - tak właśnie jest teraz
+ 
+ 
+* Określ okoliczności, w których uzasadnione jest przebudowywanie i aktualizacja obrazu po wydaniu nowej wersji którejś z zależności
+
+	-W przypadku aktualizacji zabezpieczeń, które dotyczą naszego obrazu
+	
+	-Kiedy aktualizacja zawiera takie nowości i usprawnienia, których będziesz aktualnie lub w najbliższej przyszłości potrzebował
+	
+	
+ * Czy należy to robić "zawsze"?
+ 
+ 	-Należy dobrze zapoznać się z dokumentacją nowej wersji czy pewne wymagane w naszej aplikacji funkcje nie zostały wycofane
+	
+	-Jeżeli nowe funkcjonalności nie przydadzą się w naszej aplikacji, to aktualizacja będzie zbędna, w żaden sposób nie poprawi jakości ani bezpieczeństwa, a może się okazać, że nawet spowoduje neistabilne działanie aplikacji.
+	
+	
+ * Jakie są przesłanki (i jak je ustalić) wskazujące na konieczność aktualizacji
+ 
+	-Problemy z bezpieczeństwem (przeprowadzanie skanów bezpieczeństwa aplikacji, istnieją różne narzędzia do automatycznych skanów i testów)
+	
+	-Chęć rozwinięcia aplikacji o konkretne funkcjonalności
+	
+	-Poprawa jakości lub szybkości działania
+	
+	
+ * Jakie jest ryzyko aktualizowania/nieaktualizowania (im dokładniejszy przykład, tym lepiej)
+* Pytanie pomocnicze: czy obraz Fedory/Ubuntu na dockerhubie jest aktualizowany dla każdej nowej wersji pakietu wchodzącego w jego skład? Dlaczego tak/nie?
+
+	-Nie. Tak jak w powyższych przykładach, są aktualizowane tylko wtedy gdy jest ku temu wyraźna przesłanka :)
+
+### Wdrożenie
+Alternatywnie do zadania wyżej: określenie zależności od dostawcy chmurowego
+* Określ poziom zależności wdrożenia od środowiska chmurowego
+
+-Na stronie Azure można m.in. wyczytać, że istnieje kilka kategorii rozwiązań chmurowych w zależności od wymagań, a każda dostarcza sprecyzowane możliwości, aby m.in. ułatwić deweloperom szybkie tworzenie aplikacji bez przejmowania się konfigurowaniem niezbędnej podstawowej infrastruktury serwerów, magazynu, sieci i baz danych ani zarządzaniem nią, ponieważ dostawca chmury wyręcza Cię w konfigurowaniu, planowaniu wydajności i zarządzaniu serwerami.
+
+* Zweryfikuj dostępność studenckiego konta Azure i **zapoznaj się z cennikiem**
+
+![image](https://user-images.githubusercontent.com/80592460/150843042-9cc55c87-5571-4e2e-9e0b-20e347dddd53.png)
+
+* Przeprowadź próbne wdrożenie obrazu w ramach dostępnych kredytów
+
+![image](https://user-images.githubusercontent.com/80592460/150842992-9657d0a3-0e4d-4702-a2d1-3bc09804d291.png)
+
+![image](https://user-images.githubusercontent.com/80592460/150842910-ca88033a-03e7-469f-88ae-44f7748f119e.png)
+
+![image](https://user-images.githubusercontent.com/80592460/150843645-01d4080e-1b95-4fcb-a16b-f5a335ac9b25.png)
+
+![image](https://user-images.githubusercontent.com/80592460/150844306-08ff54c5-ae5c-4ce4-a941-445f465f5316.png)
+
+![image](https://user-images.githubusercontent.com/80592460/150844493-cc7c50a1-2957-4906-9115-da392fb70736.png)
+
+![image](https://user-images.githubusercontent.com/80592460/150844534-563fcf94-63d6-4cbd-a599-ef674f2a4363.png)
+
+* Zatrzymaj i usuń kontener, i wstrzymaj storage space, aby nie generować rachunków na pustych przebiegach
+
+![image](https://user-images.githubusercontent.com/80592460/150845160-ed661a24-057d-43b8-9839-407a48ceba84.png)
+
+![image](https://user-images.githubusercontent.com/80592460/150845221-a1a3ce52-a467-4bcb-a8ac-6c2291a452d9.png)
+
