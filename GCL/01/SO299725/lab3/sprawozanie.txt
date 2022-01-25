@@ -1,3 +1,5 @@
+(0.1) - nazwa screenu zawierającego treść do sprawozdania
+
 część 1
 1. Volumen: 
 $ docker volume create <nazwa> 
@@ -60,10 +62,23 @@ sudo ssh root@172.17.0.3 -p 22 -i ssh-keys
 
 
 część 3 
-(2.1)
-(2.2)
-
-nie udało się z pododu niewystarczającego miejscca na dysku, walczyłem i ustawiałem ale nic nie pomogło
-(2.3)
+1. Instalacja i uruchomienie obraz Dockera który eksponuje środowisko zagnieżdżone
+(3.1)
+2. Przygotowanie obraz blueocean na podstawie obrazu jenkinsa
+(3.2)
+3. Budowanie obrazu
+(3.3)
+4. Uruchownienie blueocean 
+(3.4)
+5. Logowanie i konfiguracja jenkinsa
+(3.6)
+6. Logowanie, stworzenie admina i instalacja wtyczek
+(3.5),(3.7),(3.8),(3.9)
+7. Pierwszy mikroprojekt jenkins
+(4.0),(4.1),(4.2)
+8. Drugi projekt jenkins
+(4.3)
+9. Trzeci projekt
+(4.4)
 
 
