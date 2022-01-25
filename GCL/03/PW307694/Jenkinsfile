@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'docker build -t irsapp .-f GCL/03/PW307694/Lab04/Dockerfile/Dockerfile-buapp'
+             }
+        }
+        stage('Test') {
+            steps {
+                sh 'docker build -t irsapp .-f GCL/03/PW307694/Lab04/Dockerfile/Dockerfile-test'
+            }
+        }
+       
+    }
+}
