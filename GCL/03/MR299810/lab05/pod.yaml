@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-minikube
+  labels:
+    app: hello-minikube
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: hello-minikube
+  template:
+    metadata:
+      labels:
+        app: hello-minikube
+    spec:
+      containers:
+        - name: hello-minikube
+          image: k8s.gcr.io/echoserver:1.4
+          ports:
+            - containerPort: 80
+      
