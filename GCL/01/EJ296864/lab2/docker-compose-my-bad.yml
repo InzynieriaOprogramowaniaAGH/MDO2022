@@ -1,0 +1,9 @@
+version: '3.3'
+services:
+    ubuntu-init-react-react-app:
+        container_name: docker-compose-ubuntu-init-react-react-app
+        image: ubuntu-init-react-react-app
+    ubuntu-init-react-react-app-test:
+        container_name: docker-compose-ubuntu-init-react-react-app-test
+        image: ubuntu-init-react-react-app-test
+

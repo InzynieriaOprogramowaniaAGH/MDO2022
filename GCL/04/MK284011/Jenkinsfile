@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'docker-compose -f GCL/04/MK284011/docker-compose.yml build --no-cache build'
+            }
+            post {
+                success {
+                    mail to: 'maciejkubel@gmail.com', subject: "Build passed", body: "Build - OK"
+                }
+                failure {
+                    mail to: 'maciejkubel@gmail.com', subject: "Build failed", body: "Build - OK"
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'docker-compose -f GCL/04/MK284011/docker-compose.yml build --no-cache test'
+            }
+            post {
+                success {
+                    mail to: 'maciejkubel@gmail.com', subject: "Test passed", body: "Build - OK"
+                }
+                failure {
+                    mail to: 'maciejkubel@gmail.com', subject: "Test failed", body: "Build - OK"
+                }
+            }
+        }
+    }
+}
