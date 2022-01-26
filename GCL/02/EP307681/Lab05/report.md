@@ -3,7 +3,7 @@
 
 > grep -E --color 'vmx|svm' /proc/cpuinfo
 
-![](./Screenshots/Picture1.png)
+![](./screenshots/Picture1.png)
 
 2. Zaktualizowanie pakietów systemowych.
 
@@ -31,7 +31,7 @@
 
 > kubectl version --client
 
-![](./Screenshots/Picture2.png)
+![](./screenshots/Picture2.png)
 
 8. Zainstalowanie Virtualboxa
 
@@ -47,36 +47,39 @@
 
 > sudo install minikube /usr/local/bin/
 
+![](./screenshots/Picture3.png)
 
 11. Uruchomienie Minikube i stworzenie klastra.
 
-![](./Screenshots/Picture3.png)
+![](./screenshots/Picture4.png)
 
 12. Utworzenie prostego wdrożenia na tym klastrze
 
 > kubectl create deployment hello-minikube --image=k8s.gcr.io/echoserver:1.10
 
+![](./screenshots/Picture5.png)
 
 13. Aby uzyskać dostęp do tego klastra, eksponujemy go jako serwis o nazwie hello-minikube na porcie 8080
 
 > kubectl expose deployment hello-minikube --type=NodePort --port=8080
 
+![](./screenshots/Picture6.png)
 
 14. Teraz oczekujemy aż Pod się uruchomi, możemy to sprawdzić na liscie 
 
 > kubectl get pod
 
-![](./Screenshots/Picture4.png)
+![](./screenshots/Picture7.png)
 
 15. Zdobywamy adres URL utworzonego serwisu.
 
 > minikube service hello-minikube --url
 
-![](./Screenshots/Picture5.png)
+![](./screenshots/Picture8.png)
 
 16. Aby zobaczyć detale, wchodzimy na uzyskany adres za pomocą przeglądarki.
 
-![](./Screenshots/Picture6.png)
+![](./screenshots/Picture9.png)
 
 17. Na koniec usuwamy serwis, wdrożenie, zatrzymujemy  i usuwamy klaster.
 
@@ -88,7 +91,7 @@
 
 > minikube delete
 
-![](./Screenshots/Picture7.png)
+![](./screenshots/Picture10.png)
 
 18. Laptop z 6 GB RAMu jednak nie wyrabia. Na szczęście okazało się, że na komputerze stacjonarnym jednak działa wirtualizacja w wirtualnej maszynie (naprawiła się w pewnym momencie sama z siebie) więc wracam pracować na nim.
 
@@ -98,9 +101,9 @@
 
 > minikube dashboard
 
-![](./Screenshots/Picture8.png)
+![](./screenshots/Picture11.png)
 
-![](./Screenshots/Picture9.png)
+![](./screenshots/Picture12.png)
 
 *Aby odzyskać władzę w konsoli po właczeniu minikube dashboard, należy wcisnąć Ctrl+C. Panel się wtedy wyłącza, więc aby do nie go wrócić należy ponownie użyć polecenia:
 
@@ -110,7 +113,7 @@
 
 > systemctl show docker
 
-![](./Screenshots/Picture10.png)
+![](./screenshots/Picture13.png)
 
 21. Wyświetlenie otwartych portów, z wcześniejszym pobraniem narzędzia do tego
 
@@ -118,21 +121,21 @@
 
 > netstat -l
 
-![](./Screenshots/Picture11.png)
+![](./screenshots/Picture14.png)
 
 22. Wyświetlenie stanu dockera
 
 > docker ps
 
-![](./Screenshots/Picture12.png)
+![](./screenshots/Picture15.png)
 
 23. Wyświetlenie usług i wdrożeń w minikube dashboard. Widać tutaj poprzednie wdrożenie.
 
-![](./Screenshots/Picture13.png)
+![](./screenshots/Picture16.png)
 
 24. Wyświetlenie listy podów w dashboard.
 
-![](./Screenshots/Picture14.png)
+![](./screenshots/Picture17.png)
 
 25. Kolejność tutaj jest trochę pomieszana, bo po pierwsze używałem dwóch różnych komputerów, a po drugie wykonywałem to jeszcze raz, tym razem bardziej podążając za treścią zadania.
 
@@ -140,7 +143,7 @@
 
 26. Stworzenie pliku YAML do „deploymentu” k8s
 
-![](./Screenshots/Picture15.png)
+![](./screenshots/Picture18.png)
 
 27. W tym deplymencie są 4 repliki. Zaletą takiego rozwiązania jest to, że gdy jedna się zepsuje to dalej mamy w zapasie działające pozostałe trzy. Wadą oczywiście jest większe zużycie zasbów a co za tym idzie większe koszty.
 
@@ -148,8 +151,8 @@
 
 > kubectl apply -f k8s-deployment.yml
 
-![](./Screenshots/Picture16.png)
+![](./screenshots/Picture19.png)
 
 29. W panelu minikube widać wrożenie i cztery pody. Ten jeden pod, który był wcześniej uszkodzony usunąłem.
 
-![](./Screenshots/Picture17.png)
+![](./screenshots/Picture20.png)
