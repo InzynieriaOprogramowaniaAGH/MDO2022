@@ -5,11 +5,11 @@
 
 2. Przechodzimy do Panelu Jenkinsa w przeglądarce.
 
-![](.screenshots/Picture1.png)
+![](./screenshots/Picture1.png)
 
 3. Klikamy utwórz nowy element i z listy wybieramy Pipeline.
 
-![](.screenshots/Picture2.png)
+![](./screenshots/Picture2.png)
 
 4. W polu Script wklejamy odpowiedni kod:
 
@@ -42,7 +42,7 @@ pipeline {
 }
 ```
 
-![](.screenshots/Picture3.png)
+![](./screenshots/Picture3.png)
 
 5. Zapisujemy i uruchamiamy projekt przyciskiem Build Now.
 
@@ -50,15 +50,15 @@ pipeline {
 
 7. Już za trzecim razem faza budowania i testów przebiegła pomyślnie, co możemy zauważyć w panelu.
 
-![](.screenshots/Picture4.png)
+![](./screenshots/Picture4.png)
 
 8. Tak prezentują się logi poprawie zbudowanego programu.
 
-![](.screenshots/Picture5.png)
+![](./screenshots/Picture5.png)
 
 9. A tak logi testów, które przebiegły pomyślnie.
 
-![](.screenshots/Picture6.png)
+![](./screenshots/Picture6.png)
 
 10. Do Jenkinsfile można dodać również sekcję „post” do każdego stage’a, która wysyła powiadomienia na maila o ich powodzeniu lub niepowodzeniu. 
 
@@ -72,10 +72,10 @@ post {
 
 11. Niestety poległem przy zakładaniu konta na serwisie sendgrid.com, który miał służyć jako serwer smtp. Prawdopodobnie poprzez wpisanie fejkowych danych konto nie zostało utworzone i pozostaje kontakt z supportem. Pomijam więc ten krok.
 
-![](.screenshots/Picture7.png)
+![](./screenshots/Picture7.png)
 
 12. Jeśli jednak udało mi się to zrobić, to w panelu Jenkinsa wszedł bym w Manage Jenkins, potem Configure System i na samym dole do zakładki E-mail Notification. 
 
 13. A tam wypełniłbym odpowienie pola jak na poniższym zrzucie ekranu.
 
-![](.screenshots/Picture8.png)
+![](./screenshots/Picture8.png)
