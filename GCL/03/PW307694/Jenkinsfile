@@ -4,12 +4,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -t app -f GCL/03/PW307694/Lab04/Dockerfile/Dockerfile-buapp . '
+                sh 'docker build -t app -f GCL/03/PW307694/Lab02/Dockerfile/Dockerfile-buapp . '
              }
         }
         stage('Test') {
             steps {
-                sh 'docker build -t test -f GCL/03/PW307694/Lab04/Dockerfile/Dockerfile-test . '
+                sh 'docker build -t test -f GCL/03/PW307694/Lab02/Dockerfile/Dockerfile-test . '
             }
         }
        
