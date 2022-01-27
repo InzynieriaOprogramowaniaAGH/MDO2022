@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-RUN apt y install git gcc gcc-c++ make automake wget meson ca-c* libgcrypt* glib2* utf8proc* openssl-devel ncurses* libgcrypt* glib2-devel utf8proc* openssl-devel ncurses*
+RUN apt-get -y install git gcc gcc-c++ make automake wget meson ca-c* libgcrypt* glib2* utf8proc* openssl-devel ncurses* libgcrypt* glib2-devel utf8proc* openssl-devel ncurses*
 
 RUN git clone http://github.com/irssi/irssi.git
 RUN cd irssi
