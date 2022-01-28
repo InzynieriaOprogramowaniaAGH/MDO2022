@@ -1,0 +1,78 @@
+Rafal Krumpholz - Zajęcia 05
+Zestawienie platformy Kubernetes
+
+    Upewnij się, że kontener jest dostępny
+    Zainstaluj wymagania wstępne dla środowiska Minikube
+    Zainstaluj minikube i kubectl
+	podazam zgodnie z instrukcjami na stronach oprogramowania
+	screen: 01minikube_install.png / 02kubectl.png
+	
+    Przedstaw uruchomione oprogramowanie wstępne (i usługi)
+    uwagi: nie jestem pewien, mam nadzieje ze wyswietlam to, o co chodzilo w sprawozdaniu
+        Platforma konteneryzacji
+		screen: 03platforma_konteneryzacji.png
+        Otwarte porty
+		screen: 04porty.png
+        Stan Dockera
+		screen: 05docker.png
+
+Stan Minikube
+
+    Uruchom Minikube Dashboard
+	nie nalezy uruchamiac uslugi z poziomu roota
+	screen: 06minikube_start.png / 07dashboard.png
+    Wyświetl działające usługi (k8s) i wdrożenia
+	screen: 08services.png
+    Wyświetl dostępne wdrożenia (stan "przed")
+	screen: 09deployments.png
+
+Wdrożenie kontenera via k8s
+
+    Wdróż przykładowy deployment "hello k8s": k8s.gcr.io/echoserver
+	screen: 10hello.png
+	zapomnialem zamienic tego screena, ostatecznie uzywem wersji bez 1 w nazwie oraz portu 8080. poza tym reszta pozostaje tak samo. stworzony deployment usunalem klikajac w jego nazwe w przegladarce (to rownoczesnie usunelo jego pody)
+    Użyj kubectl run <ctr> --image=<DOCKER_ID>/<IMG> --port=<port> --labels app=ctr
+	za port ostatecznie obralem 8080
+    Przekieruj porty
+	screen: 11strona.png
+    Wykaż że wdrożenie nastąpiło
+	screen: 12wzrozenie.png / 15applied.png (pozniej)
+    W przypadku "niemożliwych" wdrożeń, opisz napotkane ograniczenia
+
+Deployment
+
+    Utwórz plik YAML z "deploymentem" k8s
+	screen: 13yaml.png
+    Zestaw 4 repliki, opisz zalety i wady takiej liczby
+    Zaaplikuj wdrożenie via kubectl apply -f plik.yml
+	screen: 14created.png
+    Wykaż przeprowadzony deployment
+	screen: 15applied.png
+
+
+Zajęcia 06 : zależność ciągłej integracji od komponentów stron trzecich
+Inwentaryzacja
+
+    Zdefiniuj w ramach stworzonego Dockerfile'a zależności platformowe
+	Moj dockerfile zalezny jest od wersji fedory, oraz wersja Dockera.
+
+    Oprogramowanie, które doinstalowujesz aby uruchomić program
+	Jezeli chodzi o oprogramowanie w dockerze: stosuje update funkcji systemowych, instalacje gita (by pobrac repozytorium) oran npm zeby moc odpalic instalacje i testy. Jezeli chodzi o uruchomienie dockerfile, potrzebny jest oczywiscie Docker.
+
+    W razie braku zależności (np. obraz node i aplikacje wymagająca tylko node), "zależnością" jest sam obraz
+
+    Określ okoliczności, w których uzasadnione jest przebudowywanie i aktualizacja obrazu po wydaniu nowej wersji którejś z zależności
+	Przebudowanie jest uzasadnione jezeli nowa wersja zaleznosci zapewnia nam cos nowego na czym nam zalezy np: bezpieczenstwo, kompatybilnosc, poprawki bledow, duze zmiany w optymalizacji. 
+
+    Czy należy to robić "zawsze"?
+	Wydaje mi sie ze w wiekszosci przypadkow nie jest to wskazane.
+
+    Jakie są przesłanki (i jak je ustalić) wskazujące na konieczność aktualizacji
+	Wydaje mi sie ze bezpieczentwo odegra tutaj najwieksza role, jezeli podejrzewamy zagrozenie.  
+
+    Jakie jest ryzyko aktualizowania/nieaktualizowania (im dokładniejszy przykład, tym lepiej)
+	Ryzykiem aktualizowania bedzie zmiana kompatybilnosci, moze sie okazac, ze po aktualizacji oprogramowanie nie dziala juz z pewnymi wersjami innego systemu/oprogramowania (wiec w zasadzie zaktualizowanie czesci zaleznosci moze je poklocic ze reszta zaleznosci).
+	Ryzykiem nieaktualizowania bedzie (ponownie) bezpieczenstwo oraz optymalizacja.
+
+    Pytanie pomocnicze: czy obraz Fedory/Ubuntu na dockerhubie jest aktualizowany dla każdej nowej wersji pakietu wchodzącego w jego skład? Dlaczego tak/nie?
+	Wydaje mi sie ze obraz nie jest aktualizowany z kazda nowa wersja, uwzgledniane sa tylko aktualizacje wprowadzajace duze zmiany.
