@@ -10,6 +10,7 @@
 ![4](https://user-images.githubusercontent.com/58219271/151593722-db71fc97-b8c4-409b-8a07-2788906edd80.JPG)
 
 4.Utworzenie pliku w kontenerze na obszarze woluminu
+
 ![5](https://user-images.githubusercontent.com/58219271/151594055-78badd1b-1adb-408a-9128-1fe7e6be4f49.JPG)
 
 "Kiepski pomysł": SSH 
@@ -22,6 +23,7 @@
 ![8](https://user-images.githubusercontent.com/58219271/151594451-03dfec5e-7260-460a-bbcf-4657d61e8567.JPG)
 
 8.Odkomentowanie logowania roota w pliku sshd_config i zmiana na "yes"
+
 ![9](https://user-images.githubusercontent.com/58219271/151594593-f07cadb8-ecc2-434c-aafa-bcdf47ec4ed5.JPG)
 
 9.Następnie konieczne było skopiowanie klucza publcznego w odpowiednie miejsce. Stworzono dla niego katalog
@@ -32,6 +34,7 @@
 ![13](https://user-images.githubusercontent.com/58219271/151595054-b0510e98-e2bf-4688-9f54-af5306da4804.JPG)
 
 11.Uruchomiono usługę i połączono z kontenerem
+
 ![14](https://user-images.githubusercontent.com/58219271/151595159-01324f5b-5416-43e8-8863-20e69b26fd8f.JPG)
 ![16](https://user-images.githubusercontent.com/58219271/151595250-9eeb5083-2915-4790-8700-6cfdd2a79a62.JPG)
 
@@ -42,6 +45,7 @@ Skonteneryzowany Jenkins stosujący Dockera
 ![18](https://user-images.githubusercontent.com/58219271/151595474-6aafa6a6-cfc5-46a8-8d7c-05bc595a94a5.JPG)
 
 13.Uruchomiono blueocean
+
 ![19](https://user-images.githubusercontent.com/58219271/151595565-02780643-b21c-4dcb-9223-8c85223e4f45.JPG)
 
 14.Zalogowano do Jenkinsa
