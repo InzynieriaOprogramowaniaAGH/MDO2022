@@ -1,4 +1,0 @@
-FROM build1
-WORKDIR ./express
-RUN npm test
-

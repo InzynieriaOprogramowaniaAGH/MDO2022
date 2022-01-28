@@ -1,5 +1,0 @@
-FROM angular:latest
-
-WORKDIR app/angular-unit-testing-examples
-
-RUN npm run e2e

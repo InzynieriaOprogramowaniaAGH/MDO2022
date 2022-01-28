@@ -1,4 +1,0 @@
-FROM bldr:latest
-
-WORKDIR app/SnapShot
-RUN npm run test -- a --watchAll=false

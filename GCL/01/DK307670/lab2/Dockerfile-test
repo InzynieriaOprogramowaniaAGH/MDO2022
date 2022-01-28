@@ -1,5 +1,0 @@
-FROM ubuntu-node:latest
-
-WORKDIR /my-app
-
-CMD ["npm","test"]
