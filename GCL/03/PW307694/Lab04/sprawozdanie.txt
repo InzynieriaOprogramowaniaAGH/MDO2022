@@ -3,4 +3,5 @@
 	(sc 2. pepeline src)
 3. Rozpoczęcie budowania pipelinu (sc 3 oraz 4) - Pipleine został zbudowany wewnatrz kontenera jenkinsowego, wadą 	takiego rozwiązania jest to że wszystkie zależności zostaną pobrane do kontenera z naszym jenkinsem i 	będą w nim działać tak długo jak działa kontener, każda próba zrestartowania kontenrea wiąże sie z nowym 		pobieraniem wszystkich zalezności. Nasze sklonowane repozytorium za każdym razem musimy usuwać przy 		uruchamiana pipelina - katalog zapisuje sie na naszym woluminie.
 4. Budowa Pipelinu na podstawie Jenkinsfilu (sc 5. jenkins file), pobieramy z repozytoirum nasz jenkinsfile, 		konfigurujemy pipeline tak by łączył sie z repozytroim i z wybranej gałęzi pobierał Jenkinsfile 		(sc 6. 	Jenkinsfile first)
-5. 
+5. Jenkins zaczyna budowac aplikacje na podstawie Dockerfilow pobranych z repozytorium (sc 7. Build start Jenkinsfile)
+6. Po wykonaniu bulidu projektu wyświatlamy status (sc 8. Project Status )
