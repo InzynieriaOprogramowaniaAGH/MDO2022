@@ -6,27 +6,13 @@ pipeline {
             steps {
                 sh 'docker build -t app -f GCL/03/PW307694/Lab04/Dockerfile/Dockerfile-buapp . '
              }
-	post{
-	success{
-		mail to: 'p.wiszniewski391@gmail.com', subject: "Building successful", body: "App build correctly: ${BUILD_URL}"
-        }
-	failure {
-            	mail to: 'p.wiszniewski391@gmail.com', subject: "Building fail", body: "App build failed: ${BUILD_URL}"
-            }
-	}
+	
 	}
         stage('Test') {
             steps {
                 sh 'docker build -t test -f GCL/03/PW307694/Lab04/Dockerfile/Dockerfile-test . '
             }
-	post{
-	success{
-		mail to: 'p.wiszniewski391@gmail.com', subject: "Testing successful", body: "App test correctly: ${BUILD_URL}"
-        }
-	failure {
-            	mail to: 'p.wiszniewski391@gmail.com', subject: "Testing fail", body: "App test failed: ${BUILD_URL}"
-            }
-	}
+	
 	}
 	}
 }
