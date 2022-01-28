@@ -1,4 +1,5 @@
-FROM buapp:latest
-WORKDIR /irssi/build
+FROM app
 
-RUN meson test
+WORKDIR /app/nodeunit
+
+CMD [ "npm","test" ]
