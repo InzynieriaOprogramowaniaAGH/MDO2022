@@ -48,6 +48,7 @@ Skonteneryzowany Jenkins stosujący Dockera
 
 ![19](https://user-images.githubusercontent.com/58219271/151595565-02780643-b21c-4dcb-9223-8c85223e4f45.JPG)
 
+
 14.Zalogowano do Jenkinsa
 ![20](https://user-images.githubusercontent.com/58219271/151595655-39403d7a-3c4c-4306-8471-56bdb205c864.JPG)
 ![21](https://user-images.githubusercontent.com/58219271/151595677-a4623b9b-0f37-4169-8012-49743cff1187.JPG)
