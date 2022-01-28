@@ -1,4 +1,5 @@
 1.Pobranie obrazu Ubuntu
+
 ![1](https://user-images.githubusercontent.com/58219271/151593191-545bd626-7169-461b-8f2f-ef615ad9a029.JPG)
 
 2.Stworzenie woluminu i podłączenie go do kontenera
