@@ -72,7 +72,7 @@ Podłączam się do kontenera interaktywnie i wywołuje numer wersji używając 
 
 Uruchamiam "system w kontenerze" przy pomocy: **sudodocker run -it ubuntu bash**
 
-PrezentujePID1 w kontenerze i procesy dockera nahoście:
+Prezentuje PID1 w kontenerze i procesy dockera na hoście:
 
 - **ps ax**
 - **ps aux**
@@ -104,7 +104,7 @@ Czyszczę je używając: **sudo docker container prune**
 
 Znaleziony projekt:https://github.com/mdn/todo-react
 
-## Przeprowadzam budowę/konfigurację środowiska
+### Przeprowadzam budowę/konfigurację środowiska
 
 W tym celu sklonowałem repozytorium za pomocą komendy **git clone** , wszedłem do
 ściągniętego repozytorium w terminalu i użyłem komendy **npm install** aby
@@ -155,24 +155,26 @@ curl:
 - **apt-get install curl**
 - **curl -sL https://deb.nodesource.com/setup_4.x | bash**
   node: **apt-get install nodejs**
-  Sprawdzam, czy node został poprawnie zainstalowany: **node -v**
+
+Sprawdzam, czy node został poprawnie zainstalowany: **node -v**
 
 ![alt text](./Screenshots/24.png)
 
 npm: **apt-get install npm**
 git: **apt install git**
+
 Po zainstalowaniu wszystkiego klonuję repozytorium:
 
 ![alt text](./Screenshots/25.png)
 
-Przechodzę do kataloku: **cd todo-react** , a następniepowtarzam kroki potrzebne do
+Przechodzę do kataloku: **cd todo-react** , a następnie powtarzam kroki potrzebne do
 zbudowania i uruchomienia aplikacji (tj **npm install** , **npm start** )
 
 ## Tworzenie Dockerfile
 
 Gdy już mamy komendy, które są nam potrzebne do zbudowania aplikacji na
 czystym obrazie Ubuntu i wiemy, że wszystko działa, możemy przystąpić do
-zbudowania pliku Dockerfile, który nam ten zautomatyzuje.
+zbudowania pliku Dockerfile, który nam ten proces zautomatyzuje.
 
 ![alt text](./Screenshots/26.png)
 
