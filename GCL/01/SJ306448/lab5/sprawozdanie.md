@@ -16,6 +16,7 @@
 ![2](https://user-images.githubusercontent.com/58219271/151670713-346e3a45-944f-45d4-a8d2-c9f3b40cddd3.JPG)
 
 2.Instalacja kubectl
+
 ![3](https://user-images.githubusercontent.com/58219271/151670743-ef859704-9754-4a06-8b73-2a5406685458.JPG)
 
 
