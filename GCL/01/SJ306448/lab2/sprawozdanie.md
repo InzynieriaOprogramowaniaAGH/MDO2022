@@ -4,7 +4,9 @@
 ![1b](https://user-images.githubusercontent.com/58219271/151426354-87620c11-a384-4dc1-8968-004a3ced1a85.JPG)
 ![1c](https://user-images.githubusercontent.com/58219271/151426411-a2cbbf7e-bf64-4e00-bad6-0741e85bd2f3.JPG)
 
-## 2.Rejestracja w Docker Hub![1d](https://user-images.githubusercontent.com/58219271/151426994-b48fae10-db78-40d1-8bb5-aba19a8a7a53.JPG)
+## 2.Rejestracja w Docker Hub!
+
+[1d](https://user-images.githubusercontent.com/58219271/151426994-b48fae10-db78-40d1-8bb5-aba19a8a7a53.JPG)
 
 ![2](https://user-images.githubusercontent.com/58219271/151426437-ffc1c204-779f-4e6a-a217-29c51711602d.JPG)
 
