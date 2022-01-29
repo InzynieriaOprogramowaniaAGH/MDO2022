@@ -1,4 +1,4 @@
-#1.Instalacja klienta Git i obsługi kluczy SSH
+# 1.Instalacja klienta Git i obsługi kluczy SSH
 ![1a](https://user-images.githubusercontent.com/58219271/150863772-170c1056-1c4d-4b78-becf-8c6181343e57.JPG)
 ![1b](https://user-images.githubusercontent.com/58219271/150863893-ef9d53e1-c11d-4199-bf0c-8aca0d59b082.JPG)
 
