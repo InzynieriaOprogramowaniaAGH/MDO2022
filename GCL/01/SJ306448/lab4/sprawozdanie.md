@@ -12,15 +12,15 @@
 
 # 2.Stwórz Jenkinsfile: opis
 
-## ## ## ## ## -Utwórz nowy pipeline budujący wybraną aplikację, oparty o Jenkinsfile
+## -Utwórz nowy pipeline budujący wybraną aplikację, oparty o Jenkinsfile
 
-## ## ## ## ## -Docelowo, ma zawierać etapy "Build" i "Test"
+## -Docelowo, ma zawierać etapy "Build" i "Test"
 
-## ## ## ## -Przejściowo, może zawierać jeden etap "Build + Test"
+## -Przejściowo, może zawierać jeden etap "Build + Test"
 
-## ## ## -Może, ale nie musi, budować się na dedykowanym DIND, ale może się to dziać od razu na kontenerze CI. Należy udokumentować funkcjonalną różnicę między niniejszymi podejściami
+## -Może, ale nie musi, budować się na dedykowanym DIND, ale może się to dziać od razu na kontenerze CI. Należy udokumentować funkcjonalną różnicę między niniejszymi podejściami
 
-## ## -Początkowo, Jenkinsfile może być albo "wklejony" albo dodany do repozytorium, które jest sforkowane, to znaczy:
+## -Początkowo, Jenkinsfile może być albo "wklejony" albo dodany do repozytorium, które jest sforkowane, to znaczy:
 
 ## -albo pipeline zawiera treść Jenkinsfile'a
 
