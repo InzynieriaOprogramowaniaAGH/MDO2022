@@ -1,0 +1,19 @@
+Sprawozdanie labolatorium numer 5
+
+Zestawienie platformy Kubernetes
+1. Instalacja Minikube - instalujemy zgodnie z dokumentacją pobierając pliki
+$ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+$ sudo install minikube-linux-amd64 /usr/local/bin/minikube
+(0.3)
+2. Uruchamiamy
+$ sudo minicube start
+(0.2)
+Otrzymujemy błąd ponieważ minicube potrzebuje co najmniej dwóch rdzeni a nasza maszyna virtualna 
+niestety została wyposażona tylko w jeden.
+Tworzymy jeszcze raz maszynę virtualną z dwoma cpu i powtarzamy proces.
+(0.3)
+Kolejno otrzymujemy błędy o nieprawidłowościach ze sterownikami, instalujemy sugerowanego dockera ale nie pomaga
+logujemy się na innego użytkownika  i dodajemy go nowej grupy docker
+$ sudo usermod -aG docker $USER && newgrp docker
+
+3.
