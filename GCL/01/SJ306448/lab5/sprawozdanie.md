@@ -36,4 +36,13 @@
 ![4](https://user-images.githubusercontent.com/58219271/151670781-6a3b4cbb-870a-4d8b-94b9-6aa2d2a72cf2.JPG)
 
 
+-dokonano próby zainstalowania minikube na Windows, lecz bezkutecznie
+
+![6](https://user-images.githubusercontent.com/58219271/151978702-c023ead2-e941-440f-9965-8e5b868d5d61.JPG)
+
+![7](https://user-images.githubusercontent.com/58219271/151978729-28545899-f61b-4016-84f4-292cf21098b3.JPG)
+
+
+
+
 
