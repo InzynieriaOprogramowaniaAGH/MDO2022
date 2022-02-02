@@ -1,0 +1,38 @@
+pipeline {
+    agent {
+        docker {
+            image 'node:lts-bullseye-slim' 
+            args '-p 3000:3000' 
+        }
+    }
+    stages {
+        stage('Build') { 
+            steps {
+                sh '''
+                    ls
+                    cd express
+                    npm install
+                '''
+            }
+            post {  
+                always {
+                     emailext body: "[${currentBuild.currentResult}]", subject: "[${currentBuild.currentResult}] Bulid", to: 'apsiiiik@gmail.com', from: 'apsiiiik@gmail.com'
+                }
+            }
+        }
+        stage('Test') { 
+            steps {
+                sh '''
+                    ls
+                    cd express
+                    npm test
+                '''
+            }
+            post {  
+                always {
+                    emailext body: "[${currentBuild.currentResult}]", subject: "[${currentBuild.currentResult}] Test", to: 'apsiiiik@gmail.com', from: 'apsiiiik@gmail.com'
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+1. Pobieranie, instalacja oraz uruchomienie minikube(screen shot 1a, 1b, 1c, 1d)
+2. Pobieranie, instalacja oraz uruchomienie kubectl(ss 2)
+3. Stan dockera (ss 3)
+4. Otwarte port (ss 4)
+5. Uruchomienie dashboard (ss 5)
+6. Usługi kubernetesa (ss 6)
+7. Wdrożenia (ss 7a, 7b)
+8. Hello k8s (ss 8a, 8b, 8c)
+9. Użycie komendy (9a, 9b)
+10. Tworzenie i deployment pliku YAML(ss 10a, 10b, 10c)
+    WADY
+    - Jeśli nie są wykorzystywane, to zasoby są zużywane niepotrzebnie
+    ZALETY
+    - Brak może prowadzić do niepożądanych awarii
+    - Pozwala zachować stabilność
