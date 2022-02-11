@@ -1,3 +1,3 @@
 # Wojciech Pajor MDO Projekt Zaliczeniowy
 
-![This is an image](/1.png)
+![This is an image](/Projekt\zaliczeniowy/1.png)
