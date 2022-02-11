@@ -22,4 +22,5 @@ Naszym programem będzie zwykły angular z testem dostępny pod linkiem: ``` htt
 ```apt-getnode install npm```
 ```apt install nodejs```
 -klonujemy repo z naszym programem z testami ```git clone https://github.com/fyodorio/angular-unit-testing-examples```
+-wchodzimy do sklonowanego folderu i instalujemy moduły: `npm i```
    
