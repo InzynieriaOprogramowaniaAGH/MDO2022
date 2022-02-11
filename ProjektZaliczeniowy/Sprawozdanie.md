@@ -14,13 +14,13 @@
 ##### Część 1: Program w dokerze z testem i dockerfile + docker compose
 Naszym programem będzie zwykły angular z testem dostępny pod linkiem: ``` https://github.com/fyodorio/angular-unit-testing-examples ```
 1.Instalujemy niezbędne oprogramowanie wstępne:
-```sudo apt install nodejs```
-```sudo apt install npm```
-```sudo npm i -g @angular/cli@11.1.1```
-2.Odpalamy kontener : ```sudo docker run -it ubuntu bash``` oraz instalujemy niezbędne oprogramowanie:
-```apt-get install -yq curl git nano```
-```apt-getnode install npm```
-```apt install nodejs```
--klonujemy repo z naszym programem z testami ```git clone https://github.com/fyodorio/angular-unit-testing-examples```
--wchodzimy do sklonowanego folderu i instalujemy moduły: `npm i```
+2.```sudo apt install nodejs```
+3.```sudo apt install npm```
+4.```sudo npm i -g @angular/cli@11.1.1```
+5.Odpalamy kontener : ```sudo docker run -it ubuntu bash``` oraz instalujemy niezbędne oprogramowanie:
+6.```apt-get install -yq curl git nano```
+7.```apt-getnode install npm```
+8.```apt install nodejs```
+9. klonujemy repo z naszym programem z testami ```git clone https://github.com/fyodorio/angular-unit-testing-examples```
+10. wchodzimy do sklonowanego folderu i instalujemy moduły: `npm i```
    
