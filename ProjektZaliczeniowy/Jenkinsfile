@@ -33,10 +33,10 @@ pipeline {
                         sh '''
                         cd MDO2022/GCL/02/WP286214/ProjektZaliczeniowy
                         docker build -t test:latest . -f ./dockerfile-with-tests
-                        emailext(body: 'Test-step success', mimeType: 'text/html', subject: 'Jenkins', to: 'pwojtekp@gmail.com')
+                        emailext(body: 'Test-step success', mimeType: 'text/html', subject: 'Jenkins', to: 'pwojtekp3@gmail.com')
                         '''
                     } catch(err) {
-                        emailext(body: 'Test-step err', mimeType: 'text/html', subject: 'Jenkins', to: 'pwojtekp@gmail.com')
+                        emailext(body: 'Test-step err', mimeType: 'text/html', subject: 'Jenkins', to: 'pwojtekp3@gmail.com')
                     }
                 }
             }
