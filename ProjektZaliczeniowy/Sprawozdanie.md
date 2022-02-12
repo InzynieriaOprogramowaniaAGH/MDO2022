@@ -40,7 +40,41 @@
 4. ![12.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/12.png)
 5. ![13.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/13.png)
 6. Wstawiamy wygenerowane hasło i tworzymy konto jenkins (localhost:8080) 
-7. Tworzymy swój build
+7. budujemy używając jenkinsfile
+9. Konwertujemy na pipeline:
+10. ![15.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/15.png)
+11. -----Quickfix napisałem dockerfile-with-tests a plik nazywa sie docker-with-tests i godzina kombinowania czemu test nie działa....
+12. Aktualny pipeline:
+13. ![16.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/16.png)
+14. Dodajemy stage "Deploy":
+15. ![17.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/17.png)
+16. wygenerowane artefakty można pobrać pod zakładką "Artifacts":
+17. ![18.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/18.png)
+
+##### Część 3: Kubernetes
+1. Upewniamy się czy docker jest dostępny i tworzymy w razie potrzezby: ```sudo docker build -t bldr:latest . -f ./dockerfile```
+2. Instalujemy wymagania do Minicube oraz kubectl
+3. ``` sudo usermod -aG docker $USER && newgrp docker```
+4. ```sudo chmod 666 /var/run/docker.sock```
+5. ![19.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/19.png)
+6. ![20.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/20.png)
+7. Uruchamiamy: ```minicube start```
+8. Z nieznanych powodów wywaliła mi się wirtualna maszyna przy 
+9. ![21.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/21.png)
+10. najprawdopodobniej za mało miejsca na dysku
+11. Rezulatat odpalenia minikube:
+12. ![22.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/22.png)
+13. wdrażanie przykładowego kontenera przez k8s:
+14. ![23.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/23.png)
+15. Wdrażamy własny kontener:
+16. ![24.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/24.png)
+17. Deployment:
+18. Tworzymy plik deployment.yaml:
+19. ![25.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/25.png)
+20. Aplikujemy wdrożenie:
+21. ![26.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/26.png)
+
+
 
 
 
