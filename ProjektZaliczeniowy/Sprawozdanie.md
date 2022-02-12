@@ -23,4 +23,28 @@ Naszym programem będzie zwykły angular z testem dostępny pod linkiem: ``` htt
 8.```apt install nodejs```
 9. klonujemy repo z naszym programem z testami ```git clone https://github.com/fyodorio/angular-unit-testing-examples```
 10. wchodzimy do sklonowanego folderu i instalujemy moduły: `npm i```
+11. uruchamiamy nasz build: ```npm run build```
+12. Wynik testu:
+13. ![5.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/5.png)
+14. Odpalamy testy: ```npm run e2e```:
+15. ![6.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/6.png)
+16. Tworzymy dockerfile ```nano dockerfile``` :
+17. ![7.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/7.png)
+18. odpalamy build dockera używając pliku dockerfile: ```sudo docker build -t angular:latest . -f dockerfile```
+19. ![8.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/8.png)
+20. Tworzymy dockerfile-with-test które będzie oparte o poprzedni dockerfile i będzie dodawać odpalanie testów:
+21. ![9.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/9.png)
+22. Utworzenie docker-compose.yml:
+23. ![10.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/10.png)
+
+##### Część 2: Automatyzator Jenkins
+1. Tworzymy "bridge-network" ```docker network create jenkins```
+2. ![11.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/11.png)
+3. Postępujemy zgodnie z instrukcją:
+4. ![12.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/12.png)
+5. ![13.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/13.png)
+
+
+
+
    
