@@ -5,7 +5,7 @@
 2. Następnie instalujemy busybox:\
 ![2.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/2.png)
 3. Uruchamiamy kontener za pomocą: ``` sudo docker run busybox ```
-4. sprawdzamy co jest w srodku: ```sudo docker ps -a ``` :\
+4. Sprawdzamy co jest w srodku: ```sudo docker ps -a ``` :\
 ![3.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/3.png)
 5. Wywołujemy numer wersji: ``` sudo docker run -it busybox ```:\
 ![4.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/4.png)
