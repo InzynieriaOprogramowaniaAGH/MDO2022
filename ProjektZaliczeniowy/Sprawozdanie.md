@@ -39,7 +39,7 @@
 2. Postępujemy zgodnie z instrukcją:\
 ![12.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/12.png)\
 ![13.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/13.png)
-3. Wstawiamy wygenerowane hasło i tworzymy konto jenkins ``localhost:8080```
+3. Wstawiamy wygenerowane hasło i tworzymy konto jenkins localhost:8080
 4. Budujemy używając jenkinsfile
 5. Konwertujemy na pipeline:\
 ![15.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/15.png)
@@ -59,16 +59,16 @@
 ![19.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/19.png)
 ![20.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/20.png)
 5. Uruchamiamy: ```minicube start```
-6. Z nieznanych powodów wywaliła mi się wirtualna maszyna przy 
+6. Z nieznanych powodów wywaliła mi się wirtualna maszyna przy odpalaniu minikube
 ![21.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/21.png)
 7. Najprawdopodobniej za mało miejsca na dysku
 8. Rezulatat odpalenia minikube:\
 ![22.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/22.png)
-9. Wdrażanie przykładowego kontenera przez ```k8s```:\
+9. Wdrażanie przykładowego kontenera przez k8s:\
 ![23.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/23.png)
 10. Wdrażamy własny kontener:\
 ![24.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/24.png)
-11. Deployment:\
+11. Deployment:
 12. Tworzymy plik deployment.yaml:\
 ![25.png](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/blob/WP286214/ProjektZaliczeniowy/25.png)
 13. Aplikujemy wdrożenie:\
