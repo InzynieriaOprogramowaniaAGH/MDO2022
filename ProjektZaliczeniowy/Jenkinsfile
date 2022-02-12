@@ -32,7 +32,7 @@ pipeline {
                     try {
                         sh '''
                         cd MDO2022/WP286214/ProjektZaliczeniowy
-                        docker build -t test:latest . -f ./dockerfile-with-tests
+                        docker build -t test:latest . -f ./docker-with-tests
                         emailext(body: 'Test-step success', mimeType: 'text/html', subject: 'Jenkins', to: 'pwojtekp3@gmail.com')
                         '''
                     } catch(err) {
