@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                script {
+                    try {
+                        sh '''
+                        rm -rf MDO2022
+                        git config --global user.name "wojciechpajor"
+                        git config --global user.email "pwojtekp3@gmail.com"
+                        git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022.git
+                        cd MDO2022
+                        git switch -c WP286214
+                        git branch --set-upstream-to=origin/WP286214 WP286214
+                        git pull
+                        cd GCL/02/WP286214/ProjektZaliczeniowy
+                        ls
+                        docker build -t bldr:latest . -f ./dockerfile
+                        emailext(body: 'Build-step success', mimeType: 'text/html', subject: 'Jenkins', to: 'pwojtekp3@gmail.com')
+                        '''
+                    } catch(err) {
+                        emailext(body: 'Build-step err', mimeType: 'text/html', subject: 'Jenkins', to: 'pwojtekp3@gmail.com')
+                    }
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                script {
+                    try {
+                        sh '''
+                        cd MDO2022/GCL/02/WP286214/ProjektZaliczeniowy
+                        docker build -t test:latest . -f ./dockerfile-with-tests
+                        emailext(body: 'Test-step success', mimeType: 'text/html', subject: 'Jenkins', to: 'pwojtekp@gmail.com')
+                        '''
+                    } catch(err) {
+                        emailext(body: 'Test-step err', mimeType: 'text/html', subject: 'Jenkins', to: 'pwojtekp@gmail.com')
+                    }
+                }
+            }
+        }
+    }
+}
