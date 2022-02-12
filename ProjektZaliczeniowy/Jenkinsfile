@@ -15,7 +15,7 @@ pipeline {
                         git switch -c WP286214
                         git branch --set-upstream-to=origin/WP286214 WP286214
                         git pull
-                        cd GCL/02/WP286214/ProjektZaliczeniowy
+                        cd WP286214/ProjektZaliczeniowy
                         ls
                         docker build -t bldr:latest . -f ./dockerfile
                         emailext(body: 'Build-step success', mimeType: 'text/html', subject: 'Jenkins', to: 'pwojtekp3@gmail.com')
@@ -31,7 +31,7 @@ pipeline {
                 script {
                     try {
                         sh '''
-                        cd MDO2022/GCL/02/WP286214/ProjektZaliczeniowy
+                        cd MDO2022/WP286214/ProjektZaliczeniowy
                         docker build -t test:latest . -f ./dockerfile-with-tests
                         emailext(body: 'Test-step success', mimeType: 'text/html', subject: 'Jenkins', to: 'pwojtekp3@gmail.com')
                         '''
