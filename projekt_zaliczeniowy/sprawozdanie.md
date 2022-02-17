@@ -61,7 +61,15 @@ Stworzono plik docker-compose
 ![1](Screenshot_18.png)
 
 
-### JENKINS
+### AUTOMATYZATOR JENKINS z zalaczonej instrukcji 
+
+![1](Screenshot_19.png)
+
+Stworzono nowy dockerfile i zbudowano nowy obraz
+
+![1](Screenshot_20.png)
+![1](Screenshot_21.png)
+
 
 
 
