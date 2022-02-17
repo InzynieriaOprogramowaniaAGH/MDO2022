@@ -15,17 +15,17 @@
 
 Uruchomiono dockera z ubuntu
 
-![1](Screenshot_5)
+![1](Screenshot_5.png)
 
 zainstalowano zaleznosci 
 
-![1](Screenshot_6)
-![1](Screenshot_7)
+![1](Screenshot_6.png)
+![1](Screenshot_7.png)
 
 Wybrano program i pobrano go https://github.com/aria2/aria2.git
 
-![1](Screenshot_8)
+![1](Screenshot_8.png)
 
 Zbudowano aplikacje zgodnie z README 
 
-![1](Screenshot_9)
+![1](Screenshot_9.png)
