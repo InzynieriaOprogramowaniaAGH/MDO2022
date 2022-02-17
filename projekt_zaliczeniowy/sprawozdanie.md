@@ -29,3 +29,36 @@ Wybrano program i pobrano go https://github.com/aria2/aria2.git
 Zbudowano aplikacje zgodnie z README 
 
 ![1](Screenshot_9.png)
+
+./configure 
+
+![1](Screenshot_10.png)
+
+make
+
+![1](Screenshot_11.png)
+
+Nastepnie uruchomiono testy make check 
+
+![1](Screenshot_12.png)
+
+Dla automatyzacji tworzenia powyższych kroków stworzono Dockerfile'a. 
+
+![1](Screenshot_14.png)
+![1](dockerfile.png)
+
+Stworzono drugi Dockefile wywołujący pierwszego natomiast z dodanymi testami
+
+![1](Screenshot_15.png)
+
+Uruchomiono dockerfile 
+
+![1](Screenshot_16.png)
+![1](Screenshot_17.png)
+
+
+
+
+
+
+
