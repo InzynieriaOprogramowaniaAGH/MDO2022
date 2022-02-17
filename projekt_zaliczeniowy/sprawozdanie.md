@@ -45,7 +45,7 @@ Nastepnie uruchomiono testy make check
 Dla automatyzacji tworzenia powyższych kroków stworzono Dockerfile'a. 
 
 ![1](Screenshot_14.png)
-![1](dockerfile.png)
+![1](docscr.png)
 
 Stworzono drugi Dockefile wywołujący pierwszego natomiast z dodanymi testami
 
