@@ -25,3 +25,7 @@ zainstalowano zaleznosci
 Wybrano program i pobrano go https://github.com/aria2/aria2.git
 
 ![1](Screenshot_8)
+
+Zbudowano aplikacje zgodnie z README 
+
+![1](Screenshot_9)
