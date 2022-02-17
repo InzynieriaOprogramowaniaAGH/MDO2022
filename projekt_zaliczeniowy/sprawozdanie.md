@@ -56,7 +56,12 @@ Uruchomiono dockerfile
 ![1](Screenshot_16.png)
 ![1](Screenshot_17.png)
 
+Stworzono plik docker-compose
 
+![1](Screenshot_18.png)
+
+
+JENKINS
 
 
 
