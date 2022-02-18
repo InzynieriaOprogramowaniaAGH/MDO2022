@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  my-ubuntu-build:
+    build: build/.
+    volumes:
+      - my-vol:/my-vol 
+  my-ubuntu-test:
+    build: test/.
+volumes:
+  my-vol:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/pawcio/MDO2022/my-vol'
