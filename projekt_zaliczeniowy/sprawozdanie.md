@@ -80,7 +80,9 @@ Zalogowano sie do Jenkinska uzwyajac wygenerowanego hasla
 ![1](jenkins rejstracja2.png)
 
 Stworzono pipeline i uruchomiono 
-'pipeline {
+```
+
+pipeline {
     agent any
     
     stages {
@@ -105,8 +107,47 @@ Stworzono pipeline i uruchomiono
             }
         }
     }
-}'
+}
 
+```
+![1](pipline_img.png)
+![1](pipeline2.png)
+![1](bluocean.png)
+![1](blue2.png)
+
+pobrano logi i artifact 
+
+![1](log_artefact.png)
+
+Zaktualizowano pakiety systemowe
+apt update
+
+apt upgrade
+![1](update.png)
+![1](upgrade.png)
+
+Zainstalowano pakiet curl
+apt install curl
+
+![1](curl.png)
+
+Pobranie najnowszej wersji kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+
+![1](curl2.png)
+
+Dodanie uprawnień do uruchamiania
+chmod +x ./kubectl
+
+Dodanie kuble ctl do ścieżki - PATH
+sudo mv ./kubectl /usr/local/bin/kubectl
+
+Sprawdzenie wersji
+kubectl version --client
+
+instalalowano virtualboxa
+
+![1](Screenshot_22.png)
 
 
 
