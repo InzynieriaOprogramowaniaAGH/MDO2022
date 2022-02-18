@@ -79,6 +79,34 @@ Zalogowano sie do Jenkinska uzwyajac wygenerowanego hasla
 ![1](jenkins rejestracja.png)
 ![1](jenkins rejstracja2.png)
 
+Stworzono pipeline i uruchomiono 
+'pipeline {
+    agent any
+    
+    stages {
+        stage('Build') {
+            steps {
+                sh '''
+                rm -rf MDO2022
+                git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022.git
+                cd MDO2022
+                git checkout BS292981
+                cd projekt_zaliczeniowy
+                docker build -t aria2:latest . -f ./dockerfile1
+                '''
+            }
+        }
+        stage('Test') {
+            steps {
+                sh '''
+                cd MDO2022/projekt_zaliczeniowy
+                docker build -t aria2_test:latest . -f ./dockerfile-test
+                '''
+            }
+        }
+    }
+}'
+
 
 
 
