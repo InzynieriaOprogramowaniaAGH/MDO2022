@@ -74,6 +74,13 @@ Po zbudowaniu obrazu uruchamiamy go w kontenerze
 
 ![1](Screenshot_22.png)
 
+Zalogowano sie do Jenkinska uzwyajac wygenerowanego hasla 
+
+![1](jenkins rejestracja.png)
+![1](jenkins rejstracja2.png)
+
+
+
 
 
 
