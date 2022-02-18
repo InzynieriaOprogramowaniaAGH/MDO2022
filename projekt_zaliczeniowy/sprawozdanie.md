@@ -111,8 +111,11 @@ pipeline {
 
 ```
 ![1](pipline_img.png)
+
 ![1](pipeline2.png)
+
 ![1](bluocean.png)
+
 ![1](blue2.png)
 
 pobrano logi i artifact 
@@ -123,7 +126,9 @@ Zaktualizowano pakiety systemowe
 apt update
 
 apt upgrade
+
 ![1](update.png)
+
 ![1](upgrade.png)
 
 Zainstalowano pakiet curl
@@ -149,6 +154,28 @@ instalalowano virtualboxa
 
 ![1](Screenshot_22.png)
 
+Pobrano minicube za pomoca curl
+
+![1](mini.png)
+
+Dodano minicube do sciezki systemowej 
+
+![1](sys.png)
+
+minicube start zakonczony błędem wywolanym virtualizacją 
+
+![1](error.png)
+
+Zmieniono ustawienia virtualizacji dla maszyny jednak uniemożliwoło to jej ponowne uruchomienie,
+natomiast ustawinia wirtualizacji w systemie windows były już wcześniej właczone
+
+![1](virt.png)
+
+![1](error.png)
+
+![1](error2.png)
+
+![1](error3.png)
 
 
 
