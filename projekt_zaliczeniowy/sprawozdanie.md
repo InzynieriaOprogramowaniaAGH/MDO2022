@@ -167,11 +167,9 @@ minicube start zakonczony błędem wywolanym virtualizacją
 ![1](error.png)
 
 Zmieniono ustawienia virtualizacji dla maszyny jednak uniemożliwoło to jej ponowne uruchomienie,
-natomiast ustawinia wirtualizacji w systemie windows były już wcześniej właczone
+natomiast ustawinia wirtualizacji w BIOsie były już wcześniej właczone
 
 ![1](virt.png)
-
-![1](error.png)
 
 ![1](error2.png)
 
