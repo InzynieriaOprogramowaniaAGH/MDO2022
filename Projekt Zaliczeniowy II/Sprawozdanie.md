@@ -201,3 +201,15 @@ Ponieważ jest to projekt front-endowy uruchomienie go jedynie wewnątrz kontene
 
 9. Po utworzeniu konta admina:<br/>
    ![alt text](./Screenshots/55.png)<br/>
+
+10. Tworzę nowy item - **Multi-configuration project** <br/>
+    ![alt text](./Screenshots/56.png)<br/>
+
+11. Wybieram GitHub project ponieważ na mojej gałęzi znajduje się plik yaml, z którego będę korzystał. <br/>
+    ![alt text](./Screenshots/57.png)<br/>
+
+12. Podaję link do githuba oraz nazwę gałęzi </br>
+    ![alt text](./Screenshots/58.png)<br/>
+
+13. Niestety nie jestem w stanie wybrać odpowiego pola przez brak opcji **Docker Compose File**</br>
+    ![alt text](./Screenshots/59.png)<br/>
