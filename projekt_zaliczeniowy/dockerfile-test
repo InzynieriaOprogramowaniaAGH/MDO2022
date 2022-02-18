@@ -1,0 +1,3 @@
+FROM aria2:latest
+
+RUN make check

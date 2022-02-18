@@ -1,0 +1,15 @@
+FROM ubuntu
+
+RUN rm -rf /etc/localtime 
+RUN ln -s /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
+
+RUN apt-get update
+
+RUN apt install build-essential git libgnutls28-dev nettle-dev libgmp-dev libssh2-1-dev libc-ares-dev libxml2-dev zlib1g-dev libsqlite3-dev pkg-config libxml2-dev libcppunit-dev autoconf automake autotools-dev autopoint libtool -y
+RUN git clone https://github.com/aria2/aria2.git
+WORKDIR aria2
+
+RUN autoreconf -i
+RUN ./configure
+RUN make
+
