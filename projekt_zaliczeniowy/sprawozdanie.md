@@ -76,8 +76,9 @@ Po zbudowaniu obrazu uruchamiamy go w kontenerze
 
 Zalogowano sie do Jenkinska uzwyajac wygenerowanego hasla 
 
-![1](jenkins rejestracja.png)
-![1](jenkins rejstracja2.png)
+![1](jenkinsrejestracja.png)
+
+![1](jenkinsrejstracja2.png)
 
 Stworzono pipeline i uruchomiono 
 ```
