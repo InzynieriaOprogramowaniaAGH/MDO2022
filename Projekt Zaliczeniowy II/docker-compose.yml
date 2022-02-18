@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+
+  ubuntu-react-app2:
+    build:
+      context: .
+      dockerfile: Dockerfile2
+    image: ubuntu-react-app2
+
+  ubuntu-react-test:
+    image: ubuntu-react-app2
+    depends_on:
+      - ubuntu-react-app2
+    working_dir: /react-app
+    command: npm test a

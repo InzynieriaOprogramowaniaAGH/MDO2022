@@ -1,0 +1,5 @@
+FROM ubuntu-react-app AS ubuntu-react-run
+
+WORKDIR /react-app
+
+CMD ["npm", "start"]

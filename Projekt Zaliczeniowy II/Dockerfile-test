@@ -1,0 +1,5 @@
+FROM ubuntu-react-app AS ubuntu-react-test
+
+WORKDIR /react-app
+
+CMD ["npm", "run", "test", "a"]
