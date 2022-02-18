@@ -70,6 +70,9 @@ Stworzono nowy dockerfile i zbudowano nowy obraz
 ![1](Screenshot_20.png)
 ![1](Screenshot_21.png)
 
+Po zbudowaniu obrazu uruchamiamy go w kontenerze 
+
+![1](Screenshot_22.png)
 
 
 
