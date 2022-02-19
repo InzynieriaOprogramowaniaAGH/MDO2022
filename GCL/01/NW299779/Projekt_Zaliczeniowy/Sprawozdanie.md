@@ -170,6 +170,73 @@ Aplikacja jest pod "zbindowanym" portem 3030
 # Kompozycja
 ### 1. Tworzę plik docker-compose.yml
 
+![docker-compose](https://user-images.githubusercontent.com/48067540/154779582-56bafb41-a147-495b-a5a6-4d464c2361b1.png)
+
+Uruchamiam za pomocą `dokcer-compose up`
+
+![docker-compose up](https://user-images.githubusercontent.com/48067540/154779578-4986e528-dca8-4423-bedf-3ba5578b9a91.png)
+
+Aplikacja uruchamia się a testy przechodzą. 
+
+# Czy dystrybuowanie oprogramowania w postaci kontenera ma sens, umotywować wybór?
+Konteneryzacja tego oprogramowania pozwala zbudować je w szybki sposób w przypadku deployment'u. Będzie również przydatna w procesie development'u dla programistów backend, dzięki ułatwieniu uruchamiania aplikacji będą oni mogli w łatwy sposób przetestować lokalnie aplikację bez konieczności znajomości technologi frontendowych., zaoszczędzi to również czas potrzebny na klonowanie repozytorium. W całym procesie tworzenia oprogramowania webowego pozwoli to na zaoszczędzenie czasu oraz wyelminowanie błędów ludzkich przy wielokrotnych uruchomieniach. Dzięki uruchomieniu aplikacji w kontenerze w połączeniu z kubernetesem będziemy mogli wykorzystać je w ten sposób, aby przy procesie wdrożenia uniknąć downtime'u środowiska produkcyjnego. 
+
+# Instalacja jenkinsa z wykorzystaniem Docker'a
+### 1. Tworzę bridge network `docker network create jenkins`
+
+![jenkins create bridge](https://user-images.githubusercontent.com/48067540/154779905-c9f9241e-8e96-4b4f-9a3f-c0ef1c3a056d.png)
+
+
+### 2. Wykorzystuję komendę z instrukcji
+```
+docker run \
+  --name jenkins-docker \
+  --rm \
+  --detach \
+  --privileged \
+  --network jenkins \
+  --network-alias docker \
+  --env DOCKER_TLS_CERTDIR=/certs \
+  --volume jenkins-docker-certs:/certs/client \
+  --volume jenkins-data:/var/jenkins_home \
+  --publish 2376:2376 \
+  docker:dind \
+  --storage-driver overlay2
+  ```
+  
+  ![jenkins run](https://user-images.githubusercontent.com/48067540/154779912-15e64cda-5f21-4587-98e2-519a200d8436.png)
+
+![jenkins up](https://user-images.githubusercontent.com/48067540/154779980-06905ca6-14b8-471c-a461-781316dd9f42.png)
+
+### 3. Tworzę Dockerfile
+
+<img width="524" alt="Dockerfile-jenkins" src="https://user-images.githubusercontent.com/48067540/154780056-7c3a0605-cbb3-4e16-b6d8-f7379f49a5d0.png">
+
+### 4. Wykorzystując Dockerfile buduję obraz Blueocean
+`docker build -t myjenkins-blueocean:2.319.3-1 -f Dockerfile-jenkins .`
+
+![Build blueocean image](https://user-images.githubusercontent.com/48067540/154780129-e341cf06-6753-4b26-a0d9-3dd1a31fda60.png)
+
+### 5. Uruchamiam obraz
+```
+docker run \
+  --name jenkins-blueocean \
+  --rm \
+  --detach \
+  --network jenkins \
+  --env DOCKER_HOST=tcp://docker:2376 \
+  --env DOCKER_CERT_PATH=/certs/client \
+  --env DOCKER_TLS_VERIFY=1 \
+  --publish 8080:8080 \
+  --publish 50000:50000 \
+  --volume jenkins-data:/var/jenkins_home \
+  --volume jenkins-docker-certs:/certs/client:ro \
+  myjenkins-blueocean:2.319.3-1 
+  ```
+  
+  ![run jenkins](https://user-images.githubusercontent.com/48067540/154780180-199927bc-c884-435b-8e94-06691262c695.png)
+
+  
 
 
 
