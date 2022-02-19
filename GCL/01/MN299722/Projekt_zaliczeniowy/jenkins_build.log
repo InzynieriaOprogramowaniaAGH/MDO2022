@@ -1,0 +1,24 @@
+Started by user marcin
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/devops-react
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/devops-react/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/InzynieriaOprogramowaniaAGH/MDO2022.git # timeout=10
+Fetching upstream changes from https://github.com/InzynieriaOprogramowaniaAGH/MDO2022.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.2'
+ > git fetch --tags --force --progress -- https://github.com/InzynieriaOprogramowaniaAGH/MDO2022.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/MN299722^{commit} # timeout=10
+Checking out Revision d06c561d7973632711d5a5f467c30e58b210e5f8 (refs/remotes/origin/MN299722)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f d06c561d7973632711d5a5f467c30e58b210e5f8 # timeout=10
+Commit message: "projekt zaliczeniowy init"
+ > git rev-list --no-walk d06c561d7973632711d5a5f467c30e58b210e5f8 # timeout=10
+$ docker-compose -f "/var/jenkins_home/workspace/devops-react/GCL/01/MN299722/Projekt zaliczeniowy/docker-compose.yml" up -d
+Starting projektzaliczeniowy_react-build_1 ... 
+Starting projektzaliczeniowy_react-build_1 ... done
+projektzaliczeniowy_react-tests_1 is up-to-date
+Build step 'Docker Compose Build Step' changed build result to SUCCESS
+Finished: SUCCESS
