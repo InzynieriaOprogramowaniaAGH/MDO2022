@@ -254,9 +254,7 @@ docker run \
 
 ![new project](https://user-images.githubusercontent.com/48067540/154780434-54f829ae-b382-432c-9e7f-6fbb2e81c0a3.png)
 
-### 9. Wybieram gitHub project oraz podaję URL do repozytorium projektowego
-
-![github project](https://user-images.githubusercontent.com/48067540/154780531-b6f5d41a-dada-459e-b214-8d2c6b70e3ce.png)
+### 9.Podaję URL do repozytorium projektowego
 
 Oraz wybieram moją gałąź projektu
 
@@ -264,7 +262,15 @@ Oraz wybieram moją gałąź projektu
 
 ### 10. Wybieram użycie docker-compose.yml jako build step
 
-![build step](https://user-images.githubusercontent.com/48067540/154780679-f5f48086-f3b6-4a83-86f7-eeed0b2f6697.png)
+![build step](https://user-images.githubusercontent.com/48067540/154781014-2f2a6b07-862b-41f5-92ad-f713b00b7b8b.png)
+
+### 11. Instalujemy docker-compose na kontenerze jenkinsa
+
+![Jenkins docker compose install](https://user-images.githubusercontent.com/48067540/154781884-c53f1293-b3d3-4419-97a4-c1ace1dc8400.png)
+
+![jenkins docker compose chmod](https://user-images.githubusercontent.com/48067540/154781918-6d0d5b95-7613-40fc-967c-72f41d9258c1.png)
+
+
 
 
 
