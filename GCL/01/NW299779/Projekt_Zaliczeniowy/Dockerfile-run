@@ -1,0 +1,7 @@
+FROM ubuntu-webapp AS ubuntu-webapp-run
+
+EXPOSE 8080
+
+WORKDIR /zagadnienie_posrednika_frontend
+
+CMD ["npm", "run-script", "dev","--", "--host=0.0.0.0"]

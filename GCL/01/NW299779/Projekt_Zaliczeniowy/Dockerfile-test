@@ -1,0 +1,5 @@
+FROM ubuntu-webapp AS ubuntu-webapp-test
+
+WORKDIR /zagadnienie_posrednika_frontend
+
+CMD ["npm", "test"]

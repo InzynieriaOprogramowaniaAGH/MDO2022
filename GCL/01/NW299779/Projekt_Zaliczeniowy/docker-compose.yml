@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+
+  ubuntu-webapp-test:
+    build:
+      context: .
+      dockerfile: Dockerfile-test
+    image: ubuntu-webapp-test  
+
+  ubuntu-webapp-run:
+    build:
+      context: .
+      dockerfile: Dockerfile-run
+    image: ubuntu-webapp-run
+

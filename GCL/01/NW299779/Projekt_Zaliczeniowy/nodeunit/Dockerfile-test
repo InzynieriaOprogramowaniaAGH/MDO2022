@@ -1,0 +1,5 @@
+FROM ubuntu-nodeunit AS ubuntu-nodeunit-test
+
+WORKDIR /nodeunit
+
+CMD ["npm", "test"]
