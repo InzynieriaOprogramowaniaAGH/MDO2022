@@ -236,7 +236,35 @@ docker run \
   
   ![run jenkins](https://user-images.githubusercontent.com/48067540/154780180-199927bc-c884-435b-8e94-06691262c695.png)
 
+  ### 6. Wchodzę do kontenera jenkinsa `docker exec -it jenkins-blueocean bash`
   
+  ![jenkins bash](https://user-images.githubusercontent.com/48067540/154780255-fc356a8b-7631-446d-81f4-0781c793945e.png)
+  
+  "Wyciągam" hasło admina
+  
+  `cat /var/jenkins_home/secrets/initialAdminPassword`
+
+### 7. Loguję się do jenkinsa
+
+  ![jenkins web](https://user-images.githubusercontent.com/48067540/154780286-3902a3ce-0022-4c8c-85a1-3ba06a950bc2.png)
+
+![jenkins logged in](https://user-images.githubusercontent.com/48067540/154780396-a9b3e79b-da76-46d7-82ea-df9bf360afce.png)
+
+### 8. Tworzę nowy projekt 'multi-configurational-project'
+
+![new project](https://user-images.githubusercontent.com/48067540/154780434-54f829ae-b382-432c-9e7f-6fbb2e81c0a3.png)
+
+### 9. Wybieram gitHub project oraz podaję URL do repozytorium projektowego
+
+![github project](https://user-images.githubusercontent.com/48067540/154780531-b6f5d41a-dada-459e-b214-8d2c6b70e3ce.png)
+
+Oraz wybieram moją gałąź projektu
+
+![GITHUB BRANCH](https://user-images.githubusercontent.com/48067540/154780547-8262c4d2-878f-4383-9953-f3e0627530cc.png)
+
+### 10. Wybieram użycie docker-compose.yml jako build step
+
+![build step](https://user-images.githubusercontent.com/48067540/154780679-f5f48086-f3b6-4a83-86f7-eeed0b2f6697.png)
 
 
 
