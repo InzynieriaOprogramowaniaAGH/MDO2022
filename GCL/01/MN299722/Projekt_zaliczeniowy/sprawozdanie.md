@@ -129,8 +129,54 @@
        
        # Jenkins  
        
-       W celu skonfigurawania **Jenkinsa** pobieram klucz wykorzystując komendę `sudo docker exec jenkins-blueocean cat /var/jenkins_home/secrets/initialAdminPassword`, następnie przechodzę na `localhost:8080` i wpisuję usyskane hasło:  
-        ![Jenkins pass](screenshots/16.jenkins_pass.png)  
+       W celu skonfigurawania **Jenkinsa** pobieram klucz wykorzystując komendę `sudo docker exec jenkins-blueocean cat /var/jenkins_home/secrets/initialAdminPassword`, następnie przechodzę na `localhost:8080` i wpisuję usyskane hasło:   
+        
+       ![Jenkins pass](screenshots/16.jenkins_pass.png)  
        
        
+       Następnie tworzę użytkownika i instaluję domyślne wtyczki:  
+       
+       ![Nowy user](screenshots/17.1.create_jenkins_admin.png)   
+       ![Domyślna konfiguracja](screenshots/17.2.jenkins_configuration.png)   
+        
+        
+       ## Uruchomienie kompozycji w Jenkinsie 
+       
+       ### 1. W celu wykorzystania docker-compose w Jenkinsie instaluję przechodzę do konsoli stworzonego kontenera wykorzystując komendę `docker exec -u root -it jenkins-blueocean /bin/bash` (używam flagi **-u** i przekazuję użytkownika **root**, aby mieć prawa zapisu wewnątrz kontenera, dzieki temu nie muszę pobierać sudo i tam dodawać użytkowników).
+
+       Instaluję docker-compose:  
+       `curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`  
+       I nadaję prawa:  
+       `chmod +x /usr/local/bin/docker-compose`
+       
+       ![docker-compose instalacja](screenshots/18.docker-compose-jenkins.png)  
+       
+       
+       
+       ### 2. Kolejnym warunkiem działania docker-compose w projekcie jest zainstalowanie odpowiedniej wtyczki.  
+       Wracam do strony Jenkinsa, przechodzę o **Manage Jenkins**  >  **Manage Plugins**  i instaluję wtyczkę **Docker Compose Build Step**:  
+        ![Docker Compose Build Step](screenshots/19.docker_compose_plugin.png)   
+        
+       ### 3. Tworzenie joba
+       
+       Na stonie głównej wybieram **New Item**  >  **Multi-configuration project**  i nazywam go **devops-react**:  
+       ![Create Job](screenshots/20.1.jenkins_create_job.png)   
+        
+       W **Source Code Management** wybieram Git, wpisuję adres grupowego repozytorium i nazwę swojej gałęzi:  
+       ![Create Job - git](screenshots/20.2.jenkins_create_job_git.png)   
+
+       W sekcji **Build** wpisuję adres pliku kompozycji, a jako komendę ustawiam **Start all services**:  
+       ![Create Job - build](screenshots/20.3.jenkins_create_job_build.png)   
+       
+       
+       
+       Po zapisaniu, po lewej stronie pojawi się menu, z którego wybieram opcję zbudowania. Na dole pojawia się nowy build:  
+       ![build jenkins](screenshots/21.build_jenkins.png)   
+       
+       Build projektu zakończył się sukcesem - szczegóły wykonania znajdują się w **Console Output**:  
+       ![build jenkins sukces](screenshots/22.build_success.png)   
+       
+       Logi wykonania znajdują się w pliku **jenkins_build.log**. Nie wiem czy dobrze zrozumiałem ten punkt, ale w celu sformatowania logów użyłem pluginu **Log File Filter Plugin**, którego następnie skonfigurowałem w **Manage Jenkins**  >  **Configure System**. Wtyczka pozwala na zastosowanie regexów na logach - poniższa konfiguracja usuwa wyjścia konsoli:  
+       
+       ![build jenkins](screenshots/23.log_filter_plugin.png)   
        
