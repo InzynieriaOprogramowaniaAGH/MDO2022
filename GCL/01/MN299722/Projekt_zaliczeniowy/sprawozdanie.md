@@ -180,3 +180,40 @@
        
        ![build jenkins](screenshots/23.log_filter_plugin.png)   
        
+
+       ## Jenkins pipeline 
+       
+       Na podstawie dockerfile'i z poprzednich kroków utworzyłem nowy projekt używając pipeline:  
+       
+       ```
+       pipeline {
+           agent any
+           stages {
+               stage('Build') {
+                   steps {
+                       sh '''
+                       rm -rf MDO2022/
+                       git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/
+                       cd MDO2022/
+                       git checkout MN299722
+                       cd GCL/01/MN299722/Projekt_zaliczeniowy
+                       docker build -t react-build:latest -f Dockerfile-build .
+                       '''
+                   }
+               }
+               stage('Test') {
+                   steps {
+                       sh '''
+                       cd MDO2022/GCL/01/MN299722/Projekt_zaliczeniowy
+                       docker build -t react-tests:latest -f Dockerfile-tests .
+                       '''
+                   }
+               }
+           }
+       }
+       ```
+       
+       ## Wykonanie joba:  
+       
+       ![build jenkins pipeline](screenshots/24.devops-react_pipeline.png)   
+       
