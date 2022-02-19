@@ -2,6 +2,12 @@ version: '3.7'
 
 services:
 
+  ubuntu-webapp-build:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ubuntu-webapp
+
   ubuntu-webapp-test:
     build:
       context: .
