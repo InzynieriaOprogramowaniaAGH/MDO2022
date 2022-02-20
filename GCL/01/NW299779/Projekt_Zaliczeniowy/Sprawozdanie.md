@@ -216,7 +216,11 @@ RUN curl -L \
   "https://github.com/docker/compose/releases/download/1.25.3/docker-compose-$(uname -s)-$(uname -m)" \  
   -o /usr/local/bin/docker-compose \  
   && chmod +x /usr/local/bin/docker-compose  
+ 
   ```
+  
+  <img width="677" alt="Dokcerfile-jenkoins" src="https://user-images.githubusercontent.com/48067540/154823532-49e3ca76-892e-43b8-a151-3039eb65f1c9.png">
+
 
 ### 4. Wykorzystując Dockerfile buduję obraz Blueocean
 `docker build -t myjenkins-blueocean:2.319.3-1 -f Dockerfile-jenkins .`
