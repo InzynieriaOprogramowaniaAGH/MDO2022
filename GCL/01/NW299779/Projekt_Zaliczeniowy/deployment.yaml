@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: ubuntu-webapp-run
+spec:
+    replicas: 4
+    selector:
+        matchLabels:
+        app: webapp-run
+    template:
+        metadata:
+        labels:
+            app: webapp-run
+        spec:
+        containers:
+        - name: webapp-run
+            image: ubuntu-webapp-run
+            ports:
+            - containerPort: 80
