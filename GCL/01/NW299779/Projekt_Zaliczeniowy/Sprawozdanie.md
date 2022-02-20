@@ -209,8 +209,14 @@ docker run \
 ![jenkins up](https://user-images.githubusercontent.com/48067540/154779980-06905ca6-14b8-471c-a461-781316dd9f42.png)
 
 ### 3. Tworzę Dockerfile
+Aby jenkins był w stanie odpalić docker-compose, umieszczam w Dockerfile komendę curl instalujacą docker-compose.
 
-<img width="524" alt="Dockerfile-jenkins" src="https://user-images.githubusercontent.com/48067540/154780056-7c3a0605-cbb3-4e16-b6d8-f7379f49a5d0.png">
+```
+RUN curl -L \  
+  "https://github.com/docker/compose/releases/download/1.25.3/docker-compose-$(uname -s)-$(uname -m)" \  
+  -o /usr/local/bin/docker-compose \  
+  && chmod +x /usr/local/bin/docker-compose  
+  ```
 
 ### 4. Wykorzystując Dockerfile buduję obraz Blueocean
 `docker build -t myjenkins-blueocean:2.319.3-1 -f Dockerfile-jenkins .`
@@ -264,16 +270,152 @@ Oraz wybieram moją gałąź projektu
 
 ![build step](https://user-images.githubusercontent.com/48067540/154781014-2f2a6b07-862b-41f5-92ad-f713b00b7b8b.png)
 
-### 11. Instalujemy docker-compose na kontenerze jenkinsa
+### 11. Odpalamy stworzony job i czekamy na wyniki
 
-![Jenkins docker compose install](https://user-images.githubusercontent.com/48067540/154781884-c53f1293-b3d3-4419-97a4-c1ace1dc8400.png)
+![job sucess](https://user-images.githubusercontent.com/48067540/154822118-07b31f10-fd3b-4937-b4c1-0401c0bcb024.png)
 
-![jenkins docker compose chmod](https://user-images.githubusercontent.com/48067540/154781918-6d0d5b95-7613-40fc-967c-72f41d9258c1.png)
+![job sucess 2](https://user-images.githubusercontent.com/48067540/154822126-b8aa642e-bd0c-4f2b-a4f7-4752cb05ad55.png)
+
+Logi z wykonanego joba załączone są jako `docker-compose-logs.txt`
+
+### 12. Tworzę pipeline przeprowadzający kroki build oraz test
+
+Skrypt pipeline'u opiera się na przygotowanych wcześniej plikach Dockerfile. 
+
+![Create pipelien](https://user-images.githubusercontent.com/48067540/154822334-61d24e7b-01bf-4c2a-bfe9-703d3e09128f.png)
+
+```
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                sh '''
+                rm -rf MDO2022/
+                git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/
+                cd MDO2022/
+                git checkout NW299779
+                cd GCL/01/NW299779/Projekt_Zaliczeniowy
+                docker build -t ubuntu-webapp -f Dockerfile .
+                docker run ubuntu-webapp
+                '''
+            }
+        }
+        stage('Test') {
+            steps {
+                sh '''
+                cd MDO2022/GCL/01/NW299779/Projekt_Zaliczeniowy
+                docker build -t ubuntu-webapp-test -f Dockerfile-test .
+                docker run ubuntu-webapp-test
+                '''
+            }
+        }
+```
+
+### Stage Build
+```
+ stage('Build') {
+            steps {
+                sh '''
+                rm -rf MDO2022/
+                git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022/
+                cd MDO2022/
+                git checkout NW299779
+                cd GCL/01/NW299779/Projekt_Zaliczeniowy
+                docker build -t ubuntu-webapp -f Dockerfile .
+                docker run ubuntu-webapp
+                '''
+```
+
+![stage build logs](https://user-images.githubusercontent.com/48067540/154822342-11af3155-bc85-49b9-a665-3c2959475871.png)
+
+![stage build logs 2](https://user-images.githubusercontent.com/48067540/154822346-41d233f4-70ad-4d5c-a7a9-899ee10cb4d8.png)
+
+### Stage Test
+```
+     stage('Test') {
+            steps {
+                sh '''
+                cd MDO2022/GCL/01/NW299779/Projekt_Zaliczeniowy
+                docker build -t ubuntu-webapp-test -f Dockerfile-test .
+                docker run ubuntu-webapp-test
+                '''
+            }
+ ```
+ 
+ ![stage test](https://user-images.githubusercontent.com/48067540/154822382-8a37101f-4b8e-4384-a3ff-b60ba605e6f8.png)
+
+![stage test 2](https://user-images.githubusercontent.com/48067540/154822386-0fd9781e-6588-4f8b-ac1d-c9e1b03fd2bf.png)
 
 
 
+### Stage Deploy
+Ponieważ budowany projekt to aplikacja webowa używająca React.js oraz webpack, jako artefakt projektu umożliwiający deploy aplikacji należy potraktować spakowany jako zip folder `dist` 
 
+# Kontener ze zbudowaną aplikacją uruchomić na Kubernetesie
+### 1. Instalacja Minikube 
+Pobieramy Minikube
+`curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64`
 
+![Download minikube](https://user-images.githubusercontent.com/48067540/154822784-a5449185-544e-4c8a-a8a8-264cafc32261.png)
 
+A następnie instalujemy
+`install minikube-linux-amd64 /usr/local/bin/minikube`
 
+### 2. Instalacja kubectl
+`curl -LO "https://dl.k8s.io/release/v1.23.0/bin/darwin/amd64/kubectl"`
 
+![install kubectl](https://user-images.githubusercontent.com/48067540/154822846-1515e063-d388-4fbe-92f5-f8a450c652df.png)
+
+`chmod +x ./kubectl`
+
+```sudo mv ./kubectl /usr/local/bin/kubectl
+sudo chown root: /usr/local/bin/kubectl
+```
+
+Oraz sprawdzamy czy instalacja przebiegła pomyślnie
+
+![kubectl version](https://user-images.githubusercontent.com/48067540/154822880-f18c2303-7f36-4418-a721-54d8b121c4d1.png)
+
+### 3. Uruchamiamy minikube
+
+`minikube start`
+
+![minikube start](https://user-images.githubusercontent.com/48067540/154822911-3b278bc3-9ade-4727-8206-c28dd9cc1955.png)
+
+### 4. Uruchamiamy minikube dashboard
+
+`minikube dashboard --port 32897 --url`
+
+![minikube start](https://user-images.githubusercontent.com/48067540/154822950-2dfd0322-216f-4409-868c-3afe2f64b5ac.png)
+
+A następnie otwieramy zwrócony url w przeglądarce
+
+`http://127.0.0.1:32897/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/`
+
+![minikube dashboard](https://user-images.githubusercontent.com/48067540/154822975-424a6c30-1d09-47ab-bec4-360cb1dc88fc.png)
+
+Sprawdzamy dostępne usługi
+
+minikube services
+
+![minikube services](https://user-images.githubusercontent.com/48067540/154822995-8097c950-d50f-4692-8230-3dacad9b40be.png)
+
+### 5. Wdrażamy kontener poprzez k8s
+
+`kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.4`
+
+![k8s create deployment](https://user-images.githubusercontent.com/48067540/154823120-3864f1ea-f6ee-4807-bf22-4ab7d4527fdc.png)
+
+Następnie wynosimy port `kubectl run hello-node --image=k8s.gcr.io/echoserver:1.4 --port=8080 --labels app=ctr`
+
+![minikube pods](https://user-images.githubusercontent.com/48067540/154823227-99e2af17-7a50-49ad-8626-563af6eba896.png)
+
+### 6. Tworzymy plik deploymentu
+
+<img width="379" alt="Zrzut ekranu 2022-02-20 o 01 09 22" src="https://user-images.githubusercontent.com/48067540/154823404-83f1f573-53aa-4b77-be8e-1159b08f9d82.png">
+
+### 7. Aplikujemy wdrożenie
+
+`kubectl apply -f ./deployment.yaml`
